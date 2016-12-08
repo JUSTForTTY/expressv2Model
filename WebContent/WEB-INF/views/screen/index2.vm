@@ -13,7 +13,7 @@
 <body>
 <script>
 
-    var system ={
+    var system ={  
         win : false,
         mac : false,
         xll : false
