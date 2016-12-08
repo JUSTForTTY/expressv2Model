@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta name="full-screen" content="yes">
+<!--css><-->
+    <link rel="stylesheet" href="css/cui.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/less.css" />
+</head>
+<body>
+
+<div class="row1 fix">
+    <div class="wp">
+        <div class="tit-i">
+            <h3>标题:遮掩特效Z0001</h3>
+            <h5>描述：由jq触发 <span>DCE</span></h5>
+        </div>
+        <ul class="ul-icon-i">
+            <li class="li1">
+                <div class="pad">
+                    <a href="">
+					<!-- span 灰色背景添加四次 -->
+                        <span></span>
+                        <h3>内容标题</h3>
+                        <em></em>
+                        <p>内容描述1内容描述1内容描述1内容描述</p>
+                        <div class="pic">
+                            <img src="images/m1.png" alt="">
+                            <img src="images/m2.png" alt="" class="pic-icon">
+                        </div>
+                    </a>
+                </div>
+            </li>
+            <li class="li2">
+                <div class="pad">
+                    <a href="">
+                        <span></span>
+                        <h3>内容标题</h3>
+                        <em></em>
+                        <p>内容描述2内容描述2内容描述2内容描述</p>
+                        <div class="pic">
+                            <img src="images/m3.png" alt="">
+                            <img src="images/m4.png" alt="" class="pic-icon">
+                        </div>
+                    </a>
+                </div>
+            </li>
+            <li class="li3">
+                <div class="pad">
+                    <a href="">
+                        <span></span>
+                        <h3>内容标题</h3>
+                        <em></em>
+                        <p>内容描述3内容描述3内容描述3内容描述</p>
+                        <div class="pic">
+                            <img src="images/m5.png" alt="">
+                            <img src="images/m6.png" alt="" class="pic-icon">
+                        </div>
+                    </a>
+                </div>
+            </li>
+            <li class="li4">
+                <div class="pad">
+                    <a href="">
+                        <span></span>
+                        <h3>内容标题</h3>
+                        <em></em>
+                        <p>内容描述4内容描述4内容描述4内容描述</p>
+                        <div class="pic">
+                            <img src="images/m7.png" alt="">
+                            <img src="images/m8.png" alt="" class="pic-icon">
+                        </div>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/lib.js"></script>
+<link rel="stylesheet" href="css/animate.css" />
+<link rel="stylesheet" href="css/flexslider.css" />
+<script type="text/javascript" src="js/flexslider.js"></script>
+<script type="text/javascript" src="js/banner.js"></script>
+
+<script>
+
+    $('.ul-icon-i li').hover(function(){
+        $(this).find('img:first').fadeIn(100);
+        $(this).find('.pic-icon').animate({top:0});
+    },function(){
+        $(this).find('.pic-icon').animate({top:-134});
+        $(this).find('img:first').fadeOut(100);
+    })
+
+ 
+
+</script>
+
+</body>
+</html>

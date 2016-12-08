@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="PROVIDER">
+	<typeAlias alias="provider"
+		type="com.hundsun.jresplus.quickstart.biz.po.Provider" />
+	<typeAlias alias="providerQuery"
+		type="com.hundsun.jresplus.quickstart.biz.query.ProviderQuery" />
+	<typeAlias alias="providerGoodsQuery"
+		type="com.hundsun.jresplus.quickstart.biz.query.providerGoodsQuery" />
+
+	<resultMap id="baseResult" class="provider">
+		<result column="id" property="id" />
+		 
+		<result column="type" property="type" />
+		<result column="name" property="name" />
+		<result column="title" property="title" />
+		<result column="miniature" property="miniature" />
+		<result column="image1" property="image1" />
+		<result column="unit" property="unit" />
+		<result column="refprice" property="refprice" />
+		<result column="price" property="price" />
+		<result column="detailintro" property="detailintro" />
+		<result column="ordernum" property="ordernum" />
+		<result column="stocknum" property="stocknum" />
+		<result column="memberUrl" property="memberurl" />
+		  
+		<result column="viewnum" property="viewnum" />
+		<result column="salenum" property="salenum" />
+		<result column="image4" property="image4" />
+		<result column="image5" property="image5" />
+		<result column="size" property="size" />
+		<result column="weight" property="weight" />
+		<result column="color" property="color" />
+		
+		
+	</resultMap>
+	<sql id="allColumn">
+		g.id,   g.type, g.name, g.miniature,g.title,
+		g.image1,
+		g.unit, g.refprice, g.price, g.detailintro,g.memberUrl,
+		g.ordernum,
+		g.provider_id,g.viewnum,g.salenum,g.stocknum,g.image4,g.image5,g.size,g.weight,g.color
+	</sql>
+
+	<select id="providerList" resultMap="baseResult">
+		select
+		<include refid="allColumn" />
+		from provider g
+		
+		
+		
+		 where g.id!='-1'
+		 
+		 <isNotEmpty prepend="and" property="id">
+				g.id = #id#
+			</isNotEmpty>
+		 
+		order by g.id
+		limit #pageFristItem# , #pageSize#
+
+	</select>
+	<select id="providerCount" resultClass="int">
+		select
+		count(1)
+		from provider g
+		where 1=1 and  g.id!='-1'
+		
+		 <isNotEmpty prepend="and" property="id">
+				g.id = #id#
+			</isNotEmpty>
+	</select>
+	</sqlMap>
+	

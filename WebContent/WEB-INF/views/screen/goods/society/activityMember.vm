@@ -1,0 +1,130 @@
+#set($menu = "society")
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>兴趣社团详情</title>
+<link href="$appServer/css/css.css" rel="stylesheet" type="text/css" />
+<link href="$appServer/css/style.css" rel="stylesheet" type="text/css" />
+
+ 
+ <script type="text/javascript">
+function show(){
+	 
+	var ms1=document.getElementsByName("createTime");
+	 
+	 
+	 for(var i=0;i<ms1.length;i++){
+	 
+	 var date = new Date(); //日期对象
+	   var ms2=ms1[i].value;
+	   
+	var myDate= new Date(Date.parse(ms2.replace(/-/g, "/")));  
+	  
+	   
+	var ms= date.getTime()-myDate.getTime();
+	date.setTime(ms);
+	var time = "";
+	time = date.getFullYear()-1969+"年";
+	time = time +(date.getMonth()-11)+"月";
+	time = time + (date.getDate()-31)+"日 ";
+	time = time + (date.getHours()-18)+"小时";
+	time = time + (date.getMinutes())+"分钟";
+	  
+	 
+	document.getElementById(i+1).innerHTML =time; 
+	
+	   
+	}
+	  
+	 
+ 
+	}
+	function joinNow(cid){
+		 
+		 
+		jQuery.ajax({
+     		type: 'POST',
+			url: appServer + '/goods/society/joinClub.htm',
+			data: {    
+             	cid : cid
+             	 
+    		},
+			dataType: 'json',
+			success: function(data) {    
+        		  
+        		 if(data.result=='nologin'){
+        		 
+        		 alert("加入失败！请先登录！");   
+        		 
+        		 }
+        		 if(data.result=='userrepeat'){
+        		 
+        		 alert("您已经加入过咯！");   
+        		 
+        		 }
+        		  if(data.result=='success'){
+        		 
+        		 alert("加入成功");   
+        		 location.reload(true)  
+        		 }
+        		   
+     		},    
+		 	error : function() {   
+            		alert("加入购物车失败！请先登录！");   
+			}
+		});
+	}
+	
+	
+	
+	 
+ 
+</script> 
+ 
+</head>
+
+<body  onload="show();" style="overflow:auto">
+  
+<div class="xqstxq">
+ 
+
+ 
+ 
+ 
+<div class="kchydwq07"><span>活动报名成员</span>
+  
+  
+ 
+ 
+ 
+</div>
+
+<div class="xqstxq08">
+     
+        #foreach($item in $query.items)
+        <a href="$appServer/goods/society/activityDetail.htm?aid=$item.aid">
+			<div class="xj11" style="height:67px;">
+			      	<div class="xj12" style="width:67px;height:63px;">
+			      	
+			      	  #if (!$item.headImage)
+			      	<img src="$appServer/images/defaultImage.jpg" width="67" height="63" />
+			      	#end
+			      	  #if ($item.headImage)
+			      	  <img src="$appServer/$item.headImage" width="67" height="63" />
+			      	  #end
+			      	</div>
+			        <div class="xj13"><span style="width:150px;"><b style="float:left;margin-right:30px;">$item.name</b> <div  style="width:300px;float:left;">     <div style="float:left;"   id=""></div>           </span><h6>$!item.gender</h6></div></div>
+			        <div class="xj14" style="float:right"><span>$velocityCount F</span> </div>
+			      </div>
+			      </a>
+			   #end   
+			      
+  
+</div>
+<div style="text-align:right;margin-left:250px;">
+#pager($query,"/goods/society/activityMember.htm")
+</div>
+   
+<div class="chear"></div>
+
+</body>
+</html>

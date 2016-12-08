@@ -1,0 +1,21 @@
+<div class=" zczh3"><span>会员登录</span></div>    
+<div class="zczh2">
+<form action="$appServer/dologin.htm" method="post">
+<div class="zczh4">
+<ul>
+<li><span>账号</span><input name="username" type="text" /></li>
+<li><span>密码</span><input name="passwd" type="password" /></li>
+</ul>
+<div class=" zczh11"><input name="" type="submit" value="登录" /></div>
+<label class="error">$!{message}</label>
+</div>
+</form>
+<div class="zczh6">
+<div class="zczh9">还没有帐号？立即注册</div>
+<div class="zczh10"><a href="$appServer/login/register.htm">注 册</a></div>
+</div>
+</div>
+
+
+
+

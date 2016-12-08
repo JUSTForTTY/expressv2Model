@@ -1,0 +1,25 @@
+<nav class="navbar navbar-inverse navbar-fixed-top site-navbar">
+    <div class="container-fluid"> 
+    <div class="row">
+      <div class="col-md-6 col-md-offset-1 col-no1">  
+		<ul class="nav nav-pills" role="tablist">
+		  <li role="presentation">#if($!{userAgent}) $!{userAgent.realName}&nbsp;欢迎进入物业快车！#end 今天是$dateUtil.convertDateToString("yyyy年MM月dd日 EEEE",$dateUtil.getCurrentDay().getTime()) </li>
+		</ul>
+      		
+	  </div>
+    	  <div class="col-md-4  col-no1">
+    		<ul class="nav nav-pills" role="tablist">
+    		  <li role="presentation"><a href="$appServer/settle/order1Cart.htm">我的购物车 <span class="badge">#if(${userAgent.tradeCart.itemcount})${userAgent.tradeCart.itemcount}#else 0 #end</span></a></li>
+    		  #if($!{userAgent})
+				<li role="presentation"><a href="#">消息 <span class="badge">1</span></a></li>
+				<li role="presentation"><a href="$appServer/center/user/detail.htm">会员中心</a></li>
+				<li role="presentation"><a href="$appServer/logout.htm">注销</a></li>
+			  #else
+				<li role="presentation"><a href="$appServer/login.htm">登录</a></li>
+				<li role="presentation"><a href="$appServer/login/register.htm">注册</a></li>
+			  #end
+    		</ul>
+    		</div>
+    	</div>
+    </div>
+</nav>

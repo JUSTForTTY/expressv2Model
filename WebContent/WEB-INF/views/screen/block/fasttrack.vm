@@ -1,0 +1,53 @@
+#set($layout="")
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>会员单位</title>
+<link href="/css/css.css" rel="stylesheet" type="text/css" />
+<link href="/css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="$appServer/css/style_category.css" />
+<link rel="stylesheet" type="text/css" href="$appServer/css/jquery.tmailsilder.v2.css" />
+<script type="text/javascript" src="$appServer/js/jquery.min.js"></script> 
+<script type="text/javascript" src="$appServer/js/jquery.tmailsilder.v2.js"></script>
+</head>
+<html>
+<body>
+<div class="wyfc" style="height: 600px;width:1300px;">
+  	  #foreach($item in $fastNews)    
+  	  #if($velocityCount<=6)
+       
+		<div class="xqst05" style="margin-left: 10px;width:500px;margin-left:93px">
+			<div class="xqst03">
+				<img width="181" height="178" src="$item.image" />
+			</div>
+			<div class="xqst04">
+			  #if($item.status==0)
+				<span><a href="$item.url" target="_parent">$item.title</a></span>
+				<h6><a href="$item.url" target="_parent">
+				#end
+				  #if($item.status==1)
+				  <span><a href="$appServer/$item.url?id=$item.id" target="_parent">$item.title</a></span>
+				<h6><a href="$appServer/$item.url?id=$item.id" target="_parent">
+				#end
+				 #if($item.briefintro.length()<=50)
+          
+          $!item.briefintro
+         
+          #else
+           $!item.briefintro.substring(1,50)...
+          #end
+				
+				
+				 </a></h6>
+			</div>
+		</div>
+	 
+		#end
+		#end
+		 
+</div>
+
+ 
+</body>
+</html>

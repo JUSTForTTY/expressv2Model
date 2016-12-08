@@ -1,0 +1,72 @@
+#set($layout = '')
+<script>
+	function goto$!{sliderRandom}(pg){
+		document.page_slider_$!{sliderRandom}.$!{sliderPage}.value=pg;
+		document.page_slider_$!{sliderRandom}.submit();
+	}
+
+	function gosb$!{sliderRandom}(){
+		if(check$!{sliderRandom}()){
+			document.page_slider_$!{sliderRandom}.submit();
+		}
+	}
+	function check$!{sliderRandom}(){
+		var toPage = document.page_slider_$!{sliderRandom}.$!{sliderPage}.value;
+		var reg=/^\d+$/g;
+		if(reg.test(toPage)){
+			return true;
+		}
+		return false;
+	}
+</script>
+
+
+<div class="container">
+<div class="row">
+	
+<nav>
+  <ul class="pager">
+	#if($slider_borker)
+		#set($s_broker = $slider_borker)
+	#else
+		#set($s_broker = $appServer)
+	#end
+	<form name="page_slider_$!{sliderRandom}" action="${s_broker.get("$sliderTarget")}" method="$!{sliderMethod}" onsubmit="return check$!{sliderRandom}();">
+	#if($sliderQuery.parameters)
+		#foreach($queryParam in $sliderQuery.parameters.entrySet())
+		<input type="hidden" name="$!{queryParam.key}" value="$!{queryParam.value}"/>
+		#end
+	#end
+	##<span class="mr20">共有$!{slider_query.totalItem}条记录，当前第$sliderCurrent页，共 $sliderTotal 页</span>
+	#if($sliderCurrent == '1')
+		##<span class="disabled"> 首页</span>
+		##<span class="disabled"> &lt;上一页</span>
+		<li class="disabled" style="width:200px;float:left"><a href="#"><span aria-hidden="true">&larr;</span>上一页</a>
+		
+		</li>
+	#else
+		##<a href="#" onclick="goto$!{sliderRandom}('1')">首页</a>
+		##<a href="#" onclick="goto$!{sliderRandom}('${sliderPrev}')">&lt; 上一页</a>
+		<li style="width:200px;float:left"><a href="#" onclick="goto$!{sliderRandom}('${sliderPrev}')"><span aria-hidden="true">&larr;</span>上一页</a></li>
+	#end
+	#foreach($grid in $grids)
+		#if($grid == 0)
+		##<span style="font-weight:bold">...</span>
+		#elseif($grid == $sliderCurrent)
+		##	<b>${grid}</b>
+		#else
+		##<a href="#" onclick="goto$!{sliderRandom}('${grid}')">${grid}</a>
+		#end
+	#end
+	#if($sliderCurrent >= $sliderTotal )
+		<li class="disabled" style="width:200px;float:right"><a href="#">下一页<span aria-hidden="true">&rarr;</span></a></li>
+	#else
+		<li style="width:200px;float:right"><a href="#" onclick="goto$!{sliderRandom}('${sliderNext}')">下一页<span aria-hidden="true">&rarr;</span></a></li>
+	#end
+	 <input type="hidden" name="$!{sliderPage}" value="$!sliderQuery.currentPage" />
+	</form>
+  </ul>
+</nav>
+</div>
+
+</div>

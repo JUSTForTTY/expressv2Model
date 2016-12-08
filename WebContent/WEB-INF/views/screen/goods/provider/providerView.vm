@@ -1,0 +1,193 @@
+#set($layout="")
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit"><!--360默认急速模式打开-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta name="full-screen" content="yes">
+     <link rel="stylesheet" href="$appServer/css/cui.css" />
+    <link rel="stylesheet" href="$appServer/css/style.css" />
+    <link rel="stylesheet" href="$appServer/css/less.css" />
+</head>
+<body>
+
+ 
+    <!--<div class="cur">
+        <div class="wp">您的当前位置：<a href="case.php?n=4">网思案例</a> > <a href="">森林公园网站</a></div>
+    </div>-->
+    <div class="case-article">
+        #foreach($item in $query.items)
+        <div class="case-article-bg"  style="margin-bottom:13%;background:url($appServer/$item.image5) 0 bottom no-repeat;">
+            <div class="wp pr">
+              #set($nextPage = $query.currentPage + 1)
+               #set($frontPage = $query.currentPage - 1)
+              
+               
+               
+                <a href="$appServer/goods/provider/listProvider.htm?currentPageCount=${frontPage}&totalPageCount=${query.totalPage}" class="article-prev"></a>
+                <a href="$appServer/goods/provider/listProvider.htm?currentPageCount=${nextPage}&totalPageCount=${query.totalPage} " class="article-next"></a>
+                <div class="case-logo"><img style="width:80px" src="http://www.wuyeok.com/$item.miniature" alt="14446394487216.png">
+                
+                </div>
+                <h1  style="color:$item.color">$item.name</h1>
+                <p class="tc"  style="color:$item.color"><span  >
+                #if($item.detailintro.length()<200)
+                $item.detailintro
+                
+                #else
+                 $item.detailintro.substring(0,200)
+                #end
+                
+                </span></p>
+                <div class="btn"><a href="$item.memberurl?id=$item.id" target="_blank">访问网址</a><a href="javascript:void(0)" onclick="addCollect()" target="_blank">关注（$collectPeople）</a></div>
+ <input name="" id="id" type="hidden" value="$item.id"  />
+                <div class="computer-bg"><img src="$appServer/$item.image4" alt="森林公园网站"></div>
+                <!-- <p class="tc"><img src="images/img15.jpg" style="margin-bottom:-135px;" alt=""></p> -->
+            </div>
+        </div>
+
+        <div class="case-img2">
+            <!--<p class="tc"><img src="images/img16.jpg" alt=""></p>-->
+            <p>
+                <img src="$appServer/$item.size" alt="" />
+            </p>
+            <p>
+                <img src="$appServer/$item.weight" alt="" />
+            </p>			</div>
+        <div class="case-back"><a href="http://www.wuyeok.com:8090/goods/provider/list.htm">返回快车网</a></div>
+    </div>
+    
+    </div>
+    #end
+</div>
+<!-- end #bd -->
+<div class="c"></div>
+<!-- begin #fd -->
+ <div class="side">
+    <ul>
+        <li><a href=""><div class="sidebox"><img src="$appServer/images/side_icon02.png">在线咨询</div></a></li>
+        <li><a href=""><div class="sidebox"><img src="$appServer/images/side_icon01.png">在线咨询<!-- QQ: --></div></a></li>
+        <li><a href="javascript:void(0);" ><div class="sidebox"><img src="$appServer/images/side_icon03.png">021-64822088</div></a></li>
+    </ul>
+</div>
+<div class="side2">
+    <ul>
+        <li><a href=""><img src="$appServer/images/r_icon1.png" alt=""></a><div class="weixin"><em></em><img src="$appServer/images/ewm.jpg" alt=""></div></li>
+        <li><a href="javascript:goTop();" class="sidetop"><img src="$appServer/images/r_icon2.png"></a></li>
+    </ul>
+</div>
+<script type="text/javascript" src="$appServer/js/jquery.js"></script>
+<script type="text/javascript" src="$appServer/js/lib.js"></script>
+<script type="text/javascript">
+ 
+	function addCollect() {
+	 
+		jQuery.ajax({
+     		type: 'POST',
+			url:  '$appServer/center/collect/add.htm' ,
+			data: {    
+             	goodsId : jQuery("#id").val(),    
+             	type : "provider"
+    		},
+			dataType: 'json',
+			success: function(data) {    
+        		if(data.isSuccess){ 
+            		alert("收藏成功！");
+					location.reload();
+					
+        		}else{    
+            		alert(data.message);     
+        		}    
+     		},    
+		 	error : function() {   
+            		alert("收藏失败！请先登陆！");   
+			}
+		});
+	}
+
+
+	function add2cart(goodsId , goodsNum){
+		jQuery.ajax({
+     		type: 'POST',
+			url: appServer + '/settle/add2Cart.htm',
+			data: {    
+             	id : goodsId,    
+             	goodsNum : goodsNum
+    		},
+			dataType: 'json',
+			success: function(data) {    
+        		if(data.errCode ==1001 ){ 
+            		alert("加入购物车成功！");
+					addChartCount(goodsNum);
+        		}else{    
+            		alert("加入购物车失败！请先登录！");     
+        		}    
+     		},    
+		 	error : function() {   
+            		alert("加入购物车失败！请先登录！");   
+			}
+		});
+	}
+	
+	function buyquick(goodsId , goodsNum){
+		jQuery.ajax({
+     		type: 'POST',
+			url: appServer + '/settle/buyquick.htm' ,
+			data: {    
+             	id : goodsId,    
+             	goodsNum : goodsNum
+    		},
+			dataType: 'json',
+			success: function(data) {    
+        		if(data.errCode ==1001 ){ 
+            		window.location.href = appServer + '/settle/order1Cart.htm';
+        		}else{    
+            		alert("加入购物车失败！请先登录！");     
+        		}    
+     		},    
+		 	error : function() {   
+            		alert("加入购物车失败！请先登录！");   
+			}
+		});
+	}
+</script>
+
+
+<script>
+    var isMobile;
+    function mobileCheck(){
+        isMobile  = $('#m-hd').is(':visible');
+    }
+
+    $(window).resize(function(event) {
+        mobileCheck();
+        $('.ul-case li').removeClass('on');
+        if(isMobile){
+            $('.ul-case').attr('id','ul-mobile');
+        }else{
+            $('.ul-case').attr('id','ul-pc');
+        }
+    });
+
+    $('body').on('mouseenter mouseleave', '#ul-pc li', function(){
+        $(this).toggleClass('on');
+    })
+
+    $('body').on('click', '#ul-mobile li', function(){
+        $(this).toggleClass('on');
+    })
+
+    $(window).load(function(){
+        $(window).trigger('resize');
+    })
+</script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/lib.js"></script>
+</body>
+</html>

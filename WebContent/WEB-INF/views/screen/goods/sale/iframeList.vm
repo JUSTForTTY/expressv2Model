@@ -1,0 +1,190 @@
+#set($layout="")
+ <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+  <meta name="renderer" content="webkit"> 
+  <title>物业快车</title>
+  <meta name="keywords" content="物业快车"> 
+  <meta name="description" content="物业快车">  
+  <link rel="stylesheet" href="$appServer/cssv2/style.css"> 
+  <link rel="stylesheet" href="$appServer/cssv2/css.css"> 
+  <link rel="stylesheet" href="$appServer/cssv2/page.css"> 
+    <link rel="stylesheet" href="$appServer/css/global2.css"> 
+  <link rel="stylesheet" href="$appServer/css/units.css"> 
+  <script src="$appServer/jsv2/jquery.js" type="text/javascript"></script></head><body><span style="position: absolute;left: -9999px;">www.km-jz.cn</span> 
+  <script src="$appServer/jsv2/wysucai.js" type="text/javascript"></script> 
+  <script src="$appServer/jsv2/umxTool.js" type="text/javascript"></script> 
+  <script src="$appServer/jsv2/jquery.imgpreload.min.js" type="text/javascript"></script> 
+  <script src="$appServer/jsv2/TweenMax.min.js" type="text/javascript"></script> 
+  <script src="$appServer/jsv2/page.js" type="text/javascript"></script> 
+  <script src="$appServer/jsv2/jquery.themepunch.revolution.min.js" type="text/javascript"></script> 
+  <script src="$appServer/jsv2/zzsc.js" type="text/javascript"></script> 
+
+  <script>
+    $(document).ready(function() {
+        if ($.fn.cssOriginal != undefined) $.fn.css = $.fn.cssOriginal;
+        $('.wide-banner').revolution({
+            delay: 7000,
+            startheight: 500,
+            startwidth: 1000,
+            hideThumbs: 200,
+            thumbWidth: 100,
+            // Thumb With and Height and Amount (only if navigation Tyope set to thumb !)
+            thumbHeight: 50,
+            thumbAmount: 5,
+            navigationType: "bullet",
+            // bullet, thumb, none
+            navigationArrows: "verticalcentered",
+            // nexttobullets, solo (old name verticalcentered), none
+            navigationStyle: "round",
+            // round,square,navbar,round-old,square-old,navbar-old, or any from the list in the docu (choose between 50+ different item), custom
+            navigationHAlign: "center",
+            // Vertical Align top,center,bottom
+            navigationVAlign: "bottom",
+            // Horizontal Align left,center,right
+            navigationHOffset: 0,
+            navigationVOffset: 20,
+            soloArrowLeftHalign: "left",
+            soloArrowLeftValign: "center",
+            soloArrowLeftHOffset: 20,
+            soloArrowLeftVOffset: 0,
+            soloArrowRightHalign: "right",
+            soloArrowRightValign: "center",
+            soloArrowRightHOffset: 20,
+            soloArrowRightVOffset: 0,
+            touchenabled: "on",
+            // Enable Swipe Function : on/off
+            onHoverStop: "on",
+            // Stop Banner Timet at Hover on Slide on/off
+            stopAtSlide: -1,
+            // Stop Timer if Slide "x" has been Reached. If stopAfterLoops set to 0, then it stops already in the first Loop at slide X which defined. -1 means do not stop at any slide. stopAfterLoops has no sinn in this case.
+            stopAfterLoops: -1,
+            // Stop Timer if All slides has been played "x" times. IT will stop at THe slide which is defined via stopAtSlide:x, if set to -1 slide never stop automatic
+            hideCaptionAtLimit: 0,
+            // It Defines if a caption should be shown under a Screen Resolution ( Basod on The Width of Browser)
+            hideAllCaptionAtLilmit: 0,
+            // Hide all The Captions if Width of Browser is less then this value
+            hideSliderAtLimit: 0,
+            // Hide the whole slider, and stop also functions if Width of Browser is less than this value
+            shadow: 0,
+            //0 = no Shadow, 1,2,3 = 3 Different Art of Shadows  (No Shadow in Fullwidth Version !)
+            fullWidth: "on" // Turns On or Off the Fullwidth Image Centering in FullWidth Modus
+        })
+        var bAnimateStop = 1;
+        $(window).scroll(function(){
+
+            if(clientShow ('.h-service')){
+                $('.h-service .bd .service-list li').addClass('animation');
+            }
+            if(clientShow('.move-mod') && bAnimateStop === 1){
+                $('.case-slider').umxCaseSlider();
+                bAnimateStop = 2;
+            }
+            if(clientShow('.h-mission')){
+                $('.h-mission .bd').addClass('scale-animate');
+            }
+        });
+        $('#header').fixedNav();
+        $('.h-client .bd').scrollSlider();
+    });
+</script> 
+<script type="text/javascript">
+
+	function buyquick(goodsId , goodsNum){
+
+		jQuery.ajax({
+     		type: 'POST',
+			url: '/settle/buyquick.htm' ,
+			data: {    
+             	id : goodsId,    
+             	goodsNum : goodsNum
+    		},
+			dataType: 'json',
+			success: function(data) {    
+        		if(data.errCode ==1001 ){ 
+            		window.blank.location.href = 'http://www.wuyeok.com/settle/order1Cart.htm';
+        		}else{    
+            		alert("加入购物车失败！请先登录！");     
+        		}    
+     		},    
+		 	error : function() {   
+            		alert("加入购物车失败！请先登录！");   
+			}
+		});
+	}
+</script>
+
+   
+   <!--案例展示--> 
+				<div class="item_list1" style="width: 100%;">
+					<div cateindex="5" class="container recommend clear_float  needweather">
+						
+	#foreach($item in $query.items)					
+					
+<div class="item unit5" style="width:320px;height:358px;margin-left:138px;" itemcate="5" createtime="" viewcount="" isextend="100" istag="1">
+<div class="unit" style="width:318px;height:355px;" orgid="1" tname="tb_recommend" 
+releasetime="undefined" unit-index="59">
+<div class="unit_content">
+<div class="fullimage" style="width:318px;height:355px;"><img 
+src="http://trade.wuyeok.com/$item.image1" 
+style="width:318px;height:318px;margin-top:20px;"></div></div><div class="unit_content_more" style="width:322px;height:360px;"><h3 style="font-size:23px;" class="title">$item.name</h3>  
+
+                 #if(!$!{userAgent})
+                      <span style="color:white;margin-left:20px;font-size:19px;">单位：<span style="color:white">$!item.unit</span> </span>	<br>  
+                   #if($item.refprice==0.00)        
+                      <span style="color:white;margin-left:20px;font-size:19px;">市场价：<span style="color:white">￥0.00</span> </span>	<br>       
+			        #end
+			       #if(!$item.refprice)
+		              <span style="color:white;margin-left:20px;font-size:19px;">市场价：<span style="color:white">面议</span> </span>	<br>       
+                    #end
+                   #if($item.refprice&&$item.refprice!=0.00)
+                      <span style="color:white;margin-left:20px;font-size:19px;">市场价：<span style="color:white">￥$NumberTool.format("#0.00",$!item.refprice)</span> </span>	<br>       
+                   #end
+                   
+                  #end 
+                                              
+                 #if($!{userAgent})
+                 
+                    <span style="color:white;margin-left:20px;font-size:19px;">单位：<span style="color:white">$!item.unit</span> </span>	<br>  
+                   #if($item.refprice==0.00)        
+                      <span style="color:white;margin-left:20px;font-size:19px;">市场价：<span style="text-decoration:line-through;color:white">￥0.00</span> </span>	<br>       
+			        #end
+			       #if(!$item.refprice)
+		              <span style="color:white;margin-left:20px;font-size:19px;">市场价：<span style="text-decoration:line-through;color:white">面议</span> </span>	<br>       
+                    #end
+                   #if($item.refprice&&$item.refprice!=0.00)
+                      <span style="color:white;margin-left:20px;font-size:19px;">市场价：<span style="text-decoration:line-through;color:white">￥$NumberTool.format("#0.00",$!item.refprice)</span> </span>	<br>       
+                   #end
+                  
+                 
+                    #if($item.price==0.00)			     
+			         <span style="color:white;margin-left:20px;font-size:19px;">促销价：<span style="color:white">免费</span></span> <br>  		       
+		    	    #end 			       
+			        #if(!$item.price)		       
+			         <span style="color:white;margin-left:20px;font-size:19px;">促销价：<span style="color:white">面谈</span></span> <br>  	       
+			        #end 
+                    #if($item.price&&$item.price!=0.00)		
+                    <span style="color:white;margin-left:20px;font-size:19px;">促销价：<span style="color:white">￥$NumberTool.format("#0.00",$!item.price) </span></span> <br>         			          		     
+			        #end 
+			        <span style="color:white;margin-left:20px;font-size:19px;">积分值：<span style="color:white">  $!item.scoreAdd </span></span> <br>  
+			        
+			     #end 
+                   
+                   
+			        
+			        
+			        <span style="color:white;margin-left:20px;font-size:19px;">销售数量：<span style="color:white">$!item.salenum</span></span> <br>
+			        <span style="color:white;margin-left:20px;font-size:19px;">库存数量：<span style="color:white">$!item.stocknum</span></span> 
+
+
+ <div class="link" >  &nbsp; 
+ <a class="focus ease3s" style="font-size:20px;width:125px;height:35px;"  href="javascript:void(0);" onclick="buyquick($!item.id,1)">立即购买</a><a class="view ease3s" style="font-size:20px;width:125px;height:35px;"  target="_blank" href="http://www.wuyeok.com/goods/normal/detail.htm?id=$item.id">查看详情</a>  &nbsp; 
+  </div></div></div></div>
+	#end		
+				</div>
+				</div>      
+
+
+    <!--案例展示 end / -->  
+    
+
+
+  </body></html>

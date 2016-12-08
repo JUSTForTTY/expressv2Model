@@ -1,0 +1,136 @@
+#set($layout="")
+ <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"> 
+  <meta name="renderer" content="webkit"> 
+  <title>物业快车</title>
+  <meta name="keywords" content="物业快车"> 
+  <meta name="description" content="物业快车">  
+  <link rel="stylesheet" href="$appServer/cssv2/style.css"> 
+  <link rel="stylesheet" href="$appServer/cssv2/css.css"> 
+  <link rel="stylesheet" href="$appServer/cssv2/page.css"> 
+  <script src="$appServer/jsv2/jquery.js" type="text/javascript"></script></head><body><span style="position: absolute;left: -9999px;">www.km-jz.cn</span> 
+  <script src="$appServer/jsv2/wysucai.js" type="text/javascript"></script> 
+  <script src="$appServer/jsv2/umxTool.js" type="text/javascript"></script> 
+  <script src="$appServer/jsv2/jquery.imgpreload.min.js" type="text/javascript"></script> 
+  <script src="$appServer/jsv2/TweenMax.min.js" type="text/javascript"></script> 
+  <script src="$appServer/jsv2/page.js" type="text/javascript"></script> 
+  <script src="$appServer/jsv2/jquery.themepunch.revolution.min.js" type="text/javascript"></script> 
+  <script src="$appServer/jsv2/zzsc.js" type="text/javascript"></script> 
+  <script>
+    $(document).ready(function() {
+        if ($.fn.cssOriginal != undefined) $.fn.css = $.fn.cssOriginal;
+        $('.wide-banner').revolution({
+            delay: 7000,
+            startheight: 500,
+            startwidth: 1000,
+            hideThumbs: 200,
+            thumbWidth: 100,
+            // Thumb With and Height and Amount (only if navigation Tyope set to thumb !)
+            thumbHeight: 50,
+            thumbAmount: 5,
+            navigationType: "bullet",
+            // bullet, thumb, none
+            navigationArrows: "verticalcentered",
+            // nexttobullets, solo (old name verticalcentered), none
+            navigationStyle: "round",
+            // round,square,navbar,round-old,square-old,navbar-old, or any from the list in the docu (choose between 50+ different item), custom
+            navigationHAlign: "center",
+            // Vertical Align top,center,bottom
+            navigationVAlign: "bottom",
+            // Horizontal Align left,center,right
+            navigationHOffset: 0,
+            navigationVOffset: 20,
+            soloArrowLeftHalign: "left",
+            soloArrowLeftValign: "center",
+            soloArrowLeftHOffset: 20,
+            soloArrowLeftVOffset: 0,
+            soloArrowRightHalign: "right",
+            soloArrowRightValign: "center",
+            soloArrowRightHOffset: 20,
+            soloArrowRightVOffset: 0,
+            touchenabled: "on",
+            // Enable Swipe Function : on/off
+            onHoverStop: "on",
+            // Stop Banner Timet at Hover on Slide on/off
+            stopAtSlide: -1,
+            // Stop Timer if Slide "x" has been Reached. If stopAfterLoops set to 0, then it stops already in the first Loop at slide X which defined. -1 means do not stop at any slide. stopAfterLoops has no sinn in this case.
+            stopAfterLoops: -1,
+            // Stop Timer if All slides has been played "x" times. IT will stop at THe slide which is defined via stopAtSlide:x, if set to -1 slide never stop automatic
+            hideCaptionAtLimit: 0,
+            // It Defines if a caption should be shown under a Screen Resolution ( Basod on The Width of Browser)
+            hideAllCaptionAtLilmit: 0,
+            // Hide all The Captions if Width of Browser is less then this value
+            hideSliderAtLimit: 0,
+            // Hide the whole slider, and stop also functions if Width of Browser is less than this value
+            shadow: 0,
+            //0 = no Shadow, 1,2,3 = 3 Different Art of Shadows  (No Shadow in Fullwidth Version !)
+            fullWidth: "on" // Turns On or Off the Fullwidth Image Centering in FullWidth Modus
+        })
+        var bAnimateStop = 1;
+        $(window).scroll(function(){
+
+            if(clientShow ('.h-service')){
+                $('.h-service .bd .service-list li').addClass('animation');
+            }
+            if(clientShow('.move-mod') && bAnimateStop === 1){
+                $('.case-slider').umxCaseSlider();
+                bAnimateStop = 2;
+            }
+            if(clientShow('.h-mission')){
+                $('.h-mission .bd').addClass('scale-animate');
+            }
+        });
+        $('#header').fixedNav();
+        $('.h-client .bd').scrollSlider();
+    });
+</script> 
+   
+  
+  
+ 
+   
+   
+  
+  <!--案例展示--> 
+  <div class="h-case" style="height:799px;padding:0 0;background-color:#f5f5f5"> 
+   
+ 
+   <div class="container bd case-slider" style="padding:0 0;margin-top:-25px;"> 
+ 
+    <div class="move-mod clear"> 
+     <ul class="case-list" style="position: relative; height: 799px;"> 
+     
+     
+     	#foreach($item in $query.items)
+      <li style="opacity: 1;height:380px;">
+      <a href="/goods/provider/detail.htm?id=$item.id" target="_blank" style="height:auto;width:auto"> <img src="http://trade.wuyeok.com/$item.image1" title="" alt="" width="266" height="200">
+      
+         <div style="height:auto;text-align:left;">
+          <strong style="margin-top:0px;font-size:16px;">$item.name</strong>
+              <span style="text-align:left;display:block">  #if($item.briefintro.length()<=40)
+                             $!item.detailintro
+                         #else
+                              $!item.detailintro.substring(1,40)...
+                         #end
+                          
+                          </span> 
+                           <a href="/goods/provider/detail.htm?id=$item.id" style="width:auto;height:auto;margin-top:30px;color:black;float:right;">【查看详情】</a>
+			       <div>
+			       
+       </a> 
+       
+       
+       </li> 
+       #end
+    
+    	 
+     </ul> 
+    </div> 
+ 
+    
+   </div> 
+ 
+  <!--案例展示 end / --> 
+  
+  
+ 
+  </body></html>

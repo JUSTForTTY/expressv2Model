@@ -1,0 +1,127 @@
+#set($menu = "provider")
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>会员单位详情</title>
+<link href="/css/css.css" rel="stylesheet" type="text/css" />
+<link href="/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+ 
+	function addCollect() {
+		jQuery.ajax({
+     		type: 'POST',
+			url: appServer + '/center/collect/add.htm' ,
+			data: {    
+             	goodsId : jQuery("#id").val(),    
+             	type : "normal"
+    		},
+			dataType: 'json',
+			success: function(data) {    
+        		if(data.isSuccess){ 
+            		alert("收藏成功！");
+					
+					
+        		}else{    
+            		alert(data.message);     
+        		}    
+     		},    
+		 	error : function() {   
+            		alert("收藏失败！请先登陆！");   
+			}
+		});
+	}
+
+
+	function add2cart(goodsId , goodsNum){
+		jQuery.ajax({
+     		type: 'POST',
+			url: appServer + '/settle/add2Cart.htm' ,
+			data: {    
+             	id : goodsId,    
+             	goodsNum : goodsNum
+    		},
+			dataType: 'json',
+			success: function(data) {    
+        		if(data.errCode ==1001 ){ 
+            		alert("加入购物车成功！");
+					addChartCount(goodsNum);
+        		}else{    
+            		alert("加入购物车失败！请先登录！");     
+        		}    
+     		},    
+		 	error : function() {   
+            		alert("加入购物车失败！请先登录！");   
+			}
+		});
+	}
+	
+	function buyquick(goodsId , goodsNum){
+		jQuery.ajax({
+     		type: 'POST',
+			url: appServer + '/settle/buyquick.htm' ,
+			data: {    
+             	id : goodsId,    
+             	goodsNum : goodsNum
+    		},
+			dataType: 'json',
+			success: function(data) {    
+        		if(data.errCode ==1001 ){ 
+            		window.location.href = appServer + '/settle/order1Cart.htm';
+        		}else{    
+            		alert("加入购物车失败！请先登录！");     
+        		}    
+     		},    
+		 	error : function() {   
+            		alert("加入购物车失败！请先登录！");   
+			}
+		});
+	}
+</script>
+
+
+
+</head>
+<style type="text/css">
+ 
+.kchydwq06
+
+{
+
+width:800px;
+
+height:450px;
+
+overflow:auto;
+
+}
+ 
+
+</style> 
+<body>
+   
+ 
+
+ 
+<div class="chear"></div>
+
+#if(${userAgent.member_id}==$goodsid)
+<div class=" kchydwq18">
+	<form  action="$appServer/goods/provider/update.htm" method="post" >
+		
+   
+	<div class=" kchydwq19"><span>更新公司日志</span></div>
+    <div class=" kchydwq20"><textarea name="content" cols="" rows="">$!comment.content</textarea></div>
+    <div class="kchydwq21">
+		<input name="id" type="hidden" value="$comment.id" />
+		<input name="goodsid" type="hidden" value="$goodsid" />
+		<input name="" type="submit" value="更新" /></div>
+	</form>
+</div>
+#end
+    
+    
+<div class="chear"></div>
+
+</body>
+</html>

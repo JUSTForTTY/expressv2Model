@@ -1,0 +1,43 @@
+#set($layout="layout/order.vm")
+
+<script type="text/javascript">
+    function setTotal(){
+	  $("input").each(function(){
+	  });
+    }
+	$(function(){
+	    $("input[name='goodsNum']").blur(function(){
+	    	var goodsNum = $(this).val();
+	    	var goodsId = $(this).parent().find("input[name='goodsId']").val();
+	        window.location.href = appServer + "/settle/changeNumFromCart.htm?id=" + goodsId + "&goodsNum=" +goodsNum;
+	    })
+	});
+</script>
+
+
+<div class="menuaa2" style="height:55px;margin-left:10px">
+ <div class="menulg" style="height:50px;margin-top:0px;margin-right:15px;width:511px;float:right"><img src="$appServer/images/gwlc_03aa.png" width="511" height="50"></div>
+  <div class="menulg" style="height:50px;margin-top:5px;width:50px;float:right"><img src="$appServer/images/logo.png" width="50" height="50"></div>
+ 
+</div>
+
+
+
+<div class="gwlc02">我的购物车</div>
+<div class="gwlc03">
+	<span>商品</span>
+    <ul>
+    <li>单价</li>
+    <li>数量</li>
+    <li>小计</li>
+    <li>操作</li>
+    </ul>
+</div>
+ 
+<div class="gwlc10">
+	<div class="gwlc11"><a href="clearCart.htm">X 清空购物车</a></div>
+  
+ </span> <h5></h5><h4><strong id="sumAll">请先登录哟</strong></h4>
+    <input class="gwlc13" name="" type="button" value="继续购物" onclick="location.href='$appServer/goods/normal/list.htm'" /> 
+    </div>
+</div>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="NEWS">
+	<typeAlias alias="news"
+		type="com.hundsun.jresplus.quickstart.biz.po.News" />
+		
+		<typeAlias alias="codemaster"
+		type="com.hundsun.jresplus.quickstart.biz.po.Codemaster" />
+		
+	<resultMap id="baseResult" class="news">
+		<result column="id" 			property="id" />
+		<result column="title" 			property="title" />
+		<result column="image" 			property="image" />
+		<result column="is_scroll" 			property="is_scroll" />
+		<result column="content" 	property="content" />
+		<result column="briefintro" 	property="briefintro" />
+		<result column="type" 	property="type" />
+		<result column="status" 	property="status" />
+		<result column="provider_id" 	property="providerId" />
+		 
+		<result column="url" 	property="url" />
+		<result column="gmt_create" 	property="gmt_create" />
+		<result column="gmt_modify" 	property="gmt_modify" />
+		<result column="gmt_publish" 	property="gmt_publish" />
+	</resultMap>
+	
+	<resultMap id="codemasterResult" class="codemaster">
+		<result column="codeno" 			property="codeno" />
+		<result column="codetype" 			property="codetype" />
+		<result column="codename" 			property="codename" />
+		<result column="codeDescription" 			property="codeDescription" />
+		<result column="content" 			property="content" />
+		<result column="building_id" 			property="building_id" />
+		 
+	</resultMap>
+	
+	<sql id="allColumn">
+		t.id, t.title, t.image, t.is_scroll,t.content,t.briefintro,t.type,t.status,t.provider_id,t.url,t.gmt_publish,t.gmt_create,t.gmt_modify	
+	</sql>
+	
+	<sql id="codemasterColumn">
+			codeno,codetype,codename,codeDescription,content,building_id
+	</sql>
+	
+	<select id="getById" resultMap="baseResult">
+		select
+		<include refid="allColumn" />
+		from news t
+     	<dynamic prepend="WHERE" >
+     		<isNotEmpty prepend="AND" property="id" >
+				t.id = #id#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id="getNewsType" resultMap="codemasterResult">
+		select
+		<include refid="codemasterColumn" />
+		from codemaster 
+        where
+				building_id = '0'
+		 
+	</select>
+	
+	 
+	
+	<select id="getAllByBuildingId" resultMap="baseResult">
+		select
+		<include refid="allColumn" />
+		from   news t 
+		where
+			t.type='0'
+		 
+		 	 and provider_id='3854'
+		 
+		order by t.sort  limit 0,3
+	</select>
+	
+	
+	
+	
+	<select id="getzongheNewsList" resultMap="baseResult">
+		select
+		<include refid="allColumn" />
+	  from  news t  
+	  
+      where
+     	 t.type=#type#
+     	 and
+				t.provider_id = #providerId#  order by t.gmt_create desc limit 0,4
+		 
+	</select>
+	
+	<select id="getNewsById" resultMap="baseResult">
+		select
+		<include refid="allColumn" />
+ 
+		 from news t  
+	  
+      where  id=#id#
+  
+		 
+	</select>
+	
+	<select id="getPreviousNews" resultMap="baseResult">
+	  
+		 select
+	<include refid="allColumn" />
+		from  news t 
+		where 
+		t.id=(select n.id from news n  where n.id &lt; #id# and type=#type#  order by n.id desc limit 1) and provider_id=#providerId#   
+	  
+	</select>
+	
+	<select id="getNextNews" resultMap="baseResult">
+		  select
+	<include refid="allColumn" />
+		from   news t  
+		where 
+		t.id=(select n.id from news n   where n.id > #id# and type=#type#   order by n.id asc limit 1)  and provider_id=#providerId# 
+		 
+	</select>
+	
+	<select id="newsCount" resultClass="int">
+		select
+		count(1)
+		from news t  
+		where
+			t.type=#type#
+		 and
+				t.provider_id=#providerId#
+	</select>
+	
+	<select id="newsList" resultMap="baseResult">
+		 select
+		<include refid="allColumn" />
+		from  news t  
+		
+		where
+			t.type=#type#
+		 and
+				t.provider_id=#providerId#
+		 
+		order by t.gmt_create desc limit #pageFristItem# , #pageSize#
+	</select>
+	
+	 
+	
+	 
+	 
+	
+</sqlMap>

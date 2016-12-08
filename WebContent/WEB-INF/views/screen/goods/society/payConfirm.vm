@@ -1,0 +1,330 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<!-- saved from url=(0045)http://www.bandenghui.com/signup/signup/index -->
+<html class="js cssanimations">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+
+<link type="text/css" media="screen" href="$appServer/css/common.css"
+	rel="stylesheet">
+<link type="text/css" media="screen" href="$appServer/css/chosen.css"
+	rel="stylesheet">
+<link type="text/css" media="screen" href="$appServer/css/pay.css"
+	rel="stylesheet">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<link rel="icon" type="image/png"
+	href="http://www.bandenghui.com/signup/signup/favicon.png">
+	
+<title>会员单位-支付</title>
+<meta name="description"
+	content="板凳会是国内最好的会议活动查找和报名平台。我们向各行业的参会者，提供最具价值、最具专业性、最全面的会议和活动。同时板凳会为主办方提供了如会议发布、 活动推广、活动报名、在线售票、收款、会议管理、会议通知、签到等功能服务，为主办方提供体验更好的会议解决方案">
+<meta name="keywords"
+	content=" 行业会议、行业活动、周末活动、会议活动平台、会议查找、活动报名、互联网活动、财经会议、能源会议、金融会议、沙龙、峰会、会议、活动、活动发布、会议管理、会议服务、会议活动报名">
+<script src="$appServer/js/hm.js"></script>
+<script src="$appServer/js/jquery.js"></script>
+<script src="http://zeptojs.com/zepto.min.js"></script>
+<link rel="stylesheet" type="text/css" href="$appServer/css/xcConfirm.css"/>
+	 
+		<script src="$appServer/js/xcConfirm.js" type="text/javascript" charset="utf-8"></script>
+
+<script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?a4c6a1146b6735a7a5201198d2f6a0c8";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+        
+   
+        
+        
+        $(document).ready(function() { 
+        	$("#payTypePre").change( 
+        	function() { 
+         
+        	 
+        		$("#pwd-div").css("display",'');
+        		
+        		
+        	});}); 
+        
+        $(document).ready(function() { 
+        	$("#payType").change( 
+        	function() { 
+         
+         
+        		$("#pwd-div").css("display",'none');
+        		
+        		
+        	});}); 
+        
+        
+        $(document).ready(function() {
+        	
+          var price=$("#price").val();
+          
+         
+          if(price=="0.00"){
+        	  
+        	 $("#payType").css("display","none");
+        	 $("#payType").removeAttr("checked");
+        	 $("#payTypeImg").css("display","none");
+        	 
+        	 
+          }
+          
+        });
+        
+    </script>
+    <style>
+.pwd-box{
+	    width:310px;
+	    padding-left: 1px;
+	    position: relative;
+	    border: 1px solid #9f9fa0;
+	    border-radius: 3px;
+over-flow:hidden
+	}
+	.pwd-box input[type="tel"]{
+		width: 99%;
+	    height: 45px;
+	    color: transparent;
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    border: none;
+	    font-size: 18px;
+	    opacity: 0;
+	    z-index: 1;
+	    letter-spacing: 35px;
+	}
+	.fake-box input{
+		width: 44px;
+	    height: 48px;
+	    border: none;
+	    border-right: 1px solid #e5e5e5;
+	    text-align: center;
+	    font-size: 30px;
+	}
+	.fake-box input:nth-last-child(1){
+		border:none;
+	}
+</style>
+</head>
+<body style="overflow:auto"> 
+ 
+
+
+	<!-- 支付票款 -->
+	<div class="bd-box event-pay">
+
+
+		<form action="$appServer/goods/society/doPay.htm" id="pay-form"
+			class="from-single"   method="post">
+
+			<div class="pay-column pay-check">
+				<input type="hidden" name="basic_id" value="366891115219254994">
+				<h2 class="col-tit">核对票种信息</h2>
+				<div class="col-c">
+					<table class="check-info">
+						<tbody>
+							<tr>
+								<th class="info-name">活动名称</th>
+								<th class="info-type">票种</th>
+								<th class="info-price">票价</th>
+								<th class="info-nums">数量</th>
+								<th class="info-total">小计</th>
+								<th class="info-status">状态</th>
+							</tr>
+
+							<tr>
+
+								<td class="info-name"><a
+									href="">$activityBean.name </a></td>
+								<td class="info-type">$activityProject.name </td>
+								<td class="info-price"> $activityProject.price </td>
+								<td class="info-nums">1</td>
+								<td class="info-total">$activityProject.price </td>
+								<td class="info-status">未付款</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="check-footer">
+						<div class="pay-tip">温馨提示：请尽快完成付款，系统会自动取消1小时内尚未付款订单</div>
+						<div class="pay-total">
+							应付票款：<span>$activityProject.price </span>
+							
+							<input type="hidden"  id="price" name="price"  value=""  />
+						</div>
+					</div>
+					<dl class="check-explain">
+						<dt>购票说明：</dt>
+						<dd>
+							<p>1、付款完成后您将收到电子票短信，参加活动时请出示短信二维码或电子票号作为报名凭证；</p>
+							<p>2、若该活动报名需要主办方审核，将在主办方审核通过后发送电子票短信；（若主办方审核不通过，系统将在1~3个工作日内退款至付款账户）</p>
+							<p>
+								3、若付款成功后没有电子票短信，请联天才纪<a href="#">客服人员</a>
+							</p>
+						</dd>
+
+					</dl>
+				</div>
+			</div>
+			<div class="pay-column pay-user">
+				<h2 class="col-tit">填写报名信息</h2>
+				<div class="col-c">
+					<div class="pay-userForm user-single">
+
+						<input type="hidden" name="signer_ticket_ids[]" value="25304">
+						<div class="form-row clearfix row-name">
+							<div class="row-tit">
+								姓名<i>*</i>
+							</div>
+							<div class="row-option">
+								<input id="name" name="name" type="text" class="mod-input"
+									value="" placeholder="请填写真实姓名"
+									datatype="*" nullmsg="请填写真实姓名">
+							</div>
+						</div>
+						<div class="form-row clearfix row-phone">
+							<div class="row-tit">
+								手机号<i>*</i>
+							</div>
+							<div class="row-option">
+								<input id="mobile" name="mobile" type="text" class="mod-input"
+									value="" placeholder="请填写手机号"
+									datatype="m" nullmsg="请填写手机号" errormsg="手机格式不正确">
+							</div>
+						</div>
+
+
+
+
+
+					</div>
+				</div>
+			</div>
+		 
+
+			<div class="pay-column pay-bill">
+				<h2 class="col-tit">支付方式</h2>
+				<div class="col-c">
+					<div>
+					 
+						<input type="radio" id="payType" checked="checked" name="payType"
+							value="6" style="width: 20px; height: 20px" />  支付宝支付 
+					 
+							 
+							<input
+							type="radio" id="payTypePre" name="payType" value="1"
+							style="width: 20px; height: 20px; margin-left: 30px;" />  预存款支付 
+							<input
+							type="hidden" id="apid" name="apid"
+							value="$activityProject.apid" />
+							
+							
+							
+							<input
+							type="radio" id="payTypePre" name="payType" value="8"
+							style="width: 20px; height: 20px; margin-left: 30px;" />  积分支付 
+							 
+						 
+						 
+					</div>
+					 
+				
+				<script type="text/javascript" src="http://www.w3school.com.cn/jquery/jquery-1.11.1.min.js"></script>
+ 
+ 
+					 
+ 
+
+					<div class="bill-tip">申明：报名支持支付宝支付和预存款支付</div>
+					 
+				</div>
+			</div>
+
+			<div class="pay-column pay-btn">
+				<input id="goPay" style="border: 0;
+    outline: 0;
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px 40px;
+    background-color: #ff6700;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 1px;
+    cursor: pointer;" type="button" onclick="checkPrepay();"  class="" value="确认付款"></input>
+			</div>
+		</form>
+	</div>
+	<script type="text/javascript">
+	 
+	 
+	 function checkPrepay(){
+		 
+		 
+		 
+		  
+	  var mobile=$("#mobile").val();
+	  var name=$("#name").val();	 
+      var apid=$("#apid").val();
+      
+       
+      var payType=$("input[name='payType']:checked").val();
+     
+      
+      
+      
+      
+      if(mobile==null||mobile==''||name==null||name==''){
+			 
+			 
+			 bandeng.notifier.info("报名提示","请将信息填写完整!","300px","-150px")
+		 }
+   
+    	  else{
+    	   
+              $("#goPay").attr('disabled',"true");  
+    		  
+    		  $("#pay-form").submit();
+    		  
+    	  }
+    	  
+      
+      
+     
+      
+	 
+		 
+  }
+     
+      
+	</script>
+ 
+ 
+  
+ 
+ 
+        
+        
+
+	</div>
+	 
+   
+	<script src="$appServer/js/base.js" type="text/javascript"
+		charset="UTF-8"></script>
+	<script src="$appServer/js/amazeui.chosen.js" type="text/javascript"
+		charset="UTF-8"></script>
+	<script src="$appServer/js/validform.js" type="text/javascript"
+		charset="UTF-8"></script>
+	<script src="$appServer/js/pay.js" type="text/javascript"
+		charset="UTF-8"></script>
+
+</body>
+</html>

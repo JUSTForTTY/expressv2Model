@@ -1,0 +1,13 @@
+#set($layout="")
+
+随便输出点东西
+
+<form method="post" action="addUser.htm">
+	编号：<input type="text" name="id" value=""> <br/>
+	姓名：<input type="text" name="name" value=""> <br/>
+	账号：<input type="text" name="account" value=""> <br/>
+	用户类型：<input type="text" name="userType" value="1"> <br/>
+	密码：<input type="password" name="password" value=""> <br/>
+	默认系统：<input type="text" name="defaultSubSys" value="1"> <br/>
+	<input type=submit value="submit">
+</form>

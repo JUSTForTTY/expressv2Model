@@ -1,0 +1,77 @@
+#set($layout="")
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>购物结算</title>
+<link href="/css/css.css" rel="stylesheet" type="text/css" />
+<link href="/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="wytop">
+    	<div class="wytopwr">
+        	<span>欢迎进入物业快车网！</span>
+            <ul>
+            <li><a href="#">收藏我们</a></li>
+            <li><a href="#">帮助中心</a></li>
+            <li id="wr"><a href="#">会员中心</a></li>
+            </ul>
+        </div>  
+    </div>
+<div class="menuaa2">
+  <div class="menu">
+  <div class="menulg"><img src="/images/logo.png" width="327" height="53" /></div>
+  <div class="gwlc"><img src="/images/gwlc_03aa.png" width="511" height="53" /></div>
+</div>
+</div>
+<div class="gwlc02">我的购物车</div>
+<div class="gwlc03">
+	<span>商品</span>
+    <ul>
+    <li>单价</li>
+    <li>数量</li>
+    <li>小计</li>
+    <li>操作</li>
+    </ul>
+</div>
+<!-- ----------购物车 ------------------ -->
+<input type="hidden" name="address" value="$address" id="address"/>
+<script>
+	var address = document.getElementById("address").value;
+	function go(){
+		location.href=address;
+	}
+</script>
+#if($goodsList.size()>0)
+	#foreach($item in $goodsList)
+		<div class="gwlc04">
+			<div class="gwlc05"><img src="$imageServer.get($item.goods.miniature)" width="146" height="133" /><span>$item.goods.name</span></div>
+		    <div class="gwlc06">
+		    	<ul>
+		        <li>￥$item.goods.price</li>
+		        <li><img class="gwlc07" src="/images/gwlc_10aa.png" width="19" height="25" /><input name="" type="text" value="$item.number"/>
+		          <img class="gwlc08" src="/images/gwlc_12aa.png" width="19" height="25" /></li>
+		          <li>$item.number</li>
+		          <li><img class="gwlc09" src="/images/gwlc_14aa.png" width="26" height="20" /></li>
+		        </ul>
+		    </div>
+		</div>
+	#end
+#end
+<div class="gwlc10">
+	<div class="gwlc11"><a href="#">X 清空购物车</a></div>
+  <div class="gwlc12"><span><h6>1</h6> 
+     件商品</span> <h5>总计：￥2999</h5><h4>总计(不含运费)：<strong>￥2999</strong></h4>
+    <form action="$address"><input class="gwlc13" name="" type="submit" value="继续购物"/></form>
+    <input class="gwlc14" name="" type="submit" value="去结算" onclick="location.href='/goods/gwlc/gwlcdd.htm'"/>
+    </div>
+</div>
+<div class="footer">
+  <div class="footer02"><span><a href="#">会员单位</a> |    <a href="#">服务条款</a> |    <a href="#">付款方式</a> |    <a href="#">厂商加盟</a> |    <a href="#">联系我们</a> |    <a href="#">友情链接</a> |    <a href="#">帮助</a><br />
+    
+    Copyright © 2004-2014  快车jk.com 版权所有</span>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+#set($layout="layout/center.vm")
+<div class="Prompt">
+	<div class="Prompt02">
+		<img src="$imageServer/images/fsdeee02.png" width="117" height="117" />
+		<strong style="width: 350px;">#if($!{message})$!{message}#else 抱歉，你的操作失败！ #end</strong>
+		<input type="button" value="返回" class="gwlc13" onclick="#if($!{url}) location.href='$!{appServer}/$!{url}' #else history.go(-1) #end" />
+	</div>
+</div>

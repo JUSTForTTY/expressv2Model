@@ -1,0 +1,8 @@
+
+$contain.get("/contain/head.htm").put("title","物业快车网")
+#parse("/screen/contain/headbar.vm")
+$contain.get("/headbar.htm")
+$contain.get("/headcolor.htm")
+$screen_content
+#parse("/screen/contain/foot.vm")
+#parse("/screen/contain/end.vm")

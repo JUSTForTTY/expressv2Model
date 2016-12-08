@@ -1,0 +1,89 @@
+#set($layout="")
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0066)http://www.17sucai.com/preview/41749/2013-12-10/spigPet/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title> spigPet-heartmoving整理 </title>
+
+<script type="text/javascript" src="$appServer/draft/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="$appServer/draft/spig.js"></script>
+
+<link rel="stylesheet" href="$appServer/draft/spigPet.css" type="text/css">
+
+<script type="text/javascript">
+var isindex = true;
+var visitor = true;
+</script>
+
+<script type="text/javascript" src="$appServer/floatmenu/jquery-1.7.2.min.js"></script>
+
+<style type="text/css">
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;}
+body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";background:#ddd;}
+
+/* leftsead */
+#leftsead{width:131px;height:200px;;top:258px;right:0px;}
+*html #leftsead{margin-top:258px;position:absolute;top:expression(eval(document.documentElement.scrollTop));}
+#leftsead li{width:70px;height:53px;}
+#leftsead li img{float:right;border-bottom-left-radius:5px;border-top-left-radius:5px;}
+#leftsead li a{height:49px;float:right;display:block;min-width:47px;max-width:131px;}
+#leftsead li a .shows{display:block;}
+#leftsead li a .hides{margin-right:-166px;cursor:pointer;cursor:hand;}
+#leftsead li a.youhui .hides{display:none;position:absolute;right:216px;top:2px;}
+</style>
+
+<link href="$appServer/draft/css.css" rel="stylesheet" type="text/css" />
+<link href="http://www.wuyeok.com/resource/cms/default/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://www.wuyeok.com/resource/cms/default/js/hover.js"></script>
+<script type="text/javascript" src="http://www.wuyeok.com/resource/cms/default/js/jquery-1.5.1.min.js"></script>
+<script type="text/javascript" src="http://www.wuyeok.com/resource/cms/default/js/global.js"></script>
+<script type="text/javascript" src="http://www.wuyeok.com/resource/cms/default/js/tab.js"></script>
+
+<link href="http://www.wuyeok.com/css/css.css" rel="stylesheet" type="text/css" />
+<link href="http://www.wuyeok.com/css/style.css" rel="stylesheet" type="text/css" />
+<link href="http://www.wuyeok.com/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="http://www.wuyeok.com/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+<link href="http://www.wuyeok.com/css/validate.css" rel="stylesheet" type="text/css" />
+ 
+<script src="http://www.wuyeok.com/js/jquery-validate/jquery.validate.js" type="text/javascript" ></script>
+<script src="http://www.wuyeok.com/js/jquery-validate/localization/messages_cn.js" type="text/javascript" ></script>
+<script src="http://www.wuyeok.com/js/bootstrap.min.js" type="text/javascript" ></script>
+
+
+</head>
+<body style="height:5000px;">
+
+ 
+
+	 
+
+
+
+
+<!--小人只在首页显示 start*-->
+<div id="spig" class="spig" style="top: 100px;">
+    <div id="message" style="display: block;">
+    
+         
+    </div>
+    
+    <div id="mumu" class="mumu" style="width:80px;">
+        
+    <div class="fudong_kefu" style="height: 150px; right: -155px;position :static;float:right">
+<div class="fudong_tab"><ul>
+<a  href="http://www.wuyeok.com"> <li class="qq"></li></a>
+
+<li class="weixin"></li></ul></div>
+ 
+</div>
+        
+        
+        
+        
+    </div>
+</div>
+<!--小人end*-->
+
+
+</body></html>

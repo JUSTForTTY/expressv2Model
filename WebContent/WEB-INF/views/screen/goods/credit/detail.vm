@@ -1,0 +1,145 @@
+<SCRIPT type="text/javascript" src="/js/slide.js"></SCRIPT>
+
+<script type="text/javascript">
+        $(window).load(function() {
+			var errorMsg = "$!{errorMsg}";
+			if( errorMsg != "") alert(errorMsg);
+			//alert("$!{errorMsg}");
+        });
+
+    function setTotal(){
+	
+	    var  price=$!goods.price;
+		 
+		 
+		 var  prepay = (parseInt($("#goodsNum").val())*$("#prepay").val()).toFixed(2);
+		  
+		
+    	var prc = (parseInt($("#goodsNum").val())*$("#integral").val()).toFixed(0);
+    	 
+    	$("#integral").val(prc);
+    	$("#prepay").val(prepay);
+    	
+		if(prepay=='0.00'){
+		 $("#totalPrepay").html("免费");
+		}
+		else{
+		 $("#totalPrepay").html(prepay);
+		}
+        $("#total").html(prc);
+        
+        
+    }
+	function add(){	
+		var num = $("#goodsNum").val();
+		$("#goodsNum").val(parseInt(num)+1);
+		setTotal();
+	}
+	function minus(){	
+		var num = parseInt($("#goodsNum").val());
+		if(num>1) $("#goodsNum").val(num-1);
+		setTotal();
+	}
+	function exchange(){
+		//if(confirm("使用" + $("#total").html() + "点积分换购" + $("#goodsNum").val() + "件？")){
+			
+			
+			$("#shop").attr("action", "/goods/credit/exchange.htm").submit();
+		//}
+	}
+</script>
+<div class="pro">
+	<!--  左边大图DIV-------------------------->
+	<div class="prol">
+    		  <div id=picarea>
+    <div style="MARGIN: 0px auto; WIDTH: 430px; HEIGHT: 430px; OVERFLOW: hidden">
+      <div style="MARGIN: 0px auto; WIDTH: 430px; HEIGHT: 430px; OVERFLOW: hidden" id=bigpicarea>
+
+        <div id=image_xixi-0${i} class=image><img alt="" src="$imageServer.get($goods.image1)" width="100%" height="100%"/>
+          <div class=word>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+var target = ["xixi-01","xixi-02","xixi-03","xixi-04"];
+</script>
+    </div>
+   <!-- 右边详细信息------------------------------ -->
+   <div class="prori">
+	 <div class="prori02">$goods.name</div>
+ 	 <div class="gwlc06">
+    	<ul>
+        <li>积分：</li>
+        <li><b id="total">#if($!goods.price)$NumberTool.format("#0",$goods.price) #else 免费 #end</b></li>
+         
+         
+        </ul>
+       
+	</div>
+		 <div class="gwlc06" style="height:60px;">
+    	<ul>
+        <li style="line-height:60px;">预存款：</li>
+        <li style="line-height:60px;"><b id="totalPrepay">#if($!goods.refprice)$NumberTool.format("#0.00",$goods.refprice) #else 免费 #end</b></li>
+         
+         
+        </ul>
+       
+	</div>
+	<form action="" method="post" id="shop">
+	    <div class="gwlc06">
+	    	<ul>
+	        <li>购买数量：</li>
+	        <li><a href="javascript:void(0);" onclick="minus()"><img class="gwlc07" src="$appServer/images/gwlc_10aa.png" width="19" height="25" /></a>
+	            <input id="goodsNum" name="goodsNum" type="text" value="1" onblur="setTotal();" />
+	          <a href="javascript:void(0);" onclick="add()"><img class="gwlc08" src="$appServer/images/gwlc_12aa.png" width="19" height="25" /></a></li>
+	           <li></li>
+	        </ul>
+	    </div>
+		<div class="prori08">
+	    	<a href="javascript:void(0);" onclick="exchange()" id="content"><span>积分换购</span></a>
+	    	<input type="hidden" name="goodsid" value="${goods.id}" />
+	    	<input type="hidden" name="integral" id="integral" value="#if($!goods.price)$NumberTool.format("#0",$goods.price)#else 0 #end" />
+	    	<input type="hidden" name="prepay" id="prepay" value="#if($!goods.refprice)$NumberTool.format("#0.00",$goods.refprice)#else 0.00 #end" />
+	    	
+	    </div>
+	</form>
+        
+  </div>
+  <!-- --------商品详情     图片从哪里来---------- -->
+</div>
+<div class="kcxxq06"><span>商品详情</span></div>
+<div class="xpxxxq">${goods.detailintro}
+</div>
+<div class="xgcoro03">
+<ul>
+	<!--   累计评价  (已完成)  -->
+<li id="sdds">累计评价
+	 #if($query.items.size()>0)
+	 	$query.items.size()
+	 #else 
+	 	0 
+	 #end
+</li>
+<li>月销售#if($!goods.salenum)$!goods.salenum #else 0 #end</li>
+</ul>
+</div>
+  <!-- --------   评价 +分页     --------- -->
+<div class="xgcoro04" style="width:-100px;height:200px;">
+	
+    
+	<ul >
+	#if($query.items && $query.items.size()>0)
+		#foreach($item in $query.items)
+    			<li><span>$!item.content</span> $!item.username</li>
+    	#end
+	#end
+	
+    </ul>
+ </div>
+ <div style="width:100px;">
+    #pager($query,"/goods/normal/xpxxxq.htm?id=$!{goods.id}")  
+
+   </div>

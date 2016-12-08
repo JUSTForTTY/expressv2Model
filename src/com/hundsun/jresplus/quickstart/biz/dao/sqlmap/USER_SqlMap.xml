@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="USER" >
+<typeAlias alias="userQuery" type="com.hundsun.jresplus.quickstart.biz.query.UserQuery"/>
+  <resultMap id="user_RM" class="com.hundsun.jresplus.quickstart.biz.po.User" >
+    <result column="ID" property="id" jdbcType="BIGINT(14)" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="passwd" property="passwd" jdbcType="VARCHAR" />
+    <result column="userquestion" property="userquestion" jdbcType="VARCHAR" />
+    <result column="useranswer" property="useranswer" jdbcType="VARCHAR" />
+    <result column="realname" property="realname" jdbcType="VARCHAR" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    <result column="contactor" property="contactor" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="VARCHAR(3)" />
+    <result column="tel" property="tel" jdbcType="VARCHAR(50)" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="qq" property="qq" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="prepay" property="prepay" jdbcType="DECIMAL(8,2)" />
+    <result column="score" property="score" jdbcType="BIGINT(11)" />
+    <result column="regtime" property="regtime" jdbcType="DATETINE" />
+    <result column="usertype" property="usertype" jdbcType="INT(3)" />
+    <result column="company_id" property="companyId" jdbcType="BIGINT(11)" />
+    <result column="status" property="status" jdbcType="INT(3)" />
+    <result column="creator_id" property="creatorId" jdbcType="BIGINT(11)" />
+    <result column="createtime" property="createtime" jdbcType="DATETINE" />
+    <result column="recuser_id" property="recuserId" jdbcType="BIGINT(11)" />
+    <result column="recusername" property="recusername" jdbcType="VARCHAR" />
+    <result column="building_id" property="buildingId" jdbcType="BIGINT(11)" />
+    <result column="cardId" property="cardId" jdbcType="VARCHAR" />
+    <result column="member_id" property="member_id" jdbcType="VARCHAR" />
+    
+  </resultMap>
+  
+  <select id="getByUserName" resultMap="user_RM" >
+     select ID, username, passwd, userquestion, useranswer, realname,nickname, gender, tel,email, qq,mobile,address,prepay,score,regtime,usertype,company_id,status,
+      creator_id,createtime,recuser_id,recusername,building_id,cardId,member_id,contactor
+      from user
+      where username = #username#
+  </select>
+  
+  <select id="getById" resultMap="user_RM" >
+     select ID, username, passwd, userquestion, useranswer, realname, nickname,gender, tel,email, qq,mobile,address,prepay,score,regtime,usertype,company_id,status,
+      creator_id,createtime,recuser_id,recusername,building_id,cardId,member_id,contactor
+      from user
+      where id = #id#
+  </select>
+  
+  <select id="SELECT" resultMap="user_RM" parameterClass="com.hundsun.jresplus.quickstart.biz.po.User" >
+     select ID, username, passwd, userquestion, useranswer, realname,nickname, gender, tel,email, qq,mobile,address,prepay,score,regtime,usertype,company_id,status,
+      creator_id,createtime,recuser_id,recusername,building_id,cardId,member_id,contactor
+      from user
+      <dynamic prepend="WHERE" >
+      	<isNotEmpty prepend="AND" property="id" >
+	        id = #id#
+	      </isNotEmpty>
+	      <isNotEmpty prepend="AND" property="username" >
+	        username = #username#
+	      </isNotEmpty>
+	      <isNotEmpty prepend="AND" property="passwd" >
+	        PASSWD = #passwd#
+	      </isNotEmpty>
+	      <isNotEmpty prepend="AND" property="userquestion" >
+	        userquestion = #userquestion#
+	      </isNotEmpty>
+	      <isNotEmpty prepend="AND" property="status" >
+	        STATUS = #status#
+	      </isNotEmpty>
+	      <isEmpty prepend="AND" property="status" >
+	         <![CDATA[ STATUS <> '2']]>
+	      </isEmpty>
+	      and provider_id='3854'
+	      
+      </dynamic>
+  </select>
+  
+  <delete id="DELETE">
+    delete from user
+    where ID = #id#
+  </delete>
+  
+  <select id="SELECT_BY_ID" resultMap="user_RM" >
+     select ID, username, passwd, userquestion, useranswer, realname,nickname, gender, tel,
+      email, regtime,contactor
+    from user
+    where <![CDATA[ STATUS <>2 AND ID = #id# ]]>
+  </select>
+  
+  <insert id="insert4Register" >
+		insert into 
+			user 
+			( 
+				id, username, passwd, realname,nickname,gender, regtime,
+				email,mobile,building_id,address,tel,status,recusername
+			)
+    	values 
+    		( 
+    			#id#, #username#, #passwd#, #realname#,#nickname#, #gender#, sysdate(),
+    			#email#,#mobile#,#buildingId#,#address#,#tel#,#status#, #recusername#
+    		)
+		<selectKey resultClass="java.lang.Long" type="post" keyProperty="id" >select LAST_INSERT_ID() as value</selectKey>
+  </insert>
+  
+  <insert id="INSERT" parameterClass="com.hundsun.jresplus.quickstart.biz.po.User" >
+      insert into user ( id, username, passwd, userquestion, useranswer, realname, gender, regtime,email,mobile,building_id,address,tel,status)
+    values ( #id#, #username#, #passwd#, #userquestion#, #useranswer#, #realname#, #gender#, sysdate(),#email#,#mobile#,#buildingId#,#address#,#tel#,#status#)
+              <selectKey resultClass="java.lang.Long" type="post" keyProperty="id" >select LAST_INSERT_ID() as value</selectKey>
+  </insert>
+  
+  <update id="UPDATE" parameterClass="com.hundsun.jresplus.quickstart.biz.po.User" >  
+    update user 
+    <dynamic prepend="set" >
+      <isNotEmpty prepend="," property="username" >
+        username = #username#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="passwd" >
+        passwd = #passwd#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="realname" >
+        realname = #realname#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="address" >
+        address = #address#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="mobile" >
+        mobile = #mobile#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="email" >
+        email = #email#
+      </isNotEmpty>
+    </dynamic>
+    where ID = #id#
+  </update>
+  
+   <update id="updateEdit">  
+    update user 
+	set 
+     	contactor = #contactor#
+    where 
+    	ID = #id#
+  </update>
+   <update id="update4Edit">  
+    update user 
+	set 
+		address = #address#,
+		mobile = #mobile#,
+     	email = #email#,
+     	gender =#gender#,
+     	recusername = #recusername#,
+     	nickname = #nickname#
+    where 
+    	ID = #id#
+  </update>
+  
+  <update id="updatePrepayById">
+		<![CDATA[update user set prepay=prepay+#sum# where id=#id:Integer#]]>
+  </update>
+
+  <update id="updateScoreById">
+		<![CDATA[update user set score=score-#score# where id=#id:Integer#]]>
+  </update>
+  
+	<select id="getIdByUsername" parameterClass="string" resultClass="long">
+		select U.ID
+		from user U
+		where U.username = #username#
+	</select>
+	
+	<select id="getIdByEmail" parameterClass="string" resultClass="long">
+		select U.ID
+		from user U
+		where U.email = #email#
+	</select>
+	
+	<select id="getIdByMobile" parameterClass="string" resultClass="long">
+		select U.ID
+		from user U
+		where U.mobile = #mobile#
+	</select>
+	
+	<update id="updatePassword">
+		update 
+			user u
+		set u.passwd = #pwdNew#
+		where 
+			u.passwd = #pwdOld#
+		and u.username = #userName#
+	</update>
+  
+</sqlMap>

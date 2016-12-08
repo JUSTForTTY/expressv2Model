@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="ORDER_DETAIL">
+	<typeAlias alias="orderDetail"
+		type="com.hundsun.jresplus.quickstart.biz.po.OrderDetail" />
+	<resultMap id="baseResult" class="orderDetail">
+		<result column="id" 				property="id" />
+		<result column="order_id" 			property="orderId" />
+		<result column="sub_order_id" 		property="subOrderId" />
+		<result column="goods_id" 			property="goodsId" />
+		<result column="goods_name" 		property="goodsName" />
+		<result column="miniature" 			property="miniature" />
+		<result column="member_id" 			property="memberId" />
+		<result column="member_name" 		property="memberName" />
+		<result column="t.unit_price" 		property="unitPrice" />
+		<result column="unit_score" 		property="unitScore" />
+		<result column="goods_count" 		property="goodsCount" />
+		<result column="t.single_price" 		property="singlePrice" />
+		<result column="single_score" 		property="singleScore" />
+		<result column="gmt_create" 		property="gmtCreate" />
+		<result column="gmt_modify" 		property="gmtModify" />
+	</resultMap>
+	
+	<insert id="insert" parameterClass="orderDetail">
+		insert into 
+			order_detail(
+				order_id, sub_order_id, goods_id, goods_name, miniature, member_id, member_name, unit_price, unit_score, goods_count, single_price, single_score,  gmt_create, gmt_modify
+			)
+			values(
+				#orderId#, #subOrderId#, #goodsId#, #goodsName#, #miniature#, #memberId#, #memberName#, #unitPrice#, #unitScore#, #goodsCount#, #singlePrice#, #singleScore#, now(), now()
+			)
+	 
+	</insert>
+	
+	<sql id="allColumn">
+		t.id, t.order_id, t.sub_order_id, t.goods_id, t.goods_name, 
+		t.miniature, t.member_id, t.member_name, t.unit_price, t.unit_score, 
+		t.goods_count, t.single_price, t.single_score, t.gmt_create, t.gmt_modify
+	</sql>
+	
+	<select id="getById" resultMap="baseResult">
+		select
+		<include refid="allColumn" />
+		from order_detail t
+     	 where 
+				t.id = #id#
+			 
+	</select>
+	
+	<select id="getByOrderId" resultMap="baseResult">
+		select
+		<include refid="allColumn" />
+		from order_detail t
+     	  where 
+				t.order_id = #orderId#
+			 
+	</select>
+
+</sqlMap>

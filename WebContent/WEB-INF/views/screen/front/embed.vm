@@ -1,0 +1,29 @@
+#set($layout="")
+$contain.get("/contain/head.htm").put("title","物业快车网")
+<div class="kcxx">
+	<div style="height:300px;width:200px; height :80px;border:0px;" class="kcxx02">
+		<a href = "http://www.wuyeok.com/xqst/182.htm" target="_parent">
+			<img src="$imageServer/images/front/index1.png" />
+		</a>
+	</div>
+	<div style="height: 300px; margin-left: 0px; width: 200px; height :80px;border:0px;" class="kcxx06">
+		<a href = "http://trade.wuyeok.com/goods/normal/list.htm?categoryId=40" target="_parent">
+			<img src="$imageServer/images/front/index2.png" />
+        </a>
+	</div>
+	<div style="height: 300px; margin-left: 0px; width: 200px; height :80px;border:0px;" class="kcxx06">
+		<a href = "http://www.wuyeok.com/xqst/184.htm" target="_parent">
+			<img src="$imageServer/images/front/index3.png" />
+		</a>
+	</div>
+	<div style="height: 300px; margin-left: 0px; width: 200px; height :80px;border:0px;" class="kcxx06">
+		<a href = "http://trade.wuyeok.com/goods/normal/list.htm?categoryId=678" target="_parent">
+			<img src="$imageServer/images/front/index4.png" />
+        </a>
+	</div>
+	<div style="height: 300px; margin-left: 0px; width: 200px; height :80px;border:0px;" class="kcxx06">
+		<a href = "http://www.wuyeok.com/xqst/185.htm" target="_parent">
+			<img src="$imageServer/images/front/index5.png" />
+		</a>
+	</div>
+</div>

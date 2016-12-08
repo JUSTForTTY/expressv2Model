@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>兴趣社团</title>
+<link href="$appServer/css/css.css" rel="stylesheet" type="text/css" />
+<link href="$appServer/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body style="overflow:auto;overflow-x: hidden;">
+     <input id="code" type="hidden"  value="society"  />
+    
+<div class=" kcfl">
+    	<div class="kcfl01"><span>兴趣社团</span><img src="$appServer/images/kcxx_06.png" width="5" height="3" /></div>
+        
+        
+        <div class="kcfl06">
+       
+          #pager($query,"/goods/society/list.htm")
+        </div>
+          
+</div>
+<div class="xqst">
+     
+     #foreach($item in $query.items)
+		#if($velocityCount % 2 == 1)
+	    	<div class="xqst02">
+		#else
+		  <div class="xqst05">
+		#end
+ 
+    	<div class="xqst03"><img src="$appServer/${item.logo}" width="181" height="178" /></div>
+        <div class="xqst04">
+        	<span><a href="$appServer/goods/society/detail.htm?cid=$item.cid">${item.name}</a></span>
+            <h6> ${item.brief}</h6>
+        </div>
+    </div>
+    
+       #end
+    
+</div>
+<div class="chear"></div>
+ 
+</div>
+</body>
+</html>

@@ -1,0 +1,4 @@
+<div class="flow-box">
+	<h3>$!{num}</h3>
+	<div>$!{time}</div>
+</div>

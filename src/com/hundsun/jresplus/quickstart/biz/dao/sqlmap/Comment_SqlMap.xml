@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="COMMENTS">
+	<typeAlias alias="comments"
+		type="com.hundsun.jresplus.quickstart.biz.po.Comment" />
+	<typeAlias alias="query"
+		type="com.hundsun.jresplus.quickstart.biz.query.CommentQuery" />
+	
+	<typeAlias alias="activityComment"
+		type="com.hundsun.jresplus.quickstart.biz.po.ActivityComment" />	
+		
+		
+		
+	<resultMap id="activityCommentResult" class="activityComment">
+		<result column="acid" property="acid" />
+		<result column="bid" property="bid" />
+		<result column="aid" property="aid" />
+		<result column="amid" property="amid" />
+		<result column="cmid" property="cmid" />
+		<result column="parent_id" property="parentId" />
+		<result column="content" property="content" />
+		<result column="reply" property="reply" />
+		<result column="stick" property="stick" />
+		<result column="status" property="status" />
+		<result column="Thumb" property="thumb" />
+		<result column="miniature" property="miniature" />
+		<result column="image1" property="image1" />
+		<result column="image2" property="image2" />
+		
+		<result column="image3" property="image3" />
+		<result column="image4" property="image4" />
+		<result column="image5" property="image5" />
+		<result column="image_id" property="imageId" />
+		<result column="nickname" property="nickname" />
+		<result column="create_user" property="createUser" />
+		<result column="create_time" property="createTime" />
+		<result column="modify_user" property="modifyUser" />
+		<result column="modify_time" property="modifyTime" />
+		<result column="click_num" property="clickNum" />
+		<result column="agree_num" property="agreeNum" />
+		<result column="disagree_num" property="disagreeNum" />
+		<result column="agree_num_time" property="agreeNumTime" />
+	</resultMap>
+		
+	<resultMap id="baseResult" class="comments">
+		<result column="id" property="id" />
+		<result column="goods_id" property="goodsId" />
+		<result column="username" property="username" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="status" property="status" />
+		<result column="createtime" property="createtime" />
+		<result column="modifytime" property="modifytime" />
+	</resultMap>
+	
+	<sql id="allColumn">
+		c.id,c.goods_id,c.username,
+		c.title,c.content,c.status,
+		c.createtime,c.modifytime
+	</sql>
+	
+	<sql id="activityCommentColumn">
+		c.acid,c.bid,c.aid,
+		c.amid,c.cmid,c.parent_id,
+		c.content,c.reply,c.stick,c.status,c.Thumb,
+		c.miniature,c.image1,c.image2,c.image3,c.image4,c.image5,c.image_id,
+		c.nickname,c.create_user,c.create_time,c.modify_user,c.modify_time,c.click_num,c.agree_num,c.disagree_num,c.agree_num_time
+		 
+	</sql>
+	
+	<select id="getById" resultMap="baseResult">
+		select
+		<include refid="allColumn" />
+		from comment c
+      <dynamic prepend="WHERE" >
+      	<isNotEmpty prepend="AND" property="id" >
+		c.goods_id = #id#
+		</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<insert id="create" parameterClass="comments" >
+      insert into comment (content,goods_id,username,createtime)
+    values (#content#,#goodsId#,#username#,#createtime#)
+               
+      
+  </insert>
+  
+  	<insert id="insert">
+		insert into 
+			comment 
+			( 
+				goods_id, username, title, content, status, createtime, modifytime
+			)
+    	values 
+    		( 
+    			#goodsId#, #username#, #title#, #content#, #status#, sysdate(), sysdate()
+    		)
+  	</insert>
+	
+	
+	
+	<select id="commentList" resultMap="baseResult">
+		select
+		<include refid="allColumn" />
+		from comment c
+      <dynamic prepend="WHERE" >
+      	<isNotEmpty prepend="AND" property="goodsId" >
+		 c.goods_id = #goodsId#
+		 </isNotEmpty>
+		 </dynamic>
+		order by id desc
+		limit #pageFristItem# , #pageSize#
+
+	</select>
+	
+	<select id="commentCount" resultClass="int">
+		select
+		count(1)
+		from comment c
+		where c.goods_id = #goodsId#
+	</select>
+	
+	
+	
+	<select id="activityCommentList" resultMap="activityCommentResult">
+		select
+		<include refid="allColumn" />
+		from comment c
+      <dynamic prepend="WHERE" >
+      	<isNotEmpty prepend="AND" property="goodsId" >
+		 c.goods_id = #goodsId#
+		 </isNotEmpty>
+		 </dynamic>
+		order by id desc
+		limit #pageFristItem# , #pageSize#
+
+	</select>
+	
+	<select id="activityCommentCount" resultClass="int">
+		select
+		count(1)
+		from comment c
+		where c.goods_id = #goodsId#
+	</select>
+	
+	<select id="update" resultMap="baseResult">
+		select
+		<include refid="allColumn" />
+		from comment c
+     
+	where	c.id = #id#
+		 
+	</select>
+	
+	<update id="doUpdate">
+	update comment set content=#content# where id=#id#
+	
+	
+	</update>
+	
+	<delete id="delete">
+	 
+	 delete from comment where id=#id#
+	
+	
+	</delete>
+	
+	
+
+</sqlMap>

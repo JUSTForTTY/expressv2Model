@@ -1,0 +1,38 @@
+#set($layout="")
+<body>
+ <div id="hd">
+    <div class="wp">
+        <div class="logo"><a href="index1"><img src="$appServer/images/logo.png" alt=""></a></div>
+        <div id="nav">
+            <ul>
+                <li><a href="$appServer/index.htm"   style="color:#019eef; border-bottom:3px solid #019eef;">首页</a></li>
+                <li><a href="$appServer/newsList.htm" >企业资讯</a></li>
+                <li><a href="$appServer/block/timeline.htm" >大事件</a></li>
+                <li><a href="$appServer/goods/normal/list.htm" >产品展示</a></li>
+                <li><a href="$appServer/block/about.htm" >企业简介</a></li>
+                <li><a href="$appServer/block/contact.htm">关于我们</a></li>
+            </ul>
+        </div>
+        <div class="tel">021-64822088</div>
+    </div>
+</div>
+<div class="c"></div>
+<div id="m-hd">
+    <a href="index1" class="m-logo"><img src="$appServer/images/logo.png" alt=""></a>
+    <div class="m-trigger"></div>
+    <ul class="m-nav">
+        <li><a href="index.html" class="v1">首页 </a></li>
+        <li><a href="about.html" class="v1">企业资讯</a></li>
+        <li><a href="service.html" class="v1">大事件</a></li>
+        <li><a href="case.html" class="v1">产品展示</a></li>
+        <li><a href="news.html" class="v1">文化娱乐</a></li>
+        <li><a href="contact.html" class="v1">关于我们</a></li>
+    </ul>
+</div>
+
+
+
+<div class="c"></div>
+
+<!--bd 菜单垫高><-->
+ </body>

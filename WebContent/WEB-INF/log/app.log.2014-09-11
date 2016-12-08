@@ -1,0 +1,1139 @@
+2014-09-11 17:02:07,739 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+2014-09-11 17:02:07,864 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing Root WebApplicationContext: startup date [Thu Sep 11 17:02:07 CST 2014]; root of context hierarchy
+2014-09-11 17:02:08,130 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/jres-web-beans.xml]
+2014-09-11 17:02:09,161 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/jres-common-beans.xml]
+2014-09-11 17:02:09,474 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from ServletContext resource [/WEB-INF/conf/spring/web-beans.xml]
+2014-09-11 17:02:10,427 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 17:02:10,427 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{upload.server.path=, template.load.charset=UTF-8, app.server.protocol=http, upload.server.protocol=${app.server.protocol}, image.server.followContextPath=true, app.server.port=80, image.server.port=${app.server.port}, app.server.host=, nosession.onoff=true, negate.system.dev.mode=true, image.server.host=${app.server.host}, image.server.path=, bigpipe.onoff=true, session.meta.cookie.name=_h_, cookies.max.length=4095, response.out.charset=UTF-8, image.server.protocol=${app.server.protocol}, cookies.max.count=1, upload.server.port=${app.server.port}, session.max.inacterval=-1, session.meta.cookie.domain=, upload.server.host=${app.server.host}}
+2014-09-11 17:02:10,442 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 17:02:10,458 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{web.vaild=false, system.dev.mode=false, validation.message.bean.name=}
+2014-09-11 17:02:10,911 INFO [org.springframework.beans.factory.support.DefaultListableBeanFactory] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1e22c75: defining beans [com.hundsun.jresplus.web.servlet.HandlerExceptionResolver#0,ResourceConfigurer,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,mediaTypesHandler,uuidGenerator,appServerBroker,sslAppServerBroker,imageServerBroker,uploadServerBroker,com.hundsun.jresplus.web.url.ServletContextInitHelper#0,encodingFilterBean,noSessionFilter,containFilter,jresFilter,cookiesManager,cookiesEncode,conversionService,webBindingInitializer,com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer#0,demoAction,org.springframework.scheduling.annotation.internalAsyncAnnotationProcessor,org.springframework.scheduling.annotation.internalScheduledAnnotationProcessor,com.hundsun.jresplus.beans.config.OverrideBeanFactoryPostProcessor#0,objectFactory,validator,messageSource,com.hundsun.jresplus.web.exception.HandlerExceptionResolver#0]; root of factory hierarchy
+2014-09-11 17:02:11,145 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[appServer-class com.hundsun.jresplus.web.url.URLBroker] inited.
+2014-09-11 17:02:11,145 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[sslAppServer-class com.hundsun.jresplus.web.url.URLBroker] inited.
+2014-09-11 17:02:11,145 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[imageServer-class com.hundsun.jresplus.web.url.StampURLBroker] inited.
+2014-09-11 17:02:11,145 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[uploadServer-class com.hundsun.jresplus.web.url.MultiHostURLBroker] inited.
+2014-09-11 17:02:11,192 INFO [com.hundsun.jresplus.web.nosession.NoSessionFilter] - Nosession filter init...
+2014-09-11 17:02:11,192 INFO [com.hundsun.jresplus.web.nosession.NoSessionFilter] - Nosession  registed attribute[]
+2014-09-11 17:02:11,286 INFO [com.hundsun.jresplus.web.exception.HandlerExceptionResolver] - Use Exception resolver.
+2014-09-11 17:02:11,302 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization completed in 3563 ms
+2014-09-11 17:02:11,349 INFO [com.hundsun.jresplus.web.servlet.DispatcherServlet] - FrameworkServlet 'jresServlet': initialization started
+2014-09-11 17:02:11,349 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 17:02:11,349 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{}
+2014-09-11 17:02:11,364 ERROR [com.hundsun.jresplus.web.servlet.DispatcherServlet] - Context initialization failed
+java.lang.NullPointerException
+	at java.util.Hashtable.put(Hashtable.java:396)
+	at java.util.Properties.setProperty(Properties.java:128)
+	at java.lang.System.setProperty(System.java:700)
+	at com.hundsun.jresplus.web.servlet.DispatcherServlet.createWebApplicationContext(DispatcherServlet.java:79)
+	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:458)
+	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:339)
+	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:306)
+	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:127)
+	at javax.servlet.GenericServlet.init(GenericServlet.java:212)
+	at org.apache.catalina.core.StandardWrapper.loadServlet(StandardWrapper.java:1173)
+	at org.apache.catalina.core.StandardWrapper.load(StandardWrapper.java:993)
+	at org.apache.catalina.core.StandardContext.loadOnStartup(StandardContext.java:4187)
+	at org.apache.catalina.core.StandardContext.start(StandardContext.java:4496)
+	at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1045)
+	at org.apache.catalina.core.StandardHost.start(StandardHost.java:785)
+	at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1045)
+	at org.apache.catalina.core.StandardEngine.start(StandardEngine.java:443)
+	at org.apache.catalina.core.StandardService.start(StandardService.java:519)
+	at org.apache.catalina.core.StandardServer.start(StandardServer.java:710)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:581)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:585)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:289)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:414)
+2014-09-11 17:03:46,192 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+2014-09-11 17:03:46,317 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing Root WebApplicationContext: startup date [Thu Sep 11 17:03:46 CST 2014]; root of context hierarchy
+2014-09-11 17:03:46,504 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/jres-web-beans.xml]
+2014-09-11 17:03:47,426 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/jres-common-beans.xml]
+2014-09-11 17:03:47,864 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from ServletContext resource [/WEB-INF/conf/spring/web-beans.xml]
+2014-09-11 17:03:49,020 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 17:03:49,020 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{upload.server.path=, template.load.charset=UTF-8, app.server.protocol=http, upload.server.protocol=${app.server.protocol}, image.server.followContextPath=true, app.server.port=, image.server.port=${app.server.port}, app.server.host=, nosession.onoff=true, negate.system.dev.mode=false, image.server.host=${app.server.host}, image.server.path=, bigpipe.onoff=true, session.meta.cookie.name=_h_, cookies.max.length=4095, response.out.charset=UTF-8, cookies.max.count=1, image.server.protocol=${app.server.protocol}, system.dev.mode=true, upload.server.port=${app.server.port}, session.max.inacterval=-1, jres.action.scran=com.hundsun.jresplus, session.meta.cookie.domain=, upload.server.host=${app.server.host}}
+2014-09-11 17:03:49,051 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 17:03:49,051 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{web.vaild=false, validation.message.bean.name=}
+2014-09-11 17:03:49,442 INFO [org.springframework.beans.factory.support.DefaultListableBeanFactory] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@65394b: defining beans [com.hundsun.jresplus.web.servlet.HandlerExceptionResolver#0,ResourceConfigurer,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,mediaTypesHandler,uuidGenerator,appServerBroker,sslAppServerBroker,imageServerBroker,uploadServerBroker,com.hundsun.jresplus.web.url.ServletContextInitHelper#0,encodingFilterBean,noSessionFilter,containFilter,jresFilter,cookiesManager,cookiesEncode,conversionService,webBindingInitializer,com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer#0,demoAction,org.springframework.scheduling.annotation.internalAsyncAnnotationProcessor,org.springframework.scheduling.annotation.internalScheduledAnnotationProcessor,com.hundsun.jresplus.beans.config.OverrideBeanFactoryPostProcessor#0,objectFactory,validator,messageSource,com.hundsun.jresplus.web.exception.HandlerExceptionResolver#0]; root of factory hierarchy
+2014-09-11 17:03:49,614 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[appServer-class com.hundsun.jresplus.web.url.URLBroker] inited.
+2014-09-11 17:03:49,614 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[sslAppServer-class com.hundsun.jresplus.web.url.URLBroker] inited.
+2014-09-11 17:03:49,614 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[imageServer-class com.hundsun.jresplus.web.url.StampURLBroker] inited.
+2014-09-11 17:03:49,614 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[uploadServer-class com.hundsun.jresplus.web.url.MultiHostURLBroker] inited.
+2014-09-11 17:03:49,660 INFO [com.hundsun.jresplus.web.nosession.NoSessionFilter] - Nosession filter init...
+2014-09-11 17:03:49,660 INFO [com.hundsun.jresplus.web.nosession.NoSessionFilter] - Nosession  registed attribute[]
+2014-09-11 17:03:49,754 INFO [com.hundsun.jresplus.web.exception.HandlerExceptionResolver] - Use Exception resolver.
+2014-09-11 17:03:49,785 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization completed in 3593 ms
+2014-09-11 17:03:49,817 INFO [com.hundsun.jresplus.web.servlet.DispatcherServlet] - FrameworkServlet 'jresServlet': initialization started
+2014-09-11 17:03:49,817 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 17:03:49,817 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{}
+2014-09-11 17:03:49,832 ERROR [com.hundsun.jresplus.web.servlet.DispatcherServlet] - Context initialization failed
+java.lang.NullPointerException
+	at java.util.Hashtable.put(Hashtable.java:396)
+	at java.util.Properties.setProperty(Properties.java:128)
+	at java.lang.System.setProperty(System.java:700)
+	at com.hundsun.jresplus.web.servlet.DispatcherServlet.createWebApplicationContext(DispatcherServlet.java:79)
+	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:458)
+	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:339)
+	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:306)
+	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:127)
+	at javax.servlet.GenericServlet.init(GenericServlet.java:212)
+	at org.apache.catalina.core.StandardWrapper.loadServlet(StandardWrapper.java:1173)
+	at org.apache.catalina.core.StandardWrapper.load(StandardWrapper.java:993)
+	at org.apache.catalina.core.StandardContext.loadOnStartup(StandardContext.java:4187)
+	at org.apache.catalina.core.StandardContext.start(StandardContext.java:4496)
+	at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1045)
+	at org.apache.catalina.core.StandardHost.start(StandardHost.java:785)
+	at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1045)
+	at org.apache.catalina.core.StandardEngine.start(StandardEngine.java:443)
+	at org.apache.catalina.core.StandardService.start(StandardService.java:519)
+	at org.apache.catalina.core.StandardServer.start(StandardServer.java:710)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:581)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:585)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:289)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:414)
+2014-09-11 17:06:44,220 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+2014-09-11 17:06:44,360 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing Root WebApplicationContext: startup date [Thu Sep 11 17:06:44 CST 2014]; root of context hierarchy
+2014-09-11 17:06:44,657 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/jres-web-beans.xml]
+2014-09-11 17:06:45,720 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/jres-common-beans.xml]
+2014-09-11 17:06:46,235 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from ServletContext resource [/WEB-INF/conf/spring/web-beans.xml]
+2014-09-11 17:06:47,313 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 17:06:47,329 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{upload.server.path=, template.load.charset=UTF-8, app.server.protocol=http, upload.server.protocol=${app.server.protocol}, image.server.followContextPath=true, app.server.port=, image.server.port=${app.server.port}, app.server.host=, nosession.onoff=true, negate.system.dev.mode=false, image.server.host=${app.server.host}, jres.action.scan=com.hundsun.jresplus, image.server.path=, bigpipe.onoff=true, session.meta.cookie.name=_h_, cookies.max.length=4095, response.out.charset=UTF-8, cookies.max.count=1, image.server.protocol=${app.server.protocol}, system.dev.mode=true, upload.server.port=${app.server.port}, session.max.inacterval=-1, session.meta.cookie.domain=, upload.server.host=${app.server.host}}
+2014-09-11 17:06:47,345 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 17:06:47,345 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{web.vaild=false, validation.message.bean.name=}
+2014-09-11 17:06:47,704 INFO [org.springframework.beans.factory.support.DefaultListableBeanFactory] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@5db9eb: defining beans [com.hundsun.jresplus.web.servlet.HandlerExceptionResolver#0,ResourceConfigurer,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,mediaTypesHandler,uuidGenerator,appServerBroker,sslAppServerBroker,imageServerBroker,uploadServerBroker,com.hundsun.jresplus.web.url.ServletContextInitHelper#0,encodingFilterBean,noSessionFilter,containFilter,jresFilter,cookiesManager,cookiesEncode,conversionService,webBindingInitializer,com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer#0,demoAction,org.springframework.scheduling.annotation.internalAsyncAnnotationProcessor,org.springframework.scheduling.annotation.internalScheduledAnnotationProcessor,com.hundsun.jresplus.beans.config.OverrideBeanFactoryPostProcessor#0,objectFactory,validator,messageSource,com.hundsun.jresplus.web.exception.HandlerExceptionResolver#0]; root of factory hierarchy
+2014-09-11 17:06:47,845 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[appServer-class com.hundsun.jresplus.web.url.URLBroker] inited.
+2014-09-11 17:06:47,845 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[sslAppServer-class com.hundsun.jresplus.web.url.URLBroker] inited.
+2014-09-11 17:06:47,845 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[imageServer-class com.hundsun.jresplus.web.url.StampURLBroker] inited.
+2014-09-11 17:06:47,845 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[uploadServer-class com.hundsun.jresplus.web.url.MultiHostURLBroker] inited.
+2014-09-11 17:06:47,891 INFO [com.hundsun.jresplus.web.nosession.NoSessionFilter] - Nosession filter init...
+2014-09-11 17:06:47,891 INFO [com.hundsun.jresplus.web.nosession.NoSessionFilter] - Nosession  registed attribute[]
+2014-09-11 17:06:47,985 INFO [com.hundsun.jresplus.web.exception.HandlerExceptionResolver] - Use Exception resolver.
+2014-09-11 17:06:48,001 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization completed in 3781 ms
+2014-09-11 17:06:48,063 INFO [com.hundsun.jresplus.web.servlet.DispatcherServlet] - FrameworkServlet 'jresServlet': initialization started
+2014-09-11 17:06:48,063 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 17:06:48,063 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{}
+2014-09-11 17:06:48,063 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing WebApplicationContext for namespace 'jresServlet-servlet': startup date [Thu Sep 11 17:06:48 CST 2014]; parent: Root WebApplicationContext
+2014-09-11 17:06:48,063 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/web/jres-web-main.xml]
+2014-09-11 17:06:48,704 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 17:06:48,704 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{velocity.user.directive=, velocity.eventhandler.nullset.class=, template.resource.loader.path=WEB-INF/views/, velocity.eventhandler.invalidreferences.class=, use.default.suffix.pattern=true, velocity.velocimacro.library=, velocity.in.jar.files=*, velocity.eventhandler.referenceinsertion.class=, toolbox.xml.path=WEB-INF/conf/vm-toolbox.xml}
+2014-09-11 17:06:48,720 INFO [org.springframework.beans.factory.support.DefaultListableBeanFactory] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@188c838: defining beans [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer#0,demoAction,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,velocityViewCache,velocityConfigurer,viewResolver,internalViewResolver,defaultHandlerInterceptorAdapter,brokersInterceptor,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter#0,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter#0,com.hundsun.jresplus.web.adapter.ExtendableAnnotationMethodHandlerAdapter#0,defaultHandlerMapping,org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping#0,lastHandlerMapping,multipartResolver]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@5db9eb
+2014-09-11 17:06:52,047 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/view] onto handler 'demoAction'
+2014-09-11 17:06:52,047 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/view.*] onto handler 'demoAction'
+2014-09-11 17:06:52,047 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/view/] onto handler 'demoAction'
+2014-09-11 17:06:52,047 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/subView] onto handler 'demoAction'
+2014-09-11 17:06:52,047 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/subView.*] onto handler 'demoAction'
+2014-09-11 17:06:52,047 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/subView/] onto handler 'demoAction'
+2014-09-11 17:06:52,157 WARN [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] - Neither 'urlMap' nor 'mappings' set on SimpleUrlHandlerMapping
+2014-09-11 17:06:52,282 INFO [com.hundsun.jresplus.web.servlet.DispatcherServlet] - FrameworkServlet 'jresServlet': initialization completed in 4219 ms
+2014-09-11 17:07:23,904 ERROR [com.hundsun.jresplus.web.exception.HandlerExceptionResolver] - 未知业务异常[Failed to invoke handler method [public void com.hundsun.jresplus.quickstart.action.DemoAction.view(int,org.springframework.ui.ModelMap)]; nested exception is java.lang.IllegalStateException: Optional int parameter 'nums' is not present but cannot be translated into a null value due to being declared as a primitive type. Consider declaring it as object wrapper for the corresponding primitive type.]
+org.springframework.web.bind.annotation.support.HandlerMethodInvocationException: Failed to invoke handler method [public void com.hundsun.jresplus.quickstart.action.DemoAction.view(int,org.springframework.ui.ModelMap)]; nested exception is java.lang.IllegalStateException: Optional int parameter 'nums' is not present but cannot be translated into a null value due to being declared as a primitive type. Consider declaring it as object wrapper for the corresponding primitive type.
+	at org.springframework.web.bind.annotation.support.HandlerMethodInvoker.invokeHandlerMethod(HandlerMethodInvoker.java:181)
+	at com.hundsun.jresplus.web.adapter.ExtendableAnnotationMethodHandlerAdapter.invokeHandlerMethod(ExtendableAnnotationMethodHandlerAdapter.java:505)
+	at com.hundsun.jresplus.web.adapter.ExtendableAnnotationMethodHandlerAdapter.handle(ExtendableAnnotationMethodHandlerAdapter.java:485)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:790)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:719)
+	at com.hundsun.jresplus.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:48)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:644)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:549)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:617)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:77)
+	at com.hundsun.jresplus.web.contain.ContainFilter.doFilter(ContainFilter.java:59)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:79)
+	at com.hundsun.jresplus.web.nosession.NoSessionFilter.doFilterInternal(NoSessionFilter.java:711)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:79)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:88)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:79)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:49)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:237)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:167)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:298)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:852)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:588)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:489)
+	at java.lang.Thread.run(Thread.java:595)
+Caused by: java.lang.IllegalStateException: Optional int parameter 'nums' is not present but cannot be translated into a null value due to being declared as a primitive type. Consider declaring it as object wrapper for the corresponding primitive type.
+	at org.springframework.web.bind.annotation.support.HandlerMethodInvoker.checkValue(HandlerMethodInvoker.java:734)
+	at org.springframework.web.bind.annotation.support.HandlerMethodInvoker.resolveRequestParam(HandlerMethodInvoker.java:503)
+	at org.springframework.web.bind.annotation.support.HandlerMethodInvoker.resolveHandlerArguments(HandlerMethodInvoker.java:340)
+	at org.springframework.web.bind.annotation.support.HandlerMethodInvoker.invokeHandlerMethod(HandlerMethodInvoker.java:171)
+	... 35 more
+2014-09-11 17:09:15,318 ERROR [com.hundsun.jresplus.web.exception.HandlerExceptionResolver] - 未知业务异常[Failed to invoke handler method [public void com.hundsun.jresplus.quickstart.action.DemoAction.view(int,org.springframework.ui.ModelMap)]; nested exception is java.lang.IllegalStateException: Optional int parameter 'nums' is not present but cannot be translated into a null value due to being declared as a primitive type. Consider declaring it as object wrapper for the corresponding primitive type.]
+org.springframework.web.bind.annotation.support.HandlerMethodInvocationException: Failed to invoke handler method [public void com.hundsun.jresplus.quickstart.action.DemoAction.view(int,org.springframework.ui.ModelMap)]; nested exception is java.lang.IllegalStateException: Optional int parameter 'nums' is not present but cannot be translated into a null value due to being declared as a primitive type. Consider declaring it as object wrapper for the corresponding primitive type.
+	at org.springframework.web.bind.annotation.support.HandlerMethodInvoker.invokeHandlerMethod(HandlerMethodInvoker.java:181)
+	at com.hundsun.jresplus.web.adapter.ExtendableAnnotationMethodHandlerAdapter.invokeHandlerMethod(ExtendableAnnotationMethodHandlerAdapter.java:505)
+	at com.hundsun.jresplus.web.adapter.ExtendableAnnotationMethodHandlerAdapter.handle(ExtendableAnnotationMethodHandlerAdapter.java:485)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:790)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:719)
+	at com.hundsun.jresplus.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:48)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:644)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:549)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:617)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:77)
+	at com.hundsun.jresplus.web.contain.ContainFilter.doFilter(ContainFilter.java:59)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:79)
+	at com.hundsun.jresplus.web.nosession.NoSessionFilter.doFilterInternal(NoSessionFilter.java:711)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:79)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:88)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:79)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:49)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:237)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:167)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:298)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:852)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:588)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:489)
+	at java.lang.Thread.run(Thread.java:595)
+Caused by: java.lang.IllegalStateException: Optional int parameter 'nums' is not present but cannot be translated into a null value due to being declared as a primitive type. Consider declaring it as object wrapper for the corresponding primitive type.
+	at org.springframework.web.bind.annotation.support.HandlerMethodInvoker.checkValue(HandlerMethodInvoker.java:734)
+	at org.springframework.web.bind.annotation.support.HandlerMethodInvoker.resolveRequestParam(HandlerMethodInvoker.java:503)
+	at org.springframework.web.bind.annotation.support.HandlerMethodInvoker.resolveHandlerArguments(HandlerMethodInvoker.java:340)
+	at org.springframework.web.bind.annotation.support.HandlerMethodInvoker.invokeHandlerMethod(HandlerMethodInvoker.java:171)
+	... 35 more
+2014-09-11 17:09:44,956 ERROR [com.hundsun.jresplus.web.exception.HandlerExceptionResolver] - 未知业务异常[Failed to invoke handler method [public void com.hundsun.jresplus.quickstart.action.DemoAction.view(int,org.springframework.ui.ModelMap)]; nested exception is java.lang.IllegalStateException: Optional int parameter 'nums' is not present but cannot be translated into a null value due to being declared as a primitive type. Consider declaring it as object wrapper for the corresponding primitive type.]
+org.springframework.web.bind.annotation.support.HandlerMethodInvocationException: Failed to invoke handler method [public void com.hundsun.jresplus.quickstart.action.DemoAction.view(int,org.springframework.ui.ModelMap)]; nested exception is java.lang.IllegalStateException: Optional int parameter 'nums' is not present but cannot be translated into a null value due to being declared as a primitive type. Consider declaring it as object wrapper for the corresponding primitive type.
+	at org.springframework.web.bind.annotation.support.HandlerMethodInvoker.invokeHandlerMethod(HandlerMethodInvoker.java:181)
+	at com.hundsun.jresplus.web.adapter.ExtendableAnnotationMethodHandlerAdapter.invokeHandlerMethod(ExtendableAnnotationMethodHandlerAdapter.java:505)
+	at com.hundsun.jresplus.web.adapter.ExtendableAnnotationMethodHandlerAdapter.handle(ExtendableAnnotationMethodHandlerAdapter.java:485)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:790)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:719)
+	at com.hundsun.jresplus.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:48)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:644)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:549)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:617)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:77)
+	at com.hundsun.jresplus.web.contain.ContainFilter.doFilter(ContainFilter.java:59)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:79)
+	at com.hundsun.jresplus.web.nosession.NoSessionFilter.doFilterInternal(NoSessionFilter.java:711)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:79)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:88)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:79)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:49)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:237)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:167)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:298)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:852)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:588)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:489)
+	at java.lang.Thread.run(Thread.java:595)
+Caused by: java.lang.IllegalStateException: Optional int parameter 'nums' is not present but cannot be translated into a null value due to being declared as a primitive type. Consider declaring it as object wrapper for the corresponding primitive type.
+	at org.springframework.web.bind.annotation.support.HandlerMethodInvoker.checkValue(HandlerMethodInvoker.java:734)
+	at org.springframework.web.bind.annotation.support.HandlerMethodInvoker.resolveRequestParam(HandlerMethodInvoker.java:503)
+	at org.springframework.web.bind.annotation.support.HandlerMethodInvoker.resolveHandlerArguments(HandlerMethodInvoker.java:340)
+	at org.springframework.web.bind.annotation.support.HandlerMethodInvoker.invokeHandlerMethod(HandlerMethodInvoker.java:171)
+	... 35 more
+2014-09-11 17:09:48,956 ERROR [com.hundsun.jresplus.web.exception.HandlerExceptionResolver] - 未知业务异常[Failed to invoke handler method [public void com.hundsun.jresplus.quickstart.action.DemoAction.view(int,org.springframework.ui.ModelMap)]; nested exception is java.lang.IllegalStateException: Optional int parameter 'nums' is not present but cannot be translated into a null value due to being declared as a primitive type. Consider declaring it as object wrapper for the corresponding primitive type.]
+org.springframework.web.bind.annotation.support.HandlerMethodInvocationException: Failed to invoke handler method [public void com.hundsun.jresplus.quickstart.action.DemoAction.view(int,org.springframework.ui.ModelMap)]; nested exception is java.lang.IllegalStateException: Optional int parameter 'nums' is not present but cannot be translated into a null value due to being declared as a primitive type. Consider declaring it as object wrapper for the corresponding primitive type.
+	at org.springframework.web.bind.annotation.support.HandlerMethodInvoker.invokeHandlerMethod(HandlerMethodInvoker.java:181)
+	at com.hundsun.jresplus.web.adapter.ExtendableAnnotationMethodHandlerAdapter.invokeHandlerMethod(ExtendableAnnotationMethodHandlerAdapter.java:505)
+	at com.hundsun.jresplus.web.adapter.ExtendableAnnotationMethodHandlerAdapter.handle(ExtendableAnnotationMethodHandlerAdapter.java:485)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:790)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:719)
+	at com.hundsun.jresplus.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:48)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:644)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:549)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:617)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:77)
+	at com.hundsun.jresplus.web.contain.ContainFilter.doFilter(ContainFilter.java:59)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:79)
+	at com.hundsun.jresplus.web.nosession.NoSessionFilter.doFilterInternal(NoSessionFilter.java:711)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:79)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:88)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:79)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:49)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:237)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:167)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:298)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:852)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:588)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:489)
+	at java.lang.Thread.run(Thread.java:595)
+Caused by: java.lang.IllegalStateException: Optional int parameter 'nums' is not present but cannot be translated into a null value due to being declared as a primitive type. Consider declaring it as object wrapper for the corresponding primitive type.
+	at org.springframework.web.bind.annotation.support.HandlerMethodInvoker.checkValue(HandlerMethodInvoker.java:734)
+	at org.springframework.web.bind.annotation.support.HandlerMethodInvoker.resolveRequestParam(HandlerMethodInvoker.java:503)
+	at org.springframework.web.bind.annotation.support.HandlerMethodInvoker.resolveHandlerArguments(HandlerMethodInvoker.java:340)
+	at org.springframework.web.bind.annotation.support.HandlerMethodInvoker.invokeHandlerMethod(HandlerMethodInvoker.java:171)
+	... 35 more
+2014-09-11 17:10:25,531 ERROR [com.hundsun.jresplus.web.exception.HandlerExceptionResolver] - 未知业务异常[Failed to invoke handler method [public void com.hundsun.jresplus.quickstart.action.DemoAction.view(int,org.springframework.ui.ModelMap)]; nested exception is java.lang.IllegalStateException: Optional int parameter 'nums' is not present but cannot be translated into a null value due to being declared as a primitive type. Consider declaring it as object wrapper for the corresponding primitive type.]
+org.springframework.web.bind.annotation.support.HandlerMethodInvocationException: Failed to invoke handler method [public void com.hundsun.jresplus.quickstart.action.DemoAction.view(int,org.springframework.ui.ModelMap)]; nested exception is java.lang.IllegalStateException: Optional int parameter 'nums' is not present but cannot be translated into a null value due to being declared as a primitive type. Consider declaring it as object wrapper for the corresponding primitive type.
+	at org.springframework.web.bind.annotation.support.HandlerMethodInvoker.invokeHandlerMethod(HandlerMethodInvoker.java:181)
+	at com.hundsun.jresplus.web.adapter.ExtendableAnnotationMethodHandlerAdapter.invokeHandlerMethod(ExtendableAnnotationMethodHandlerAdapter.java:505)
+	at com.hundsun.jresplus.web.adapter.ExtendableAnnotationMethodHandlerAdapter.handle(ExtendableAnnotationMethodHandlerAdapter.java:485)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:790)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:719)
+	at com.hundsun.jresplus.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:48)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:644)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:549)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:617)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:77)
+	at com.hundsun.jresplus.web.contain.ContainFilter.doFilter(ContainFilter.java:59)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:79)
+	at com.hundsun.jresplus.web.nosession.NoSessionFilter.doFilterInternal(NoSessionFilter.java:711)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:79)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:88)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:79)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:49)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:237)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:167)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:298)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:852)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:588)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:489)
+	at java.lang.Thread.run(Thread.java:595)
+Caused by: java.lang.IllegalStateException: Optional int parameter 'nums' is not present but cannot be translated into a null value due to being declared as a primitive type. Consider declaring it as object wrapper for the corresponding primitive type.
+	at org.springframework.web.bind.annotation.support.HandlerMethodInvoker.checkValue(HandlerMethodInvoker.java:734)
+	at org.springframework.web.bind.annotation.support.HandlerMethodInvoker.resolveRequestParam(HandlerMethodInvoker.java:503)
+	at org.springframework.web.bind.annotation.support.HandlerMethodInvoker.resolveHandlerArguments(HandlerMethodInvoker.java:340)
+	at org.springframework.web.bind.annotation.support.HandlerMethodInvoker.invokeHandlerMethod(HandlerMethodInvoker.java:171)
+	... 35 more
+2014-09-11 17:11:06,372 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+2014-09-11 17:11:06,528 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing Root WebApplicationContext: startup date [Thu Sep 11 17:11:06 CST 2014]; root of context hierarchy
+2014-09-11 17:11:06,762 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/jres-web-beans.xml]
+2014-09-11 17:11:07,715 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/jres-common-beans.xml]
+2014-09-11 17:11:08,262 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from ServletContext resource [/WEB-INF/conf/spring/web-beans.xml]
+2014-09-11 17:11:09,372 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 17:11:09,372 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{upload.server.path=, template.load.charset=UTF-8, app.server.protocol=http, upload.server.protocol=${app.server.protocol}, image.server.followContextPath=true, app.server.port=, image.server.port=${app.server.port}, app.server.host=, nosession.onoff=true, negate.system.dev.mode=false, image.server.host=${app.server.host}, jres.action.scan=com.hundsun.jresplus, image.server.path=, bigpipe.onoff=true, session.meta.cookie.name=_h_, cookies.max.length=4095, response.out.charset=UTF-8, cookies.max.count=1, image.server.protocol=${app.server.protocol}, system.dev.mode=true, upload.server.port=${app.server.port}, session.max.inacterval=-1, session.meta.cookie.domain=, upload.server.host=${app.server.host}}
+2014-09-11 17:11:09,387 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 17:11:09,403 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{web.vaild=false, validation.message.bean.name=}
+2014-09-11 17:11:09,809 INFO [org.springframework.beans.factory.support.DefaultListableBeanFactory] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@5db9eb: defining beans [com.hundsun.jresplus.web.servlet.HandlerExceptionResolver#0,ResourceConfigurer,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,mediaTypesHandler,uuidGenerator,appServerBroker,sslAppServerBroker,imageServerBroker,uploadServerBroker,com.hundsun.jresplus.web.url.ServletContextInitHelper#0,encodingFilterBean,noSessionFilter,containFilter,jresFilter,cookiesManager,cookiesEncode,conversionService,webBindingInitializer,com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer#0,demoAction,org.springframework.scheduling.annotation.internalAsyncAnnotationProcessor,org.springframework.scheduling.annotation.internalScheduledAnnotationProcessor,com.hundsun.jresplus.beans.config.OverrideBeanFactoryPostProcessor#0,objectFactory,validator,messageSource,com.hundsun.jresplus.web.exception.HandlerExceptionResolver#0]; root of factory hierarchy
+2014-09-11 17:11:09,997 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[appServer-class com.hundsun.jresplus.web.url.URLBroker] inited.
+2014-09-11 17:11:09,997 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[sslAppServer-class com.hundsun.jresplus.web.url.URLBroker] inited.
+2014-09-11 17:11:09,997 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[imageServer-class com.hundsun.jresplus.web.url.StampURLBroker] inited.
+2014-09-11 17:11:09,997 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[uploadServer-class com.hundsun.jresplus.web.url.MultiHostURLBroker] inited.
+2014-09-11 17:11:10,043 INFO [com.hundsun.jresplus.web.nosession.NoSessionFilter] - Nosession filter init...
+2014-09-11 17:11:10,043 INFO [com.hundsun.jresplus.web.nosession.NoSessionFilter] - Nosession  registed attribute[]
+2014-09-11 17:11:10,137 INFO [com.hundsun.jresplus.web.exception.HandlerExceptionResolver] - Use Exception resolver.
+2014-09-11 17:11:10,153 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization completed in 3766 ms
+2014-09-11 17:11:10,215 INFO [com.hundsun.jresplus.web.servlet.DispatcherServlet] - FrameworkServlet 'jresServlet': initialization started
+2014-09-11 17:11:10,215 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 17:11:10,215 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{}
+2014-09-11 17:11:10,215 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing WebApplicationContext for namespace 'jresServlet-servlet': startup date [Thu Sep 11 17:11:10 CST 2014]; parent: Root WebApplicationContext
+2014-09-11 17:11:10,215 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/web/jres-web-main.xml]
+2014-09-11 17:11:10,715 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 17:11:10,715 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{velocity.user.directive=, velocity.eventhandler.nullset.class=, template.resource.loader.path=WEB-INF/views/, velocity.eventhandler.invalidreferences.class=, use.default.suffix.pattern=true, velocity.velocimacro.library=, velocity.in.jar.files=*, velocity.eventhandler.referenceinsertion.class=, toolbox.xml.path=WEB-INF/conf/vm-toolbox.xml}
+2014-09-11 17:11:10,731 INFO [org.springframework.beans.factory.support.DefaultListableBeanFactory] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@b78915: defining beans [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer#0,demoAction,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,velocityViewCache,velocityConfigurer,viewResolver,internalViewResolver,defaultHandlerInterceptorAdapter,brokersInterceptor,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter#0,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter#0,com.hundsun.jresplus.web.adapter.ExtendableAnnotationMethodHandlerAdapter#0,defaultHandlerMapping,org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping#0,lastHandlerMapping,multipartResolver]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@5db9eb
+2014-09-11 17:11:13,153 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/view] onto handler 'demoAction'
+2014-09-11 17:11:13,153 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/view.*] onto handler 'demoAction'
+2014-09-11 17:11:13,153 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/view/] onto handler 'demoAction'
+2014-09-11 17:11:13,153 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/subView] onto handler 'demoAction'
+2014-09-11 17:11:13,153 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/subView.*] onto handler 'demoAction'
+2014-09-11 17:11:13,153 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/subView/] onto handler 'demoAction'
+2014-09-11 17:11:13,246 WARN [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] - Neither 'urlMap' nor 'mappings' set on SimpleUrlHandlerMapping
+2014-09-11 17:11:13,387 INFO [com.hundsun.jresplus.web.servlet.DispatcherServlet] - FrameworkServlet 'jresServlet': initialization completed in 3172 ms
+2014-09-11 17:11:16,278 INFO [org.apache.velocity.tools.view.servlet.ServletToolboxManager] - Using config file '/WEB-INF/conf/vm-toolbox.xml'
+2014-09-11 17:11:16,356 INFO [org.apache.velocity.tools.view.servlet.ServletToolboxManager] - XHTML is set to true
+2014-09-11 18:15:08,854 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+2014-09-11 18:15:08,963 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing Root WebApplicationContext: startup date [Thu Sep 11 18:15:08 CST 2014]; root of context hierarchy
+2014-09-11 18:15:09,135 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/jres-web-beans.xml]
+2014-09-11 18:15:10,182 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/jres-common-beans.xml]
+2014-09-11 18:15:10,494 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from ServletContext resource [/WEB-INF/conf/spring/web-beans.xml]
+2014-09-11 18:15:11,291 WARN [com.hundsun.jresplus.beans.config.BeanOverrideHandler] - OverrideBeanFactory bean definition process error bean[com.hundsun.jresplus.demo.cache.PageCacheWithEhcache],java.lang.ClassNotFoundException: com.hundsun.jresplus.demo.cache.PageCacheWithEhcache
+2014-09-11 18:15:11,291 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 18:15:11,291 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{upload.server.path=, template.load.charset=UTF-8, app.server.protocol=http, upload.server.protocol=${app.server.protocol}, image.server.followContextPath=true, app.server.port=, image.server.port=${app.server.port}, app.server.host=, nosession.onoff=true, negate.system.dev.mode=false, image.server.host=${app.server.host}, jres.action.scan=com.hundsun.jresplus, image.server.path=, bigpipe.onoff=true, session.meta.cookie.name=_h_, cookies.max.length=4095, response.out.charset=UTF-8, cookies.max.count=1, image.server.protocol=${app.server.protocol}, system.dev.mode=true, upload.server.port=${app.server.port}, session.max.inacterval=-1, session.meta.cookie.domain=, upload.server.host=${app.server.host}}
+2014-09-11 18:15:11,307 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 18:15:11,307 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{web.vaild=false, validation.message.bean.name=}
+2014-09-11 18:15:11,682 INFO [org.springframework.beans.factory.support.DefaultListableBeanFactory] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6ce26e: defining beans [com.hundsun.jresplus.web.servlet.HandlerExceptionResolver#0,ResourceConfigurer,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,mediaTypesHandler,uuidGenerator,appServerBroker,sslAppServerBroker,imageServerBroker,uploadServerBroker,com.hundsun.jresplus.web.url.ServletContextInitHelper#0,encodingFilterBean,noSessionFilter,containFilter,jresFilter,cookiesManager,cookiesEncode,conversionService,webBindingInitializer,com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer#0,demoAction,org.springframework.scheduling.annotation.internalAsyncAnnotationProcessor,org.springframework.scheduling.annotation.internalScheduledAnnotationProcessor,com.hundsun.jresplus.beans.config.OverrideBeanFactoryPostProcessor#0,objectFactory,validator,messageSource,com.hundsun.jresplus.web.exception.HandlerExceptionResolver#0,ehCacheManager,pageCacheBean,pageStaticCache,pageStaticFilter]; root of factory hierarchy
+2014-09-11 18:15:11,885 INFO [org.springframework.beans.factory.support.DefaultListableBeanFactory] - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6ce26e: defining beans [com.hundsun.jresplus.web.servlet.HandlerExceptionResolver#0,ResourceConfigurer,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,mediaTypesHandler,uuidGenerator,appServerBroker,sslAppServerBroker,imageServerBroker,uploadServerBroker,com.hundsun.jresplus.web.url.ServletContextInitHelper#0,encodingFilterBean,noSessionFilter,containFilter,jresFilter,cookiesManager,cookiesEncode,conversionService,webBindingInitializer,com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer#0,demoAction,org.springframework.scheduling.annotation.internalAsyncAnnotationProcessor,org.springframework.scheduling.annotation.internalScheduledAnnotationProcessor,com.hundsun.jresplus.beans.config.OverrideBeanFactoryPostProcessor#0,objectFactory,validator,messageSource,com.hundsun.jresplus.web.exception.HandlerExceptionResolver#0,ehCacheManager,pageCacheBean,pageStaticCache,pageStaticFilter]; root of factory hierarchy
+2014-09-11 18:15:11,901 ERROR [org.springframework.web.context.ContextLoader] - Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'com.hundsun.jresplus.web.url.ServletContextInitHelper#0': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: com.hundsun.jresplus.beans.ObjectFactory com.hundsun.jresplus.web.url.ServletContextInitHelper.objectFactory; nested exception is org.springframework.beans.factory.CannotLoadBeanClassException: Cannot find class [com.hundsun.jresplus.demo.cache.PageCacheWithEhcache] for bean with name 'pageStaticCache' defined in ServletContext resource [/WEB-INF/conf/spring/web-beans.xml]; nested exception is java.lang.ClassNotFoundException: com.hundsun.jresplus.demo.cache.PageCacheWithEhcache
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:285)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1074)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:456)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:291)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:288)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:190)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:580)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:895)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:425)
+	at org.springframework.web.context.ContextLoader.createWebApplicationContext(ContextLoader.java:276)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:197)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:47)
+	at com.hundsun.jresplus.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:27)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:3972)
+	at org.apache.catalina.core.StandardContext.start(StandardContext.java:4467)
+	at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1045)
+	at org.apache.catalina.core.StandardHost.start(StandardHost.java:785)
+	at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1045)
+	at org.apache.catalina.core.StandardEngine.start(StandardEngine.java:443)
+	at org.apache.catalina.core.StandardService.start(StandardService.java:519)
+	at org.apache.catalina.core.StandardServer.start(StandardServer.java:710)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:581)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:585)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:289)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:414)
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: com.hundsun.jresplus.beans.ObjectFactory com.hundsun.jresplus.web.url.ServletContextInitHelper.objectFactory; nested exception is org.springframework.beans.factory.CannotLoadBeanClassException: Cannot find class [com.hundsun.jresplus.demo.cache.PageCacheWithEhcache] for bean with name 'pageStaticCache' defined in ServletContext resource [/WEB-INF/conf/spring/web-beans.xml]; nested exception is java.lang.ClassNotFoundException: com.hundsun.jresplus.demo.cache.PageCacheWithEhcache
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:502)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:84)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:282)
+	... 29 more
+Caused by: org.springframework.beans.factory.CannotLoadBeanClassException: Cannot find class [com.hundsun.jresplus.demo.cache.PageCacheWithEhcache] for bean with name 'pageStaticCache' defined in ServletContext resource [/WEB-INF/conf/spring/web-beans.xml]; nested exception is java.lang.ClassNotFoundException: com.hundsun.jresplus.demo.cache.PageCacheWithEhcache
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveBeanClass(AbstractBeanFactory.java:1250)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.predictBeanType(AbstractAutowireCapableBeanFactory.java:576)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.isFactoryBean(AbstractBeanFactory.java:1319)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeanNamesForType(DefaultListableBeanFactory.java:315)
+	at org.springframework.beans.factory.BeanFactoryUtils.beanNamesForTypeIncludingAncestors(BeanFactoryUtils.java:185)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:829)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:786)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:703)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:474)
+	... 31 more
+Caused by: java.lang.ClassNotFoundException: com.hundsun.jresplus.demo.cache.PageCacheWithEhcache
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1516)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1361)
+	at org.springframework.util.ClassUtils.forName(ClassUtils.java:257)
+	at org.springframework.beans.factory.support.AbstractBeanDefinition.resolveBeanClass(AbstractBeanDefinition.java:408)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doResolveBeanClass(AbstractBeanFactory.java:1271)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveBeanClass(AbstractBeanFactory.java:1242)
+	... 39 more
+2014-09-11 18:16:10,527 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+2014-09-11 18:16:10,652 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing Root WebApplicationContext: startup date [Thu Sep 11 18:16:10 CST 2014]; root of context hierarchy
+2014-09-11 18:16:10,886 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/jres-web-beans.xml]
+2014-09-11 18:16:11,433 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/jres-common-beans.xml]
+2014-09-11 18:16:11,761 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from ServletContext resource [/WEB-INF/conf/spring/web-beans.xml]
+2014-09-11 18:16:12,996 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 18:16:13,011 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{upload.server.path=, template.load.charset=UTF-8, app.server.protocol=http, upload.server.protocol=${app.server.protocol}, image.server.followContextPath=true, app.server.port=, image.server.port=${app.server.port}, app.server.host=, nosession.onoff=true, negate.system.dev.mode=false, image.server.host=${app.server.host}, jres.action.scan=com.hundsun.jresplus, image.server.path=, bigpipe.onoff=true, session.meta.cookie.name=_h_, cookies.max.length=4095, response.out.charset=UTF-8, cookies.max.count=1, image.server.protocol=${app.server.protocol}, system.dev.mode=true, upload.server.port=${app.server.port}, session.max.inacterval=-1, session.meta.cookie.domain=, upload.server.host=${app.server.host}}
+2014-09-11 18:16:13,027 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 18:16:13,027 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{web.vaild=false, validation.message.bean.name=}
+2014-09-11 18:16:13,449 INFO [org.springframework.beans.factory.support.DefaultListableBeanFactory] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@16aa42e: defining beans [com.hundsun.jresplus.web.servlet.HandlerExceptionResolver#0,ResourceConfigurer,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,mediaTypesHandler,uuidGenerator,appServerBroker,sslAppServerBroker,imageServerBroker,uploadServerBroker,com.hundsun.jresplus.web.url.ServletContextInitHelper#0,encodingFilterBean,noSessionFilter,containFilter,jresFilter,cookiesManager,cookiesEncode,conversionService,webBindingInitializer,com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer#0,demoAction,org.springframework.scheduling.annotation.internalAsyncAnnotationProcessor,org.springframework.scheduling.annotation.internalScheduledAnnotationProcessor,com.hundsun.jresplus.beans.config.OverrideBeanFactoryPostProcessor#0,objectFactory,validator,messageSource,com.hundsun.jresplus.web.exception.HandlerExceptionResolver#0,ehCacheManager,pageCacheBean,pageStaticCache,pageStaticFilter]; root of factory hierarchy
+2014-09-11 18:16:13,683 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[appServer-class com.hundsun.jresplus.web.url.URLBroker] inited.
+2014-09-11 18:16:13,683 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[sslAppServer-class com.hundsun.jresplus.web.url.URLBroker] inited.
+2014-09-11 18:16:13,683 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[imageServer-class com.hundsun.jresplus.web.url.StampURLBroker] inited.
+2014-09-11 18:16:13,683 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[uploadServer-class com.hundsun.jresplus.web.url.MultiHostURLBroker] inited.
+2014-09-11 18:16:13,714 INFO [com.hundsun.jresplus.web.nosession.NoSessionFilter] - Nosession filter init...
+2014-09-11 18:16:13,730 INFO [com.hundsun.jresplus.web.nosession.NoSessionFilter] - Nosession  registed attribute[]
+2014-09-11 18:16:13,824 INFO [com.hundsun.jresplus.web.exception.HandlerExceptionResolver] - Use Exception resolver.
+2014-09-11 18:16:13,839 INFO [org.springframework.cache.ehcache.EhCacheManagerFactoryBean] - Initializing EHCache CacheManager
+2014-09-11 18:16:14,043 INFO [com.hundsun.jresplus.web.cache.PageStaticFilter] - Page static use PageStaticCache impl[class com.hundsun.jresplus.quickstart.pagecache.PageCacheWithEhcache]
+2014-09-11 18:16:14,058 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization completed in 3531 ms
+2014-09-11 18:16:14,105 INFO [com.hundsun.jresplus.web.servlet.DispatcherServlet] - FrameworkServlet 'jresServlet': initialization started
+2014-09-11 18:16:14,105 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 18:16:14,105 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{}
+2014-09-11 18:16:14,121 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing WebApplicationContext for namespace 'jresServlet-servlet': startup date [Thu Sep 11 18:16:14 CST 2014]; parent: Root WebApplicationContext
+2014-09-11 18:16:14,121 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/web/jres-web-main.xml]
+2014-09-11 18:16:14,605 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 18:16:14,605 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{velocity.user.directive=, velocity.eventhandler.nullset.class=, template.resource.loader.path=WEB-INF/views/, velocity.eventhandler.invalidreferences.class=, use.default.suffix.pattern=true, velocity.velocimacro.library=, velocity.in.jar.files=*, velocity.eventhandler.referenceinsertion.class=, toolbox.xml.path=WEB-INF/conf/vm-toolbox.xml}
+2014-09-11 18:16:14,621 INFO [org.springframework.beans.factory.support.DefaultListableBeanFactory] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@165547d: defining beans [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer#0,demoAction,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,velocityViewCache,velocityConfigurer,viewResolver,internalViewResolver,defaultHandlerInterceptorAdapter,brokersInterceptor,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter#0,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter#0,com.hundsun.jresplus.web.adapter.ExtendableAnnotationMethodHandlerAdapter#0,defaultHandlerMapping,org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping#0,lastHandlerMapping,multipartResolver]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@16aa42e
+2014-09-11 18:16:17,730 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/view] onto handler 'demoAction'
+2014-09-11 18:16:17,730 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/view.*] onto handler 'demoAction'
+2014-09-11 18:16:17,730 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/view/] onto handler 'demoAction'
+2014-09-11 18:16:17,730 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/subView] onto handler 'demoAction'
+2014-09-11 18:16:17,730 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/subView.*] onto handler 'demoAction'
+2014-09-11 18:16:17,730 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/subView/] onto handler 'demoAction'
+2014-09-11 18:16:17,839 WARN [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] - Neither 'urlMap' nor 'mappings' set on SimpleUrlHandlerMapping
+2014-09-11 18:16:18,011 INFO [com.hundsun.jresplus.web.servlet.DispatcherServlet] - FrameworkServlet 'jresServlet': initialization completed in 3906 ms
+2014-09-11 18:20:57,404 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+2014-09-11 18:20:57,467 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing Root WebApplicationContext: startup date [Thu Sep 11 18:20:57 CST 2014]; root of context hierarchy
+2014-09-11 18:20:57,576 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/jres-web-beans.xml]
+2014-09-11 18:20:58,107 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/jres-common-beans.xml]
+2014-09-11 18:20:58,389 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from ServletContext resource [/WEB-INF/conf/spring/web-beans.xml]
+2014-09-11 18:20:59,107 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 18:20:59,107 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{upload.server.path=, template.load.charset=UTF-8, app.server.protocol=http, upload.server.protocol=${app.server.protocol}, image.server.followContextPath=true, app.server.port=, image.server.port=${app.server.port}, app.server.host=, nosession.onoff=true, negate.system.dev.mode=false, image.server.host=${app.server.host}, jres.action.scan=com.hundsun.jresplus, image.server.path=, bigpipe.onoff=true, session.meta.cookie.name=_h_, cookies.max.length=4095, response.out.charset=UTF-8, cookies.max.count=1, image.server.protocol=${app.server.protocol}, system.dev.mode=true, upload.server.port=${app.server.port}, session.max.inacterval=-1, session.meta.cookie.domain=, upload.server.host=${app.server.host}}
+2014-09-11 18:20:59,123 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 18:20:59,123 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{web.vaild=false, validation.message.bean.name=}
+2014-09-11 18:20:59,357 INFO [org.springframework.beans.factory.support.DefaultListableBeanFactory] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@9722c9: defining beans [com.hundsun.jresplus.web.servlet.HandlerExceptionResolver#0,ResourceConfigurer,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,mediaTypesHandler,uuidGenerator,appServerBroker,sslAppServerBroker,imageServerBroker,uploadServerBroker,com.hundsun.jresplus.web.url.ServletContextInitHelper#0,encodingFilterBean,noSessionFilter,containFilter,jresFilter,cookiesManager,cookiesEncode,conversionService,webBindingInitializer,com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer#0,demoAction,org.springframework.scheduling.annotation.internalAsyncAnnotationProcessor,org.springframework.scheduling.annotation.internalScheduledAnnotationProcessor,com.hundsun.jresplus.beans.config.OverrideBeanFactoryPostProcessor#0,objectFactory,validator,messageSource,com.hundsun.jresplus.web.exception.HandlerExceptionResolver#0,ehCacheManager,pageCacheBean,pageStaticCache,pageStaticFilter]; root of factory hierarchy
+2014-09-11 18:20:59,498 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[appServer-class com.hundsun.jresplus.web.url.URLBroker] inited.
+2014-09-11 18:20:59,498 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[sslAppServer-class com.hundsun.jresplus.web.url.URLBroker] inited.
+2014-09-11 18:20:59,498 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[imageServer-class com.hundsun.jresplus.web.url.StampURLBroker] inited.
+2014-09-11 18:20:59,498 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[uploadServer-class com.hundsun.jresplus.web.url.MultiHostURLBroker] inited.
+2014-09-11 18:20:59,545 INFO [com.hundsun.jresplus.web.nosession.NoSessionFilter] - Nosession filter init...
+2014-09-11 18:20:59,560 INFO [com.hundsun.jresplus.web.nosession.NoSessionFilter] - Nosession  registed attribute[]
+2014-09-11 18:20:59,654 INFO [com.hundsun.jresplus.web.exception.HandlerExceptionResolver] - Use Exception resolver.
+2014-09-11 18:20:59,670 INFO [org.springframework.cache.ehcache.EhCacheManagerFactoryBean] - Initializing EHCache CacheManager
+2014-09-11 18:20:59,842 INFO [com.hundsun.jresplus.web.cache.PageStaticFilter] - Page static use PageStaticCache impl[class com.hundsun.jresplus.quickstart.pagecache.PageCacheWithEhcache]
+2014-09-11 18:20:59,873 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization completed in 2469 ms
+2014-09-11 18:20:59,935 INFO [com.hundsun.jresplus.web.servlet.DispatcherServlet] - FrameworkServlet 'jresServlet': initialization started
+2014-09-11 18:20:59,935 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 18:20:59,935 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{}
+2014-09-11 18:20:59,935 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing WebApplicationContext for namespace 'jresServlet-servlet': startup date [Thu Sep 11 18:20:59 CST 2014]; parent: Root WebApplicationContext
+2014-09-11 18:20:59,935 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/web/jres-web-main.xml]
+2014-09-11 18:21:00,404 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 18:21:00,404 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{velocity.user.directive=, velocity.eventhandler.nullset.class=, template.resource.loader.path=WEB-INF/views/, velocity.eventhandler.invalidreferences.class=, use.default.suffix.pattern=true, velocity.velocimacro.library=, velocity.in.jar.files=*, velocity.eventhandler.referenceinsertion.class=, toolbox.xml.path=WEB-INF/conf/vm-toolbox.xml}
+2014-09-11 18:21:00,420 INFO [org.springframework.beans.factory.support.DefaultListableBeanFactory] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@86359: defining beans [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer#0,demoAction,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,velocityViewCache,velocityConfigurer,viewResolver,internalViewResolver,defaultHandlerInterceptorAdapter,brokersInterceptor,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter#0,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter#0,com.hundsun.jresplus.web.adapter.ExtendableAnnotationMethodHandlerAdapter#0,defaultHandlerMapping,org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping#0,lastHandlerMapping,multipartResolver]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@9722c9
+2014-09-11 18:21:02,248 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/view] onto handler 'demoAction'
+2014-09-11 18:21:02,248 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/view.*] onto handler 'demoAction'
+2014-09-11 18:21:02,248 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/view/] onto handler 'demoAction'
+2014-09-11 18:21:02,248 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/bpView] onto handler 'demoAction'
+2014-09-11 18:21:02,248 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/bpView.*] onto handler 'demoAction'
+2014-09-11 18:21:02,264 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/bpView/] onto handler 'demoAction'
+2014-09-11 18:21:02,264 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/staticView] onto handler 'demoAction'
+2014-09-11 18:21:02,264 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/staticView.*] onto handler 'demoAction'
+2014-09-11 18:21:02,264 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/staticView/] onto handler 'demoAction'
+2014-09-11 18:21:02,264 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/subView] onto handler 'demoAction'
+2014-09-11 18:21:02,264 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/subView.*] onto handler 'demoAction'
+2014-09-11 18:21:02,264 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/subView/] onto handler 'demoAction'
+2014-09-11 18:21:02,342 WARN [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] - Neither 'urlMap' nor 'mappings' set on SimpleUrlHandlerMapping
+2014-09-11 18:21:02,482 INFO [com.hundsun.jresplus.web.servlet.DispatcherServlet] - FrameworkServlet 'jresServlet': initialization completed in 2547 ms
+2014-09-11 18:21:08,076 INFO [org.apache.velocity.tools.view.servlet.ServletToolboxManager] - Using config file '/WEB-INF/conf/vm-toolbox.xml'
+2014-09-11 18:21:08,154 INFO [org.apache.velocity.tools.view.servlet.ServletToolboxManager] - XHTML is set to true
+2014-09-11 18:26:13,286 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+2014-09-11 18:26:13,349 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing Root WebApplicationContext: startup date [Thu Sep 11 18:26:13 CST 2014]; root of context hierarchy
+2014-09-11 18:26:13,474 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/jres-web-beans.xml]
+2014-09-11 18:26:14,255 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/jres-common-beans.xml]
+2014-09-11 18:26:14,568 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from ServletContext resource [/WEB-INF/conf/spring/web-beans.xml]
+2014-09-11 18:26:15,396 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 18:26:15,396 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{upload.server.path=, template.load.charset=UTF-8, app.server.protocol=http, upload.server.protocol=${app.server.protocol}, image.server.followContextPath=true, app.server.port=, image.server.port=${app.server.port}, app.server.host=, nosession.onoff=true, negate.system.dev.mode=false, image.server.host=${app.server.host}, jres.action.scan=com.hundsun.jresplus, image.server.path=, bigpipe.onoff=true, session.meta.cookie.name=_h_, cookies.max.length=4095, response.out.charset=UTF-8, cookies.max.count=1, image.server.protocol=${app.server.protocol}, system.dev.mode=true, upload.server.port=${app.server.port}, session.max.inacterval=-1, session.meta.cookie.domain=, upload.server.host=${app.server.host}}
+2014-09-11 18:26:15,412 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 18:26:15,412 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{web.vaild=false, validation.message.bean.name=}
+2014-09-11 18:26:15,724 INFO [org.springframework.beans.factory.support.DefaultListableBeanFactory] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@9722c9: defining beans [com.hundsun.jresplus.web.servlet.HandlerExceptionResolver#0,ResourceConfigurer,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,mediaTypesHandler,uuidGenerator,appServerBroker,sslAppServerBroker,imageServerBroker,uploadServerBroker,com.hundsun.jresplus.web.url.ServletContextInitHelper#0,encodingFilterBean,noSessionFilter,containFilter,jresFilter,cookiesManager,cookiesEncode,conversionService,webBindingInitializer,com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer#0,demoAction,org.springframework.scheduling.annotation.internalAsyncAnnotationProcessor,org.springframework.scheduling.annotation.internalScheduledAnnotationProcessor,com.hundsun.jresplus.beans.config.OverrideBeanFactoryPostProcessor#0,objectFactory,validator,messageSource,com.hundsun.jresplus.web.exception.HandlerExceptionResolver#0,ehCacheManager,pageCacheBean,pageStaticCache,pageStaticFilter]; root of factory hierarchy
+2014-09-11 18:26:15,958 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[appServer-class com.hundsun.jresplus.web.url.URLBroker] inited.
+2014-09-11 18:26:15,958 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[sslAppServer-class com.hundsun.jresplus.web.url.URLBroker] inited.
+2014-09-11 18:26:15,958 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[imageServer-class com.hundsun.jresplus.web.url.StampURLBroker] inited.
+2014-09-11 18:26:15,958 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[uploadServer-class com.hundsun.jresplus.web.url.MultiHostURLBroker] inited.
+2014-09-11 18:26:16,021 INFO [com.hundsun.jresplus.web.nosession.NoSessionFilter] - Nosession filter init...
+2014-09-11 18:26:16,068 INFO [com.hundsun.jresplus.web.nosession.NoSessionFilter] - Nosession  registed attribute[]
+2014-09-11 18:26:16,224 INFO [com.hundsun.jresplus.web.exception.HandlerExceptionResolver] - Use Exception resolver.
+2014-09-11 18:26:16,240 INFO [org.springframework.cache.ehcache.EhCacheManagerFactoryBean] - Initializing EHCache CacheManager
+2014-09-11 18:26:16,552 INFO [com.hundsun.jresplus.web.cache.PageStaticFilter] - Page static use PageStaticCache impl[class com.hundsun.jresplus.quickstart.pagecache.PageCacheWithEhcache]
+2014-09-11 18:26:16,599 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization completed in 3313 ms
+2014-09-11 18:26:16,677 INFO [com.hundsun.jresplus.web.servlet.DispatcherServlet] - FrameworkServlet 'jresServlet': initialization started
+2014-09-11 18:26:16,677 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 18:26:16,677 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{}
+2014-09-11 18:26:16,693 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing WebApplicationContext for namespace 'jresServlet-servlet': startup date [Thu Sep 11 18:26:16 CST 2014]; parent: Root WebApplicationContext
+2014-09-11 18:26:16,693 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/web/jres-web-main.xml]
+2014-09-11 18:26:17,365 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 18:26:17,365 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{velocity.user.directive=, velocity.eventhandler.nullset.class=, template.resource.loader.path=WEB-INF/views/, velocity.eventhandler.invalidreferences.class=, use.default.suffix.pattern=true, velocity.velocimacro.library=, velocity.in.jar.files=*, velocity.eventhandler.referenceinsertion.class=, toolbox.xml.path=WEB-INF/conf/vm-toolbox.xml}
+2014-09-11 18:26:17,380 INFO [org.springframework.beans.factory.support.DefaultListableBeanFactory] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1ae6456: defining beans [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer#0,demoAction,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,velocityViewCache,velocityConfigurer,viewResolver,internalViewResolver,defaultHandlerInterceptorAdapter,brokersInterceptor,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter#0,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter#0,com.hundsun.jresplus.web.adapter.ExtendableAnnotationMethodHandlerAdapter#0,defaultHandlerMapping,org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping#0,lastHandlerMapping,multipartResolver]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@9722c9
+2014-09-11 18:26:19,474 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/view] onto handler 'demoAction'
+2014-09-11 18:26:19,474 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/view.*] onto handler 'demoAction'
+2014-09-11 18:26:19,474 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/view/] onto handler 'demoAction'
+2014-09-11 18:26:19,474 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/bpView] onto handler 'demoAction'
+2014-09-11 18:26:19,474 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/bpView.*] onto handler 'demoAction'
+2014-09-11 18:26:19,474 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/bpView/] onto handler 'demoAction'
+2014-09-11 18:26:19,474 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/staticView] onto handler 'demoAction'
+2014-09-11 18:26:19,474 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/staticView.*] onto handler 'demoAction'
+2014-09-11 18:26:19,474 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/staticView/] onto handler 'demoAction'
+2014-09-11 18:26:19,474 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/subView] onto handler 'demoAction'
+2014-09-11 18:26:19,474 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/subView.*] onto handler 'demoAction'
+2014-09-11 18:26:19,474 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/subView/] onto handler 'demoAction'
+2014-09-11 18:26:19,521 WARN [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] - Neither 'urlMap' nor 'mappings' set on SimpleUrlHandlerMapping
+2014-09-11 18:26:19,615 INFO [com.hundsun.jresplus.web.servlet.DispatcherServlet] - FrameworkServlet 'jresServlet': initialization completed in 2938 ms
+2014-09-11 18:26:23,553 INFO [org.apache.velocity.tools.view.servlet.ServletToolboxManager] - Using config file '/WEB-INF/conf/vm-toolbox.xml'
+2014-09-11 18:26:23,615 INFO [org.apache.velocity.tools.view.servlet.ServletToolboxManager] - XHTML is set to true
+2014-09-11 19:24:46,375 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+2014-09-11 19:24:46,484 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing Root WebApplicationContext: startup date [Thu Sep 11 19:24:46 CST 2014]; root of context hierarchy
+2014-09-11 19:24:46,593 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/jres-web-beans.xml]
+2014-09-11 19:24:47,390 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/jres-common-beans.xml]
+2014-09-11 19:24:47,687 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from ServletContext resource [/WEB-INF/conf/spring/web-beans.xml]
+2014-09-11 19:24:48,546 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 19:24:48,546 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{upload.server.path=, template.load.charset=UTF-8, app.server.protocol=http, upload.server.protocol=${app.server.protocol}, image.server.followContextPath=true, app.server.port=, image.server.port=${app.server.port}, app.server.host=, nosession.onoff=true, negate.system.dev.mode=false, image.server.host=${app.server.host}, jres.action.scan=com.hundsun.jresplus, image.server.path=, bigpipe.onoff=true, session.meta.cookie.name=_h_, cookies.max.length=4095, response.out.charset=UTF-8, cookies.max.count=1, image.server.protocol=${app.server.protocol}, system.dev.mode=true, upload.server.port=${app.server.port}, session.max.inacterval=-1, session.meta.cookie.domain=, upload.server.host=${app.server.host}}
+2014-09-11 19:24:48,562 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 19:24:48,562 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{web.vaild=false, validation.message.bean.name=}
+2014-09-11 19:24:48,796 INFO [org.springframework.beans.factory.support.DefaultListableBeanFactory] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@9722c9: defining beans [com.hundsun.jresplus.web.servlet.HandlerExceptionResolver#0,ResourceConfigurer,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,mediaTypesHandler,uuidGenerator,appServerBroker,sslAppServerBroker,imageServerBroker,uploadServerBroker,com.hundsun.jresplus.web.url.ServletContextInitHelper#0,encodingFilterBean,noSessionFilter,containFilter,jresFilter,cookiesManager,cookiesEncode,conversionService,webBindingInitializer,com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer#0,demoAction,org.springframework.scheduling.annotation.internalAsyncAnnotationProcessor,org.springframework.scheduling.annotation.internalScheduledAnnotationProcessor,com.hundsun.jresplus.beans.config.OverrideBeanFactoryPostProcessor#0,objectFactory,validator,messageSource,com.hundsun.jresplus.web.exception.HandlerExceptionResolver#0,ehCacheManager,pageCacheBean,pageStaticCache,pageStaticFilter]; root of factory hierarchy
+2014-09-11 19:24:48,937 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[appServer-class com.hundsun.jresplus.web.url.URLBroker] inited.
+2014-09-11 19:24:48,937 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[sslAppServer-class com.hundsun.jresplus.web.url.URLBroker] inited.
+2014-09-11 19:24:48,937 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[imageServer-class com.hundsun.jresplus.web.url.StampURLBroker] inited.
+2014-09-11 19:24:48,937 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[uploadServer-class com.hundsun.jresplus.web.url.MultiHostURLBroker] inited.
+2014-09-11 19:24:48,984 INFO [com.hundsun.jresplus.web.nosession.NoSessionFilter] - Nosession filter init...
+2014-09-11 19:24:49,000 INFO [com.hundsun.jresplus.web.nosession.NoSessionFilter] - Nosession  registed attribute[]
+2014-09-11 19:24:49,093 INFO [com.hundsun.jresplus.web.exception.HandlerExceptionResolver] - Use Exception resolver.
+2014-09-11 19:24:49,109 INFO [org.springframework.cache.ehcache.EhCacheManagerFactoryBean] - Initializing EHCache CacheManager
+2014-09-11 19:24:49,296 INFO [com.hundsun.jresplus.web.cache.PageStaticFilter] - Page static use PageStaticCache impl[class com.hundsun.jresplus.quickstart.pagecache.PageCacheWithEhcache]
+2014-09-11 19:24:49,328 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization completed in 2938 ms
+2014-09-11 19:24:49,375 INFO [com.hundsun.jresplus.web.servlet.DispatcherServlet] - FrameworkServlet 'jresServlet': initialization started
+2014-09-11 19:24:49,375 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 19:24:49,375 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{}
+2014-09-11 19:24:49,375 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing WebApplicationContext for namespace 'jresServlet-servlet': startup date [Thu Sep 11 19:24:49 CST 2014]; parent: Root WebApplicationContext
+2014-09-11 19:24:49,390 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/web/jres-web-main.xml]
+2014-09-11 19:24:49,687 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 19:24:49,687 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{velocity.user.directive=, velocity.eventhandler.nullset.class=, template.resource.loader.path=WEB-INF/views/, velocity.eventhandler.invalidreferences.class=, use.default.suffix.pattern=true, velocity.velocimacro.library=, velocity.in.jar.files=*, velocity.eventhandler.referenceinsertion.class=, toolbox.xml.path=WEB-INF/conf/vm-toolbox.xml}
+2014-09-11 19:24:49,703 INFO [org.springframework.beans.factory.support.DefaultListableBeanFactory] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@b280b1: defining beans [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer#0,demoAction,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,velocityViewCache,velocityConfigurer,viewResolver,internalViewResolver,defaultHandlerInterceptorAdapter,brokersInterceptor,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter#0,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter#0,com.hundsun.jresplus.web.adapter.ExtendableAnnotationMethodHandlerAdapter#0,defaultHandlerMapping,org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping#0,lastHandlerMapping,multipartResolver]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@9722c9
+2014-09-11 19:24:52,296 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/view] onto handler 'demoAction'
+2014-09-11 19:24:52,296 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/view.*] onto handler 'demoAction'
+2014-09-11 19:24:52,296 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/view/] onto handler 'demoAction'
+2014-09-11 19:24:52,296 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/bpView] onto handler 'demoAction'
+2014-09-11 19:24:52,296 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/bpView.*] onto handler 'demoAction'
+2014-09-11 19:24:52,296 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/bpView/] onto handler 'demoAction'
+2014-09-11 19:24:52,296 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/staticView] onto handler 'demoAction'
+2014-09-11 19:24:52,296 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/staticView.*] onto handler 'demoAction'
+2014-09-11 19:24:52,296 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/staticView/] onto handler 'demoAction'
+2014-09-11 19:24:52,296 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/subView] onto handler 'demoAction'
+2014-09-11 19:24:52,296 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/subView.*] onto handler 'demoAction'
+2014-09-11 19:24:52,296 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/subView/] onto handler 'demoAction'
+2014-09-11 19:24:52,390 WARN [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] - Neither 'urlMap' nor 'mappings' set on SimpleUrlHandlerMapping
+2014-09-11 19:24:52,546 INFO [com.hundsun.jresplus.web.servlet.DispatcherServlet] - FrameworkServlet 'jresServlet': initialization completed in 3171 ms
+2014-09-11 19:25:34,750 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+2014-09-11 19:25:34,828 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing Root WebApplicationContext: startup date [Thu Sep 11 19:25:34 CST 2014]; root of context hierarchy
+2014-09-11 19:25:34,937 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/jres-web-beans.xml]
+2014-09-11 19:25:35,640 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/jres-common-beans.xml]
+2014-09-11 19:25:36,078 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from ServletContext resource [/WEB-INF/conf/spring/web-beans.xml]
+2014-09-11 19:25:37,390 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 19:25:37,390 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{upload.server.path=, template.load.charset=UTF-8, app.server.protocol=http, upload.server.protocol=${app.server.protocol}, image.server.followContextPath=true, app.server.port=, image.server.port=${app.server.port}, app.server.host=, nosession.onoff=true, negate.system.dev.mode=false, image.server.host=${app.server.host}, jres.action.scan=com.hundsun.jresplus, image.server.path=, bigpipe.onoff=true, session.meta.cookie.name=_h_, cookies.max.length=4095, response.out.charset=UTF-8, cookies.max.count=1, image.server.protocol=${app.server.protocol}, system.dev.mode=true, upload.server.port=${app.server.port}, session.max.inacterval=-1, session.meta.cookie.domain=, upload.server.host=${app.server.host}}
+2014-09-11 19:25:37,421 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 19:25:37,421 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{web.vaild=false, validation.message.bean.name=}
+2014-09-11 19:25:37,843 INFO [org.springframework.beans.factory.support.DefaultListableBeanFactory] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@9722c9: defining beans [com.hundsun.jresplus.web.servlet.HandlerExceptionResolver#0,ResourceConfigurer,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,mediaTypesHandler,uuidGenerator,appServerBroker,sslAppServerBroker,imageServerBroker,uploadServerBroker,com.hundsun.jresplus.web.url.ServletContextInitHelper#0,encodingFilterBean,noSessionFilter,containFilter,jresFilter,cookiesManager,cookiesEncode,conversionService,webBindingInitializer,com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer#0,demoAction,org.springframework.scheduling.annotation.internalAsyncAnnotationProcessor,org.springframework.scheduling.annotation.internalScheduledAnnotationProcessor,com.hundsun.jresplus.beans.config.OverrideBeanFactoryPostProcessor#0,objectFactory,validator,messageSource,com.hundsun.jresplus.web.exception.HandlerExceptionResolver#0,ehCacheManager,pageCacheBean,pageStaticCache,pageStaticFilter]; root of factory hierarchy
+2014-09-11 19:25:38,062 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[appServer-class com.hundsun.jresplus.web.url.URLBroker] inited.
+2014-09-11 19:25:38,062 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[sslAppServer-class com.hundsun.jresplus.web.url.URLBroker] inited.
+2014-09-11 19:25:38,062 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[imageServer-class com.hundsun.jresplus.web.url.StampURLBroker] inited.
+2014-09-11 19:25:38,062 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[uploadServer-class com.hundsun.jresplus.web.url.MultiHostURLBroker] inited.
+2014-09-11 19:25:38,125 INFO [com.hundsun.jresplus.web.nosession.NoSessionFilter] - Nosession filter init...
+2014-09-11 19:25:38,156 INFO [com.hundsun.jresplus.web.nosession.NoSessionFilter] - Nosession  registed attribute[]
+2014-09-11 19:25:38,281 INFO [com.hundsun.jresplus.web.exception.HandlerExceptionResolver] - Use Exception resolver.
+2014-09-11 19:25:38,296 INFO [org.springframework.cache.ehcache.EhCacheManagerFactoryBean] - Initializing EHCache CacheManager
+2014-09-11 19:25:38,468 INFO [com.hundsun.jresplus.web.cache.PageStaticFilter] - Page static use PageStaticCache impl[class com.hundsun.jresplus.quickstart.pagecache.PageCacheWithEhcache]
+2014-09-11 19:25:38,484 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization completed in 3734 ms
+2014-09-11 19:25:38,531 INFO [com.hundsun.jresplus.web.servlet.DispatcherServlet] - FrameworkServlet 'jresServlet': initialization started
+2014-09-11 19:25:38,531 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 19:25:38,531 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{}
+2014-09-11 19:25:38,531 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing WebApplicationContext for namespace 'jresServlet-servlet': startup date [Thu Sep 11 19:25:38 CST 2014]; parent: Root WebApplicationContext
+2014-09-11 19:25:38,531 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/web/jres-web-main.xml]
+2014-09-11 19:25:38,921 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 19:25:38,921 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{velocity.user.directive=, velocity.eventhandler.nullset.class=, template.resource.loader.path=WEB-INF/views/, velocity.eventhandler.invalidreferences.class=, use.default.suffix.pattern=true, velocity.velocimacro.library=, velocity.in.jar.files=*, velocity.eventhandler.referenceinsertion.class=, toolbox.xml.path=WEB-INF/conf/vm-toolbox.xml}
+2014-09-11 19:25:38,937 INFO [org.springframework.beans.factory.support.DefaultListableBeanFactory] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1ae6456: defining beans [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer#0,demoAction,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,velocityViewCache,velocityConfigurer,viewResolver,internalViewResolver,defaultHandlerInterceptorAdapter,brokersInterceptor,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter#0,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter#0,com.hundsun.jresplus.web.adapter.ExtendableAnnotationMethodHandlerAdapter#0,defaultHandlerMapping,org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping#0,lastHandlerMapping,multipartResolver]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@9722c9
+2014-09-11 19:25:41,062 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/view] onto handler 'demoAction'
+2014-09-11 19:25:41,078 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/view.*] onto handler 'demoAction'
+2014-09-11 19:25:41,078 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/view/] onto handler 'demoAction'
+2014-09-11 19:25:41,078 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/bpView] onto handler 'demoAction'
+2014-09-11 19:25:41,078 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/bpView.*] onto handler 'demoAction'
+2014-09-11 19:25:41,078 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/bpView/] onto handler 'demoAction'
+2014-09-11 19:25:41,078 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/staticView] onto handler 'demoAction'
+2014-09-11 19:25:41,078 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/staticView.*] onto handler 'demoAction'
+2014-09-11 19:25:41,078 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/staticView/] onto handler 'demoAction'
+2014-09-11 19:25:41,078 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/subView] onto handler 'demoAction'
+2014-09-11 19:25:41,078 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/subView.*] onto handler 'demoAction'
+2014-09-11 19:25:41,078 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/subView/] onto handler 'demoAction'
+2014-09-11 19:25:41,125 WARN [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] - Neither 'urlMap' nor 'mappings' set on SimpleUrlHandlerMapping
+2014-09-11 19:25:41,203 INFO [com.hundsun.jresplus.web.servlet.DispatcherServlet] - FrameworkServlet 'jresServlet': initialization completed in 2672 ms
+2014-09-11 19:27:12,015 INFO [org.apache.velocity.tools.view.servlet.ServletToolboxManager] - Using config file '/WEB-INF/conf/vm-toolbox.xml'
+2014-09-11 19:27:12,093 INFO [org.apache.velocity.tools.view.servlet.ServletToolboxManager] - XHTML is set to true
+2014-09-11 19:39:52,109 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+2014-09-11 19:39:52,218 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing Root WebApplicationContext: startup date [Thu Sep 11 19:39:52 CST 2014]; root of context hierarchy
+2014-09-11 19:39:52,390 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/jres-web-beans.xml]
+2014-09-11 19:39:53,015 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/jres-common-beans.xml]
+2014-09-11 19:39:53,328 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from ServletContext resource [/WEB-INF/conf/spring/web-beans.xml]
+2014-09-11 19:39:54,718 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 19:39:54,718 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{upload.server.path=, template.load.charset=UTF-8, app.server.protocol=http, upload.server.protocol=${app.server.protocol}, image.server.followContextPath=true, app.server.port=, image.server.port=${app.server.port}, app.server.host=, nosession.onoff=true, negate.system.dev.mode=false, image.server.host=${app.server.host}, jres.action.scan=com.hundsun.jresplus, image.server.path=, bigpipe.onoff=true, session.meta.cookie.name=_h_, cookies.max.length=4095, response.out.charset=UTF-8, cookies.max.count=1, image.server.protocol=${app.server.protocol}, system.dev.mode=true, upload.server.port=${app.server.port}, session.max.inacterval=-1, session.meta.cookie.domain=, upload.server.host=${app.server.host}}
+2014-09-11 19:39:54,750 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 19:39:54,750 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{web.vaild=false, validation.message.bean.name=}
+2014-09-11 19:39:54,984 INFO [org.springframework.beans.factory.support.DefaultListableBeanFactory] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@8ca8ac: defining beans [com.hundsun.jresplus.web.servlet.HandlerExceptionResolver#0,ResourceConfigurer,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,mediaTypesHandler,uuidGenerator,appServerBroker,sslAppServerBroker,imageServerBroker,uploadServerBroker,com.hundsun.jresplus.web.url.ServletContextInitHelper#0,encodingFilterBean,noSessionFilter,containFilter,jresFilter,cookiesManager,cookiesEncode,conversionService,webBindingInitializer,com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer#0,demoAction,org.springframework.scheduling.annotation.internalAsyncAnnotationProcessor,org.springframework.scheduling.annotation.internalScheduledAnnotationProcessor,com.hundsun.jresplus.beans.config.OverrideBeanFactoryPostProcessor#0,objectFactory,validator,messageSource,com.hundsun.jresplus.web.exception.HandlerExceptionResolver#0,ehCacheManager,pageCacheBean,pageStaticCache,pageStaticFilter]; root of factory hierarchy
+2014-09-11 19:39:55,140 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[appServer-class com.hundsun.jresplus.web.url.URLBroker] inited.
+2014-09-11 19:39:55,140 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[sslAppServer-class com.hundsun.jresplus.web.url.URLBroker] inited.
+2014-09-11 19:39:55,140 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[imageServer-class com.hundsun.jresplus.web.url.StampURLBroker] inited.
+2014-09-11 19:39:55,140 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[uploadServer-class com.hundsun.jresplus.web.url.MultiHostURLBroker] inited.
+2014-09-11 19:39:55,171 INFO [com.hundsun.jresplus.web.nosession.NoSessionFilter] - Nosession filter init...
+2014-09-11 19:39:55,187 INFO [com.hundsun.jresplus.web.nosession.NoSessionFilter] - Nosession  registed attribute[]
+2014-09-11 19:39:55,296 INFO [com.hundsun.jresplus.web.exception.HandlerExceptionResolver] - Use Exception resolver.
+2014-09-11 19:39:55,312 INFO [org.springframework.cache.ehcache.EhCacheManagerFactoryBean] - Initializing EHCache CacheManager
+2014-09-11 19:39:55,562 INFO [com.hundsun.jresplus.web.cache.PageStaticFilter] - Page static use PageStaticCache impl[class com.hundsun.jresplus.quickstart.pagecache.PageCacheWithEhcache]
+2014-09-11 19:39:55,578 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization completed in 3469 ms
+2014-09-11 19:39:55,640 INFO [com.hundsun.jresplus.web.servlet.DispatcherServlet] - FrameworkServlet 'jresServlet': initialization started
+2014-09-11 19:39:55,640 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 19:39:55,640 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{}
+2014-09-11 19:39:55,640 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing WebApplicationContext for namespace 'jresServlet-servlet': startup date [Thu Sep 11 19:39:55 CST 2014]; parent: Root WebApplicationContext
+2014-09-11 19:39:55,656 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/web/jres-web-main.xml]
+2014-09-11 19:39:56,250 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 19:39:56,250 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{velocity.user.directive=, velocity.eventhandler.nullset.class=, template.resource.loader.path=WEB-INF/views/, velocity.eventhandler.invalidreferences.class=, use.default.suffix.pattern=true, velocity.velocimacro.library=, velocity.in.jar.files=*, velocity.eventhandler.referenceinsertion.class=, toolbox.xml.path=WEB-INF/conf/vm-toolbox.xml}
+2014-09-11 19:39:56,265 INFO [org.springframework.beans.factory.support.DefaultListableBeanFactory] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@11f2158: defining beans [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer#0,demoAction,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,velocityViewCache,velocityConfigurer,viewResolver,internalViewResolver,defaultHandlerInterceptorAdapter,brokersInterceptor,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter#0,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter#0,com.hundsun.jresplus.web.adapter.ExtendableAnnotationMethodHandlerAdapter#0,defaultHandlerMapping,org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping#0,lastHandlerMapping,multipartResolver]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@8ca8ac
+2014-09-11 19:39:59,062 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/view] onto handler 'demoAction'
+2014-09-11 19:39:59,062 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/view.*] onto handler 'demoAction'
+2014-09-11 19:39:59,062 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/view/] onto handler 'demoAction'
+2014-09-11 19:39:59,062 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/bpView] onto handler 'demoAction'
+2014-09-11 19:39:59,062 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/bpView.*] onto handler 'demoAction'
+2014-09-11 19:39:59,062 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/bpView/] onto handler 'demoAction'
+2014-09-11 19:39:59,062 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/orderBpView] onto handler 'demoAction'
+2014-09-11 19:39:59,062 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/orderBpView.*] onto handler 'demoAction'
+2014-09-11 19:39:59,062 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/orderBpView/] onto handler 'demoAction'
+2014-09-11 19:39:59,062 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/staticView] onto handler 'demoAction'
+2014-09-11 19:39:59,062 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/staticView.*] onto handler 'demoAction'
+2014-09-11 19:39:59,062 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/staticView/] onto handler 'demoAction'
+2014-09-11 19:39:59,062 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/subView] onto handler 'demoAction'
+2014-09-11 19:39:59,062 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/subView.*] onto handler 'demoAction'
+2014-09-11 19:39:59,062 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/subView/] onto handler 'demoAction'
+2014-09-11 19:39:59,171 WARN [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] - Neither 'urlMap' nor 'mappings' set on SimpleUrlHandlerMapping
+2014-09-11 19:39:59,343 INFO [com.hundsun.jresplus.web.servlet.DispatcherServlet] - FrameworkServlet 'jresServlet': initialization completed in 3688 ms
+2014-09-11 19:40:04,765 INFO [org.apache.velocity.tools.view.servlet.ServletToolboxManager] - Using config file '/WEB-INF/conf/vm-toolbox.xml'
+2014-09-11 19:40:04,843 INFO [org.apache.velocity.tools.view.servlet.ServletToolboxManager] - XHTML is set to true
+2014-09-11 19:49:18,453 ERROR [org.apache.velocity.app.VelocityEngine] - VelocimacroProxy.render() : exception VM = #pagelet_end()
+2014-09-11 19:49:18,453 ERROR [org.apache.velocity.app.VelocityEngine] - ClientAbortException:  java.net.SocketException: Software caused connection abort: socket write error
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:319)
+	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:288)
+	at org.apache.catalina.connector.CoyoteOutputStream.flush(CoyoteOutputStream.java:98)
+	at com.hundsun.jresplus.web.nosession.NoSessionFilter$2.flushBuffer(NoSessionFilter.java:581)
+	at com.hundsun.jresplus.web.contain.pipeline.PipelineExporter.renderEnd(PipelineExporter.java:78)
+	at com.hundsun.jresplus.web.contain.pipeline.PipelineExporter.render(PipelineExporter.java:61)
+	at org.apache.velocity.runtime.parser.node.ASTReference.render(ASTReference.java:414)
+	at org.apache.velocity.runtime.parser.node.ASTBlock.render(ASTBlock.java:72)
+	at org.apache.velocity.runtime.parser.node.ASTIfStatement.render(ASTIfStatement.java:87)
+	at org.apache.velocity.runtime.parser.node.ASTBlock.render(ASTBlock.java:72)
+	at org.apache.velocity.runtime.directive.VelocimacroProxy.render(VelocimacroProxy.java:216)
+	at org.apache.velocity.runtime.directive.RuntimeMacro.render(RuntimeMacro.java:311)
+	at org.apache.velocity.runtime.directive.RuntimeMacro.render(RuntimeMacro.java:230)
+	at org.apache.velocity.runtime.parser.node.ASTDirective.render(ASTDirective.java:207)
+	at org.apache.velocity.runtime.parser.node.SimpleNode.render(SimpleNode.java:342)
+	at org.apache.velocity.runtime.directive.Parse.render(Parse.java:260)
+	at org.apache.velocity.runtime.parser.node.ASTDirective.render(ASTDirective.java:207)
+	at org.apache.velocity.runtime.parser.node.SimpleNode.render(SimpleNode.java:342)
+	at org.apache.velocity.Template.merge(Template.java:356)
+	at org.apache.velocity.Template.merge(Template.java:260)
+	at org.springframework.web.servlet.view.velocity.VelocityView.mergeTemplate(VelocityView.java:517)
+	at com.hundsun.jresplus.web.velocity.resolver.FixedVelocityLayoutView.mergeTemplate(FixedVelocityLayoutView.java:197)
+	at com.hundsun.jresplus.web.velocity.resolver.FixedVelocityLayoutView.doRender(FixedVelocityLayoutView.java:130)
+	at org.springframework.web.servlet.view.velocity.VelocityView.renderMergedTemplateModel(VelocityView.java:291)
+	at org.springframework.web.servlet.view.AbstractTemplateView.renderMergedOutputModel(AbstractTemplateView.java:167)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:250)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1047)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:817)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:719)
+	at com.hundsun.jresplus.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:48)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:644)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:549)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:617)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:77)
+	at com.hundsun.jresplus.web.contain.ContainFilter.doFilter(ContainFilter.java:59)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:79)
+	at com.hundsun.jresplus.web.nosession.NoSessionFilter.doFilterInternal(NoSessionFilter.java:711)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:79)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:88)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:79)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:49)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:237)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:167)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at com.hundsun.jresplus.web.cache.PageStaticFilter.doFilterInternal(PageStaticFilter.java:121)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:237)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:167)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:298)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:852)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:588)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:489)
+	at java.lang.Thread.run(Thread.java:595)
+Caused by: java.net.SocketException: Software caused connection abort: socket write error
+	at java.net.SocketOutputStream.socketWrite0(Native Method)
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:92)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:136)
+	at org.apache.coyote.http11.InternalOutputBuffer.realWriteBytes(InternalOutputBuffer.java:741)
+	at org.apache.tomcat.util.buf.ByteChunk.flushBuffer(ByteChunk.java:434)
+	at org.apache.coyote.http11.InternalOutputBuffer.flush(InternalOutputBuffer.java:299)
+	at org.apache.coyote.http11.Http11Processor.action(Http11Processor.java:976)
+	at org.apache.coyote.Response.action(Response.java:183)
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:314)
+	... 65 more
+
+2014-09-11 19:49:18,484 ERROR [org.apache.velocity.app.VelocityEngine] - Exception in macro #pagelet_end called at /screen/contain/end.vm[line 3, column 1]
+2014-09-11 19:49:18,484 ERROR [org.apache.velocity.app.VelocityEngine] - Exception rendering #parse(/screen/contain/end.vm) at layout/default.vm[line 5, column 1]
+2014-09-11 19:50:05,625 INFO [com.hundsun.jresplus.web.contain.pipeline.PipelineExporter] - Pipe queue will be abort,because task[/demo/subView.htm?num=15] render response flush error:Software caused connection abort: socket write error
+2014-09-11 19:50:25,015 ERROR [com.hundsun.jresplus.web.contain.async.AsynchronousContain] - All pipeline task must be exporter[cmd:$asyncContain.export() under the body tag]!
+2014-09-11 19:50:39,171 ERROR [com.hundsun.jresplus.web.contain.async.AsynchronousContain] - All pipeline task must be exporter[cmd:$asyncContain.export() under the body tag]!
+2014-09-11 19:51:53,328 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+2014-09-11 19:51:53,484 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing Root WebApplicationContext: startup date [Thu Sep 11 19:51:53 CST 2014]; root of context hierarchy
+2014-09-11 19:51:53,718 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/jres-web-beans.xml]
+2014-09-11 19:51:54,812 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/jres-common-beans.xml]
+2014-09-11 19:51:55,296 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from ServletContext resource [/WEB-INF/conf/spring/web-beans.xml]
+2014-09-11 19:51:56,750 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 19:51:56,750 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{upload.server.path=, template.load.charset=UTF-8, app.server.protocol=http, upload.server.protocol=${app.server.protocol}, image.server.followContextPath=true, app.server.port=, image.server.port=${app.server.port}, app.server.host=, nosession.onoff=true, negate.system.dev.mode=false, image.server.host=${app.server.host}, jres.action.scan=com.hundsun.jresplus, image.server.path=, bigpipe.onoff=true, session.meta.cookie.name=_h_, cookies.max.length=4095, response.out.charset=UTF-8, cookies.max.count=1, image.server.protocol=${app.server.protocol}, system.dev.mode=true, upload.server.port=${app.server.port}, session.max.inacterval=-1, session.meta.cookie.domain=, upload.server.host=${app.server.host}}
+2014-09-11 19:51:56,765 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 19:51:56,781 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{web.vaild=false, validation.message.bean.name=}
+2014-09-11 19:51:57,234 INFO [org.springframework.beans.factory.support.DefaultListableBeanFactory] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@8ca8ac: defining beans [com.hundsun.jresplus.web.servlet.HandlerExceptionResolver#0,ResourceConfigurer,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,mediaTypesHandler,uuidGenerator,appServerBroker,sslAppServerBroker,imageServerBroker,uploadServerBroker,com.hundsun.jresplus.web.url.ServletContextInitHelper#0,encodingFilterBean,noSessionFilter,containFilter,jresFilter,cookiesManager,cookiesEncode,conversionService,webBindingInitializer,com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer#0,demoAction,org.springframework.scheduling.annotation.internalAsyncAnnotationProcessor,org.springframework.scheduling.annotation.internalScheduledAnnotationProcessor,com.hundsun.jresplus.beans.config.OverrideBeanFactoryPostProcessor#0,objectFactory,validator,messageSource,com.hundsun.jresplus.web.exception.HandlerExceptionResolver#0,ehCacheManager,pageCacheBean,pageStaticCache,pageStaticFilter]; root of factory hierarchy
+2014-09-11 19:51:57,468 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[appServer-class com.hundsun.jresplus.web.url.URLBroker] inited.
+2014-09-11 19:51:57,468 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[sslAppServer-class com.hundsun.jresplus.web.url.URLBroker] inited.
+2014-09-11 19:51:57,468 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[imageServer-class com.hundsun.jresplus.web.url.StampURLBroker] inited.
+2014-09-11 19:51:57,468 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[uploadServer-class com.hundsun.jresplus.web.url.MultiHostURLBroker] inited.
+2014-09-11 19:51:57,546 INFO [com.hundsun.jresplus.web.nosession.NoSessionFilter] - Nosession filter init...
+2014-09-11 19:51:57,578 INFO [com.hundsun.jresplus.web.nosession.NoSessionFilter] - Nosession  registed attribute[]
+2014-09-11 19:51:57,718 INFO [com.hundsun.jresplus.web.exception.HandlerExceptionResolver] - Use Exception resolver.
+2014-09-11 19:51:57,750 INFO [org.springframework.cache.ehcache.EhCacheManagerFactoryBean] - Initializing EHCache CacheManager
+2014-09-11 19:51:57,968 INFO [com.hundsun.jresplus.web.cache.PageStaticFilter] - Page static use PageStaticCache impl[class com.hundsun.jresplus.quickstart.pagecache.PageCacheWithEhcache]
+2014-09-11 19:51:57,984 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization completed in 4656 ms
+2014-09-11 19:51:58,046 INFO [com.hundsun.jresplus.web.servlet.DispatcherServlet] - FrameworkServlet 'jresServlet': initialization started
+2014-09-11 19:51:58,046 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 19:51:58,046 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{}
+2014-09-11 19:51:58,046 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing WebApplicationContext for namespace 'jresServlet-servlet': startup date [Thu Sep 11 19:51:58 CST 2014]; parent: Root WebApplicationContext
+2014-09-11 19:51:58,046 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/web/jres-web-main.xml]
+2014-09-11 19:51:58,390 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 19:51:58,390 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{velocity.user.directive=, velocity.eventhandler.nullset.class=, template.resource.loader.path=WEB-INF/views/, velocity.eventhandler.invalidreferences.class=, use.default.suffix.pattern=true, velocity.velocimacro.library=, velocity.in.jar.files=*, velocity.eventhandler.referenceinsertion.class=, toolbox.xml.path=WEB-INF/conf/vm-toolbox.xml}
+2014-09-11 19:51:58,406 INFO [org.springframework.beans.factory.support.DefaultListableBeanFactory] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@d41f3: defining beans [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer#0,demoAction,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,velocityViewCache,velocityConfigurer,viewResolver,internalViewResolver,defaultHandlerInterceptorAdapter,brokersInterceptor,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter#0,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter#0,com.hundsun.jresplus.web.adapter.ExtendableAnnotationMethodHandlerAdapter#0,defaultHandlerMapping,org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping#0,lastHandlerMapping,multipartResolver]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@8ca8ac
+2014-09-11 19:52:00,593 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/view] onto handler 'demoAction'
+2014-09-11 19:52:00,593 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/view.*] onto handler 'demoAction'
+2014-09-11 19:52:00,593 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/view/] onto handler 'demoAction'
+2014-09-11 19:52:00,593 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/bpView] onto handler 'demoAction'
+2014-09-11 19:52:00,593 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/bpView.*] onto handler 'demoAction'
+2014-09-11 19:52:00,593 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/bpView/] onto handler 'demoAction'
+2014-09-11 19:52:00,593 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/orderBpView] onto handler 'demoAction'
+2014-09-11 19:52:00,593 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/orderBpView.*] onto handler 'demoAction'
+2014-09-11 19:52:00,593 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/orderBpView/] onto handler 'demoAction'
+2014-09-11 19:52:00,593 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/staticView] onto handler 'demoAction'
+2014-09-11 19:52:00,593 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/staticView.*] onto handler 'demoAction'
+2014-09-11 19:52:00,593 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/staticView/] onto handler 'demoAction'
+2014-09-11 19:52:00,593 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/subView] onto handler 'demoAction'
+2014-09-11 19:52:00,593 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/subView.*] onto handler 'demoAction'
+2014-09-11 19:52:00,593 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/subView/] onto handler 'demoAction'
+2014-09-11 19:52:00,671 WARN [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] - Neither 'urlMap' nor 'mappings' set on SimpleUrlHandlerMapping
+2014-09-11 19:52:00,796 INFO [com.hundsun.jresplus.web.servlet.DispatcherServlet] - FrameworkServlet 'jresServlet': initialization completed in 2750 ms
+2014-09-11 19:52:04,859 INFO [org.apache.velocity.tools.view.servlet.ServletToolboxManager] - Using config file '/WEB-INF/conf/vm-toolbox.xml'
+2014-09-11 19:52:04,937 INFO [org.apache.velocity.tools.view.servlet.ServletToolboxManager] - XHTML is set to true
+2014-09-11 19:54:24,187 ERROR [org.apache.velocity.app.VelocityEngine] - VelocimacroProxy.render() : exception VM = #pagelet_end()
+2014-09-11 19:54:24,187 ERROR [org.apache.velocity.app.VelocityEngine] - ClientAbortException:  java.net.SocketException: Software caused connection abort: socket write error
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:319)
+	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:288)
+	at org.apache.catalina.connector.CoyoteOutputStream.flush(CoyoteOutputStream.java:98)
+	at com.hundsun.jresplus.web.nosession.NoSessionFilter$2.flushBuffer(NoSessionFilter.java:581)
+	at com.hundsun.jresplus.web.contain.pipeline.PipelineExporter.renderEnd(PipelineExporter.java:78)
+	at com.hundsun.jresplus.web.contain.pipeline.PipelineExporter.render(PipelineExporter.java:61)
+	at org.apache.velocity.runtime.parser.node.ASTReference.render(ASTReference.java:414)
+	at org.apache.velocity.runtime.parser.node.ASTBlock.render(ASTBlock.java:72)
+	at org.apache.velocity.runtime.parser.node.ASTIfStatement.render(ASTIfStatement.java:87)
+	at org.apache.velocity.runtime.parser.node.ASTBlock.render(ASTBlock.java:72)
+	at org.apache.velocity.runtime.directive.VelocimacroProxy.render(VelocimacroProxy.java:216)
+	at org.apache.velocity.runtime.directive.RuntimeMacro.render(RuntimeMacro.java:311)
+	at org.apache.velocity.runtime.directive.RuntimeMacro.render(RuntimeMacro.java:230)
+	at org.apache.velocity.runtime.parser.node.ASTDirective.render(ASTDirective.java:207)
+	at org.apache.velocity.runtime.parser.node.SimpleNode.render(SimpleNode.java:342)
+	at org.apache.velocity.runtime.directive.Parse.render(Parse.java:260)
+	at org.apache.velocity.runtime.parser.node.ASTDirective.render(ASTDirective.java:207)
+	at org.apache.velocity.runtime.parser.node.SimpleNode.render(SimpleNode.java:342)
+	at org.apache.velocity.Template.merge(Template.java:356)
+	at org.apache.velocity.Template.merge(Template.java:260)
+	at org.springframework.web.servlet.view.velocity.VelocityView.mergeTemplate(VelocityView.java:517)
+	at com.hundsun.jresplus.web.velocity.resolver.FixedVelocityLayoutView.mergeTemplate(FixedVelocityLayoutView.java:197)
+	at com.hundsun.jresplus.web.velocity.resolver.FixedVelocityLayoutView.doRender(FixedVelocityLayoutView.java:130)
+	at org.springframework.web.servlet.view.velocity.VelocityView.renderMergedTemplateModel(VelocityView.java:291)
+	at org.springframework.web.servlet.view.AbstractTemplateView.renderMergedOutputModel(AbstractTemplateView.java:167)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:250)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1047)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:817)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:719)
+	at com.hundsun.jresplus.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:48)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:644)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:549)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:617)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:77)
+	at com.hundsun.jresplus.web.contain.ContainFilter.doFilter(ContainFilter.java:59)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:79)
+	at com.hundsun.jresplus.web.nosession.NoSessionFilter.doFilterInternal(NoSessionFilter.java:711)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:79)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:88)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:79)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:49)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:237)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:167)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at com.hundsun.jresplus.web.cache.PageStaticFilter.doFilterInternal(PageStaticFilter.java:121)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:237)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:167)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:298)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:852)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:588)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:489)
+	at java.lang.Thread.run(Thread.java:595)
+Caused by: java.net.SocketException: Software caused connection abort: socket write error
+	at java.net.SocketOutputStream.socketWrite0(Native Method)
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:92)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:136)
+	at org.apache.coyote.http11.InternalOutputBuffer.realWriteBytes(InternalOutputBuffer.java:741)
+	at org.apache.tomcat.util.buf.ByteChunk.flushBuffer(ByteChunk.java:434)
+	at org.apache.coyote.http11.InternalOutputBuffer.flush(InternalOutputBuffer.java:299)
+	at org.apache.coyote.http11.Http11Processor.action(Http11Processor.java:976)
+	at org.apache.coyote.Response.action(Response.java:183)
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:314)
+	... 65 more
+
+2014-09-11 19:54:24,203 ERROR [org.apache.velocity.app.VelocityEngine] - Exception in macro #pagelet_end called at /screen/contain/end.vm[line 3, column 1]
+2014-09-11 19:54:24,203 ERROR [org.apache.velocity.app.VelocityEngine] - Exception rendering #parse(/screen/contain/end.vm) at layout/default.vm[line 5, column 1]
+2014-09-11 19:56:43,718 INFO [com.hundsun.jresplus.web.contain.pipeline.PipelineExporter] - Pipe queue will be abort,because task[/demo/subView.htm?num=11] render response flush error:Software caused connection abort: socket write error
+2014-09-11 20:03:22,515 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+2014-09-11 20:03:22,578 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing Root WebApplicationContext: startup date [Thu Sep 11 20:03:22 CST 2014]; root of context hierarchy
+2014-09-11 20:03:22,687 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/jres-web-beans.xml]
+2014-09-11 20:03:23,203 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/jres-common-beans.xml]
+2014-09-11 20:03:23,500 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from ServletContext resource [/WEB-INF/conf/spring/web-beans.xml]
+2014-09-11 20:03:24,484 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 20:03:24,484 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{upload.server.path=, template.load.charset=UTF-8, app.server.protocol=http, upload.server.protocol=${app.server.protocol}, image.server.followContextPath=true, app.server.port=, image.server.port=${app.server.port}, app.server.host=, nosession.onoff=true, negate.system.dev.mode=true, image.server.host=${app.server.host}, jres.action.scan=com.hundsun.jresplus, image.server.path=, bigpipe.onoff=true, session.meta.cookie.name=_h_, cookies.max.length=4095, response.out.charset=UTF-8, cookies.max.count=1, image.server.protocol=${app.server.protocol}, system.dev.mode=false, upload.server.port=${app.server.port}, session.max.inacterval=-1, session.meta.cookie.domain=, upload.server.host=${app.server.host}}
+2014-09-11 20:03:24,500 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 20:03:24,500 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{web.vaild=false, validation.message.bean.name=}
+2014-09-11 20:03:24,718 INFO [org.springframework.beans.factory.support.DefaultListableBeanFactory] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@8ca8ac: defining beans [com.hundsun.jresplus.web.servlet.HandlerExceptionResolver#0,ResourceConfigurer,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,mediaTypesHandler,uuidGenerator,appServerBroker,sslAppServerBroker,imageServerBroker,uploadServerBroker,com.hundsun.jresplus.web.url.ServletContextInitHelper#0,encodingFilterBean,noSessionFilter,containFilter,jresFilter,cookiesManager,cookiesEncode,conversionService,webBindingInitializer,com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer#0,demoAction,org.springframework.scheduling.annotation.internalAsyncAnnotationProcessor,org.springframework.scheduling.annotation.internalScheduledAnnotationProcessor,com.hundsun.jresplus.beans.config.OverrideBeanFactoryPostProcessor#0,objectFactory,validator,messageSource,com.hundsun.jresplus.web.exception.HandlerExceptionResolver#0,ehCacheManager,pageCacheBean,pageStaticCache,pageStaticFilter]; root of factory hierarchy
+2014-09-11 20:03:24,859 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[appServer-class com.hundsun.jresplus.web.url.URLBroker] inited.
+2014-09-11 20:03:24,859 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[sslAppServer-class com.hundsun.jresplus.web.url.URLBroker] inited.
+2014-09-11 20:03:24,859 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[imageServer-class com.hundsun.jresplus.web.url.StampURLBroker] inited.
+2014-09-11 20:03:24,859 INFO [com.hundsun.jresplus.web.url.URLBrokerInitHelper] - URL Broker[uploadServer-class com.hundsun.jresplus.web.url.MultiHostURLBroker] inited.
+2014-09-11 20:03:24,906 INFO [com.hundsun.jresplus.web.nosession.NoSessionFilter] - Nosession filter init...
+2014-09-11 20:03:24,921 INFO [com.hundsun.jresplus.web.nosession.NoSessionFilter] - Nosession  registed attribute[]
+2014-09-11 20:03:25,031 INFO [com.hundsun.jresplus.web.exception.HandlerExceptionResolver] - Use Exception resolver.
+2014-09-11 20:03:25,046 INFO [org.springframework.cache.ehcache.EhCacheManagerFactoryBean] - Initializing EHCache CacheManager
+2014-09-11 20:03:25,250 INFO [com.hundsun.jresplus.web.cache.PageStaticFilter] - Page static use PageStaticCache impl[class com.hundsun.jresplus.quickstart.pagecache.PageCacheWithEhcache]
+2014-09-11 20:03:25,281 INFO [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization completed in 2766 ms
+2014-09-11 20:03:25,343 INFO [com.hundsun.jresplus.web.servlet.DispatcherServlet] - FrameworkServlet 'jresServlet': initialization started
+2014-09-11 20:03:25,343 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 20:03:25,343 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{}
+2014-09-11 20:03:25,343 INFO [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing WebApplicationContext for namespace 'jresServlet-servlet': startup date [Thu Sep 11 20:03:25 CST 2014]; parent: Root WebApplicationContext
+2014-09-11 20:03:25,343 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [conf/spring/web/jres-web-main.xml]
+2014-09-11 20:03:25,687 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loading properties file from ServletContext resource [/WEB-INF/conf/server.properties]
+2014-09-11 20:03:25,687 INFO [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer] - Loaded properties:{velocity.user.directive=, velocity.eventhandler.nullset.class=, template.resource.loader.path=WEB-INF/views/, velocity.eventhandler.invalidreferences.class=, use.default.suffix.pattern=true, velocity.velocimacro.library=, velocity.in.jar.files=*, velocity.eventhandler.referenceinsertion.class=, toolbox.xml.path=WEB-INF/conf/vm-toolbox.xml}
+2014-09-11 20:03:25,703 INFO [org.springframework.beans.factory.support.DefaultListableBeanFactory] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@11f2158: defining beans [com.hundsun.jresplus.beans.config.PropertyPlaceholderConfigurer#0,demoAction,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,velocityViewCache,velocityConfigurer,viewResolver,internalViewResolver,defaultHandlerInterceptorAdapter,brokersInterceptor,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter#0,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter#0,com.hundsun.jresplus.web.adapter.ExtendableAnnotationMethodHandlerAdapter#0,defaultHandlerMapping,org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping#0,lastHandlerMapping,multipartResolver]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@8ca8ac
+2014-09-11 20:03:28,062 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/view] onto handler 'demoAction'
+2014-09-11 20:03:28,078 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/view.*] onto handler 'demoAction'
+2014-09-11 20:03:28,078 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/view/] onto handler 'demoAction'
+2014-09-11 20:03:28,078 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/bpView] onto handler 'demoAction'
+2014-09-11 20:03:28,078 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/bpView.*] onto handler 'demoAction'
+2014-09-11 20:03:28,078 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/bpView/] onto handler 'demoAction'
+2014-09-11 20:03:28,078 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/orderBpView] onto handler 'demoAction'
+2014-09-11 20:03:28,078 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/orderBpView.*] onto handler 'demoAction'
+2014-09-11 20:03:28,078 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/orderBpView/] onto handler 'demoAction'
+2014-09-11 20:03:28,078 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/staticView] onto handler 'demoAction'
+2014-09-11 20:03:28,078 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/staticView.*] onto handler 'demoAction'
+2014-09-11 20:03:28,078 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/staticView/] onto handler 'demoAction'
+2014-09-11 20:03:28,078 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/subView] onto handler 'demoAction'
+2014-09-11 20:03:28,078 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/subView.*] onto handler 'demoAction'
+2014-09-11 20:03:28,078 INFO [org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping] - Mapped URL path [/demo/subView/] onto handler 'demoAction'
+2014-09-11 20:03:28,140 WARN [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] - Neither 'urlMap' nor 'mappings' set on SimpleUrlHandlerMapping
+2014-09-11 20:03:28,250 INFO [com.hundsun.jresplus.web.servlet.DispatcherServlet] - FrameworkServlet 'jresServlet': initialization completed in 2907 ms
+2014-09-11 20:03:33,343 INFO [org.apache.velocity.tools.view.servlet.ServletToolboxManager] - Using config file '/WEB-INF/conf/vm-toolbox.xml'
+2014-09-11 20:03:33,375 INFO [org.apache.velocity.tools.view.servlet.ServletToolboxManager] - XHTML is set to true
+2014-09-11 20:03:46,578 ERROR [org.apache.velocity.app.VelocityEngine] - VelocimacroProxy.render() : exception VM = #pagelet_end()
+2014-09-11 20:03:46,578 ERROR [org.apache.velocity.app.VelocityEngine] - ClientAbortException:  java.net.SocketException: Software caused connection abort: socket write error
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:319)
+	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:288)
+	at org.apache.catalina.connector.CoyoteOutputStream.flush(CoyoteOutputStream.java:98)
+	at com.hundsun.jresplus.web.nosession.NoSessionFilter$2.flushBuffer(NoSessionFilter.java:581)
+	at com.hundsun.jresplus.web.contain.pipeline.PipelineExporter.renderEnd(PipelineExporter.java:78)
+	at com.hundsun.jresplus.web.contain.pipeline.PipelineExporter.render(PipelineExporter.java:61)
+	at org.apache.velocity.runtime.parser.node.ASTReference.render(ASTReference.java:414)
+	at org.apache.velocity.runtime.parser.node.ASTBlock.render(ASTBlock.java:72)
+	at org.apache.velocity.runtime.parser.node.ASTIfStatement.render(ASTIfStatement.java:87)
+	at org.apache.velocity.runtime.parser.node.ASTBlock.render(ASTBlock.java:72)
+	at org.apache.velocity.runtime.directive.VelocimacroProxy.render(VelocimacroProxy.java:216)
+	at org.apache.velocity.runtime.directive.RuntimeMacro.render(RuntimeMacro.java:311)
+	at org.apache.velocity.runtime.directive.RuntimeMacro.render(RuntimeMacro.java:230)
+	at org.apache.velocity.runtime.parser.node.ASTDirective.render(ASTDirective.java:207)
+	at org.apache.velocity.runtime.parser.node.SimpleNode.render(SimpleNode.java:342)
+	at org.apache.velocity.runtime.directive.Parse.render(Parse.java:260)
+	at org.apache.velocity.runtime.parser.node.ASTDirective.render(ASTDirective.java:207)
+	at org.apache.velocity.runtime.parser.node.SimpleNode.render(SimpleNode.java:342)
+	at org.apache.velocity.Template.merge(Template.java:356)
+	at org.apache.velocity.Template.merge(Template.java:260)
+	at org.springframework.web.servlet.view.velocity.VelocityView.mergeTemplate(VelocityView.java:517)
+	at com.hundsun.jresplus.web.velocity.resolver.FixedVelocityLayoutView.mergeTemplate(FixedVelocityLayoutView.java:197)
+	at com.hundsun.jresplus.web.velocity.resolver.FixedVelocityLayoutView.doRender(FixedVelocityLayoutView.java:130)
+	at org.springframework.web.servlet.view.velocity.VelocityView.renderMergedTemplateModel(VelocityView.java:291)
+	at org.springframework.web.servlet.view.AbstractTemplateView.renderMergedOutputModel(AbstractTemplateView.java:167)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:250)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1047)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:817)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:719)
+	at com.hundsun.jresplus.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:48)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:644)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:549)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:617)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:77)
+	at com.hundsun.jresplus.web.contain.ContainFilter.doFilter(ContainFilter.java:59)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:79)
+	at com.hundsun.jresplus.web.nosession.NoSessionFilter.doFilterInternal(NoSessionFilter.java:711)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:79)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:88)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:79)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:49)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:237)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:167)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at com.hundsun.jresplus.web.cache.PageStaticFilter.doFilterInternal(PageStaticFilter.java:121)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:237)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:167)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:298)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:852)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:588)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:489)
+	at java.lang.Thread.run(Thread.java:595)
+Caused by: java.net.SocketException: Software caused connection abort: socket write error
+	at java.net.SocketOutputStream.socketWrite0(Native Method)
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:92)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:136)
+	at org.apache.coyote.http11.InternalOutputBuffer.realWriteBytes(InternalOutputBuffer.java:741)
+	at org.apache.tomcat.util.buf.ByteChunk.flushBuffer(ByteChunk.java:434)
+	at org.apache.coyote.http11.InternalOutputBuffer.flush(InternalOutputBuffer.java:299)
+	at org.apache.coyote.http11.Http11Processor.action(Http11Processor.java:976)
+	at org.apache.coyote.Response.action(Response.java:183)
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:314)
+	... 65 more
+
+2014-09-11 20:03:46,593 ERROR [org.apache.velocity.app.VelocityEngine] - Exception in macro #pagelet_end called at /screen/contain/end.vm[line 3, column 1]
+2014-09-11 20:03:46,593 ERROR [org.apache.velocity.app.VelocityEngine] - Exception rendering #parse(/screen/contain/end.vm) at layout/default.vm[line 5, column 1]
+2014-09-11 20:05:16,828 ERROR [org.apache.velocity.app.VelocityEngine] - VelocimacroProxy.render() : exception VM = #pagelet_end()
+2014-09-11 20:05:16,843 ERROR [org.apache.velocity.app.VelocityEngine] - ClientAbortException:  java.net.SocketException: Software caused connection abort: socket write error
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:319)
+	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:288)
+	at org.apache.catalina.connector.CoyoteOutputStream.flush(CoyoteOutputStream.java:98)
+	at com.hundsun.jresplus.web.nosession.NoSessionFilter$2.flushBuffer(NoSessionFilter.java:581)
+	at com.hundsun.jresplus.web.contain.pipeline.PipelineExporter.renderEnd(PipelineExporter.java:78)
+	at com.hundsun.jresplus.web.contain.pipeline.PipelineExporter.render(PipelineExporter.java:61)
+	at org.apache.velocity.runtime.parser.node.ASTReference.render(ASTReference.java:414)
+	at org.apache.velocity.runtime.parser.node.ASTBlock.render(ASTBlock.java:72)
+	at org.apache.velocity.runtime.parser.node.ASTIfStatement.render(ASTIfStatement.java:87)
+	at org.apache.velocity.runtime.parser.node.ASTBlock.render(ASTBlock.java:72)
+	at org.apache.velocity.runtime.directive.VelocimacroProxy.render(VelocimacroProxy.java:216)
+	at org.apache.velocity.runtime.directive.RuntimeMacro.render(RuntimeMacro.java:311)
+	at org.apache.velocity.runtime.directive.RuntimeMacro.render(RuntimeMacro.java:230)
+	at org.apache.velocity.runtime.parser.node.ASTDirective.render(ASTDirective.java:207)
+	at org.apache.velocity.runtime.parser.node.SimpleNode.render(SimpleNode.java:342)
+	at org.apache.velocity.runtime.directive.Parse.render(Parse.java:260)
+	at org.apache.velocity.runtime.parser.node.ASTDirective.render(ASTDirective.java:207)
+	at org.apache.velocity.runtime.parser.node.SimpleNode.render(SimpleNode.java:342)
+	at org.apache.velocity.Template.merge(Template.java:356)
+	at org.apache.velocity.Template.merge(Template.java:260)
+	at org.springframework.web.servlet.view.velocity.VelocityView.mergeTemplate(VelocityView.java:517)
+	at com.hundsun.jresplus.web.velocity.resolver.FixedVelocityLayoutView.mergeTemplate(FixedVelocityLayoutView.java:197)
+	at com.hundsun.jresplus.web.velocity.resolver.FixedVelocityLayoutView.doRender(FixedVelocityLayoutView.java:130)
+	at org.springframework.web.servlet.view.velocity.VelocityView.renderMergedTemplateModel(VelocityView.java:291)
+	at org.springframework.web.servlet.view.AbstractTemplateView.renderMergedOutputModel(AbstractTemplateView.java:167)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:250)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1047)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:817)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:719)
+	at com.hundsun.jresplus.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:48)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:644)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:549)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:617)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:77)
+	at com.hundsun.jresplus.web.contain.ContainFilter.doFilter(ContainFilter.java:59)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:79)
+	at com.hundsun.jresplus.web.nosession.NoSessionFilter.doFilterInternal(NoSessionFilter.java:711)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:79)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:88)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain$SimpleFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:79)
+	at com.hundsun.jresplus.web.servlet.SimpleOncePerRequestFilterChain.doFilter(SimpleOncePerRequestFilterChain.java:49)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:237)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:167)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at com.hundsun.jresplus.web.cache.PageStaticFilter.doFilterInternal(PageStaticFilter.java:121)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:76)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:237)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:167)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:298)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:852)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:588)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:489)
+	at java.lang.Thread.run(Thread.java:595)
+Caused by: java.net.SocketException: Software caused connection abort: socket write error
+	at java.net.SocketOutputStream.socketWrite0(Native Method)
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:92)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:136)
+	at org.apache.coyote.http11.InternalOutputBuffer.realWriteBytes(InternalOutputBuffer.java:741)
+	at org.apache.tomcat.util.buf.ByteChunk.flushBuffer(ByteChunk.java:434)
+	at org.apache.coyote.http11.InternalOutputBuffer.flush(InternalOutputBuffer.java:299)
+	at org.apache.coyote.http11.Http11Processor.action(Http11Processor.java:976)
+	at org.apache.coyote.Response.action(Response.java:183)
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:314)
+	... 65 more
+
+2014-09-11 20:05:16,843 ERROR [org.apache.velocity.app.VelocityEngine] - Exception in macro #pagelet_end called at /screen/contain/end.vm[line 3, column 1]
+2014-09-11 20:05:16,843 ERROR [org.apache.velocity.app.VelocityEngine] - Exception rendering #parse(/screen/contain/end.vm) at layout/default.vm[line 5, column 1]

@@ -1,0 +1,989 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="GOODS">
+	<typeAlias alias="goods"
+		type="com.hundsun.jresplus.quickstart.biz.po.Goods" />
+	<typeAlias alias="collections"
+		type="com.hundsun.jresplus.quickstart.biz.po.Collections" />
+	<typeAlias alias="auction"
+		type="com.hundsun.jresplus.quickstart.biz.po.Auction" />
+	<typeAlias alias="goodsQuery"
+		type="com.hundsun.jresplus.quickstart.biz.query.GoodsQuery" />
+	<typeAlias alias="normalGoodsQuery"
+		type="com.hundsun.jresplus.quickstart.biz.query.NormalGoodsQuery" />
+		
+	<typeAlias alias="socityClub"
+		type="com.hundsun.jresplus.quickstart.biz.po.Club" />		
+	<typeAlias alias="socityActivity"
+		type="com.hundsun.jresplus.quickstart.biz.po.Activity" />
+	
+	<typeAlias alias="socityActivityMember"
+		type="com.hundsun.jresplus.quickstart.biz.po.ActivityMember" />	
+		
+	<typeAlias alias="socityActivityProject"
+		type="com.hundsun.jresplus.quickstart.biz.po.ActivityProject" />		
+		
+		<typeAlias alias="socityClubMember"
+		type="com.hundsun.jresplus.quickstart.biz.po.ClubMember" />	
+		
+		<typeAlias alias="socityLog"
+		type="com.hundsun.jresplus.quickstart.biz.po.Log" />		
+
+	<resultMap id="baseResult" class="goods">
+		<result column="id" property="id" />
+		<result column="briefintro" property="briefintro" />
+		<result column="type" property="type" />
+		<result column="name" property="name" />
+		<result column="miniature" property="miniature" />
+		<result column="image1" property="image1" />
+		<result column="image2" property="image2" />
+		<result column="image3" property="image3" />
+		<result column="image4" property="image4" />
+		<result column="image5" property="image5" />
+		<result column="unit" property="unit" />
+		<result column="refprice" property="refprice" />
+		<result column="price" property="price" />
+		<result column="detailintro" property="detailintro" />
+		<result column="ordernum" property="ordernum" />
+		<result column="stocknum" property="stocknum" />
+		<result column="provider_id" property="providerId" />
+		<result column="viewnum" property="viewnum" />
+		<result column="salenum" property="salenum" />
+		<result column="status" property="status" />
+        <result column="last_modified" property="last_modified" />
+        <result column="score_add" property="scoreAdd"/>
+              
+        
+	</resultMap>
+	
+	<resultMap id="socityActivityResult" class="socityActivity">
+		<result column="aid" property="aid" />
+		<result column="cid" property="cid" />
+		<result column="bid" property="bid" />
+		<result column="name" property="name" />
+		<result column="subtitle" property="subtitle" />
+		<result column="official_url" property="officialUrl" />
+		<result column="logo" property="logo" />
+		<result column="area_id" property="areaId" />
+		<result column="province_id" property="provinceId" />
+		<result column="city_id" property="cityId" />
+		<result column="site" property="site" />
+		<result column="address" property="address" />
+		<result column="lat" property="lat" />
+		<result column="lng" property="lng" />
+		<result column="type" property="type" />
+		<result column="day" property="day" />
+		<result column="register_start" property="registerStart" />
+		<result column="register_end" property="registerEnd" />
+		<result column="start_time" property="startTime" />
+		<result column="end_time" property="endTime" />
+		<result column="status" property="status" />
+        <result column="briefintro" property="briefintro" />
+        <result column="act_detail" property="actDetail"/>
+        <result column="act_detail_url" property="actDetailUrl"/>
+        <result column="stick" property="stick"/>
+        <result column="follow_sum" property="followSum"/>
+        <result column="create_user" property="createUser"/>
+         <result column="create_time" property="createTime"/>
+          <result column="modify_user" property="modifyUser"/>
+           <result column="modify_time" property="modifyTime"/>
+            <result column="click_num" property="clickNum"/>
+             <result column="agree_num" property="agreeNum"/>
+              <result column="disagree_num" property="disagreeNum"/>
+               <result column="agree_num_time" property="agreeNumTime"/>
+                <result column="is_delete" property="isDelete"/>
+                 <result column="age" property="age"/>
+                  <result column="mobile_content" property="mobileContent"/>
+        
+         
+           
+        
+	</resultMap>
+	
+	
+	
+	<resultMap id="socityActivityMemberResult" class="socityActivityMember">
+		<result column="amid" property="amid" />
+		<result column="bid" property="bid" />
+		<result column="aid" property="aid" />
+		<result column="cmid" property="cmid" />
+		<result column="name" property="name" />
+		<result column="nickname" property="nickname" />
+		<result column="mobile" property="mobile" />
+		<result column="gender" property="gender" />
+		<result column="administrator" property="administrator" />
+		<result column="operator" property="operator" />
+		<result column="create_user" property="createUser" />
+		<result column="create_time" property="createTime" />
+		<result column="modify_user" property="modifyUser" />
+		<result column="modify_time" property="modifyTime" />
+		 
+         
+           
+        
+	</resultMap>
+	
+	
+	<resultMap id="socityActivityProjectResult" class="socityActivityProject">
+		<result column="apid" property="apid" />
+		<result column="aid" property="aid" />
+		<result column="bid" property="bid" />
+		<result column="name" property="name" />
+		<result column="price" property="price" />
+		<result column="refprice" property="refprice" />
+		<result column="content" property="content" />
+		<result column="project_num" property="projectNum" />
+		<result column="status" property="status" />
+		<result column="start_time" property="startTime" />
+		<result column="end_time" property="endTime" />
+		<result column="create_user" property="createUser" />
+		<result column="create_time" property="createTime" />
+		<result column="modify_user" property="modifyUser" />
+		 
+         <result column="modify_time" property="modifyTime" />
+           
+        
+	</resultMap>
+	
+	
+	
+	<resultMap id="socityClubResult" class="socityClub">
+		<result column="cid" property="cid" />
+		<result column="bid" property="bid" />
+		<result column="name" property="name" />
+		<result column="logo" property="logo" />
+		<result column="brief" property="brief" />
+		<result column="type" property="type" />
+		<result column="club_member_sum" property="clubMemberSum" />
+		<result column="fee_circle" property="feeCircle" />
+		<result column="fee_start_date" property="feeStartDate" />
+		<result column="city" property="city" />
+		<result column="administrator" property="administrator" />
+		<result column="slogan" property="slogan" />
+		<result column="operator" property="operator" />
+		<result column="mobile" property="mobile" />
+		<result column="create_id" property="createId" />
+		<result column="status" property="status" />
+		<result column="create_user" property="createUser" />
+		<result column="create_time" property="createTime" />
+		<result column="modify_user" property="modifyUser" />
+		<result column="modify_time" property="modifyTime" />
+        <result column="is_delete" property="isDelete" />
+         
+        
+	</resultMap>
+	
+	
+	<resultMap id="socityLogResult" class="socityLog">
+		<result column="lid" property="lid" />
+		<result column="cmid" property="cmid" />
+		<result column="bid" property="bid" />
+		<result column="payment" property="payment" />
+		<result column="amount" property="amount" />
+		<result column="status" property="status" />
+		<result column="pay_type" property="payType" />
+		<result column="pay_flag" property="payFlag" />
+		<result column="create_user" property="createUser" />
+		<result column="create_time" property="createTime" />
+		<result column="modify_user" property="modifyUser" />
+		<result column="modify_time" property="modifyTime" />
+		 
+         
+        
+	</resultMap>
+	
+	
+	
+	<resultMap id="socityClubMemberResult" class="socityClubMember">
+		<result column="cmid" property="cmid" />
+		<result column="cid" property="cid" />
+		<result column="uid" property="uid" />
+		<result column="bid" property="bid" />
+		<result column="name" property="name" />
+		<result column="status" property="status" />
+		<result column="headImage" property="headImage" />
+		<result column="nickname" property="nickname" />
+		<result column="mobile" property="mobile" />
+		<result column="gender" property="gender" />
+		<result column="grade" property="grade" />
+		<result column="flag" property="flag" />
+		<result column="administrator" property="administrator" />
+		<result column="cue_time" property="cueTime" />
+		<result column="accomplish" property="accomplish" />
+		<result column="create_user" property="createUser" />
+		<result column="create_time" property="createTime" />
+		<result column="modify_user" property="modifyUser" />
+		<result column="modify_time" property="modifyTime" />
+		  
+	</resultMap>
+	
+	 
+	
+
+	<resultMap id="auctionResult" class="auction">
+		<result column="id" property="id" />
+		<result column="briefintro" property="briefintro" />
+		<result column="type" property="type" />
+		<result column="name" property="name" />
+		<result column="miniature" property="miniature" />
+		<result column="image1" property="image1" />
+		<result column="image2" property="image2" />
+		<result column="image3" property="image3" />
+		<result column="image4" property="image4" />
+		<result column="image5" property="image5" />
+		<result column="unit" property="unit" />
+		<result column="refprice" property="refprice" />
+		<result column="price" property="price" />
+		<result column="detailintro" property="detailintro" />
+		<result column="ordernum" property="ordernum" />
+		<result column="stocknum" property="stocknum" />
+		<result column="provider_id" property="providerId" />
+		<result column="viewnum" property="viewnum" />
+		<result column="salenum" property="salenum" />
+		<result column="createtime" property="createtime" />
+
+	</resultMap>
+
+	<resultMap id="goodsResult" class="goods">
+		<result column="id" property="id" />
+		<result column="briefintro" property="briefintro" />
+		<result column="type" property="type" />
+		<result column="name" property="name" />
+		<result column="miniature" property="miniature" />
+		<result column="image1" property="image1" />
+		<result column="image2" property="image2" />
+		<result column="image3" property="image3" />
+		<result column="image4" property="image4" />
+		<result column="image5" property="image5" />
+		<result column="unit" property="unit" />
+		<result column="refprice" property="refprice" />
+		<result column="price" property="price" />
+		<result column="detailintro" property="detailintro" />
+		<result column="ordernum" property="ordernum" />
+		<result column="stocknum" property="stocknum" />
+		<result column="provider_id" property="providerId" />
+		<result column="viewnum" property="viewnum" />
+		<result column="salenum" property="salenum" />
+		<result column="status" property="status" />
+		<result column="last_modified" property="last_modified"/>
+        <result column="score_add" property="scoreAdd"/>
+	</resultMap>
+	
+	<resultMap id="normalGoodsResult" class="goods">
+		<result column="id" property="id" />
+		<result column="briefintro" property="briefintro" />
+		<result column="type" property="type" />
+		<result column="name" property="name" />
+		<result column="miniature" property="miniature" />
+		<result column="image1" property="image1" />
+		<result column="image2" property="image2" />
+		<result column="image3" property="image3" />
+		<result column="image4" property="image4" />
+		<result column="image5" property="image5" />
+		<result column="unit" property="unit" />
+		<result column="refprice" property="refprice" />
+		<result column="price" property="price" />
+	 
+		<result column="ordernum" property="ordernum" />
+		<result column="stocknum" property="stocknum" />
+		<result column="provider_id" property="providerId" />
+		<result column="viewnum" property="viewnum" />
+		<result column="salenum" property="salenum" />
+		<result column="status" property="status" />
+		<result column="last_modified" property="last_modified"/>
+        <result column="score_add" property="scoreAdd"/>
+	</resultMap>
+	
+	 
+
+	<sql id="allColumn">
+		g.id, g.briefintro, g.type, g.name, g.miniature,
+		g.image1,g.image2,g.image3,g.image4,g.image5,
+		g.unit, g.refprice, g.price, g.detailintro,
+		g.ordernum,
+		g.provider_id,g.viewnum,g.salenum,g.stocknum,g.status,g.last_modified,g.score_add
+	</sql>
+	 
+	<sql id="socityActivityColumn">
+		a.aid, a.cid, a.bid, a.name, a.subtitle,
+		a.logo,a.official_url,a.area_id,a.province_id,a.city_id,
+		a.site, a.address, a.lat, a.lng,
+		a.type,
+		a.day,a.register_start,a.register_end,a.start_time,a.end_time,a.status,a.briefintro,
+		a.act_detail,a.act_detail_url,a.stick,a.follow_sum,a.create_user,a.create_time,a.modify_user,a.modify_time,a.click_num,a.agree_num,a.disagree_num,a.agree_num_time,a.is_delete,a.age,a.mobile_content
+	</sql>
+	
+	<sql id="socityActivityMemberColumn">
+		a.amid, a.bid, a.aid, a.cmid, a.name,
+		a.nickname,a.mobile,a.gender,a.administrator,a.operator,
+		a.create_user, a.create_time, a.modify_user, a.modify_time
+		 
+	</sql>
+	
+	<sql id="socityActivityProjectColumn">
+		a.apid, a.aid, a.bid, a.name, a.price,
+		a.refprice,a.content,a.project_num,a.status,a.start_time,
+		a.end_time, a.create_user, a.create_time, a.modify_user,a.modify_time
+		 
+	</sql>
+	
+	
+	<sql id="socityClubColumn">
+		a.cid, a.bid, a.bid, a.name, a.logo,
+		a.brief,a.type,a.club_member_sum,a.fee_circle,a.fee_start_date,
+		a.city, a.administrator, a.slogan, a.operator,
+		a.mobile,
+		a.create_id,a.status,a.create_user,a.create_time,a.modify_user,a.modify_time,a.is_delete
+		 
+	</sql>
+	
+	<sql id="socityClubMemberColumn">
+		a.cmid, a.cid, a.uid,a.bid, a.name, a.status,u.contactor as headImage,
+		a.nickname,a.mobile,a.gender,a.grade,a.flag,
+		a.administrator, a.cue_time, a.accomplish, a.create_user,
+		a.create_time,
+		a.modify_user,a.modify_time
+		 
+	</sql>
+	
+	<sql id="socityLogColumn">
+		a.lid, a.cmid, a.bid,a.payment,a.amount,a.status, a.pay_type,a.pay_flag,
+		a.create_user,a.create_time,a.modify_user,a.modify_time
+		 
+	</sql>
+
+	<select id="getById" resultMap="baseResult">
+		select
+		<include refid="allColumn" />
+		from goods g
+		where
+		id = #id#
+	</select>
+	
+	
+	 
+	
+	<select id="getClubById" resultMap="socityClubResult">
+		select
+		<include refid="socityClubColumn" />
+		from club a
+		where
+		cid = #id#
+	</select>
+
+
+
+	<select id="getActivityById" resultMap="socityActivityResult">
+		select
+		<include refid="socityActivityColumn" />
+		from activity a
+		where
+		aid = #id#
+	</select>
+	
+	<select id="getActivityProjectById" resultMap="socityActivityProjectResult">
+		select
+		<include refid="socityActivityProjectColumn" />
+		from activity_project a
+		where
+		a.apid =  #apid#
+	</select>
+	
+	<select id="getActivityMemberById" resultMap="socityActivityMemberResult">
+		select
+		<include refid="socityActivityMemberColumn" />
+		from activity_member a
+		where
+		a.cmid = #aid#
+	</select>
+	
+	
+	<select id="getLogById" resultMap="socityLogResult">
+		select
+		<include refid="socityLogColumn" />
+		from log a
+		where
+		a.lid = #lid#
+	</select>
+	
+	
+	<select id="selectClubMember" resultMap="socityClubMemberResult">
+		select
+		<include refid="socityClubMemberColumn" />
+		from club_member a inner join user u on a.uid=u.id 
+		where
+		a.cid = #cid# and a.uid=#uid#
+	</select>
+	
+	
+	<!-- 获取列表 -->
+	<select id="queryList" resultMap="baseResult">
+		select
+		<include refid="allColumn" />
+		from goods g
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="type">
+				type = #type#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="name">
+				name like concat('%',
+				#name#, '%')
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="providerId">
+				provider_id =
+				#providerId#
+			</isNotEmpty>
+		</dynamic>
+		order by IF(ISNULL(sort),1,0),sort, id desc
+		limit #pageFristItem# , #pageSize#
+	</select>
+
+	<!-- 获取列表个数 -->
+	<select id="queryCount" resultClass="int">
+		select
+		count(1)
+		from goods
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="type">
+				type = #type#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="name">
+				name like concat('%',
+				#name#, '%')
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="providerId">
+				provider_id =
+				#providerId#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<!-- 获取列表 -->
+	<select id="providerList" resultMap="baseResult">
+		select
+			<include refid="allColumn" />
+		from goods g inner join assoc_category_goods c on
+		g.id=c.goods_id
+		join assoc_building_category b on
+		b.category_id=c.category_id
+		<dynamic prepend="where">
+			<isEqual prepend="and" property="buildingId" compareValue="1">
+				b.building_id=1
+			</isEqual>
+			<isNotEqual prepend="and" property="buildingId"
+				compareValue="1">
+				(b.building_id=#buildingId# or b.building_id=0)
+			</isNotEqual>
+			<isNotEmpty prepend="and" property="type">
+				g.type = #type#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="name">
+				g.name like concat('%',
+				#name#, '%')
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="categoryId">
+				b.category_id =
+				#categoryId#
+			</isNotEmpty>
+		</dynamic>
+		order by g.id
+		limit #pageFristItem# , #pageSize#
+	</select>
+	<!-- 获取列表 -->
+	<select id="providerCount" resultClass="int">
+		select
+		count(1)
+		from goods g inner join assoc_category_goods c on
+		g.id=c.goods_id
+		join assoc_building_category b on
+		b.category_id=c.category_id
+		<dynamic prepend="where">
+			<isEqual prepend="and" property="buildingId" compareValue="1">
+				b.building_id=1
+			</isEqual>
+			<isNotEqual prepend="and" property="buildingId"
+				compareValue="1">
+				(b.building_id=#buildingId# or b.building_id=0)
+			</isNotEqual>
+			<isNotEmpty prepend="and" property="type">
+				g.type = #type#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="name">
+				g.name like concat('%',
+				#name#, '%')
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="categoryId">
+				b.category_id
+				=#categoryId#
+			</isNotEmpty>
+		</dynamic>
+
+	</select>
+	<!-- 获取列表 -->
+	<select id="buildingGoodsList" resultMap="baseResult">
+		select
+		<include refid="allColumn" />
+		from assoc_building_goods
+		b join goods g on b.goods_id =
+		g.id
+		<dynamic prepend="where">
+			<isEqual prepend="and" property="buildingId" compareValue="0">
+				b.building_id=0
+			</isEqual>
+			<isNotEqual prepend="and" property="buildingId"
+				compareValue="0">
+				b.building_id=#buildingId#
+			</isNotEqual>
+			<isNotEmpty prepend="and" property="type">
+				g.type = #type#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="name">
+				g.name like '%$name$%'
+			</isNotEmpty>
+		</dynamic>
+		order by RAND()
+		limit #pageFristItem# , #pageSize#
+	</select>
+	<!-- 获取列表 -->
+	<select id="buildingGoodsCount" resultClass="int">
+		select
+		count(1)
+		from assoc_building_goods b join goods g on b.goods_id =
+		g.id
+		<dynamic prepend="where">
+			<isEqual prepend="and" property="buildingId" compareValue="0">
+				b.building_id=0
+			</isEqual>
+			<isNotEqual prepend="and" property="buildingId"
+				compareValue="0">
+				b.building_id=#buildingId# 
+			</isNotEqual>
+			<isNotEmpty prepend="and" property="type">
+				g.type = #type#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="name">
+				g.name like '%$name$%'
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	<select id="normalGoodsCount" resultClass="int">
+		select
+		count(1)
+		from goods g 
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="types">
+				g.type in
+				 <iterate property="types" conjunction="," open="(" close=")">
+				  #types[]#
+				 </iterate>
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="type">
+				g.type = #type#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="name">
+				g.name like '%$name$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="aliasname">
+				g.aliasname like '%$aliasname$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="categoryId">
+				EXISTS(
+					SELECT
+						1
+					FROM
+						assoc_category_goods
+					WHERE
+						g.id = assoc_category_goods.goods_id
+					AND assoc_category_goods.category_id IN(#categoryId#)
+				)
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="buildingId">
+				EXISTS(
+					SELECT
+						1
+					FROM
+						assoc_building_goods
+					WHERE
+						g.id = assoc_building_goods.goods_id
+					AND assoc_building_goods.building_id IN(0,5)
+				)
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	<select id="normalGoodsList" resultMap="normalGoodsResult">
+		select
+			g.id, g.briefintro, g.type, g.name, g.miniature,
+		g.image1,g.image2,g.image3,g.image4,g.image5,
+		g.unit, g.refprice, g.price,
+		g.ordernum,
+		g.provider_id,g.viewnum,g.salenum,g.stocknum,g.status,g.last_modified,g.score_add
+		from goods g
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="types">
+				g.type in
+				 <iterate property="types" conjunction="," open="(" close=")">
+				  #types[]#
+				 </iterate>
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="type">
+				g.type = #type#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="name">
+				g.name like '%$name$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="aliasname">
+				g.aliasname like '%$aliasname$%'
+			</isNotEmpty>
+			and provider_id='3854'
+			
+			<isNotEmpty prepend="and" property="categoryId">
+				EXISTS(
+					SELECT
+						1
+					FROM
+						assoc_category_goods
+					WHERE
+						g.id = assoc_category_goods.goods_id
+					AND assoc_category_goods.category_id IN(#categoryId#)
+				)
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="buildingId">
+				EXISTS(
+					SELECT
+						1
+					FROM
+						assoc_building_goods
+					WHERE
+						g.id = assoc_building_goods.goods_id
+					AND assoc_building_goods.building_id IN(0,5)
+				)
+			</isNotEmpty>
+		</dynamic>
+		order by IF(ISNULL(sort),1,0),sort, id desc
+		limit #pageFristItem# , #pageSize#
+	</select>
+	
+	
+	 <select id="socityClubCount" resultClass="int">
+		select
+		count(1)
+			 
+			 from club a 
+		 
+		  where a.is_delete=#isDelete#
+		 
+	</select>
+	
+	
+	
+	<select id="socityClubList" resultMap="socityClubResult">
+		select
+			 <include refid="socityClubColumn" />
+			 from club a 
+		 
+		  where a.is_delete=#isDelete#
+		limit #pageFristItem# , #pageSize#
+	</select>
+	
+	 
+	<select id="socityClubMemberCount" resultClass="int">
+		select
+			 count(1) 
+			 from club_member a inner join user u on a.uid=u.id 
+		 
+		  where a.status=#status# and a.cid=#cid#
+		 
+	</select>
+	
+	
+	<select id="checkSocityClubMember" resultClass="int">
+		select
+			 count(1) 
+			 from club_member a inner join user u on a.uid=u.id 
+		 
+		  where a.status=#status# and a.uid=#uid# and a.cid=#cid#
+		 
+	</select>
+	
+	<select id="socityClubMemberListSimple" resultMap="socityClubMemberResult">
+		select
+			 <include refid="socityClubMemberColumn" />
+			 from club_member a inner join user u on a.uid=u.id 
+		 
+		  where a.status=#status# and a.cid=#cid#
+		limit 0 , 3
+	</select>
+	
+	
+	
+	<select id="socityClubMemberList" resultMap="socityClubMemberResult">
+		select
+			 <include refid="socityClubMemberColumn" />
+			 from club_member a inner join user u on a.uid=u.id 
+		 
+		  where a.status=#status# and a.cid=#cid#
+		limit #pageFristItem# , #pageSize#
+	</select>
+	
+	
+	<select id="socityActivityCount" resultClass="int">
+		select
+			 count(1) 
+			 from activity a 
+		 
+		  where a.status=#status# and a.cid=#cid#
+		 
+	</select>
+	
+	
+	<select id="socityActivityList" resultMap="socityActivityResult">
+		select
+			 <include refid="socityActivityColumn" />
+			 from activity a  
+		 
+		  where a.status=#status# and a.cid=#cid#
+		limit #pageFristItem# , #pageSize#
+	</select>
+	
+	
+	
+	
+	<select id="socityActivityMemberCount" resultClass="int">
+		select
+			 count(1) 
+			 from activity_member a 
+		 
+		  where a.aid=#aid#
+		 
+	</select>
+	
+	
+	<select id="socityActivityMemberList" resultMap="socityActivityMemberResult">
+		select
+			a.amid, a.bid, a.aid, a.cmid, b.username as name,
+		a.nickname,a.mobile,a.gender,b.contactor as administrator,a.operator,
+		a.create_user, a.create_time, a.modify_user, a.modify_time
+			 from activity_member a  inner join user b on a.create_user=b.id 
+		 
+		  where  a.aid=#aid#
+		limit #pageFristItem# , #pageSize#
+	</select>
+	
+	 
+	
+	
+	<select id="socityActivityProjectCount" resultClass="int">
+		select
+			 count(1) 
+			 from activity_project a 
+		 
+		  where a.status=#status# and a.aid=#aid#
+	 
+	</select>
+	
+	
+	<select id="socityActivityProjectList" resultMap="socityActivityProjectResult">
+		select
+			 <include refid="socityActivityProjectColumn" />
+			 from activity_project a  
+		 
+		  where a.status=#status# and a.aid=#aid#
+		limit #pageFristItem# , #pageSize#
+	</select>
+	
+	
+	
+	<select id="saleForEight" resultMap="baseResult">
+		select
+			<include refid="allColumn" />
+		from assoc_building_goods
+		b join goods g on b.goods_id =
+		g.id
+		<dynamic prepend="where">
+			<isEqual prepend="and" property="buildingId" compareValue="1">
+				b.building_id=1
+			</isEqual>
+			<isNotEqual prepend="and" property="buildingId"
+				compareValue="1">
+				(b.building_id=#buildingId# or b.building_id=0)
+			</isNotEqual>
+			<isNotEmpty prepend="and" property="type">
+				g.type = #type#
+			</isNotEmpty>
+		</dynamic>
+		order by g.id
+		limit 0,8
+	</select>
+	<select id="AuctionGoodsCount" resultClass="int">
+		select
+		count(1)
+		from assoc_building_goods b join goods g on b.goods_id =
+		g.id
+		<dynamic prepend="where">
+			<isEqual prepend="and" property="buildingId" compareValue="1">
+				b.building_id=1
+			</isEqual>
+			<isNotEqual prepend="and" property="buildingId"
+				compareValue="1">
+				(b.building_id=#buildingId# or b.building_id=0)
+			</isNotEqual>
+			<isNotEmpty prepend="and" property="type">
+				g.type = #type#
+			</isNotEmpty>
+		</dynamic>
+
+	</select>
+	<select id="AuctionGoodsList" resultMap="auctionResult">
+		select
+			<include refid="allColumn" />
+		from
+		assoc_building_goods b join goods g on b.goods_id =
+		g.id
+		<dynamic prepend="where">
+			<isEqual prepend="and" property="buildingId" compareValue="1">
+				b.building_id=1
+			</isEqual>
+			<isNotEqual prepend="and" property="buildingId"
+				compareValue="1">
+				(b.building_id=#buildingId# or b.building_id=0)
+			</isNotEqual>
+			<isNotEmpty prepend="and" property="type">
+				g.type = #type#
+			</isNotEmpty>
+		</dynamic>
+		order by g.id
+		limit #pageFristItem# , #pageSize#
+	</select>
+	
+	<update id="increaseSpecificNumById" parameterClass="java.util.Map">
+		<![CDATA[update goods set $numfield$=ifnull($numfield$,0)+#num# where id=#id:Integer#]]>
+	</update>
+	
+	<update id="increaseActivityClickNum"  >
+		<![CDATA[update activity set  click_num=click_num+1 where aid=#aid# ]]>
+	</update>
+	 
+	
+	<!-- 获取公司产品列表 -->
+	<select id="providerGoodsList" resultMap="baseResult">
+		select
+		<include refid="allColumn" />
+		from assoc_building_goods
+		b join goods g on b.goods_id =
+		g.id
+		<dynamic prepend="where">
+			<isEqual prepend="and" property="buildingId" compareValue="0">
+				b.building_id=0
+			</isEqual>
+			<isNotEqual prepend="and" property="buildingId"
+				compareValue="0">
+				b.building_id=#buildingId#
+			</isNotEqual>
+			<isNotEmpty prepend="and" property="providerId">
+				g.provider_id = #providerId#
+			</isNotEmpty>
+		</dynamic>
+		order by g.id
+		limit #pageFristItem# , #pageSize#
+	</select>
+	
+	
+	<!-- 获取公司count -->
+	<select id="providerGoodsCount" resultClass="int">
+		select
+		count(1)
+		from assoc_building_goods b join goods g on b.goods_id =
+		g.id
+		<dynamic prepend="where">
+			<isEqual prepend="and" property="buildingId" compareValue="0">
+				b.building_id=0
+			</isEqual>
+			<isNotEqual prepend="and" property="buildingId"
+				compareValue="0">
+				b.building_id=#buildingId# 
+			</isNotEqual>
+			<isNotEmpty prepend="and" property="providerId">
+				g.provider_id = #providerId#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<insert id="increaseClubMember" >
+		insert into 
+			club_member (
+				cmid,cid, uid, bid, name, status, nickname, mobile, gender,create_user,create_time, modify_user, modify_time
+			)
+			values(
+				#cmid#,#cid#, #uid#, #bid#, #name#, #status#, #nickname#, #mobile#, #gender#,#createUser#,#createTime#, #modifyUser#, #modifyTime#
+		)
+		 
+	</insert>
+	
+		<insert id="increaseActivityMember" >
+		insert into 
+			activity_member (
+				amid,bid, aid, cmid, name, nickname, mobile, gender, administrator,operator,create_user, create_time, modify_user,modify_time
+			)
+			values(
+				#amid#,#bid#, #aid#, #cmid#, #name#, #nickname#, #mobile#, #gender#, #administrator#,#operator#,#createUser#, #createTime#, #modifyUser#,#modifyTime#
+		)
+		 
+	</insert>
+	
+		<update id="updateActivityMember" >
+		 <![CDATA[update activity_member set name=#name#,mobile=#mobile# where amid=#amid# ]]>
+		 
+	</update>
+	
+	
+	<insert id="increaseLog" >
+		insert into 
+			log (
+				lid,cmid, bid, status,payment,pay_type, pay_flag, create_user, create_time, modify_user,modify_time,amount
+			)
+			values(
+				#lid#,#cmid#, #bid#, #status#, #payment#,#payType#, #payFlag#, #createUser#, #createTime#, #modifyUser#,#modifyTime#,#amount#
+		)
+		 
+	</insert>
+	
+		<insert id="increaseUserCostItem" >
+		insert into 
+			user_cost_item (
+				ucid,cmid, bid, apid, lid, name, flag, status, create_user,create_time,modify_user,modify_time
+			)
+			values(
+				#ucid#,#cmid#, #bid#, #apid#, #lid#, #name#, #flag#, #status#,#createUser#, #createTime#,#modifyUser#,#modifyTime#
+		)
+		 
+	</insert>
+	
+	
+		<update id="updateLog" >
+		 <![CDATA[update log set status=#status#  where lid=#lid# ]]>
+		 
+	</update>
+	
+	<update id="updateUserCostItem" >
+		 <![CDATA[update user_cost_item set status=#status#  where ucid=#ucid# ]]>
+		 
+	</update>
+	
+	
+  <statement id="increaseSeqno" parameterClass="java.lang.String">
+		<![CDATA[
+		update sequence set seqno=seqno+1
+		where tablename=#tablename:String#
+		]]>
+	</statement>
+	<statement id="getMaxSeqno" parameterClass="java.lang.String" resultClass="java.lang.Integer">
+		<![CDATA[
+		select seqno from sequence
+		where tablename=#tablename:Integer# order by seqno desc limit 1
+		]]>
+	</statement>
+	
+	 
+	
+	
+</sqlMap>

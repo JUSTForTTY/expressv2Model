@@ -1,0 +1,195 @@
+#set($layout="")
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="keywords" content="">
+<meta name="description" content=" 。">
+<meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+<title>物业快车</title>
+<link href="$appServer/style/css/css.css" type="text/css" rel="stylesheet" media="all" />
+<link rel="shortcut icon" href="$appServer/images/wifi.ico"/>
+</head>
+<body>
+<script>
+
+    var system ={
+        win : false,
+        mac : false,
+        xll : false
+    };
+    var p = navigator.platform;
+    system.win = p.indexOf("Win") == 0;
+    system.mac = p.indexOf("Mac") == 0;
+    system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);
+    if(!system.win&&!system.mac&&!system.xll){
+        window.location.href="http://wifi.qq.com/Mobile/index.html";
+    }
+ 
+     function  noopen(){
+     
+     alert("敬请期待!");
+     
+     }
+
+  
+</script>
+<div class="top" id="top_nav">
+<div class="top_in">
+    	<div class="logo">
+    	<img src="$appServer/upload/wuyekc.jpg" width=110 height=110 alt="">
+    	
+    		<img style="margin-bottom:20px;" src="$appServer/upload/logot.png" width=120 height=60 alt="">
+    	</div>
+    	
+    	 
+    	
+        <ul>
+        	<a href='$appServer/index2.htm'><li class="tab_active">首页</li></a>
+            <a href='$appServer/newsList.htm'  ><li class="tab_menu">企业资讯</li></a>
+            <a href='http://210.13.106.94:8001/Genius_mvc/bigevent/timeline?caid=9'  target=_parent ><li class="tab_menu">大事件</li></a>
+            <a href='$appServer/goods/normal/list.htm'><li class="tab_menu" style='width:110px'>产品展示</li></a>
+			<a href='javascript:void(0)' onclick="noopen()" ><li class="tab_menu" style='width:110px'>兴趣社团</li></a>
+            <a href='$appServer/block/aboutBlock.htm' target="_blank"><li style='width:110px'>关于我们</li></a>
+            <a href='$appServer/block/contactBlock.htm' target="_blank"><li style='width:110px'>在线留言</li></a>
+            
+              #if($!{userAgent})
+			 <li style="margin-left: 50px;width: 78px;height:32px;background:#E70834;border-radius:15px;color:white" role="presentation"><a href="$appServer/settle/order1Cart.htm" style="color:white">购物车 <span class="badge" id="chartCount">#if(${userAgent.tradeCart.itemcount})${userAgent.tradeCart.itemcount}#else 0 #end</span></a></li>
+			 <a href='$appServer/center/user/detail.htm'  ><li style="margin-left: 10px;width: 78px;height:32px;background:#E70834;border-radius:15px;color:white">会员中心</li></a>
+				<a href='$appServer/logout.htm'  ><li style="margin-left: 10px;width:78px;height:32px;background:#E70834;border-radius:15px;color:white">注销</li></a> 
+				 
+			  #else
+            
+             <a href='$appServer/login.htm'  ><li style="margin-left: 50px;width: 78px;height:32px;background:#E70834;border-radius:15px;color:white">登录</li></a>
+            <a href='$appServer/login/register.htm'  ><li style="margin-left: 10px;width:78px;height:32px;background:#E70834;border-radius:15px;color:white">注册</li></a>
+            
+            #end
+        </ul>
+  </div>
+</div>
+<div id="progress_nav">
+</div>
+<div class="main_wrap">
+	<div id="stage0">
+    <div class="block" style="position:relative;">
+              
+            <div id="red_bg" style="width:220%;left:90%;">
+            
+             <iframe name="weather_inc" src="$appServer/goods/picturess.htm" style="margin:0px 0px 0px 0px;" width=100%  height="1080"  frameborder="0" marginwidth="0" marginheight="0" scrolling="no" ></iframe>
+             
+                  
+            </div>
+			 
+           
+          
+            <div id="price">
+                  <iframe name="weather_inc" src="$appServer/goods/normal/iframeList.htm" style="margin:0px 0px 0px 0px;" width=100%  height="500px"  frameborder="0" marginwidth="0" marginheight="0" scrolling="no" ></iframe>
+            </div>	
+        </div>
+    </div>
+<div id="stage1">
+ 
+	
+	<iframe name="weather_inc" src="http://218.80.244.227:8001/Genius_mvc/bigevent/timeline?caid=9" style="margin:0px 0px 0px 0px;" width=100%  height="800px"  frameborder="0" marginwidth="0" marginheight="0" scrolling="no" ></iframe>
+	 
+	
+	</div>
+	 
+	<div id="stage2">
+	<div id="stage2_text">
+	<iframe name="weather_inc" src="$appServer/block/introduce.htm" style="margin:50px 0px 0px 0px;" width=100%  height="710px"  frameborder="0" marginwidth="0" marginheight="0" scrolling="no" ></iframe>
+	</div>
+	
+	</div>
+	
+	<div id="stage5">
+    <iframe name="weather_inc" src="$appServer/goods/news/iframeList.htm" style="margin:0px 0px 0px 0px;" width=100%  height="850px"  frameborder="0" marginwidth="0" marginheight="0" scrolling="no" ></iframe>
+         
+    </div>
+   
+	<div id="stage3" style="hieght:800px;background:url($appServer/images/scan2.jpg);"><div id="stage3_text" style="height:800px">
+	<iframe name="weather_inc" src="$appServer/block/about.htm" style="margin:0px 0px 0px 0px;" width=100%  height="850px"  frameborder="0" marginwidth="0" marginheight="0" scrolling="no" ></iframe>
+	 
+	</div></div>
+	<div id="stage4"><div id="stage4_text">
+	
+		<iframe name="weather_inc" src="$appServer/block/contact.htm" style="margin:0px 0px 0px 0px;" width=100%  height="850px"  frameborder="0" marginwidth="0" marginheight="0" scrolling="no" ></iframe>
+	 
+	</div></div>
+	 
+	<div id="stage6">
+	    <div style='position:relative;top:52%;text-align:center;'>
+            <a href='###' class="over_btn" onclick=ShowAppoint('bottom')></a>
+        </div>
+        
+        <img src="style/images/buy_text.png" class="hot-spot" id="play-video-btn" title="观看视频">
+
+    </div>
+    <div id="stage7">
+        <div id="bottom_div">
+            <div id="foot">
+             
+                <div id="link">
+                    <a href='http://www.wuyeok.com' rel="nofollow" target=_blank>关于物业快车</a>&nbsp;
+                    <span class='line_style'>|</span>&nbsp;
+                    <a href='' rel="nofollow" target=_blank>服务协议</a>&nbsp;
+                    <span class='line_style'>|</span>&nbsp;  
+                    <a href='' rel="nofollow" target=_blank>客户服务</a>&nbsp;<span class='line_style'>|</span>&nbsp;  
+                    <a href='' rel="nofollow" target=_blank>版权所有</a>
+                    
+                </div>
+                 <div style="position: relative;top: 52%;text-align: center;">
+                <img width="240" height="240" src="$appServer/upload/wuyekc.jpg"></img>
+                </div>
+                
+                <div id="copy_right" style="position: relative;top: 72%;text-align: center;">
+                    Copyright © 2008 - 2016  wuyeok. All Rights Reserved.<br/>
+                    物业快车公司 版权所有
+                </div>
+            </div>
+        </div>
+        <div id="icon_div">               
+            <div style='float:left;line-height:15px;height:15px'>关注我们:</div>
+            <div id="img_weixin" class='img_logo'>
+                <img src="style/images/float_qrcode.png">
+            </div>
+            <a href='http://weibo.com/quanminwifi' rel="nofollow" target=_blank onclick=pgvSendClick({hottag:"wifi.new.index.weibo"})><div id="img_weibo" class='img_logo'></div></a>
+            <a href='http://t.qq.com/qmwifi' rel="nofollow" target=_blank onclick=pgvSendClick({hottag:"wifi.new.index.txweibo"})><div id="img_t_weibo" class='img_logo'></div></a>
+            <br/><br/>
+            <!--<div>客服电话: &nbsp;&nbsp;0755-88888888</div>-->
+        </div>
+    </div> 
+</div>
+<div id="mask_div"></div>
+<div class="float-win" id="code_panel">
+    <div id="code_icon" onclick="CloseCode()"><li class="tips_close"></li></div>
+</div>
+<!--x0136e2eceh-->
+<div class="float-win" id="video-panel">
+	<div id="video">
+		<div id="video-content"></div>
+		<img src="style/images/video_close.png" id="video_close" style="top:-472px"/>
+	</div>
+</div>
+<div class="float-win" id="gift-display-panel">
+    <div id="code_icon" ><li class="tips_close"></li></div>
+</div>
+<script type="text/javascript" src="$appServer/style/js/jquery.js"></script>
+<script type="text/javascript" src="$appServer/style/js/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="$appServer/style/js/TweenMax.min.js"></script>
+<script type="text/javascript" src="$appServer/style/js/EasePack.min.js"></script>
+<script type="text/javascript" src='$appServer/style/js/html5media.min.js'></script>
+<script type="text/javascript" src='$appServer/style/js/script.js'></script>
+<script type="text/javascript" src="$appServer/style/js/ping.js"></script>
+<script language="javascript" src="$appServer/style/js/tvp.player_v2_jq.js" charset="utf-8"></script>
+<script type="text/javascript">
+if(typeof(pgvMain) == 'function') pgvMain({ repeatApplay: "true",virtualDomain:"wifi.qq.com"});
+</script>
+<!--[if IE 6]>
+<script type="text/javascript" src="style/js/PNG-min.js"></script>
+<script>
+  DD_belatedPNG.fix('#op5');
+</script>
+<![endif]-->
+</body>
+</html>

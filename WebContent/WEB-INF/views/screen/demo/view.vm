@@ -1,0 +1,7 @@
+
+<div class="box-wrap">
+    <p>以下每一个块都有独立的处理，每一个块需要200ms处理时间</p>
+#foreach($n in [0..${nums}])
+	$contain.get("/demo/subView.htm?num=${n}")
+#end
+</div>

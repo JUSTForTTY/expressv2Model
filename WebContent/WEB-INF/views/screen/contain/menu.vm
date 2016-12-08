@@ -1,0 +1,110 @@
+<div class="xj">
+	<div class="xjl">
+    	<div id="Categories">
+			<div class="Categoriestitle"><strong>当前帐号：$!{userAgent.userName}</strong></div>
+			<div class="Categoriestitle"><strong>预存款：$moneyUtil.getMoneyDesc($!{userAgent.prepay})元</strong></div>
+			<div class="Categoriestitle"><strong>积分：$!{userAgent.score}</strong></div>
+			<div id="categorieslist">
+			
+			<b><img src="$appServer/images/fgdw.png" width="3" height="5" /><a href="#">个人信息管理</a></b>
+			<ul style="margin-left:30px">
+  				<li><img src="$appServer/images/tye.png" width="3" height="5" /><a href="$appServer/center/user/detail.htm">我的信息</a></li>
+  				<li><img src="$appServer/images/tye.png" width="3" height="5" /><a href="$appServer/center/user/edit.htm">资料修改</a></li>
+  				<li><img src="$appServer/images/tye.png" width="3" height="5" /><a href="$appServer/center/user/password.htm">密码修改</a></li>
+			</ul>
+			
+ 			<b><img src="$appServer/images/fgdw.png" width="3" height="5" /><a href="#">订单管理</a></b>
+			<ul style="margin-left:30px">
+				<li><img src="$appServer/images/tye.png" width="3" height="5" /><a href="$appServer/center/order/list.htm">订单查询</a></li>
+				<li><img src="$appServer/images/tye.png" width="3" height="5" /><a href="$appServer/center/order/oldlist.htm">老订单查询</a></li>
+			</ul>
+			
+ 			<b><img src="$appServer/images/fgdw.png" width="3" height="5" /><a href="#">收藏管理</a></b>
+			<ul style="margin-left:30px">
+				<li><img src="$appServer/images/tye.png" width="3" height="5" /><a href="$appServer/center/collect/list.htm">商品收藏</a></li>
+				<li><img src="$appServer/images/tye.png" width="3" height="5" /><a href="$appServer/center/collect/providerList.htm">会员单位收藏</a></li>
+			</ul>
+ 			<b><img src="$appServer/images/fgdw.png" width="3" height="5" /><a href="#">资金管理</a></b>
+			<ul style="margin-left:30px">
+				<li><img src="$appServer/images/tye.png" width="3" height="5" /><a href="$appServer/center/fund/prepayLogList.htm">预存款流水</a></li>
+			</ul>
+			<b><img src="$appServer/images/fgdw.png" width="3" height="5" /><a href="#">库存管理</a></b>
+			<ul style="margin-left:30px">
+				<li><img src="$appServer/images/tye.png" width="3" height="5" /><a href="$appServer/goods/stock/list.htm">取货</a></li>
+				
+				<li><img src="$appServer/images/tye.png" width="3" height="5" /><a href="$appServer/goods/stock/historyList.htm">取货记录</a></li>
+			</ul>
+			<br /><br /><br />
+		</div>
+<script type="text/javascript">
+<!--
+function Pid(id,tag){
+	if(!tag){
+		return document.getElementById(id);
+		}
+	else{
+		return document.getElementById(id).getElementsByTagName(tag);
+		}
+}
+
+function tab(id,hx,box,iClass,s,pr){
+	var hxs=Pid(id,hx);
+	var boxs=Pid(id,box);
+	if(!iClass){ // 如果不指定class，则：
+		boxsClass=boxs; // 直接使用box作为容器
+	}
+	else{ // 如果指定class，则：
+		var boxsClass = [];
+		for(i=0;i<boxs.length;i++){
+			if(boxs[i].className.match(/\btab\b/)){// 判断容器的class匹配
+				boxsClass.push(boxs[i]);
+			}
+		}
+	}
+	if(!pr){ // 如果不指定预展开容器，则：
+		go_to(0); // 默认展开序列
+		yy();
+	}
+	else {
+		go_to(pr);
+		yy();
+	}
+	function yy(){
+		for(var i=0;i<hxs.length;i++){
+			hxs[i].temp=i;
+			if(!s){// 如果不指定事件，则：
+				s="onmouseover"; // 使用默认事件
+				hxs[i][s]=function(){
+					go_to(this.temp);
+				}
+			}
+			else{
+				hxs[i][s]=function(){
+					go_to(this.temp);
+				}
+			}
+		}
+	}
+	function go_to(pr){
+		for(var i=0;i<hxs.length;i++){
+			if(!hxs[i].tmpClass){
+				hxs[i].tmpClass=hxs[i].className+=" ";
+				boxsClass[i].tmpClass=boxsClass[i].className+=" ";
+			}
+			if(pr==i){
+				hxs[i].className+=" up"; // 展开状态：标题
+				boxsClass[i].className+=" up"; // 展开状态：容器
+			}
+			else {
+				hxs[i].className=hxs[i].tmpClass;
+				boxsClass[i].className=boxsClass[i].tmpClass;
+			}
+		}
+	}
+}
+tab("categorieslist","b","ul");
+//-->
+</script>
+	</div>
+    
+</div>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="LIKES">
+	<typeAlias alias="goods"
+		type="com.hundsun.jresplus.quickstart.biz.po.Goods" />
+
+	<resultMap id="baseResult" class="goods">
+		<result column="id" property="id" />
+		<result column="briefintro" property="briefintro" />
+		<result column="type" property="type" />
+		<result column="name" property="name" />
+		<result column="miniature" property="miniature" />
+		<result column="image1" property="image1" />
+		<result column="unit" property="unit" />
+		<result column="refprice" property="refprice" />
+		<result column="price" property="price" />
+		<result column="detailintro" property="detailintro" />
+		<result column="ordernum" property="ordernum" />
+		<result column="stocknum" property="stocknum" />
+		<result column="provider_id" property="providerId" />
+		<result column="viewnum" property="viewnum" />
+		<result column="salenum" property="salenum" />
+	</resultMap>
+
+	<sql id="allColumn">
+		g.id, g.briefintro, g.type, g.name, g.miniature,
+		g.image1,
+		g.unit, g.refprice, g.price, g.detailintro,
+		g.ordernum,
+		g.provider_id,g.viewnum,g.salenum,g.stocknum
+	</sql>
+
+	<update id="addLike" parameterClass="goods">
+		update
+		goods
+		set viewnum = ifnull(viewnum,0)+1
+		where id = #id#
+		
+	</update>
+
+</sqlMap>

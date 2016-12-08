@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta name="full-screen" content="yes">
+    
+</head>
+<body>
+ 
+
+
+
+<div class="c"></div>	<div id="bd">
+<div id="ban-in" style="background-image:url($appServer/images/topNews.jpg)">
+    <div class="ban-bg"></div>
+</div>
+
+
+
+<div class="wp">
+<div class="tit-i">
+    <h3>企业动态</h3>
+    <h5>PROVIDER <span>NEWS</span></h5>
+</div>
+<ul class="ul-list">
+
+
+   #foreach($item in $query.items)
+    <li>
+        <div class="pad">
+            <div class="pic"><a href="$appServer/newsDetail.htm?id=$item.id"><img src="$appServer/images/newslogo.jpg" alt=""></a></div>
+            <div class="bor">
+                <div class="txt">
+                    <div class="title">
+                        <span><em> $dateUtil.convertDateToString("MM/dd",$!{item.gmt_create})  </em>  $dateUtil.convertDateToString("yyyy",$!{item.gmt_create})</span>
+                        <h3><a href="news_info_5_317.html">$item.title</a></h3>
+                    </div>
+                    <a href="news_info_5_317.html"><p> </p></a>
+                </div>
+                <div class="more"><a href="$appServer/newsDetail.htm?id=$item.id" class="r">查看更多 ></a></div>
+            </div>
+        </div>
+    </li>
+
+    #end
+</ul>
+<div class="c"></div>
+ 
+<div class="pages">
+ #pager($query,"/newsList.htm") 
+     
+</div>
+ 
+</div>
+</div>
+<div class="c"></div>
+ 
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/lib.js"></script>
+
+</body>
+</html>

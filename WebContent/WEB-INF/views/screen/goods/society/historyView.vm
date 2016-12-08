@@ -1,0 +1,39 @@
+ #set($layout="")
+ <link href="$appServer/css/css.css" rel="stylesheet" type="text/css" />
+<link href="$appServer/css/style.css" rel="stylesheet" type="text/css" />
+<link href="$appServer/css/css.css" rel="stylesheet" type="text/css" />
+<link href="$appServer/css/style.css" rel="stylesheet" type="text/css" />
+<link href="$appServer/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+ 
+<link href="$appServer/css/validate.css" rel="stylesheet" type="text/css" />
+<script src="$appServer/js/jquery.min.js" type="text/javascript" ></script>
+<script src="$appServer/js/jquery-validate/jquery.validate.js" type="text/javascript" ></script>
+<script src="$appServer/js/jquery-validate/jquery-1.7.2.js" type="text/javascript" ></script>
+<script src="$appServer/js/jquery-validate/localization/messages_cn.js" type="text/javascript" ></script>
+<script src="$appServer/js/bootstrap.min.js" type="text/javascript" ></script>
+
+
+  <link rel="stylesheet" href="$appServer/assets/css/style.css" /> 
+  <link rel="stylesheet" href="$appServer/assets/css/page.css" /> 
+  <script src="$appServer/assets/js/jquery.js" type="text/javascript"></script> 
+  <script src="$appServer/assets/js/TweenMax.min.js" type="text/javascript"></script> 
+  <script src="$appServer/assets/js/page.js" type="text/javascript"></script> 
+  <script src="$appServer/assets/js/jquery.themepunch.revolution.min.js" type="text/javascript"></script> 
+  <script src="$appServer/assets/js/zzsc.js" type="text/javascript"></script> 
+  <script src="$appServer/assets/js/jquery.nicescroll.min.js" type="text/javascript"></script> 
+ #foreach($item in $newsQuery.items)
+ 
+   <a  href="$appServer/$item.url?id=$item.id"  target="_parent" >
+			<div class="xj11" style="height:67px;">
+			       
+			        <div class="xj13"><span style="width:150px;"><b style="float:left;margin-right:30px;">$item.title</b> <div  style="width:300px;float:left;">     <div style="float:left;"   id=""></div>           </span><h6></h6></div></div>
+			        <div class="xj14" style="float:right;width:200px"><span style="float:right;width:80px;">$velocityCount F</span> <h5 style="width:100px;float:right">$dateUtil.convertDateToString("yyyy-MM-dd", ${item.gmt_create})</h5></div>
+			      </div>
+			      </a>
+  
+ #end
+ 
+ 
+ <div style="float:left">
+ #pager($newsQuery,"/goods/society/historyView.htm")
+</div>

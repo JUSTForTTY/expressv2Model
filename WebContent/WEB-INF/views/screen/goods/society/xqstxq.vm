@@ -1,0 +1,130 @@
+#set($layout="")
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>兴趣社团详情</title>
+<link href="/css/css.css" rel="stylesheet" type="text/css" />
+<link href="/css/style.css" rel="stylesheet" type="text/css" />
+
+ 
+ <script type="text/javascript">
+function show(){
+	var date = new Date(); //日期对象
+	var ms1=document.getElementById("createtime").value;
+	var myDate= new Date(Date.parse(ms1.replace(/-/g, "/")));  
+	 
+	 
+	var ms= date.getTime()-myDate;
+	date.setTime(ms);
+	var time = "";
+	time = date.getFullYear()-1970+"年";
+	time = time + (date.getMonth())+"月";
+	time = time + date.getDate()+"日 ";
+	time = time + date.getHours()+"小时";
+	time = time + date.getMinutes()+"分钟";
+	
+	document.getElementById("timeDiv").innerHTML = time;  
+	 
+	 
+	}
+ 
+</script> 
+ 
+</head>
+
+<body onload="show()">
+    <div class="wytop">
+    	<div class="wytopwr">
+        	<span>欢迎进入物业快车网！</span>
+            <ul>
+            <li><a href="#">收藏我们</a></li>
+            <li><a href="#">帮助中心</a></li>
+            <li id="wr"><a href="#">会员中心</a></li>
+            </ul>
+        </div>  
+    </div>
+    <div class="menu">
+    <div class="menulg"><img src="/images/logo.png" width="327" height="53" /></div>
+    <div class="menusr">
+    	<ul>
+        <li><a id="mr" href="#">商品</a></li>
+        <li><a href="#">商品</a></li>
+        <li><a href="#">商品</a></li>
+        </ul>
+      <i><input class="Inpt" name="" type="text" /></i><input class="mserver" name="" type="submit" value=" " />
+    </div>
+    <div class="menukf"><a href="#"><img src="/images/kf.png" width="31" height="28" /></a><a class="menukftxt" href="#">客服中心</a></div>
+    </div>
+    <div class=" menunav">
+    	<div class="menunav02">
+        	<ul>
+            <li><a id="menubg" href="/goods/index.htm">首 页</a></li>
+            <li><a href="/ywfw.html">物业信息</a></li>
+            <li><a href="/zxzx.html">最新资讯</a></li>
+            <li><a href="/goods/sale/mrcx.htm">每日促销</a></li>
+            <li><a href="/goods/provider/hydw.htm">会员单位</a></li>
+            <li><a href="/goods/house/kcxx.htm">房产信息</a></li>
+            <li style="border-right:1px solid #f4f4f4"><a href="/goods/normal/list.htm">商品信息</a></li>
+            </ul>
+        </div>
+    </div>  
+    <div class="xxban"></div> 
+
+<div class="xqstxq">
+	<div class="xqstxq02"><img src="$imageServer.get($goods.miniature)" width="272" height="321" /></div>
+    <div class="xqstxq03">
+    	<span><a href="#">$goods.name</a></span>
+        <h6>圈子介绍：</h6><br />
+<h5>$goods.briefintro</h5>
+    </div>
+    <div class="xqstxq04">
+    	<div class="xqstxq05"><i></i>圈子成员：</div>
+        <div class="xqstxq06"><img src="/images/fdsgd.png" width="81" height="82" /><strong><a href="#">明月照心人</a></strong><span>最近发表：<br />
+好久没冒泡了
+</span></div>
+<div class="xqstxq06"><img src="/images/fdsgd.png" width="81" height="82" /><strong><a href="#">明月照心人</a></strong><span>最近发表：<br />
+好久没冒泡了
+</span></div>
+<div class="xqstxq06"><img src="/images/fdsgd.png" width="81" height="82" /><strong><a href="#">明月照心人</a></strong><span>最近发表：<br />
+好久没冒泡了
+</span></div>
+    </div>
+</div>
+<div class="xqstxq07">粉丝人数：20<input name="" type="submit" value="马上加入" /></div>
+<div class=" kchydwq07"><span>帖子话题</span><h6><a href="#">上一页</a></h6><h5><a href="#">下一页</a></h5></div>
+<div class="xqstxq08">
+#if($commentQuery.items && $commentQuery.items.size()>0)
+		#foreach($item in $commentQuery.items)
+			<div class="xj11">
+			      	<div class="xj12"><img src="$imageServer.get($goods.miniature)" width="47" height="43" /></div>
+			        <div class="xj13"><span><b style="float:left;margin-right:30px;">$item.username</b> <div  style="width:300px;float:left;">   <div style="float:left;"   id="timeDiv"></div>  <div style="float:left">前 </div> </div>    <input id="createtime" type="hidden" value="$item.createtime">   </span><h6>$item.content</h6></div>
+			        <div class="xj14"><span>31F</span><h6> 回复丨赞同</h6><h5>（0）</h5></div>
+			      </div>
+   		 #end
+#end
+#pager($query,"/goods/society/xqstxq.vm")   
+</div>
+<div class="xqstxq09">
+	<div class=" xqstxq10">
+    	<img src="/images/fdgfdsg.png" width="48" height="48" />
+<ul>
+      <li><input name="" type="radio" value="" />我要回帖</li>
+        <li><input name="" type="radio" value="" />我要发帖</li>
+      </ul>
+  </div>
+  <form method="post" action="create.htm">
+   
+  <input  name="id" value="${id}" type="hidden">
+  
+    <div class=" xqstxq11"><textarea name="content" cols="" rows=""></textarea></div>
+    <div class="xqstxq12"><input name="" type="submit" value="提交" /></div>
+    </form>
+</div>
+<div class="chear"></div>
+<div class="footer">
+<div class="footer02"><span><a href="#">会员单位</a> |    <a href="#">服务条款</a> |    <a href="#">付款方式</a> |    <a href="#">厂商加盟</a> |    <a href="#">联系我们</a> |    <a href="#">友情链接</a> |    <a href="#">帮助</a><br />
+  
+                         Copyright © 2004-2014  快车jk.com 版权所有</span>
+  </div>
+</div>
+</body>
+</html>

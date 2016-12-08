@@ -1,0 +1,88 @@
+#set($menu = "credit")
+<link rel="stylesheet" type="text/css" href="$appServer/css/style_category.css" />
+<link rel="stylesheet" type="text/css" href="$appServer/css/jquery.tmailsilder.v2.css" />
+<style type="text/css">
+.kchydwq13 ul li {
+    color: #999999;
+    float: left;
+    width: 134px;
+}
+</style>
+<script type="text/javascript" src="$appServer/js/jquery.min.js"></script> 
+<script type="text/javascript" src="$appServer/js/jquery.tmailsilder.v2.js"></script>
+<script type="text/javascript" src="$appServer/js/chart.js"></script>
+<div class=" kcfl">
+	<!--<div class="kcfl01"><span>分类</span><img src="/images/kcxx_06.png" width="5" height="3" /></div> -->
+	<form id="searchForm" action="$appServer/goods/credit/list.htm" method="post">
+	<div class="kcfl02" style="width:600px;">
+		 
+		<div class="kcfl03"><input id="name" name="name" type="text" value="$!{query.name}" /></div>
+		<div class="kcfl04" style="padding-left: 10px;"><input name="searchButton" type="submit" value="搜索" /></div>
+		<div class="kcfl04" style="padding-left: 10px;"><input name="resetButton" type="button" value="重置" onclick="$('#name').val('');$('#searchForm').submit();" />
+		 
+		 
+		</div>
+		</div>
+		<!-- Center START -->
+<div style="overflow: hidden;">
+<div class="sw_container">
+<div style="height: 2000px;"></div>
+</div>
+</div>
+</div>
+		 </form>
+		
+	</div>
+	<div class=" kcfl pages">
+    <div style="background-color: #17c677;display: inline;height: 28px;float:left;margin: 16px 10px; 0 10px;">
+    	<span style="color: #fff;display: inline;float: left;line-height: 28px;margin: 0 10px 0 10px;font-size: 15px;font-weight: 700;">$!{categoryCurrent.parent_name} </span>
+    	<span style="color: #fff;display: inline;float: left;line-height: 28px;margin: 0 10px 0 10px;">&gt; $!{categoryCurrent.name}</span>
+    </div>
+    #pager($query,"/goods/credit/list.htm")
+</div>
+	 
+	 
+	 
+</div>
+<div class="kchydwq08" >
+	#if($query.items && $query.items.size()>0)
+		#foreach($item in $query.items)
+		 
+			<input type="hidden" name="id" value="$item.id"/>
+			<input type="hidden" name="goodsNum" value="1"/>
+			<input type="hidden" name="address" value="/goods/credit/list.htm"/>
+			<div class="kchydwq09">
+		    	<div class="kchydwq10"><img src="$imageServer.get($item.miniature)" width="188" height="188" /></div>
+		        <div class="kchydwq11">
+		        	<div class="kchydwq12"><a href="detail.htm?id=$item.id">$!item.name</a></div>
+		            <div class="kchydwq13">
+		            	<ul>
+		                <li>积&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分：<strong>#if($!item.price)$NumberTool.format("#0",$!item.price) #else 面议 #end</strong><input type="hidden" id="goodsId" value="$item.id"/></li>
+		                          <li>预存款:<strong>#if($!item.refprice)$NumberTool.format("#0",$!item.refprice)#end</strong></li>
+		                <li>销售数量：<strong>#if($!item.salenum)$!item.salenum #else 0 #end</strong></li>
+		               <li>库&nbsp;&nbsp;存：<strong>#if($!item.stocknum)$!item.stocknum #else 0 #end</strong></li>
+		                </ul>
+		            </div>
+		           <script>
+		           		$((document).ready(function(){
+		           			
+		           		})
+		           </script>
+		        </div>
+		    </div>
+		  
+    	#end
+	#end
+	  </div>
+    <div class="clear"></div>
+     
+ 
+   
+    <!--分页报错-->
+</div>
+<div style="width:800px;>
+ #pager($query,"/goods/credit/list.htm")
+   </div>
+ <script type="text/javascript">
+$('#Z_TMAIL_SIDER_V2').Z_TMAIL_SIDER_V2();
+</script>

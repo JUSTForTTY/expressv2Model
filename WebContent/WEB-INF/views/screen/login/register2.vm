@@ -1,0 +1,108 @@
+<script src="$appServer/js/register.js" type="text/javascript" ></script>    	
+<script src="http://apps.bdimg.com/libs/jquery/1.8.0/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+
+<script type="text/javascript">
+function validate(){
+var username = document.getElementById("username").value.trim();
+var passwd = document.getElementById("passwd").value.trim();
+var passwdConfirm = document.getElementById("passwdConfirm").value.trim();
+var realname = document.getElementById("realname").value.trim();
+var nickname = document.getElementById("nickname").value.trim();
+var buildingId = document.getElementById("buildingId").value.trim();
+
+	if (username == "" ||username==null) {
+				alert("请输入帐号！");
+				 document.getElementById("username").focus();
+				return false;
+			}
+	if (passwd == "" ||passwd==null) {
+				alert("请输入密码！");
+				 document.getElementById("passwd").focus();
+				return false;
+			}
+
+	if (passwdConfirm == "" ||passwdConfirm==null) {
+				alert("请确认密码！");
+				 document.getElementById("passwdConfirm").focus();
+				return false;
+			}
+
+			if (passwdConfirm != passwd) {
+				alert("密码不一致！");
+			     document.getElementById("passwdConfirm").focus();
+				return false;
+			}
+	
+	if (realname == "" ||realname==null) {
+				alert("请输入姓名！");
+				 document.getElementById("realname").focus();
+				return false;
+			}
+	if (nickname == "" ||nickname==null) {
+				alert("请输入昵称！");
+				 document.getElementById("nickname").focus();
+				return false;
+			}
+	if (buildingId == "" ||buildingId==null) {
+				alert("请选择楼宇！");
+				 document.getElementById("buildingId").focus();
+				return false;
+			}
+
+    document.getElementById("inputForm").submit();
+}
+
+</script>
+<div class=" zczh3"><span>免费注册</span></div>    
+<div class="zczh2">
+<div class="zczh4">
+<form action="/doRegister.htm" method="post" id="inputForm">
+<input id="id" name="id" type="hidden" value="" />
+<ul>
+<li><span>账号</span><input id="username" value="" name="username" type="text" class="required username"  maxlength="32"/>
+							<label class="error"></label></li>
+<li><span>密码</span><input id="passwd" name="passwd" value="" type="password" class="required" maxlength="16" />
+							<label class="error"></label></li>
+<li><span>确认密码</span><input id="passwdConfirm" name="passwdConfirm" value="" type="password" class="required" maxlength="16"  />
+							<label class="error"></label></li>
+<li><span>真实姓名</span><input id="realname" name="realname" value="" type="text" class="required" maxlength="32"  />
+							<label class="error"></label></li>
+<li><span>江湖昵称</span><input id="nickname" name="nickname"  value="" type="text" class="required" maxlength="32"  />
+							<label class="error"></label></li>
+<li>
+	<span>公司名称</span>
+	<input id="recusername" name="recusername" type="text" maxlength="50" />
+	<label class="error"></label>
+</li>
+<li><span>邮箱</span><input id="email" name="email" type="text" class="required email" maxlength="32" />
+							<label class="error"></label></li>
+<li><span>性别</span>
+	<input id="gender" name="gender" type="radio" style="width: 28px;" class="required" value="男" checked="checked" /><span style="width: 30px; margin-right: 20px;">男</span>
+	<input id="gender" name="gender" type="radio" style="width: 28px;" class="required" value="女" /><span style="width: 30px; margin-right: 20px;">女</span>
+	<label class="error"></label>
+</li>
+<li><span>电话号码</span><input id="mobile" name="mobile" type="text" class="required mobile" maxlength="11" />
+							<label class="error"></label></li>
+<li><span>地址</span><input id="address" name="address" type="text" maxlength="50" />
+							<label class="error"></label></li>
+<li><span>楼宇</span>
+	<select id="buildingId" name="buildingId" class="required">
+		<option value="">请选择</option>
+		#foreach($e in $!list)
+			#if("$e.id" != "0" && "$e.id" != "1")
+		  		<option value="$e.id">$e.buildingName</option>
+		  	#end
+		#end
+	</select>
+	<label class="error"></label></li>
+</li>
+</ul>
+<div class=" zczh11"><input name="" type="butten" onclick="validate()" value="注册" /></div>
+</form>
+</div>
+<div class="zczh6">
+<div class="zczh9">已有帐号？立即登录</div>
+<div class="zczh10"><a href="login.htm">登 录</a></div>
+</div>
+</div>

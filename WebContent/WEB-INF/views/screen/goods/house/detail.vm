@@ -1,0 +1,77 @@
+#set($menu = "house")
+<link rel="stylesheet" type="text/css" href="$appServer/css/style_category.css" />
+<link rel="stylesheet" type="text/css" href="$appServer/css/jquery.tmailsilder.v2.css" />
+<script type="text/javascript" src="$appServer/js/jquery.min.js"></script> 
+<script type="text/javascript" src="$appServer/js/jquery.tmailsilder.v2.js"></script>
+
+	<div class="kcfl05">
+	<a href="$appServer/goods/normal/list.htm?name=$!{categoryCurrent.tag1}">$!{categoryCurrent.tag1}</a> 
+	<a href="$appServer/goods/normal/list.htm?name=$!{categoryCurrent.tag2}">$!{categoryCurrent.tag2}</a> 
+	<a href="$appServer/goods/normal/list.htm?name=$!{categoryCurrent.tag3}">$!{categoryCurrent.tag3}</a> 
+	<a href="$appServer/goods/normal/list.htm?name=$!{categoryCurrent.tag4}">$!{categoryCurrent.tag4}</a> 
+	<a href="$appServer/goods/normal/list.htm?name=$!{categoryCurrent.tag5}">$!{categoryCurrent.tag5}</a> 
+	</div>
+</div>
+
+</div>
+
+<!-- Center START -->
+<div style="overflow: hidden;">
+<div class="sw_container">
+ 
+</div>
+</div>
+</div>
+
+
+</div>
+	
+		</div>
+	</form>
+</div>
+
+ 
+<div class="kcxxq">
+    	<div class="kcxxq02"><img src="$goods.image1" width="405" height="359" /></div>
+        <div class="kcxxq03">
+        	<div class="kcxxq04">$goods.name</div>
+            <div class="kcxxq05">
+            	<ul>
+                <li><span>价格</span> <strong>$!goods.price</strong></li>
+                <li><span>概况</span> $!goods.briefintro</li>
+                <li><span>楼层</span></li>
+                <li><span>区域</span></li>
+                <li><span>地址</span></li>
+                <li><span>联系人</span></li>
+                </ul>
+                  
+            </div>
+        </div>
+</div>
+<div class="kcxxq06"><span>请联系我</span></div>
+  
+ <form method="post" action="add.htm">      
+<div class="kcxxq07">
+	<ul>
+	  <input name="id" type="hidden" value="$goods.id" />
+    <li><span>尊称 : </span><input name="name" type="text" /></li>
+    <li><span>电话 : </span>
+    
+    
+    <input name="tel" type="text" /></li>
+    </ul>
+  <div class="kcxxq08">
+    	<span>留言: </span><textarea name="message" cols="" rows=""></textarea>
+      <input type="submit" value="提交" />
+    </div>
+</div>
+</form>
+ 
+   <div class="chear" ></div>
+ 
+
+<script type="text/javascript">
+$('#Z_TMAIL_SIDER_V2').Z_TMAIL_SIDER_V2();
+</script>
+</body>
+</html>

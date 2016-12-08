@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="PREPAY_LOG">	
+    <typeAlias alias="prepayLog" type="com.hundsun.jresplus.quickstart.biz.po.PrepayLog" />
+    
+    <resultMap class="prepayLog" id="baseResult">
+		<result column="id" 					property="id" />
+		<result column="user_id" 				property="user_id" />
+		<result column="orderinfo_id" 			property="orderinfo_id" />
+		<result column="paysum" 				property="paysum" />
+		<result column="paytype" 				property="paytype" />
+		<result column="paytime" 				property="paytime" />
+		<result column="remark" 				property="remark" />
+		<result column="creator" 				property="creator" />
+		<result column="createtime" 			property="createtime" />
+    </resultMap>
+    
+    <resultMap class="prepayLog" id="resultWithCreatorName" extends="baseResult">
+		<result column="creator_name" 			property="creatorName" />
+    </resultMap>
+    
+    <sql id="allColumn">
+    	id,user_id,orderinfo_id,paysum,paytype,paytime,remark,creator,createtime
+    </sql>
+    
+    <sql id="allColumnT">
+    	t.id,t.user_id,t.orderinfo_id,t.paysum,t.paytype,t.paytime,t.remark,t.creator,t.createtime
+    </sql>
+    
+	<insert id="insertPrepaylog" parameterClass="prepayLog">
+		<![CDATA[
+		insert into prepaylog (id,user_id,orderinfo_id,paysum,paytype,paytime,remark,creator,createtime)
+		values (#id:Integer#,#user_id:Integer#,#orderinfo_id:Integer#,#paysum:Double#,#paytype:String#,#paytime:Date#,#remark:String#,#creator:Integer#,#createtime:Date#)
+		]]>
+		<selectKey resultClass="java.lang.Long" keyProperty="id">
+			SELECT @@IDENTITY AS id
+		</selectKey>
+	</insert>
+	
+	<select id="getPaginationCount" resultClass="int">
+		select
+			count(1)
+		from prepaylog
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="userId">
+				user_id = #userId# 
+			</isNotEmpty>	
+			<isNotEmpty prepend="and" property="payType">
+				paytype = #payType#
+			</isNotEmpty>	
+			<isNotEmpty prepend="and" property="startDate">
+				createtime &gt;= str_to_date(#startDate#,'%Y-%m-%d')
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="endDate">
+				createtime &lt; str_to_date(#endDate#,'%Y-%m-%d')
+			</isNotEmpty>	
+		</dynamic>
+	</select>
+	
+	<select id="getPaginationList" resultMap="resultWithCreatorName">
+		select
+			<include refid="allColumnT" />, u.realname as creator_name
+		from prepaylog t
+		left join user u
+		on t.creator = u.id
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="userId">
+				user_id = #userId# 
+			</isNotEmpty>	
+			<isNotEmpty prepend="and" property="payType">
+				paytype = #payType#
+			</isNotEmpty>	
+			<isNotEmpty prepend="and" property="startDate">
+				paytime &gt;= str_to_date(#startDate#,'%Y-%m-%d')
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="endDate">
+				paytime &lt; str_to_date(#endDate#,'%Y-%m-%d')
+			</isNotEmpty>	
+		</dynamic>
+		order by id desc
+		limit #pageFristItem# , #pageSize#
+	</select>
+</sqlMap>

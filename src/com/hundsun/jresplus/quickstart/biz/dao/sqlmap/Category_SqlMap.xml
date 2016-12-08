@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="CATEGORY" >
+	<typeAlias alias="category" type="com.hundsun.jresplus.quickstart.biz.po.Category"/>
+	<typeAlias alias="categoryQuery" type="com.hundsun.jresplus.quickstart.biz.query.CategoryQuery"/>
+	
+	<resultMap class="category" id="baseResult">
+		<result column="id" 			property="id" />
+		<result column="name" 			property="name" />
+		<result column="remark" 		property="remark"  />
+		<result column="sort" 			property="sort" />
+		<result column="parent_id" 		property="parent_id" />
+		<result column="image" 			property="image" />
+		<result column="url" 			property="url" />
+		<result column="goodsnum" 		property="goodsnum" />
+		<result column="isopen" 		property="isopen" />
+		<result column="tag1" 			property="tag1" />
+		<result column="tag2" 			property="tag2" />
+		<result column="tag3" 			property="tag3" />
+		<result column="tag4" 			property="tag4" />
+		<result column="tag5" 			property="tag5" />
+		
+	</resultMap>
+	
+	<resultMap class="category" id="parentResult" extends="baseResult">
+		<result column="parent_name" 	property="parent_name" />
+	</resultMap>
+	
+  	<sql id="allColumn">
+	  	id,name,remark,sort,
+		parent_id,image,url,goodsnum,
+		isopen,tag1,tag2,tag3,tag4,tag5
+  	</sql>
+
+	<select id="getListByBuildingId" resultMap="baseResult">
+		SELECT
+			c.*
+		FROM
+			category c
+		WHERE
+			c.parent_id IS NULL
+		OR 1 > c.parent_id
+		and c.isopen = 1
+		AND EXISTS(
+			SELECT
+				1
+			FROM
+				assoc_building_category
+			WHERE
+				c.id = assoc_building_category.category_id
+			AND assoc_building_category.building_id IN(#buildingId# , 0)
+		)
+	</select>
+	
+	<select id="getListByParentId" resultMap="baseResult">
+		SELECT
+			<include refid="allColumn"/>
+		FROM
+			category c
+		WHERE
+			c.isopen = 1
+		and c.parent_id = #parentId#
+	</select>
+	
+	<select id="getCategoryById" resultMap="baseResult">
+		SELECT
+			<include refid="allColumn"/>
+		FROM
+			category c
+		WHERE
+			c.id = #id#
+	</select>
+	
+	<select id="getCategoryByIdWithParent" resultMap="parentResult">
+		SELECT
+	  		c.id,c.name,c.remark,c.sort,
+			c.parent_id,c.image,c.url,c.goodsnum,
+			c.isopen,c.tag1,c.tag2,c.tag3,c.tag4,c.tag5,
+			c1. NAME parent_name
+		FROM
+			category c
+		LEFT JOIN category c1 ON c.parent_id = c1.id
+		WHERE
+			c.id = #id#
+	</select>
+</sqlMap>

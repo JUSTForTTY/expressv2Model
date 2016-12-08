@@ -1,0 +1,209 @@
+#set($layout="")
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta name="full-screen" content="yes">
+    <link rel="stylesheet" href="$appServer/css/cui.css" />
+    <link rel="stylesheet" href="$appServer/css/style.css" />
+    <link rel="stylesheet" href="$appServer/css/less.css" />
+</head>
+<body>
+
+<div id="hd">
+    <div class="wp">
+        <div class="logo"><a href="index1"><img src="$appServer/images/logo.png" alt=""></a></div>
+        <div id="nav">
+            <ul>
+              <li><a href="$appServer/index.htm"   >首页</a></li>
+                <li><a href="$appServer/newsList.htm" >企业资讯</a></li>
+                <li><a href="$appServer/block/timeline.htm" >大事件</a></li>
+                <li><a href="$appServer/goods/normal/list.htm"   style="color:#019eef; border-bottom:3px solid #019eef;">产品展示</a></li>
+                <li><a href="$appServer/block/about.htm" >企业简介</a></li>
+                <li><a href="$appServer/block/contact.htm">关于我们</a></li>
+            </ul>
+        </div>
+        <div class="tel">021-64822088</div>
+    </div>
+</div>
+<div class="c"></div>
+<div id="m-hd">
+    <a href="index1" class="m-logo"><img src="$appServer/images/logo.png" alt=""></a>
+    <div class="m-trigger"></div>
+    <ul class="m-nav">
+        <li><a href="index.html" class="v1">首页 </a></li>
+        <li><a href="about.html" class="v1">企业资讯</a></li>
+        <li><a href="service.html" class="v1">大事件</a></li>
+        <li><a href="case.html" class="v1">产品展示</a></li>
+        <li><a href="news.html" class="v1">文化娱乐</a></li>
+        <li><a href="contact.html" class="v1">关于我们</a></li>
+    </ul>
+</div>
+
+
+<div class="c"></div>	<div id="bd">
+<div id="ban-in" style="background-image:url($appServer/images/topGoods.jpg)">
+    <div class="ban-bg"></div>
+</div>
+
+<!--关键字菜单-->
+<div class="wp">
+<div class="tit-i">
+    <h3>产品展示</h3>
+    <h5><span>Goods</span>Show</h5>
+</div>
+<div class="sub-nav">
+     
+</div>
+<div class="c"></div>
+<!--案例列表-->
+<ul class="ul-case">
+
+	#foreach($item in $query.items)
+    <li>
+        <div class="block" >
+            <div class="pic"><img   src="http://www.wuyeok.com/$item.miniature" alt=""></div>
+            <div class="txt">
+                <a href="http://www.wuyeok.com/goods/normal/detail.htm?id=$item.id" style="width:100%;height:100%;display:block;">
+                    <b></b>
+                    <div class="pad">
+                        <h5>会员单位</h5>
+                        <em></em>
+                        <h3>$item.name</h3>
+                        <span class="more">查看详情</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </li>
+    #end
+</ul>
+<div class="c"></div>
+<div class="pages">
+
+      #pager($query,"//goods/normal/list.htm") 
+</div>
+</div>
+</div>
+<div class="c"></div>
+
+<div id="fd" class="index-fd pr">
+    <div class="map-bg3"></div>
+    <div class="wp">
+        <div class="fd-top">
+            <dl>
+                <dt>企业咨询</dt>
+                <dd>
+                    <ul class="ul-fd">
+                        <li><a href="">我们是谁</a></li>
+                        <li><a href="">我们服务的客户</a></li>
+                        <li><a href="">我们的团队</a></li>
+                        <li><a href="">客户监控系统</a></li>
+                    </ul>
+                </dd>
+            </dl>
+            <dl>
+                <dt>大事件</dt>
+                <dd>
+                    <ul class="ul-fd">
+                        <li><a href="">网站建设</a></li>
+                        <li><a href="">H5响应式 交互网站</a></li>
+                        <li><a href="">移动端 & 微网站定制</a></li>
+                        <li><a href="">服务流程</a></li>
+                        <li><a href="">行业解决方案</a></li>
+                    </ul>
+                </dd>
+            </dl>
+            <dl>
+                <dt>产品展示</dt>
+                <dd>
+                    <ul class="ul-fd">
+                        <li><a href="">移动微站</a></li>
+                        <li><a href="">平台电商</a></li>
+                        <li><a href="">HTML5</a></li>
+                        <li><a href="">企业网站</a></li>
+                        <li><a href="">集团公司</a></li>
+                        <li><a href="">加工制造</a></li>
+                        <li><a href="">酒店餐饮</a></li>
+
+                    </ul>
+                </dd>
+            </dl>
+            <dl>
+                <dt>文化生活</dt>
+                <dd>
+                    <ul class="ul-fd">
+                        <li><a href="">公司动态</a></li>
+                    </ul>
+                </dd>
+            </dl>
+            <dl>
+                <dt>关于我们</dt>
+                <dd class="pr">
+                    <p><a href="" class="weixin"></a><a href="" class="sina"></a><span class="weixin-pic"><img src="$appServer/images/ewm.jpg" alt=""></span></p>
+                    <p><b class="tel">021-64822088</b></p>
+                    <h5>服务热线</h5>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="fd-copy">
+        <div class="wp">
+            <p>
+                <span>上海云河信息有限公司 Copyright&copy; 2012-2016 </span><a href=""><span>上海光大会展中心B座光大梦工厂</span></a> <a href=""></a>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="side">
+    <ul>
+        <li><a href=""><div class="sidebox"><img src="$appServer/images/side_icon02.png">在线咨询</div></a></li>
+        <li><a href=""><div class="sidebox"><img src="$appServer/images/side_icon01.png">在线咨询<!-- QQ: --></div></a></li>
+        <li><a href="javascript:void(0);" ><div class="sidebox"><img src="$appServer/images/side_icon03.png">021-64822088</div></a></li>
+    </ul>
+</div>
+<div class="side2">
+    <ul>
+        <li><a href=""><img src="$appServer/images/r_icon1.png" alt=""></a><div class="weixin"><em></em><img src="$appServer/images/ewm.jpg" alt=""></div></li>
+        <li><a href="javascript:goTop();" class="sidetop"><img src="$appServer/images/r_icon2.png"></a></li>
+    </ul>
+</div>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/lib.js"></script>
+<script>
+    var isMobile;
+    function mobileCheck(){
+        isMobile  = $('#m-hd').is(':visible');
+    }
+
+    $(window).resize(function(event) {
+        mobileCheck();
+        $('.ul-case li').removeClass('on');
+        if(isMobile){
+            $('.ul-case').attr('id','ul-mobile');
+        }else{
+            $('.ul-case').attr('id','ul-pc');
+        }
+    });
+
+    $('body').on('mouseenter mouseleave', '#ul-pc li', function(){
+        $(this).toggleClass('on');
+    })
+
+    $('body').on('click', '#ul-mobile li', function(){
+        $(this).toggleClass('on');
+    })
+
+    $(window).load(function(){
+        $(window).trigger('resize');
+    })
+</script>
+</body>
+</html>

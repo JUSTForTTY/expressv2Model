@@ -1,0 +1,71 @@
+#set($layout="")
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link href="$appServer/assets2/css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- Custom Theme files -->
+<link href="$appServer/assets2/css/style2.css" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!--webfont-->
+<link href="http://www.wuyeok.com/resource/cms/default/css/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="$appServer/assets2/js/jquery-1.11.1.min.js"></script>
+<script src="$appServer/assets2/js/jquery.easydropdown.js"></script>
+<script src="$appServer/assets2/js/responsiveslides.min.js"></script>
+<script>
+    $(function () {
+      $("#slider").responsiveSlides({
+      	auto: true,
+      	nav: true,
+      	speed: 100,
+        namespace: "callbacks",
+        pager: true,
+      });
+    });
+</script>
+<script src="$appServer/assets2/js/easyResponsiveTabs.js" type="text/javascript"></script>
+		    <script type="text/javascript">
+			    $(document).ready(function () {
+			        $('#horizontalTab').easyResponsiveTabs({
+			            type: 'default', //Types: default, vertical, accordion           
+			            width: 'auto', //auto or any width like 600px
+			            fit: true   // 100% fit in a container
+			        });
+			    });
+</script>	
+</head>
+<body>
+
+<div class="slider">
+	  <div class="callbacks_container">
+	      <ul class="rslides" id="slider">
+			 #foreach($item in $newsList)
+            <li><a href="http://www.wuyeok.com/$item.url" target="_parent"><img src="http://www.wuyeok.com/$item.image" class="img-responsive" alt=""/></a></li>
+             #end
+	      </ul>
+		  
+   <div style="width:100%;float:left;height:auto">
+ 	 <div class=" wyfwzxte" style="width:85%;float:initial;margin-top:60px;margin-left:auto;margin-right:auto;">
+	<h6 style="font-size:34px;">天天特价</h6>
+	<h5 style="font-size:24px;">天天特价 </h5>
+	<span style="width:184px;line-height:46px;height:54px;margin-top:0px;font-size:24px;><a href="/goods/sale/list.htm" >更多详情 </a></span></div>
+		 
+	  </div>
+	  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

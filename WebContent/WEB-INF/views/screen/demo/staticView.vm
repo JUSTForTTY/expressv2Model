@@ -1,0 +1,9 @@
+
+<div class="box-wrap">
+    <p>以下块第一次展示慢后续再展示会很快,但块中的时间不会变化,过20s后再刷新就会变化（页面块静态化）</p>
+#cache("staticDemoView",false,20)
+#foreach($n in [0..${nums}])
+	$contain.get("/demo/subView.htm?num=${n}")
+#end
+#end
+</div>

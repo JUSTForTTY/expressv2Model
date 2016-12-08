@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="CHANNEL">
+	<typeAlias alias="channel"
+	type="com.hundsun.jresplus.quickstart.biz.po.Channel" />
+
+	<typeAlias alias="indexcustom"
+	type="com.hundsun.jresplus.quickstart.biz.po.IndexCustom" />
+	
+	<typeAlias alias="codemaster"
+	type="com.hundsun.jresplus.quickstart.biz.po.Codemaster" />
+	
+
+		
+	<resultMap id="baseResult" class="channel">
+		<result column="id" 			property="id" />
+		<result column="name" 			property="name" />
+		<result column="is_display" 			property="is_display" />
+		<result column="sort" 			property="sort" />
+		<result column="status" 	property="status" />
+		<result column="logo" 	property="logo" />
+		<result column="remark" 	property="remark" />
+		<result column="url" 	property="url" />
+		<result column="create_time" 	property="createTime" />
+		<result column="modify_time" 	property="modifyTime" />
+		<result column="pic" 	property="pic" />
+	</resultMap>
+	
+	<resultMap id="customResult" class="indexcustom">
+		<result column="id" 			property="id" />
+		<result column="building_id" 	property="building_id" />
+		<result column="floor" 			property="floor" />
+		<result column="codeno" 		property="codeno" />
+		<result column="codetype" 	    property="codetype" />
+		<result column="type" 	        property="type" />
+		<result column="custom_detail" 	property="custom_detail" />
+		<result column="create_time" 	property="create_time" />
+		<result column="modify_time" 	property="modify_time" />
+		<result column="description" 	property="description" />
+		<result column="enable" 	    property="enable" />
+		<result column="create_user" 	property="create_user" />
+		<result column="modify_user" 	property="modify_user" />
+	    <result column="more"           property="more" />
+	       <result column="bgpic"           property="bgpic" />
+	</resultMap>
+	
+	
+<resultMap id="codemasterResult" class="codemaster">
+	<result column="codeno"     property="codeno" />
+	<result column="codetype"   property="codetype" />
+	<result column="codename"   property="codename" />
+	<result column="codeDescription" property="codeDescription" />
+	<result column="content"     property="content" />
+</resultMap>
+	
+	
+
+
+
+
+
+	
+	
+	
+	
+	<sql id="allColumn">
+		t.id, t.name, t.sort, t.is_display,t.status,t.logo,t.remark,t.url, 
+		t.create_time, t.modify_time,t.pic
+	</sql>
+	
+
+	
+	<!--标题模块用 2   -->
+	<sql id="minblock">
+		i.id,i.building_id,i.floor,i.codeno,i.codetype,i.type,
+		i.custom_detail,i.create_time,i.modify_time,i.description,i.enable,i.create_user,i.modify_user,i.more,i.bgpic
+	</sql>
+	
+	
+	
+	
+	<select id="getById" resultMap="baseResult">
+		select
+		<include refid="allColumn" />
+		from channel t
+     	<dynamic prepend="WHERE" >
+     		<isNotEmpty prepend="AND" property="id" >
+				t.id = #id#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+		<select id="getAllByBuildingId" resultMap="baseResult">
+		select
+		<include refid="allColumn" />
+		from  channel t 
+		where
+			t.status = 1 and t.is_display=0 and remark=#remark#
+			 
+			 
+			and 	t.building_id=#id#
+			 
+		order by t.sort
+	</select>
+	
+ <!--bannner 颜色替换  -->
+	<!--bannner 颜色替换  -->
+	<select id="getColorByBuildingId" resultMap="customResult">
+		select
+		<include refid="minblock" />
+			from index_custom i
+		
+		where
+			i.codeno=101 and  enable="y" and modify_user=#remark#
+			<isEqual prepend="and" compareValue="0">
+				i.building_id=0
+			</isEqual>
+			<isNotEqual prepend="and" compareValue="0">
+				i.building_id=#id#
+			</isNotEqual>
+		order by i.floor
+	</select>
+	
+	<!--标题模块  -->
+	<select id="getBlockByBuildingId" resultMap="customResult">
+		select
+		<include refid="minblock" />
+			from index_custom i 
+			
+		where
+			i.codeno=104  and  enable="y" and modify_user=#remark#
+			
+			<isEqual prepend="and" compareValue="0">
+				i.building_id=0
+			</isEqual>
+			<isNotEqual prepend="and" compareValue="0">
+				i.building_id=#id#
+			</isNotEqual>
+			
+			
+			
+		order by i.floor
+	</select>
+	
+	<insert id="contactUs" >
+		<![CDATA[
+		insert into ds_visitor (name,tel,provider_id,time,visitor_feedback,email)
+		values (#name#,#tel#,#member_id#,#time#,#feedback#,#email#)
+		]]>
+		 
+	</insert>
+	
+
+	
+	
+</sqlMap>

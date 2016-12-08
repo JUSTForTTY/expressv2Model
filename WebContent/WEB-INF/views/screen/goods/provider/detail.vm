@@ -1,0 +1,260 @@
+#set($menu = "provider")
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>会员单位详情</title>
+<link href="/css/css.css" rel="stylesheet" type="text/css" />
+<link href="/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+ 
+	function addCollect() {
+		jQuery.ajax({
+     		type: 'POST',
+			url: appServer + '/center/collect/add.htm' ,
+			data: {    
+             	goodsId : jQuery("#id").val(),    
+             	type : "provider"
+    		},
+			dataType: 'json',
+			success: function(data) {    
+        		if(data.isSuccess){ 
+            		alert("收藏成功！");
+					
+					
+        		}else{    
+            		alert(data.message);     
+        		}    
+     		},    
+		 	error : function() {   
+            		alert("收藏失败！请先登陆！");   
+			}
+		});
+	}
+
+
+	function add2cart(goodsId , goodsNum){
+		jQuery.ajax({
+     		type: 'POST',
+			url: appServer + '/settle/add2Cart.htm' ,
+			data: {    
+             	id : goodsId,    
+             	goodsNum : goodsNum
+    		},
+			dataType: 'json',
+			success: function(data) {    
+        		if(data.errCode ==1001 ){ 
+            		alert("加入购物车成功！");
+					addChartCount(goodsNum);
+        		}else{    
+            		alert("加入购物车失败！请先登录！");     
+        		}    
+     		},    
+		 	error : function() {   
+            		alert("加入购物车失败！请先登录！");   
+			}
+		});
+	}
+	
+	function buyquick(goodsId , goodsNum){
+		jQuery.ajax({
+     		type: 'POST',
+			url: appServer + '/settle/buyquick.htm' ,
+			data: {    
+             	id : goodsId,    
+             	goodsNum : goodsNum
+    		},
+			dataType: 'json',
+			success: function(data) {    
+        		if(data.errCode ==1001 ){ 
+            		window.location.href = appServer + '/settle/order1Cart.htm';
+        		}else{    
+            		alert("加入购物车失败！请先登录！");     
+        		}    
+     		},    
+		 	error : function() {   
+            		alert("加入购物车失败！请先登录！");   
+			}
+		});
+	}
+</script>
+
+
+
+</head>
+<style type="text/css">
+ 
+.kchydwq06
+
+{
+
+width:700px;
+
+height:450px;
+
+overflow:auto;
+
+}
+ 
+
+</style> 
+<body>
+   
+<div class=" kchydwq"  >
+	<div class=" kchydwq01" style="width:200px;height:200px;">
+    	<div class="kchydwq02" style="width:200px;height:200px;"><img src="$imageServer.get($goods.miniature)" width="200" height="200" /></div>
+        <div class="kchydwq03" style="width:200px;height:200px;">
+			<div style="float:left;text-align:center;width:100%;">
+				<input type="hidden" id="id" value="$!{goods.id}" />
+			粉丝人数：<a href="#">$!collectPeople</a>
+            </div>
+			<div style="float:left;width:100%;align:center;">
+			<input style="margin-left:52px;" name="" type="button" onclick="addCollect()" value="关注他" />
+            </div>
+			</div>
+    </div>
+    <div class="kchydwq04" style="width:800px;">
+    	<div class="kchydwq05" style="width:800px;"><span> $goods.name</span></div>
+        <div class="kchydwq06" style="width:800px;height:400px;"> $goods.detailintro</div>
+    </div>
+</div>
+#if($query.items && $query.items.size()>0)
+<div class=" kchydwq07"><span>公司产品</span> </div>
+#pager($query,"/goods/provider/detail.htm?id=$!{goods.id}")
+#end
+
+<div class="kchydwq08">
+#if($query.items && $query.items.size()>0)
+		#foreach($item in $query.items)
+	<div class="kchydwq09">
+    	<div class="kchydwq10"><img src="$imageServer.get($item.miniature)" width="188" height="188" /></div>
+        <div class="kchydwq11">
+       <a href="/goods/normal/detail.htm?id=$item.id">	<div class="kchydwq12">$item.name</div></a>
+            <div class="kchydwq13">
+		            	<ul>
+		            	#if($!{userAgent})
+		                <li style="width:134px;">市场价：
+		                	<strong style="text-decoration:line-through;">
+		                		#if("$!NumberTool.format('#0.00',$!item.refprice)" == "0.00") 免费  
+		                		#elseif($!item.refprice && $!item.refprice > 0)$NumberTool.format("#0.00",$!item.refprice) 
+		                		#else 面议 
+		                		#end
+		                	</strong>
+		                </li>
+		                <li style="width:134px;">邻居价：
+			                <strong>
+				            	#if("$!NumberTool.format('#0.00',$!item.price)" == "0.00") 免费  
+				                #elseif($!item.price && $!item.price > 0)$NumberTool.format("#0.00",$!item.price) 
+				                #else 面议
+				                #end
+				            </strong>
+			            <input type="hidden" id="goodsId" value="$item.id"/></li>
+		                <li style="width:134px;">积分值：
+			                <strong>
+				                #if($!item.scoreAdd && $!item.scoreAdd > 0)$NumberTool.format("#0",$!item.scoreAdd) 
+				                #else 0
+				                #end
+				            </strong>
+			            <input type="hidden" id="goodsId" value="$item.id"/></li>
+		                #else
+		                <li style="width:134px;">市场价：
+		                	<strong>
+		                		#if("$!NumberTool.format('#0.00',$!item.refprice)" == "0.00") 免费  
+		                		#elseif($!item.refprice && $!item.refprice > 0)$NumberTool.format("#0.00",$!item.refprice) 
+		                		#else 面议 
+		                		#end
+		                	</strong>
+		                </li>
+		                #end
+		                <li style="width:134px;">销售数量：<strong>#if($!item.salenum)$!item.salenum #else 0 #end</strong></li>
+		                </ul>
+		            </div>
+		            <div class="kchydwq14" style="width:280px;">
+		            	<input type="button" onclick="buyquick($!item.id,1)" class="buyquick" />
+		            	<input type="button" onclick="add2cart($!item.id,1)" class="add2cart" />
+		            </div>
+        </div>
+    </div>
+     #end
+	#end
+    
+</div>
+
+<div class="chear"></div>
+
+
+ #if($query2.items && $query2.items.size()>0)	 
+<div class=" kchydwq07"><span>公司日记</span>#pager($query2,"/goods/provider/detail.htm?id=$!{goods.id}")</div>
+ #end
+ 
+<div class=" kchydwq15">
+	
+	#foreach($comment in $query2.items) 
+		
+	<div class=" kchydwq16">
+	 <div class=" kchydwq17" >	 
+	  <h6 style="text-align:left;">
+		
+		<div  style="width:300px;float:left;">
+        $!comment.createtime</div>
+		
+        
+    <div style="width:600px;float:left;">$!comment.content</div>
+    
+    #if(${userAgent.member_id}==$goods.id)
+	  <div style="width:50px;float:left;">	
+	  
+	  	 <a href="delete.htm?id=$comment.id&goodsid=$goods.id" style="width: 66px;
+height: 28px;
+float: left;
+margin: 0 0 8px 0px;
+display: inline;
+font-size: 12px;
+font-weight: normal;
+color: #FFF;
+background-color: #17c677;
+text-align: center;
+line-height: 28px;">删除</a>
+	<a href="update.htm?id=$comment.id&goodsid=$goods.id" style="width: 66px;
+height: 28px;
+float: left;
+margin: 0 0 8px 0px;
+display: inline;
+font-size: 12px;
+font-weight: normal;
+color: #FFF;
+background-color: #17c677;
+text-align: center;
+line-height: 28px;">修改</a>  
+	  
+	  </div>
+	  #end
+ 
+ </h6>
+	 
+	 </div>
+     
+   
+</div>
+ #end
+<div class="chear"></div>
+
+#if(${userAgent.member_id}==$goods.id)
+<div class=" kchydwq18">
+	<form  action="$appServer/goods/provider/create.htm" method="post" >
+		
+   
+	<div class=" kchydwq19"><span>发表公司日志</span></div>
+    <div class=" kchydwq20"><textarea name="content" cols="" rows=""></textarea></div>
+    <div class="kchydwq21">
+		<input name="id" type="hidden" value="$goods.id" />
+		<input name="" type="submit" value="提交" /></div>
+	</form>
+</div>
+#end
+    
+    
+<div class="chear"></div>
+
+</body>
+</html>

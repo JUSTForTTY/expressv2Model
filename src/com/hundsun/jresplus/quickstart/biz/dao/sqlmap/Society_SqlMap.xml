@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SOCIETY" >
+	<typeAlias alias="society" type="com.hundsun.jresplus.quickstart.biz.po.Goods"/>
+	<typeAlias alias="societyQuery" type="com.hundsun.jresplus.quickstart.biz.query.GoodsQuery"/>
+	
+  	<resultMap id="baseResult" class="goods" >
+    	<result column="id" 			property="id" />
+    	<result column="briefintro" 	property="briefintro"  />
+    	<result column="type" 			property="type" />
+    	<result column="name" 			property="name" />
+    	<result column="miniature" 		property="miniature"  />
+    	<result column="image1" 		property="image1" />
+    	<result column="unit" 			property="unit" />
+    	<result column="refprice" 		property="refprice" />
+    	<result column="price" 			property="price" />
+    	<result column="detailintro" 	property="detailintro" />
+    	<result column="ordernum" 		property="ordernum"  />
+    	<result column="stocknum" 		property="stocknum" />
+    	<result column="provider_id" 	property="providerId" />
+  	</resultMap>
+
+  	<resultMap id="goodsResult" class="goods" >
+    	<result column="id" 			property="id" />
+    	<result column="briefintro" 	property="briefintro"  />
+    	<result column="type" 			property="type" />
+    	<result column="name" 			property="name" />
+    	<result column="miniature" 		property="miniature"  />
+    	<result column="image1" 		property="image1" />
+    	<result column="unit" 			property="unit" />
+    	<result column="refprice" 		property="refprice" />
+    	<result column="price" 			property="price" />
+    	<result column="detailintro" 	property="detailintro" />
+    	<result column="ordernum" 		property="ordernum"  />
+    	<result column="stocknum" 		property="stocknum" />
+    	<result column="provider_id" 	property="providerId" />
+  	</resultMap>
+  	
+  	<sql id="allColumn">
+  		id, briefintro, type, name, miniature,
+  		image1, unit, refprice, price, detailintro, 
+  		ordernum, stocknum, provider_id
+  	</sql>
+  	
+  	<select id="getById" resultMap="baseResult">
+  		select 
+  			<include refid="allColumn"/> 
+  		from goods
+  		where 
+  			id = #id#
+  	</select>
+  	
+  	<!-- 获取列表 -->
+	<select id="queryList" resultMap="baseResult">
+		select 
+  			<include refid="allColumn"/> 
+    	from goods
+	    <dynamic prepend="where" >
+	      	<isNotEmpty prepend="and" property="type" >
+	        	type = #type#
+	      	</isNotEmpty>
+	      	<isNotEmpty prepend="and" property="name" >
+	        	name like concat('%', #name#, '%')
+	      	</isNotEmpty>
+	      	<isNotEmpty prepend="and" property="providerId" >
+	        	provider_id = #providerId#
+	      	</isNotEmpty>
+	    </dynamic>
+		order by id desc
+		limit #pageFristItem# , #pageSize#
+	</select>
+
+	<!-- 获取列表个数-->
+	<select id="queryCount" resultClass="int">
+		select 
+			count(1) 
+		from goods
+	    <dynamic prepend="where" >
+	      	<isNotEmpty prepend="and" property="type" >
+	        	type = #type#
+	      	</isNotEmpty>
+	      	<isNotEmpty prepend="and" property="name" >
+	        	name like concat('%', #name#, '%')
+	      	</isNotEmpty>
+	      	<isNotEmpty prepend="and" property="providerId" >
+	        	provider_id = #providerId#
+	      	</isNotEmpty>
+	    </dynamic>
+	</select>	
+	
+   	<!-- 获取列表 -->
+	<select id="providerList" resultMap="baseResult">
+		select 
+	  		g.id, g.briefintro, g.type, g.name, g.miniature,
+	  		g.image1, g.unit, g.refprice, g.price, g.detailintro, 
+	  		g.ordernum, g.stocknum, g.provider_id
+    	from goods g inner join assoc_category_goods c on g.id=c.goods_id    
+        join assoc_building_category b on b.category_id=c.category_id
+	    <dynamic prepend="where" >
+	    	<isEqual prepend="and" property="buildingId" compareValue="1">
+	    		b.building_id=1
+	    	</isEqual>
+	    	<isNotEqual prepend="and" property="buildingId" compareValue="1" >
+	    		(b.building_id=#buildingId# or b.building_id=0)
+	    	</isNotEqual>
+	      	<isNotEmpty prepend="and" property="type" >
+	        	g.type = #type#
+	      	</isNotEmpty>
+	      	<isNotEmpty prepend="and" property="name" >
+	        	g.name like concat('%', #name#, '%')
+	      	</isNotEmpty>
+	      	<isNotEmpty prepend="and" property="categoryId" >
+	        	b.category_id = #categoryId#
+	      	</isNotEmpty>
+	    </dynamic>
+		order by g.id 
+		limit #pageFristItem# , #pageSize#
+	</select>
+   	<!-- 获取列表 -->
+	<select id="providerCount" resultClass="int">
+		select 
+  			count(1)
+    	from goods g inner join assoc_category_goods c on g.id=c.goods_id    
+        join assoc_building_category b on b.category_id=c.category_id
+	    <dynamic prepend="where" >
+	    	<isEqual prepend="and" property="buildingId" compareValue="1">
+	    		b.building_id=1
+	    	</isEqual>
+	    	<isNotEqual prepend="and" property="buildingId" compareValue="1" >
+	    		(b.building_id=#buildingId# or b.building_id=0)
+	    	</isNotEqual>
+	      	<isNotEmpty prepend="and" property="type" >
+	        	g.type = #type#
+	      	</isNotEmpty>
+	      	<isNotEmpty prepend="and" property="name" >
+	        	g.name like concat('%', #name#, '%')
+	      	</isNotEmpty>
+	      	<isNotEmpty prepend="and" property="categoryId" >
+	        	b.category_id =#categoryId#
+	      	</isNotEmpty>
+	    </dynamic>
+		order by g.id 
+		limit #pageFristItem# , #pageSize#
+	</select>    
+   	<!-- 获取列表 -->
+	<select id="buildingGoodsList" resultMap="baseResult">
+		select 
+  		g.id, g.briefintro, g.type, g.name, g.miniature,
+  		g.image1, g.unit, g.refprice, g.price, g.detailintro, 
+  		g.ordernum, g.stocknum, g.provider_id
+    	from assoc_building_goods b join goods g on b.goods_id = g.id
+	    <dynamic prepend="where" >
+	    	<isEqual prepend="and" property="buildingId" compareValue="1">
+	    		b.building_id=1
+	    	</isEqual>
+	    	<isNotEqual prepend="and" property="buildingId" compareValue="1" >
+	    		(b.building_id=#buildingId# or b.building_id=0)
+	    	</isNotEqual>
+	      	<isNotEmpty prepend="and" property="type" >
+	        	g.type = #type#
+	      	</isNotEmpty>
+	    </dynamic>
+		order by g.id
+		limit #pageFristItem# , #pageSize#
+	</select>
+   	<!-- 获取列表 -->
+	<select id="buildingGoodsCount" resultClass="int">
+		select 
+  			count(1)
+    	from assoc_building_goods b join goods g on b.goods_id = g.id
+	    <dynamic prepend="where" >
+	    	<isEqual prepend="and" property="buildingId" compareValue="1">
+	    		b.building_id=1
+	    	</isEqual>
+	    	<isNotEqual prepend="and" property="buildingId" compareValue="1" >
+	    		(b.building_id=#buildingId# or b.building_id=0)
+	    	</isNotEqual>
+	      	<isNotEmpty prepend="and" property="type" >
+	        	g.type = #type#
+	      	</isNotEmpty>
+	    </dynamic>
+		order by g.id
+		limit #pageFristItem# , #pageSize#
+	</select>
+</sqlMap>

@@ -1,0 +1,46 @@
+#set($layout="layout/center.vm")
+<script src="$appServer/plugins/My97DatePicker/WdatePicker.js" type="text/javascript" ></script> 
+<div class="xjr">
+	<div class="xjr01" style="width:725px;"><span>订单搜索</span></div>
+	<form id="inputForm" method="post" action="$appServer/center/order/oldlist.htm">
+    <div class="xjr02">
+    	<ul>
+        	<li><span>订单号码：</span><input name="orderno" type="text" value="$!{query.orderno}" /></li>
+        	<li><span>收货人：</span><input name="receivername" type="text" value="$!{query.receivername}" /></li>
+        	<li style="width: 630px;"><span>下单日期：</span>
+        		<input id="startDate" name="startDate" type="text" value="$!{query.startDate}" onClick="WdatePicker({maxDate:'#F{$dp.$D(\'endDate\')}'})"/>
+        		<span style="margin-left: 10px; margin-right: 10px;">-</span>
+        		<input id="endDate" name="endDate" type="text" value="$!{query.endDate}" onClick="WdatePicker({minDate:'#F{$dp.$D(\'startDate\')}'})" />
+        	</li>
+        </ul>
+        <div class="xjr08"><input name="" style="margin-left: 460px;" type="submit" value="查找" /></div>
+    </div>   
+    </form>
+    <div class="xjr03" style="width:725px;"><span>订单列表</span></div>
+    <div class="xjr04">
+	<ul style="width:725px;">
+		<li class="xjr05" style="width: 15%;">订单号</li>
+		<li class="xjr05" style="width: 20%;">时间</li>
+		<li class="xjr05" style="width: 23%;">收货人</li>
+		<li class="xjr05" style="width: 22%;">金额</li>
+		<li class="xjr05" style="width: 10%;">支付方式</li>
+		<li class="xjr05" style="width: 10%;">操作</li>
+	#if($query.items && $query.items.size()>0)
+		#foreach($item in $query.items)
+			<span class="xjr06" style="width: 15%;">$!{item.orderno}</span>
+			<span class="xjr06" style="width: 20%;">$dateUtil.convertDateToString("yyyy-MM-dd HH:mm:ss",$!{item.ordertime})</span>
+			<span class="xjr06" style="width: 23%;">$!{item.receivername}</span>
+			<span class="xjr06" style="width: 22%;">$!NumberTool.format('#0.00',$!{item.totalsum})</span>
+			<span class="xjr06" style="width: 10%;">$!{payTypeMap.get("$!{item.paymenttype_id}")}&nbsp;</span>
+			<span class="xjr06" style="width: 10%;"><a href="olddetail.htm?id=$!{item.id}">查看详情</a></span>
+    	#end
+	#end
+	</ul>
+</div>
+<div class=" xjr07">
+	#if($query.items && $query.items.size()>0)
+    	#centerpager($query,"/center/order/oldlist.htm")
+    #else
+    	暂无满足条件的记录
+    #end
+</div>

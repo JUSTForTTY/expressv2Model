@@ -1,0 +1,5 @@
+<div class="h_503-p">
+	<ol>
+		<li>$!{exception.getMessage()}</li>
+	</ol>
+</div>

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<toolbox>
+    <xhtml>true</xhtml>
+    <tool>
+        <key>stringUtils</key>
+        <scope>application</scope>
+        <class>org.apache.commons.lang.StringUtils</class>
+    </tool>
+    <tool>
+        <key>dateUtil</key>
+        <scope>application</scope>
+        <class>com.hundsun.jresplus.common.util.DateUtil</class>
+    </tool>
+	 <tool>
+	   <key>NumberTool</key>
+	   <scope>application</scope>
+	   <class>org.apache.velocity.tools.generic.NumberTool</class>
+	   <parameter name="format" value="#0.00"/>
+	 </tool>
+	  <tool> 
+		<key>date</key>
+		<scope>application</scope> 
+		<class>org.apache.velocity.tools.generic.DateTool</class> 
+		<parameter name="format" value="yyyy-MM-dd HH:mm"/> 
+	</tool> 
+	<tool>
+		<key>moneyUtil</key>
+		<scope>application</scope>
+		<class>com.hundsun.jresplus.quickstart.utils.MoneyUtil
+		</class>
+	</tool>
+	<tool>
+		<key>strUtil</key>
+		<scope>application</scope>
+		<class>com.hundsun.jresplus.quickstart.utils.StrUtils
+		</class>
+	</tool>
+</toolbox>

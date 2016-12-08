@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="ORDER">
+	<typeAlias alias="order"
+		type="com.hundsun.jresplus.quickstart.biz.po.Order" />
+	<resultMap id="baseResult" class="order">
+		<result column="id" 				property="id" />
+		<result column="order_time" 		property="orderTime" />
+		<result column="t.total_price" 		property="totalPrice" />
+		<result column="total_score" 		property="totalScore" />
+		<result column="goods_type_count" 	property="goodsTypeCount" />
+		<result column="goods_count" 		property="goodsCount" />
+		<result column="receiver_name" 		property="receiverName" />
+		<result column="receiver_address" 	property="receiverAddress" />
+		<result column="receiver_mobile" 	property="receiverMobile" />
+		<result column="user_remarks" 	property="user_remarks" />
+		<result column="user_name" 			property="userName" />
+		<result column="pay_type" 			property="payType" />
+		<result column="is_split" 			property="isSplit" />
+		<result column="status" 			property="status" />
+		<result column="gmt_create" 		property="gmtCreate" />
+		<result column="gmt_modify" 		property="gmtModify" />
+	</resultMap>
+	
+	<insert id="insert" parameterClass="order">
+		insert into 
+			`order` (
+				id,order_time, total_price, total_score, goods_type_count, goods_count, receiver_name, receiver_address, receiver_mobile,user_remarks,user_name, pay_type, is_split, status, gmt_create, gmt_modify
+			)
+			values(
+				#id#,now(), #totalPrice#, #totalScore#, #goodsTypeCount#, #goodsCount#, #receiverName#, #receiverAddress#, #receiverMobile#,#user_remarks#,#userName#, #payType#, #isSplit#, #status#, now(), now()
+		)
+		<selectKey resultClass="java.lang.Long" keyProperty="id">
+			SELECT @@IDENTITY AS id
+		</selectKey>
+	</insert>
+	
+	
+	
+	<sql id="allColumn">
+		t.id, t.order_time, t.total_price, t.total_score, t.goods_type_count, 
+		t.goods_count, t.receiver_name, t.receiver_address, t.receiver_mobile,t.user_remarks,t.user_name, 
+		t.pay_type, t.is_split, t.status, t.gmt_create, t.gmt_modify
+	</sql>
+	
+	<select id="getById" resultMap="baseResult">
+		select
+		<include refid="allColumn" />
+		from `order` t
+     	<dynamic prepend="WHERE" >
+     		<isNotEmpty prepend="AND" property="id" >
+				t.id = #id#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	
+	 
+	
+	
+	 <select id="queryOrderInfoCount" resultClass="int">
+		select
+			count(1)
+		from `order`
+		<dynamic prepend="where">
+		<isNotEmpty prepend="and" property="username">
+				user_name = #username# 
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="receivername">
+				receiver_name = #receivername# 
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="orderno">
+				id = #orderno#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="payType">
+				pay_type = #payType#
+			</isNotEmpty>
+                       <isNotEmpty prepend="and" property="startDate">
+				order_time>#startDate#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="endDate">
+				order_time &lt; #endDate#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id="queryOrderInfoList" resultMap="baseResult">
+		select
+		<include refid="allColumn" />
+		from `order` t
+		<dynamic prepend="where">
+		
+		<isNotEmpty prepend="and" property="username">
+				user_name = #username# 
+			</isNotEmpty>
+			 <isNotEmpty prepend="and" property="receivername">
+				receiver_name = #receivername# 
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="orderno">
+				id = #orderno#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="payType">
+				pay_type = #payType#
+			</isNotEmpty>
+                       <isNotEmpty prepend="and" property="startDate">
+				order_time>#startDate#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="endDate">
+				order_time &lt; #endDate#
+			</isNotEmpty>
+
+
+		</dynamic>
+		order by id desc
+		limit #pageFristItem# , #pageSize#
+	</select>
+
+</sqlMap>

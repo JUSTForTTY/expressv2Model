@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="STOCKLOG">	
+    <typeAlias alias="stocklog" type="com.hundsun.jresplus.quickstart.biz.po.Stock_Log" />
+    
+    <resultMap class="stockLog" id="baseResult">
+			<result column="id" 					property="id" />
+		<result column="importBillID" 					property="importBillID" />
+		<result column="user_name" 				property="user_name" />
+		<result column="goodkinds" 			property="goodkinds" />
+		<result column="totalPrice"        property="totalPrice" />
+		<result column="create_time" 				property="create_time" />
+		<result column="create_user" 				property="create_user" />
+		<result column="update_user" 				property="update_user" />
+		<result column="update_time" 				property="update_time" />
+    </resultMap>
+    <insert id="insertStocklog" parameterClass="stockLog">
+		<![CDATA[
+		insert into stock_log (importBillID,user_name,goodkinds,totalPrice,create_time,create_user,update_user,update_time,status)
+		values (#importBillID:String#,#user_name:String#,#goodkinds:String#,#totalPrice:Integer#,#create_time:Date#,#create_user:String#,#update_user:String#,#update_time:Date#,#status:Integer#)
+		]]>
+		<selectKey resultClass="java.lang.Long" keyProperty="importBillID">
+			SELECT @@IDENTITY AS importBillID
+		</selectKey>
+	</insert>
+	
+	
+	<statement id="updateStockLog" parameterClass="stockLog">
+		<![CDATA[
+		update stock_log set importBillID=#importBillID#,user_name=#user_name#,goodkinds=#goodkinds#,totalPrice=#totalPrice:Integer#,create_time=#create_time:Date#,create_user=#create_user:String#,update_user=#update_user#,update_time=#update_time:Date# 
+		where id=#id#
+		]]>
+	</statement>
+	
+	
+	
+	</sqlMap>

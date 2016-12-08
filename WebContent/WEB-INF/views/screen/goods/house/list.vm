@@ -1,0 +1,122 @@
+#set($menu = "house")
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>房产信息</title>
+<link rel="stylesheet" type="text/css" href="$appServer/css/style_category.css" />
+<link rel="stylesheet" type="text/css" href="$appServer/css/jquery.tmailsilder.v2.css" />
+<script type="text/javascript" src="$appServer/js/jquery.min.js"></script> 
+<script type="text/javascript" src="$appServer/js/jquery.tmailsilder.v2.js"></script>
+
+
+<div class=" kcfl">
+	<div class="kcfl01" style="width:150px;margin-top: 0px;margin-left: 0px;">
+	<form id="searchForm" action="$appServer/goods/provider/list.htm" method="post">
+	
+	<div class="sw_main" id="options-examples">
+<!-- Nav START -->
+<div id="Z_TMAIL_SIDER_V2" class="sw_categorys_nav" style="background-color:#17c677;width:150px;">
+<div style="background-color: #f8f8f8;height: 61px;width: 1000px;">
+<div class="container" >
+<div class="allcategorys" >
+<h3 class="title-item-hd">
+<a href="javascript:void(0);">
+所有商品分类
+<s class="icon"></s>
+</a>
+</h3>
+<ul class="sublist">
+	#foreach($c in $categoryList)
+		<li>
+			<h3 class="mcate-item-hd">
+			<span>$c.name</span>
+			</h3>
+			<p class="mcate-item-bd">
+			
+				#foreach($subC in $c.subCategoryList)
+					<a href="$appServer/goods/house/list.htm?categoryId=$subC.id">$subC.name</a>
+				#end
+			</p>
+		</li>
+	#end
+</ul>
+</div>
+
+	<div class="kcfl02" style="width:400px;">
+		<input id="categoryId" name="categoryId" type="hidden" value="$!{query.categoryId}" />
+		<div class="kcfl03"><input id="name" name="name" type="text" value="$!{query.name}" /></div>
+		<div class="kcfl04" style="padding-left: 10px;"><input name="searchButton" type="submit" value="搜索" /></div>
+		<div class="kcfl04" style="padding-left: 10px;"><input name="resetButton" type="button" value="重置" onclick="$('#name').val('');$('#categoryId').val('');$('#searchForm').submit();" /></div>
+	</div>
+
+	<div class="kcfl05">热词：
+	<a href="$appServer/goods/normal/list.htm?name=$!{categoryCurrent.tag1}">$!{categoryCurrent.tag1}</a> 
+	<a href="$appServer/goods/normal/list.htm?name=$!{categoryCurrent.tag2}">$!{categoryCurrent.tag2}</a> 
+	<a href="$appServer/goods/normal/list.htm?name=$!{categoryCurrent.tag3}">$!{categoryCurrent.tag3}</a> 
+	<a href="$appServer/goods/normal/list.htm?name=$!{categoryCurrent.tag4}">$!{categoryCurrent.tag4}</a> 
+	<a href="$appServer/goods/normal/list.htm?name=$!{categoryCurrent.tag5}">$!{categoryCurrent.tag5}</a> 
+	</div>
+</div>
+
+</div>
+
+<!-- Center START -->
+<div style="overflow: hidden; width:5px;">
+<div class="sw_container">
+<div style="height: 2000px;"></div>
+</div>
+</div>
+</div>
+
+
+</div>
+	
+		</div>
+	</form>
+</div>
+
+<div class=" kcfl pages">
+    <div style="background-color: #17c677;display: inline;height: 28px;float: left;margin: 16px 10px; 0 10px;">
+    	<span style="color: #fff;display: inline;float: left;line-height: 28px;margin: 0 10px 0 10px;font-size: 15px;font-weight: 700;">$!{categoryCurrent.parent_name} </span>
+    	<span style="color: #fff;display: inline;float: left;line-height: 28px;margin: 0 10px 0 10px;">&gt; $!{categoryCurrent.name}</span>
+    </div>
+    #pager($query,"/goods/house/list.htm")
+</div>
+
+ <div class="kcxx">
+		#foreach($item in $query.items)
+         #if($velocityCount % 4 == 1)
+        <div class="kcxx02" style="height:auto;">
+        <div class="kcxx03" style="width:240px;height:240px;"><img src="$imageServer.get($item.image1)" width="240" height="240" /></div>
+            <div class="kcxx04">
+            <a class="kcxx05" style="float:left;" href="detail.htm?id=$item.id">$!item.name</a>
+            <ul>
+             <li>户籍：<span>$!item.price</span></li>
+             <li>面积：<span>$!item.price</span></li>
+            <li>租金：<span>$!item.price</span></li>
+            </ul>
+           <h6><strong>地址</strong>：$!item.price...</h6>
+            </div>
+        	#else
+        	  <div class="kcxx06" style="height:auto;">
+        	   <div class="kcxx03" style="width:240px;height:240px;"><img src="$imageServer.get($item.image1)" width="240" height="240" /></div>
+            <div class="kcxx04">
+            <a class="kcxx05" href="deatil.htm?id=$item.id">$!item.name</a>
+            <ul>
+             <li>租金：<span>$!item.price</span></li>
+             <li>租金：<span>$!item.price</span></li>
+            <li>租金：<span>$!item.price</span></li>
+            </ul>
+           <h6><strong>地址</strong>：大祥区敏州西路与雪峰路...</h6>
+            </div>
+        	  #end
+        </div>
+#end
+ #pager($query,"/goods/house/list.htm")
+</div>
+
+
+<div class="chear"></div>
+<script type="text/javascript">
+$('#Z_TMAIL_SIDER_V2').Z_TMAIL_SIDER_V2();
+</script>
+</body>
+</html>

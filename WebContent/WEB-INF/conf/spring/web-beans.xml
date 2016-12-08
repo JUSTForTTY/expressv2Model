@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="GB2312"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+	<context:component-scan base-package="com.hundsun"/>
+	<context:annotation-config />
+	 
+	 
+	<!-- 资源文件处理 -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>classpath:i18n/error</value>
+			</list>
+		</property>
+		<property name="cacheSeconds" value="5"/>
+		<property name="useCodeAsDefaultMessage" value="false"/>
+	</bean>
+	<!-- 异常处理 -->
+	<bean class="com.hundsun.jresplus.web.exception.HandlerExceptionResolver">
+		<property name="defaultErrorView" value="/500"/>
+	</bean>
+	<!-- 页面静态化处理 -->
+		<bean id="ehCacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation">
+			<value>WEB-INF/conf/ehcache.xml</value>
+		</property>
+	</bean>
+	<bean id="pageCacheBean" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+		<property name="cacheManager" ref="ehCacheManager"/>
+		<property name="cacheName" value="page_static_cache"/>
+	</bean>
+	<!-- 声明自定义的页面静态缓存为springbean -->
+	<bean id="pageStaticCache" class="com.hundsun.jresplus.quickstart.pagecache.PageCacheWithEhcache">
+		<property name="cache" ref="pageCacheBean"/>
+	</bean>
+	
+	<!-- 注入自定义的页面静态缓存实现到静态缓存过滤器中 -->
+	<!-- 仅启用明确配置的URL为静态化目标,
+		如果配置为true则仅以urlList配置的为静态化范围，
+		如果为false则任何url请求都可被静态缓存（还要受过滤器配置的限制且必须是GET请求） -->
+	<bean id="pageStaticFilter" class="com.hundsun.jresplus.web.cache.PageStaticFilter">
+		
+		<property name="onlyEnabledConfiguredURL" value="true"/>
+		<property name="pageCache" ref="pageStaticCache"/>
+		<property name="urlList">
+			<list>
+				<value>/**/cache/**</value>
+			</list>
+		</property>
+	</bean>
+	
+		<bean class="com.hundsun.jresplus.quickstart.common.security.UserAuthorityHandlerInterceptor"/>
+	
+	<bean class="com.hundsun.jresplus.quickstart.common.resolver.UserAgentArgumentResolver" />
+	
+	<!-- webapp cookie内容 -->
+	<bean class="com.hundsun.jresplus.quickstart.common.cookie.WebappCookieAttributeStore">
+		<property name="encode" ref="cookiesEncode" />
+		<property name="cookieName" value="_potl_" />
+		<property name="keyNames">
+			<set>
+				<value>userAgent</value>
+			</set>
+		</property>
+		<property name="path">
+			<value>/</value>
+		</property>
+		<property name="domain">
+			<value>${app.domain}</value>
+		</property>
+	</bean>
+	
+	<bean class="com.hundsun.jresplus.quickstart.common.resolver.UserAccessDeniedExceptionResolver">
+		<property name="order" value="8" />
+		<property name="webEncoding" value="${response.out.charset}"></property>
+		<property name="errorPage" value="/error"></property>
+		<property name="warnPage" value="/warn"></property>
+		<property name="userLoginPath" value="/login.htm"></property>
+		<property name="userDeniedPage" value="/403"></property>
+		<property name="userLoginReturnParameterName" value="returnto"></property>
+	</bean>
+</beans>

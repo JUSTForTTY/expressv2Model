@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SUB_ORDER">
+	<typeAlias alias="subOrder"
+		type="com.hundsun.jresplus.quickstart.biz.po.SubOrder" />
+	<resultMap id="baseResult" class="subOrder">
+		<result column="id" 				property="id" />
+		<result column="order_id" 			property="orderId" />
+		<result column="member_id" 			property="memberId" />
+		<result column="member_name" 		property="memberName" />
+		<result column="subtotal_price" 	property="subtotalPrice" />
+		<result column="subtotal_score" 	property="subtotalScore" />
+		<result column="goods_type_count" 	property="goodsTypeCount" />
+		<result column="goods_count" 		property="goodsCount" />
+		<result column="status" 			property="status" />
+		<result column="gmt_create" 		property="gmtCreate" />
+		<result column="gmt_modify" 		property="gmtModify" />
+	</resultMap>
+	
+	<insert id="insert" parameterClass="subOrder">
+		insert into 
+			sub_order (
+				id,order_id, member_id, member_name, subtotal_price, subtotal_score, goods_type_count, goods_count, status, gmt_create, gmt_modify
+			)
+			values(
+				#id#,#orderId#, #memberId#, #memberName#, #subtotalPrice#, #subtotalScore#, #goodsTypeCount#, #goodsCount#, #status#, now(), now()
+			)
+		<selectKey resultClass="java.lang.Long" keyProperty="id">
+			SELECT @@IDENTITY AS id
+		</selectKey>
+	</insert>
+	
+	<sql id="allColumn">
+		t.id, t.order_id, t.member_id, t.member_name, t.subtotal_price, 
+		t.subtotal_score, t.goods_type_count, t.goods_count, t.status, t.gmt_create, 
+		t.gmt_modify
+	</sql>
+	
+	<select id="getById" resultMap="baseResult">
+		select
+		<include refid="allColumn" />
+		from sub_order t
+     	<dynamic prepend="WHERE" >
+     		<isNotEmpty prepend="AND" property="id" >
+				t.id = #id#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+</sqlMap>

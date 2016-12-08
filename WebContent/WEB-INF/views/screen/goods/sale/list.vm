@@ -1,0 +1,68 @@
+#set($menu = "sale")
+<link rel="stylesheet" type="text/css" href="$appServer/css/style_category.css" />
+<link rel="stylesheet" type="text/css" href="$appServer/css/jquery.tmailsilder.v2.css" />
+<script type="text/javascript" src="$appServer/js/jquery.min.js"></script> 
+<script type="text/javascript" src="$appServer/js/jquery.tmailsilder.v2.js"></script>
+
+
+<div class=" kcfl">
+	 
+	<form id="searchForm" action="$appServer/goods/normal/list.htm" method="post">
+	
+	<div class="sw_main" id="options-examples">
+<!-- Nav START -->
+ 
+ 	<div class=" wyfwzxte"><h6>天天特价</h6><h5>Property services</h5> </div>
+
+<!-- Center START -->
+<div style="overflow: hidden;">
+<div class="sw_container">
+<div style="height: 1000px;"></div>
+</div>
+</div>
+</div>
+
+
+</div>
+	
+		</div>
+	</form>
+</div>
+
+<div class=" kcfl pages">
+    <div style="background-color: #17c677;display: inline;height: 28px;float: left;margin: 16px 10px; 0 10px;">
+    	<span style="color: #fff;display: inline;float: left;line-height: 28px;margin: 0 10px 0 10px;font-size: 15px;font-weight: 700;">$!{categoryCurrent.parent_name} </span>
+    	<span style="color: #fff;display: inline;float: left;line-height: 28px;margin: 0 10px 0 10px;">&gt; $!{categoryCurrent.name}</span>
+    </div>
+    #pager($query,"/goods/sale/list.htm")
+</div>
+
+    <div class="kcxx" style="width:1150px">
+	#foreach($item in $query.items)
+		#if($velocityCount % 4 == 1)
+	    	<div class="kcxx02" style="height:300px;width:280px">
+		#else
+			<div class="kcxx06" style="height:300px;width:280px">
+		#end
+	         	<div class="kcxx03" style="height:240px"><a class="kcxx05" target="_blank" href="/goods/normal/detail.htm?id=$item.id"><img src="$imageServer.get($item.image1)" width="260" height="240" /></a></div>
+	            <div class="kcxx04" style="width:300px"><a class="kcxx05" target="_blank" href="/goods/normal/detail.htm?id=$item.id">$!item.name</a>
+	            <ul>
+		            <li style="width:130px">市场价：￥$NumberTool.format("#0.00",$!item.refprice)</li>
+		               #if($!{userAgent})<li style="width:130px">促销价：<span>￥$NumberTool.format("#0.00",$!item.price) </span></li>  #end 
+	            </ul>
+	            </div>
+	        </div>
+	#end	
+    </div>
+  <div class="chear" ></div>
+<div class=" kcfl pages">
+    <div style="background-color: #17c677;display: inline;height: 28px;float: left;margin: 16px 10px; 0 10px;">
+    	<span style="color: #fff;display: inline;float: left;line-height: 28px;margin: 0 10px 0 10px;font-size: 15px;font-weight: 700;">$!{categoryCurrent.parent_name} </span>
+    	<span style="color: #fff;display: inline;float: left;line-height: 28px;margin: 0 10px 0 10px;">&gt; $!{categoryCurrent.name}</span>
+    </div>
+    #pager($query,"/goods/sale/list.htm")
+</div>
+
+<script type="text/javascript">
+$('#Z_TMAIL_SIDER_V2').Z_TMAIL_SIDER_V2();
+</script>

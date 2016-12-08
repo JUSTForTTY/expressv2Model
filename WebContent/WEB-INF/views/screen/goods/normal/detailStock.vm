@@ -1,0 +1,229 @@
+<script type="text/javascript" src="$appServer/js/chart.js"></script>
+<script type="text/javascript" src="$appServer/js/slide.js"></SCRIPT>
+
+<script type="text/javascript">
+    function setTotal(){
+	#if($!goods.price && $!goods.price>0)
+		$("#total").html((parseInt(jQuery("#goodsNum").val())*$!goods.price).toFixed(2));
+	#end
+    }
+	function addCollect() {
+		jQuery.ajax({
+     		type: 'POST',
+			url: appServer + '/center/collect/add.htm' ,
+			data: {    
+             	goodsId : jQuery("#id").val(),    
+             	type : "normal"
+    		},
+			dataType: 'json',
+			success: function(data) {    
+        		if(data.isSuccess){ 
+            		alert("收藏成功！");
+        		}else{    
+            		alert(data.message);     
+        		}    
+     		},    
+		 	error : function() {   
+            		alert("收藏失败！请先登录！");   
+			}
+		});
+	}
+	
+	function add2cart(){
+		var goodsId = jQuery("#id").val();
+		var goodsNum = jQuery("#goodsNum").val();
+		jQuery.ajax({
+     		type: 'POST',
+			url: appServer + '/settle/add2Cart.htm' ,
+			data: {    
+             	id : goodsId,    
+             	goodsNum : goodsNum
+    		},
+			dataType: 'json',
+			success: function(data) {    
+        		if(data.errCode ==1001 ){ 
+            		alert("加入购物车成功！");
+            		// 重置数量到1
+            		jQuery("#goodsNum").val(1);
+					setTotal();
+					addChartCount(goodsNum);
+        		}else{    
+            		alert("加入购物车失败！请先登录！");     
+        		}    
+     		},    
+		 	error : function() {   
+            		alert("加入购物车失败！请先登录！");   
+			}
+		});
+	}
+	
+	function addStock(){
+		var goodsId = jQuery("#id").val();
+	 
+		var goodsNum = jQuery("#goodsNum").val();
+		 
+		
+		jQuery.ajax({
+     		type: 'POST',
+			url: appServer + '/goods/stock/addStock.htm' ,
+			data: {    
+             	id : goodsId,    
+             	goodsNum : goodsNum
+    		},
+			dataType: 'json',
+			success: function(data) {    
+        		if(data.errCode ==1001 ){ 
+            		alert("提货成功！");
+            		var id=data.body.goods_id;
+            		var quantity=data.body.quantity;
+            		 
+            		 location.href=appServer+'/goods/stock/preOrderStock.htm?id='+id+'&quantity='+quantity+'';
+            	 
+        		}else{    
+            		alert("货物不足 ！");     
+        		}    
+     		},    
+		 	error : function() {   
+            		alert("加入购物车失败！请先登录！");   
+			}
+		});
+	}
+	
+</script>
+<input type="hidden" id="id" value="$!{goods.id}" />
+<div class="pro">
+	<!--  左边大图DIV-------------------------->
+	<div class="prol">
+    		  <div id=picarea>
+    <div style="MARGIN: 0px auto; WIDTH: 430px; HEIGHT: 430px; OVERFLOW: hidden">
+      <div style="MARGIN: 0px auto; WIDTH: 430px; HEIGHT: 430px; OVERFLOW: hidden" id=bigpicarea>
+        <p class=bigbtnPrev style="left:85px;"><span id=big_play_prev></span></p>
+		#foreach($e in $!goods.imageList)
+	        <div id=image_xixi-0${velocityCount} class=image><img alt="" src="$imageServer.get($e)" width="430px" height="430px"/>
+	          <div class=word>
+	            $goods.name
+	          </div>
+	        </div>
+	        #set($maxCount = ${velocityCount})
+        #end
+        
+        <p class=bigbtnNext style="left:460px;"><span id=big_play_next></span></p>
+      </div>
+    </div>
+
+    <div id=smallpicarea>
+      <div id=thumbs>
+        <ul>
+			#foreach($e in $!goods.imageList)
+          	<li class=slideshowItem> <a id=thumb_xixi-0${velocityCount} href="#"><img src="$imageServer.get($e)" width="90" height="54" /></a> </li>
+        	#end
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script>
+	var target = [
+		#foreach($e in $!goods.imageList)
+      		"xixi-0${velocityCount}"
+      		#if($maxCount!=${velocityCount}),#end
+    	#end
+	];
+</script>
+    </div>
+   <!-- 右边详细信息------------------------------ -->
+   <div class="prori">
+	 <div class="prori02">$goods.name</div>
+        	<div class="prori03">
+        	<span>单位：</span>
+        		<b >
+	        		$!goods.unit
+        		</b>
+        	</div>
+	 
+		        <div class="prori07">
+		        	<span>购买数量：</span>
+		        	<h6><button id="min" style="width:20px;height:30px;">-</button><input id="goodsNum" type="text" value="1" style="width: 20px;text-align:right;" /> <button id="add" style="width:20px;height:30px;">+</button></h6>
+		        			<script>
+		        				$(function(){
+										    var t = $("#goodsNum");
+										    $("#add").click(function(){  
+										    	if(t.val()<99)   {   
+										        t.val(parseInt(t.val())+1)
+										        setTotal();}
+										    })
+										    $("#min").click(function(){
+										    	if(t.val()>1){
+										        t.val(parseInt(t.val())-1)
+										        setTotal();}
+										    })
+										    $("#goodsNum").blur(function(){
+										    	if(t.val()>1){
+										        	setTotal();}
+										    })
+										    setTotal();
+										})
+		        			</script>
+		        </div>
+		        <div class="prori08">
+		        	 
+		        	 
+		         
+ 
+		        	<br>
+		        	 	<a      href="javascript:void(0);" onclick="addStock()" id="content"><span style="margin-top:10px;">提货</span></a>
+		        	<input type="hidden" id="val" value="${val}" >
+		        </div>
+		       <script type="text/javascript">
+					$(document).ready(function(){
+					  	$("#goToShop").click(function(){
+					  		$("#shop").attr("action", "/goods/gwlc/gwlc.htm").submit();
+					  	});
+					  	
+					});
+					
+				</script>
+<!-- ----------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------- -->
+        <div class="prori09">
+        	<span>分享</span>
+        	<i><img src="/images/qiepian_37.png" width="17" height="18" /></i>
+        	<i><img src="/images/qiepian_39.png" width="17" height="18" /></i>
+        	<i><img src="/images/qiepian_41.png" width="17" height="18" /></i>
+        	<i><img src="/images/qiepian_43.png" width="17" height="18" /></i>
+        	<i><img src="/images/qiepian_45.png" width="17" height="18" /></i>
+        </div>
+        
+  </div>
+  <!-- --------商品详情     图片从哪里来---------- -->
+</div>
+<div class="kcxxq06"><span>商品详情</span></div>
+<div class="xpxxxq">$!{goods.detailintro}
+</div>
+<div class="xgcoro03">
+<ul>
+	<!--   累计评价  (已完成)  -->
+<li id="sdds">累计评价
+	 #if($query.items.size()>0)
+	 	$query.items.size()
+	 #else 
+	 	0 
+	 #end
+</li>
+<li>月销售#if($!goods.salenum)$!goods.salenum #else 0 #end</li>
+</ul>
+</div>
+  <!-- --------   评价 +分页     --------- -->
+<div class="xgcoro04">
+	<ul>
+	#if($query.items && $query.items.size()>0)
+		#foreach($item in $query.items)
+    			<li><span>$!item.content</span> $!item.username</li>
+    	#end
+	#end
+	</ul>
+	</div>
+	<div style="width:100px;">
+ #pager($query,"/goods/normal/xpxxxq.htm?id=$!{goods.id}")  
+  
+</div>

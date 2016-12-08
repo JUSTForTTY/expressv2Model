@@ -1,0 +1,54 @@
+#set($layout="")
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>物业信息</title>
+<link href="/css/css.css" rel="stylesheet" type="text/css" />
+<link href="/css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="$appServer/css/style_category.css" />
+<link rel="stylesheet" type="text/css" href="$appServer/css/jquery.tmailsilder.v2.css" />
+<script type="text/javascript" src="$appServer/js/jquery.min.js"></script> 
+<script type="text/javascript" src="$appServer/js/jquery.tmailsilder.v2.js"></script>
+</head>
+<html>
+<body>
+ 
+ 
+    
+    
+  
+  <div class="wyfc">
+   #foreach($item in $query.items)    
+      #if($velocityCount % 3 == 1)
+      
+  	              <div class="wyfc02" style="height:auto;">
+  	#else
+  	               <div class="wyfc06" style="height:auto;">
+  	 #end
+  	 
+    	<div class="wyfc03" style="height:326px;"><img src="$imageServer.get($item.image1)" width="326" height="326" /></div>
+        <div class="wyfc04">
+          <h6><a href="detail.htm?id=$item.id">$!item.name</a></h6><span> 
+              #if($item.detailintro.length()<50)
+          
+          $!item.detailintro
+         
+          #else
+          $!item.detailintro.substring(1,50)...
+          #end
+</span><div class="wyfc05"><a href="detail.htm?id=$item.id">查询房源</a></div></div>
+    </div>
+    
+      #end
+    
+   
+    
+    
+  </div>
+    
+    
+    
+   
+</body>
+</html>

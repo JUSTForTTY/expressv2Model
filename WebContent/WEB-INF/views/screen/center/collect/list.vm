@@ -1,0 +1,34 @@
+#set($layout="layout/center.vm")
+<div class="xjr">
+    <div class="xjr03"><span>商品收藏</span></div>
+    <div class="xjr04">
+	<ul>
+		<li class="xjr05" style="width: 20%;">序号</li>
+		<li class="xjr05" style="width: 30%;">商品名称</li>
+		<li class="xjr05" style="width: 30%;">收藏时间</li>
+		<li class="xjr05" style="width: 20%;">操作</li>
+	#if($query.items && $query.items.size()>0)
+		#foreach($item in $query.items)
+			<span class="xjr06" style="width: 20%;">$!{velocityCount}</span>
+			<span class="xjr06" style="width: 30%;">&nbsp;$!{item.goodsName}</span>
+			<span class="xjr06" style="width: 30%;">$dateUtil.convertDateToString("yyyy-MM-dd HH:mm:ss",$!{item.createTime})</span>
+			<span class="xjr06" style="width: 20%;">
+				<a href="$appServer/goods/normal/detail.htm?id=$!{item.goodsId}">查看详情</a> 
+				<a href="$appServer/center/collect/delete.htm?id=$!{item.id}" onclick="if(!confirm('确定删除？')){return false;}else{return true;}">删除</a>
+			</span>
+    	#end
+	#end
+	</ul>
+</div>
+
+
+
+<div class=" xjr07">
+	#if($query.items && $query.items.size()>0)
+    	#centerpager($query,"/center/collcet/list.htm")
+    #else
+    	暂无满足条件的记录
+    #end
+</div>
+
+  

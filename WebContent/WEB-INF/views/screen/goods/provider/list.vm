@@ -1,0 +1,127 @@
+#set($menu = "provider")
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>会员单位</title>
+<link rel="stylesheet" type="text/css" href="$appServer/css/style_category.css" />
+<link rel="stylesheet" type="text/css" href="$appServer/css/jquery.tmailsilder.v2.css" />
+<script type="text/javascript" src="$appServer/js/jquery.min.js"></script> 
+<script type="text/javascript" src="$appServer/js/jquery.tmailsilder.v2.js"></script>
+
+
+<div class=" kcfl">
+	<div class="kcfl01" style="width:150px;margin-top: 0px;margin-left: 0px;">
+	<form id="searchForm" action="$appServer/goods/provider/list.htm" method="post">
+	
+	<div class="sw_main" id="options-examples">
+<!-- Nav START -->
+<div id="Z_TMAIL_SIDER_V2" class="sw_categorys_nav" style="background-color:#17c677;width:150px;">
+<div style="background-color: #f8f8f8;height: 61px;width: 1000px;">
+<div class="container" >
+<div class="allcategorys" >
+<h3 class="title-item-hd">
+<a href="javascript:void(0);">
+所有商品分类
+<s class="icon"></s>
+</a>
+</h3>
+<ul class="sublist">
+	#foreach($c in $categoryList)
+		<li>
+			<h3 class="mcate-item-hd">
+			<span>$c.name</span>
+			</h3>
+			<p class="mcate-item-bd">
+			
+				#foreach($subC in $c.subCategoryList)
+					<a href="$appServer/goods/provider/list.htm?categoryId=$subC.id">$subC.name</a>
+				#end
+			</p>
+		</li>
+	#end
+</ul>
+</div>
+
+
+ 
+	<div class="kcfl02" style="width:400px;">
+		<input id="categoryId" name="categoryId" type="hidden" value="$!{query.categoryId}" />
+		<div class="kcfl03"><input id="name" name="name" type="text" value="$!{query.name}" /></div>
+		<div class="kcfl04" style="padding-left: 10px;"><input name="searchButton" type="submit" value="搜索" /></div>
+				<div class="kcfl04" style="padding-left: 10px;"><input name="resetButton" type="button" value="重置" onclick="$('#name').val('');$('#categoryId').val('');$('#searchForm').submit();" /></div>
+	
+	</div>
+ 
+
+	<div class="kcfl05">热词：
+	<a href="$appServer/goods/normal/list.htm?name=$!{categoryCurrent.tag1}">$!{categoryCurrent.tag1}</a> 
+	<a href="$appServer/goods/normal/list.htm?name=$!{categoryCurrent.tag2}">$!{categoryCurrent.tag2}</a> 
+	<a href="$appServer/goods/normal/list.htm?name=$!{categoryCurrent.tag3}">$!{categoryCurrent.tag3}</a> 
+	<a href="$appServer/goods/normal/list.htm?name=$!{categoryCurrent.tag4}">$!{categoryCurrent.tag4}</a> 
+	<a href="$appServer/goods/normal/list.htm?name=$!{categoryCurrent.tag5}">$!{categoryCurrent.tag5}</a> 
+	</div>
+</div>
+
+</div>
+
+<!-- Center START -->
+<div style="overflow: hidden; width:5px;">
+<div class="sw_container">
+<div style="height: 2000px;"></div>
+</div>
+</div>
+</div>
+
+
+</div>
+	
+		</div>
+	</form>
+</div>
+
+<div class=" kcfl pages">
+    
+    #pager($query,"/goods/provider/list.htm")
+</div>
+
+ 
+  	<div class="wydw02" style="width:1004px;" >
+ 	#foreach($item in $query.items)
+			#if($velocityCount % 4 == 1)
+            	<div class="wydw03" style="height:auto;width:240px;border: 1px solid #DEDEDE">
+			#else
+				<div class="wydw06" style="height:auto;width:240px;border: 1px solid #DEDEDE">
+			#end
+    	
+        	<div class="wydw04" style = "width:240px;height:240px;"><a href="#">
+					<a href="/goods/provider/detail.htm?id=$item.id"><img src="$imageServer.get($item.image1)" style = "width:240px;height:240px;" /></a></div>
+            <div class="wydw05">
+            	<b>$item.name</b>
+                  <span> #if($!item.briefintro.length()<20)
+                             $!item.briefintro
+							 
+					 
+						 
+                         #else
+                             $!item.briefintro.substring(1,20)...
+                         #end<a href="/goods/provider/detail.htm?id=$item.id">【查看详情】</a></span>
+            </div>
+        </div>
+				  #end
+				  
+ 
+    </div>
+  </div>
+	  
+<div class="chear"></div>
+<div class=" kcfl pages">
+     
+    #pager($query,"/goods/provider/list.htm")
+</div>
+
+
+  
+
+<script type="text/javascript">
+$('#Z_TMAIL_SIDER_V2').Z_TMAIL_SIDER_V2();
+</script>
+</body>
+</html>

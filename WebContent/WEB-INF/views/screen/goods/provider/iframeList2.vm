@@ -1,0 +1,292 @@
+#set($layout="")
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="description" content="Meghna One page parallax responsive HTML Template ">
+        
+        <meta name="author" content="Muhammad Morshed">
+		
+        <title>Meghna | Responsive Multipurpose Parallax HTML5 Template</title>
+		
+		<!-- Mobile Specific Meta
+		================================================== -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<!-- Favicon -->
+		<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png" />
+		
+		<!-- CSS
+		================================================== -->
+		<!-- Fontawesome Icon font -->
+        <link rel="stylesheet" href="$appServer/provider/css/font-awesome.min.css">
+		<!-- bootstrap.min css -->
+        <link rel="stylesheet" href="$appServer/provider/css/bootstrap.min.css">
+		<!-- Animate.css -->
+        <link rel="stylesheet" href="$appServer/provider/css/animate.css">
+		<!-- Owl Carousel -->
+        <link rel="stylesheet" href="$appServer/provider/css/owl.carousel.css">
+		<!-- Grid Component css -->
+        <link rel="stylesheet" href="$appServer/provider/css/component.css">
+		<!-- Slit Slider css -->
+        <link rel="stylesheet" href="$appServer/provider/css/slit-slider.css">
+		<!-- Main Stylesheet -->
+        <link rel="stylesheet" href="$appServer/provider/css/main.css">
+		<!-- Media Queries -->
+        <link rel="stylesheet" href="$appServer/provider/css/media-queries.css">
+
+		<!--
+		Google Font
+		=========================== -->                    
+		
+		<!-- Oswald / Title Font -->
+		<link href='http://fonts.useso.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css'>
+		<!-- Ubuntu / Body Font -->
+		<link href='http://fonts.useso.com/css?family=Ubuntu:400,300' rel='stylesheet' type='text/css'>
+		
+		<!-- Modernizer Script for old Browsers -->		
+        <script src="$appServer/provider/js/modernizr-2.6.2.min.js"></script>
+
+
+		
+	
+    </head>
+	
+    <body id="body" style="background:url($appServer/images/scan2.jpg);"  scroll="no">
+	    <!--
+	    Start Preloader
+	    ==================================== -->
+		 
+        <!--
+        End Preloader
+        ==================================== -->
+		
+        <!--
+        Welcome Slider
+        ==================================== -->
+
+		<!--/#home section-->
+		
+        <!-- 
+        Fixed Navigation
+        ==================================== -->
+        
+        <!--
+        End Fixed Navigation
+        ==================================== -->
+        
+        <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
+		
+		<!--
+		Start About Section
+		==================================== -->
+		   <!-- End section -->
+		
+		<!--
+		Start Main Features
+		==================================== -->
+		   <!-- End section -->
+		
+		<!--
+		Start Counter Section
+		==================================== -->
+		
+		  <!-- end section -->
+		
+		
+		<!-- Start Services Section
+		==================================== -->
+		
+		   <!-- End section -->
+		
+		
+		<!-- Start Portfolio Section
+		=========================================== -->
+		
+		   <!-- End section -->
+		
+		
+		<!-- Start Team Skills
+		=========================================== -->
+		
+		   <!-- End section -->
+		
+		<!-- Start Our Team
+		=========================================== -->
+		
+		<section id="our-team">
+			<div class="container">
+				<div class="row">
+				
+					<!-- section title -->
+					<div class="title text-center wow fadeInUp" data-wow-duration="500ms">
+						<h2>会员<span class="color">单位</span></h2>
+						<div class="border"></div>
+					</div>
+					<!-- /section title -->
+					
+					
+					<!-- team member -->
+						#foreach($item in $query.items)	
+					
+					<div class="col-md-3 col-sm-6 wow fadeInDown" data-wow-duration="500ms" style="">
+                       <article class="team-mate">
+							<div class="member-photo">
+								<!-- member photo -->
+								<img class="img-responsive" src="http://trade.wuyeok.com/$item.image1" alt="Meghna">
+								<!-- /member photo -->
+								
+								<!-- member social profile -->
+								<div class="mask">
+									<ul class="clearfix">
+									    
+										 <div style="height:40px;margin-left:15px;" class="bdsharebuttonbox bdshare-button-style0-24" data-bd-bind="1475977589137">
+										<li> <a href="#" class="bds_more" data-cmd="more"></a></li>
+										<li>  <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></li>
+										 <li> <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a></li>
+									 
+										<li>  <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a></li>
+										 
+										
+										</div>
+<script>  
+window._bd_share_config={  
+        "common":{  
+            "bdPopTitle":"您的自定义pop窗口标题",  
+            "bdSnsKey":{},  
+            "bdText":"此处填写自定义的分享内容",   
+            "bdMini":"2",  
+            "bdMiniList":false,  
+            "bdPic":"http://localhost/centlight/public/attachment/201410/24/14/5449ef39574f5_282x220.jpg", /* 此处填写要分享图片地址 */  
+            "bdStyle":"0",  
+            "bdSize":"32"  
+            },  
+        "share":{}  
+};  
+with(document)0[  
+                (getElementsByTagName('head')[0]||body).  
+                appendChild(createElement('script')).  
+                src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)  
+];  
+        </script>  
+									</ul>
+								</div>
+								<!-- /member social profile -->
+							</div>
+							
+							<!-- member name & designation -->
+							<div class="member-title" style="height:50px;">
+								<h3> $item.name</h3>
+								 
+							</div>
+							<!-- /member name & designation -->
+							
+							<!-- about member -->
+                           <div class="member-info" style="height:100px;overflow:hidden;margin-bottom:10px;">
+                                 $!item.detailintro
+                           </div>
+						   <!-- /about member -->
+						   
+                       </article>
+                    </div>
+                    
+                    #end
+					<!-- end team member -->
+					
+					 
+					
+					 
+					
+				</div>  	<!-- End row -->
+			</div>   	<!-- End container -->
+		</section>   <!-- End section -->
+		
+		
+		<!-- Start Twitter Feed
+		=========================================== -->
+		
+		    <!-- End section -->
+		
+		<!-- Start Pricing section
+		=========================================== -->
+		
+		    <!-- End section -->
+		
+		
+		<!-- Start Testimonial
+		=========================================== -->
+		
+		     <!-- End Section -->
+		
+		
+		<!--
+		Start Blog Section
+		=========================================== -->
+				
+		  <!-- end section -->
+		
+		<!-- Srart Contact Us
+		=========================================== -->		
+		  <!-- end section -->
+		
+		<!-- end Contact Area
+		========================================== -->
+		
+		  <!-- end footer -->
+		
+		<!-- Back to Top
+		============================== -->
+		 
+		
+		<!-- end Footer Area
+		========================================== -->
+		
+		<!-- 
+		Essential Scripts
+		=====================================-->
+		
+		<!-- Main jQuery -->
+		<script src="$appServer/provider/js/jquery-1.11.0.min.js"></script>
+		<!-- Bootstrap 3.1 -->
+		<script src="$appServer/provider/js/bootstrap.min.js"></script>
+		<!-- Slitslider -->
+		<script src="$appServer/provider/js/jquery.slitslider.js"></script>
+		<script src="$appServer/provider/js/jquery.ba-cond.min.js"></script>
+		<!-- Parallax -->
+		<script src="$appServer/provider/js/jquery.parallax-1.1.3.js"></script>
+		<!-- Owl Carousel -->
+		<script src="$appServer/provider/js/owl.carousel.min.js"></script>
+		<!-- Portfolio Filtering -->
+		<script src="$appServer/provider/js/jquery.mixitup.min.js"></script>
+		<!-- Custom Scrollbar -->
+		 
+		<!-- Jappear js -->
+		<script src="$appServer/provider/js/jquery.appear.js"></script>
+		<!-- Pie Chart -->
+		<script src="$appServer/provider/js/easyPieChart.js"></script>
+		<!-- jQuery Easing -->
+		<script src="$appServer/provider/js/jquery.easing-1.3.pack.js"></script>
+		<!-- tweetie.min -->
+		<script src="$appServer/provider/js/tweetie.min.js"></script>
+		<!-- Google Map API -->
+		
+		<!-- Highlight menu item -->
+		<script src="$appServer/provider/js/jquery.nav.js"></script>
+		<!-- Sticky Nav -->
+		<script src="$appServer/provider/js/jquery.sticky.js"></script>
+		<!-- Number Counter Script -->
+		<script src="$appServer/provider/js/jquery.countTo.js"></script>
+		<!-- wow.min Script -->
+		<script src="$appServer/provider/js/wow.min.js"></script>
+		<!-- For video responsive -->
+		<script src="$appServer/provider/js/jquery.fitvids.js"></script>
+		<!-- Grid js -->
+		<script src="$appServer/provider/js/grid.js"></script>
+		<!-- Custom js -->
+		<script src="$appServer/provider/js/custom.js"></script>
+
+    </body>
+</html>

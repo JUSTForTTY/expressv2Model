@@ -1,0 +1,84 @@
+#set($layout="layout/center.vm")
+<div class="xjr"> 
+    <div class="xjr03"><span>订单详情</span></div>
+    <div class="xjr04">
+<ul>
+<div class="jjpt" style="border-width: 0px 0px 1px; width: 740px; margin-top: 0px;">
+	<span>商品清单</span>
+</div>
+<li class="xjr05" style="width:5%">序号</li>
+<li class="xjr05" style="width:30%">商品名称</li>
+<li class="xjr05" style="width:10%">订购数量</li>
+<li class="xjr05" style="width:10%">单价(元)</li>
+<li class="xjr05" style="width:10%">小计(元)</li>
+<li class="xjr05" style="width:15%">状态</li>
+<li class="xjr05" style="width:20%">操作</li>
+	#if($orderDetail.size()>0)
+		#foreach($orderdetail in $orderDetail)
+			<span class="xjr06" style="width:5%">$velocityCount</span>
+			<span class="xjr06" style="width:30%"><a href="$appServer/goods/normal/detail.htm?id=$!{orderdetail.goodsId}" target="_blank">$!{orderdetail.goodsName}</a></span>
+			<span class="xjr06" style="width:10%">$!{orderdetail.goodsCount}</span>
+			#if($query.items.get(0).payType==8) 
+			<span class="xjr06" style="width:10%">0</span>
+			<span class="xjr06" style="width:10%">0</span>
+		 #else
+			#set($unitPrice = ${orderdetail.unitPrice}/100.0)
+			#set($singlePrice = ${orderdetail.singlePrice}/100.0)
+			<span class="xjr06" style="width:10%">$!{unitPrice}</span>
+			<span class="xjr06" style="width:10%">$!{singlePrice}</span>
+			 
+		 #end
+		 
+			#foreach($item in $query.items)
+		   <span class="xjr06" style="width: 13%;">&nbsp;&nbsp;$!{orderInfoMap.get("$!{item.status}")}&nbsp;</span>
+			<span class="xjr06" style="width:22%"> 
+				&nbsp;
+				#if($item.status==39)<a href="receive.htm?itemId=$!{orderdetail.id}">确认收货</a>#end
+					#if($query.items.get(0).payType!=8) 
+				#if($item.status==33)<a href="comment.htm?itemId=$!{orderdetail.id}">评论</a>#end
+				
+				#end
+			</span>
+			#end
+		#end
+	#end
+</ul>
+
+#foreach($item in $query.items)
+<ul>
+<div class="jjpt" style="border-width: 0px 0px 1px; width: 740px; margin-top: 0px;">
+	<span>基本信息</span>
+</div>
+	 
+<li class="xjr05" style="width:15%;text-align:right;padding-right: 20px;">订单号</li>
+<span class="xjr06" style="width:80%;text-align:left;padding-left: 10px;">$!{item.id}&nbsp;</span>
+
+
+<li class="xjr05" style="width:15%;text-align:right;padding-right: 20px;">订购时间</li>
+<span class="xjr06" style="width:80%;text-align:left;padding-left: 10px;">$dateUtil.convertDateToString("yyyy-MM-dd HH:mm:ss",$!{item.orderTime})&nbsp;</span>
+
+<li class="xjr05" style="width:15%;text-align:right;padding-right: 20px;">支付方式</li>
+<span class="xjr06" style="width:80%;text-align:left;padding-left: 10px;">$!{payTypeMap.get("$!{item.payType}")}&nbsp;</span>
+
+
+<li class="xjr05" style="width:15%;text-align:right;padding-right: 20px;">收货人姓名</li>
+<span class="xjr06" style="width:80%;text-align:left;padding-left: 10px;">$!{item.receiverName}&nbsp;</span>
+
+<li class="xjr05" style="width:15%;text-align:right;padding-right: 20px;">收货人电话</li>
+<span class="xjr06" style="width:80%;text-align:left;padding-left: 10px;">$!{item.receiverMobile}&nbsp;</span>
+
+<li class="xjr05" style="width:15%;text-align:right;padding-right: 20px;">收货人地址</li>
+<span class="xjr06" style="width:80%;text-align:left;padding-left: 10px;">$!{item.receiverAddress}&nbsp;</span>
+ 
+ <li class="xjr05" style="width:15%;text-align:right;padding-right: 20px;">备注</li>
+<span class="xjr06" style="width:80%;text-align:left;padding-left: 10px;">$!{item.user_remarks}&nbsp;</span>
+</ul>
+#end
+<div class="xjr010">
+<i>
+	<input type="button" value="返回" onclick="location.href='list.htm'"  />
+</i>
+</div>
+</div>
+</div>
+</div>

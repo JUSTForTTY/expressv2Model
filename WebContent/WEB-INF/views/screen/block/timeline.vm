@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta name="full-screen" content="yes">
+   
+</head>
+<body>
+ 
+
+
+<div id="bd">
+<!--头部背景图-->
+<div id="ban-in" style="background-image:url($appServer/images/topBigEvent.jpg)">
+    <div class="ban-bg"></div>
+</div>
+<!--part1-->
+<div class="wp" id="webbuit">
+<div class="tit-i">
+    <h3>大事件</h3>
+    <h5>BIG <span>EVENT</span></h5>
+</div>
+
+  
+</div>
+<iframe name="weather_inc" src="http://218.80.244.227:8001/Genius_mvc/bigevent/timeline?caid=9" style="margin:0px 0px 0px 0px;" width=100%  height="710px"  frameborder="0" marginwidth="0" marginheight="0" scrolling="no" ></iframe>
+ 
+<div class="c"></div>
+ 
+ 
+<!--尾部菜单-->
+ 
+</body>
+</html>

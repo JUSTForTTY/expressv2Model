@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="USERS" >
+<typeAlias alias="usersQuery" type="com.hundsun.jresplus.quickstart.biz.query.UsersQuery"/>
+  <resultMap id="users_RM" class="com.hundsun.jresplus.quickstart.biz.po.Users" >
+    <result column="ID" property="id" jdbcType="BIGINT(14)" />
+    <result column="ACCOUNT" property="account" jdbcType="VARCHAR" />
+    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="BIGINT(14)" />
+    <result column="USER_TYPE" property="userType" jdbcType="BIGINT(14)" />
+    <result column="LAST_LOGIN_IP" property="lastLoginIp" jdbcType="VARCHAR" />
+    <result column="LAST_LOGIN_TIME" property="lastLoginTime" jdbcType="TIMESTAMP" />
+    <result column="LOGIN_NUM" property="loginNum" jdbcType="BIGINT(14)" />
+    <result column="GMT_CREATE" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="GMT_MODIFY" property="gmtModify" jdbcType="TIMESTAMP" />
+    <result column="DEFAULT_SUB_SYS" property="defaultSubSys" jdbcType="BIGINT(14)" />
+  </resultMap>
+
+  <select id="SELECT_BY_ID" resultMap="users_RM" >
+     select ID, ACCOUNT, PASSWORD, NAME, STATUS, USER_TYPE, LAST_LOGIN_IP, LAST_LOGIN_TIME,
+      LOGIN_NUM, GMT_CREATE, GMT_MODIFY,DEFAULT_SUB_SYS
+    from users 
+    where <![CDATA[ STATUS <>2 AND ID = #id# ]]>
+  </select>
+  
+  <select id="SELECT" resultMap="users_RM" parameterClass="com.hundsun.jresplus.quickstart.biz.po.Users" >
+     select ID, ACCOUNT, PASSWORD, NAME, STATUS, USER_TYPE, LAST_LOGIN_IP, LAST_LOGIN_TIME,
+      LOGIN_NUM, GMT_CREATE, GMT_MODIFY,DEFAULT_SUB_SYS
+      from users 
+      <dynamic prepend="WHERE" >
+      	<isNotEmpty prepend="AND" property="id" >
+	        id = #id#
+	      </isNotEmpty>
+	      <isNotEmpty prepend="AND" property="account" >
+	        ACCOUNT = #account#
+	      </isNotEmpty>
+	      <isNotEmpty prepend="AND" property="password" >
+	        PASSWORD = #password#
+	      </isNotEmpty>
+	      <isNotEmpty prepend="AND" property="name" >
+	        NAME = #name#
+	      </isNotEmpty>
+	      <isNotEmpty prepend="AND" property="status" >
+	        STATUS = #status#
+	      </isNotEmpty>
+	      <isEmpty prepend="AND" property="status" >
+	         <![CDATA[ STATUS <> '2']]>
+	      </isEmpty>
+	      <isNotEmpty prepend="AND" property="userType" >
+	        USER_TYPE = #userType#
+	      </isNotEmpty>
+	      <isNotEmpty prepend="AND" property="lastLoginIp" >
+	        LAST_LOGIN_IP = #lastLoginIp#
+	      </isNotEmpty>
+	      <isNotEmpty prepend="AND" property="lastLoginTime" >
+	        LAST_LOGIN_TIME = #lastLoginTime#
+	      </isNotEmpty>
+	      <isNotEmpty prepend="AND" property="loginNum" >
+	        LOGIN_NUM = #loginNum#
+	      </isNotEmpty>
+      </dynamic>
+  </select>
+  <delete id="DELETE">
+    delete from users
+    where ID = #id#
+  </delete>
+  
+  <insert id="INSERT" parameterClass="com.hundsun.jresplus.quickstart.biz.po.Users" >
+      insert into users (ID, ACCOUNT, PASSWORD, NAME, STATUS, USER_TYPE, GMT_CREATE, GMT_MODIFY,DEFAULT_SUB_SYS)
+    values (#id#, #account#, #password#, #name#, #status#,
+      #userType#, sysdate(), sysdate(),#defaultSubSys#)
+              <selectKey resultClass="java.lang.Long" type="post" keyProperty="id" >select LAST_INSERT_ID() as value</selectKey>
+      
+  </insert>
+  
+  <update id="UPDATE" parameterClass="com.hundsun.jresplus.quickstart.biz.po.Users" >  
+    update users SET  GMT_MODIFY =  date_format(sysdate(),'%Y%m%d%H%i%S')
+    <dynamic prepend="," >
+      <isNotEmpty prepend="," property="account" >
+        ACCOUNT = #account#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="password" >
+        PASSWORD = #password#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="name" >
+        NAME = #name#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="status" >
+        STATUS = #status#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="userType" >
+        USER_TYPE = #userType#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="lastLoginIp" >
+        LAST_LOGIN_IP = #lastLoginIp#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="lastLoginTime" >
+        LAST_LOGIN_TIME = #lastLoginTime#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="loginNum" >
+        LOGIN_NUM = #loginNum#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="gmtCreate" >
+        GMT_CREATE = #gmtCreate#
+      </isNotEmpty>
+      <isNotEmpty prepend="," property="defaultSubSys">
+      	DEFAULT_SUB_SYS = #defaultSubSys#
+      </isNotEmpty>
+    </dynamic>
+    where ID = #id#
+  </update>
+  
+  <!--查询符合要求的会员数目-->
+	<select id="usersCountAll" parameterClass="usersQuery"
+		resultClass="java.lang.Integer">
+		select count(1) from users where STATUS in(0,1)
+		<isNotEmpty prepend="AND" property="account">
+			ACCOUNT like
+			concat('%', #account#, '%')
+        </isNotEmpty>
+		<isNotEmpty prepend="AND" property="realName">
+			NAME like
+			concat('%', #realName#, '%')
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="userType">
+			USER_TYPE = #userType#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="status">
+			STATUS = #status#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="startDate">
+          <![CDATA[ gmt_create >=  str_to_date(#startDate#,'%Y-%m-%d') ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="endDate">
+         <![CDATA[ gmt_create < date_add(str_to_date(#endDate#,'%Y-%m-%d'), interval 1 day)]]>
+		</isNotEmpty>
+		<isEqual prepend="and" property="agentUserType" compareValue="2">
+			USER_TYPE in (1,2)
+		</isEqual>
+	</select>
+	
+	<!--分页查询会员-->
+	<select id="usersSelectAll" parameterClass="usersQuery"
+		resultMap="users_RM">
+<!-- 		<isNotEmpty property="pageFristItem"> -->
+<!-- 			<isNotEmpty property="pageLastItem"> -->
+<!--   			  <![CDATA[SELECT * FROM (SELECT ROWNUM AS NUMROW, c.* from   ( ]]> -->
+<!-- 			</isNotEmpty> -->
+<!-- 		</isNotEmpty> -->
+		select *
+		from users where  STATUS in(0,1)
+		<isNotEmpty prepend="AND" property="account">
+			ACCOUNT like
+						concat('%', #account#, '%')
+        </isNotEmpty>
+		<isNotEmpty prepend="AND" property="realName">
+			NAME like
+			concat('%', #realName#, '%')
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="userType">
+			USER_TYPE = #userType#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="status">
+			STATUS = #status#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="startDate">
+          <![CDATA[ gmt_create >= str_to_date(#startDate#,'%Y-%m-%d') ]]>
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="endDate">
+         <![CDATA[ gmt_create < date_add(str_to_date(#endDate#,'%Y-%m-%d'), interval 1 day)]]>
+		</isNotEmpty>
+		<isEqual prepend="and" property="agentUserType" compareValue="2">
+			USER_TYPE in (1,2)
+		</isEqual>
+		order by GMT_MODIFY desc
+<!-- 		<isNotEmpty property="pageFristItem"> -->
+<!-- 			<isNotEmpty property="pageLastItem"> -->
+<!--     			<![CDATA[ ) c  where rownum<=#pageLastItem#) WHERE NUMROW >= #pageFristItem# -->
+<!--     			]]> -->
+<!-- 			</isNotEmpty> -->
+<!-- 		</isNotEmpty> -->
+		<isNotEmpty property="mysqlPageFristItem"><isNotEmpty property="pageSize"> limit #mysqlPageFristItem#,#pageSize# </isNotEmpty></isNotEmpty>
+
+	</select>
+  
+</sqlMap>

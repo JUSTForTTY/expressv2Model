@@ -1,0 +1,70 @@
+#set($layout="layout/order.vm")
+
+<script type="text/javascript">
+    function setTotal(){
+	  $("input").each(function(){
+	  });
+    }
+	$(function(){
+	    $("input[name='goodsNum']").blur(function(){
+	    	var goodsNum = $(this).val();
+	    	var goodsId = $(this).parent().find("input[name='goodsId']").val();
+	        window.location.href = appServer + "/settle/changeNumFromCart.htm?id=" + goodsId + "&goodsNum=" +goodsNum;
+	    })
+	});
+</script>
+
+<div class="menuaa2" style="height:55px;margin-left:10px">
+   <div class="menulg" style="height:50px;margin-top:0px;margin-right:15px;width:511px;float:right"><img src="$appServer/images/gwlc_03aa.png" width="511" height="50"></div>
+  <div class="menulg" style="height:50px;margin-top:5px;width:50px;float:right"><img src="$appServer/images/logo.png" width="50" height="50"></div>
+
+</div>
+<div class="gwlc02">我的购物车</div>
+<div class="gwlc03">
+	<span>商品</span>
+    <ul>
+    <li>单价</li>
+    <li>数量</li>
+    <li>小计</li>
+    <li>操作</li>
+    </ul>
+</div>
+#foreach($e in $settlement.detailList)
+	<div class="gwlc04">
+		<div class="gwlc05"><img src="$e.image" width="146" height="133" /><span>$e.goodsName</span></div>
+	    <div class="gwlc06">
+	    	<ul>
+		        <li>
+		        	#if("$!NumberTool.format('#0.00',$!e.price)" == "0.00") 免费  #set($goodsPrice = 0)
+		            #elseif($!e.price && $!e.price > 0)￥ $NumberTool.format("#0.00",$!e.price) #set($goodsPrice = $!e.price * 100)
+		            #else 面议 #set($goodsPrice = 0)
+		            #end
+		        </li>
+		        <li>
+		        	<a href="deleteOneFromCart.htm?id=$e.goodsId">
+		        		<img class="gwlc07" src="$appServer/images/gwlc_10aa.png" width="19" height="25" />
+		        	</a>
+		        	<input name="goodsId" type="hidden" value="$e.goodsId"  />
+		        	<input name="goodsNum" type="text" value="$e.goodsNum"  />
+		        	<input type="hidden" name="goodsPrice" value="$goodsPrice" />
+		          	<a href="addOne2Cart.htm?id=$e.goodsId">
+		          		<img class="gwlc08" src="$appServer/images/gwlc_12aa.png" width="19" height="25" />
+		          	</a>
+		        </li>
+				<li id="sumOneRecord">$e.priceSum</li>
+				<li>
+					<a href="deleteFromCart.htm?id=$e.goodsId">
+						<img class="gwlc09" src="$appServer/images/gwlc_14aa.png" width="26" height="20" />
+					</a>
+				</li>
+	        </ul>
+	    </div>
+	</div>
+#end
+<div class="gwlc10">
+	<div class="gwlc11"><a href="clearCart.htm">X 清空购物车</a></div>
+  <div class="gwlc12"><span><h6 id="countAll">$settlement.itemcount</h6> 
+     件商品</span> <h5>总计：￥$settlement.priceSum</h5><h4>总计：￥<strong id="sumAll">$settlement.priceSum</strong></h4>
+    <input class="gwlc13" name="" type="button" value="继续购物" onclick="location.href='$appServer/goods/normal/list.htm'" /><input class="gwlc14" name="" type="button" value="去结算" onclick="location.href='order2Pay.htm'" />
+    </div>
+</div>

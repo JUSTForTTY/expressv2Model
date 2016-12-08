@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="BUILDING" >
+	<typeAlias alias="building" type="com.hundsun.jresplus.quickstart.biz.po.Building"/>
+	
+  	<resultMap id="baseResult" class="building" >
+    	<result column="id" 			property="id" />
+    	<result column="building_name" 	property="buildingName"  />
+    	<result column="status" 			property="status" />
+    	<result column="create_time" 			property="createTime" />
+    	<result column="modify_time" 		property="modifyTime"  />
+    	<result column="remark" 		property="remark" />
+    	<result column="remark2" 		property="remark2" />
+    	<result column="title" 		property="title" />
+    	<result column="logo" 		property="logo" />
+    	<result column="sublogo" 		property="sublogo" />
+  	</resultMap>
+
+  	<sql id="allColumn">
+  		id, building_name, status, create_time, modify_time,remark,remark2,title,logo,sublogo
+  	</sql>
+  	
+  	<!-- 获取列表 -->
+	<select id="queryAll" resultMap="baseResult">
+		select 
+  			<include refid="allColumn"/> 
+    	from building
+	</select>
+	
+	<select id="getPropertyNoteByBuildingId" resultClass="com.hundsun.jresplus.quickstart.biz.po.PropertyNote">
+		select 
+  			property_note as noteContent,
+  			property_note_bg as noteBg
+    	from building
+    	where 
+    		id = #buildingId#
+	</select>
+	
+		<select id="getBuildingListByYuming" resultMap="baseResult">
+		select 
+  		<include refid="allColumn"/> 
+    	from building
+    	where 
+    		remark = #tempContextUrl# or remark2=#tempContextUrl#
+	</select>
+	
+	 
+
+</sqlMap>

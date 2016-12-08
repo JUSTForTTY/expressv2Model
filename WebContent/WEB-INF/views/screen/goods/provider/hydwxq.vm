@@ -1,0 +1,105 @@
+#set($layout="")
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>会员单位详情</title>
+<link href="/css/css.css" rel="stylesheet" type="text/css" />
+<link href="/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="wytop">
+    	<div class="wytopwr">
+        	<span>欢迎进入物业快车网！</span>
+            <ul>
+            <li><a href="#">收藏我们</a></li>
+            <li><a href="#">帮助中心</a></li>
+            <li id="wr"><a href="#">会员中心</a></li>
+            </ul>
+        </div>  
+    </div>
+    <div class="menu">
+    <div class="menulg"><img src="/images/logo.png" width="327" height="53" /></div>
+    <div class="menusr">
+    	<ul>
+        <li><a id="mr" href="#">商品</a></li>
+        <li><a href="#">商品</a></li>
+        <li><a href="#">商品</a></li>
+        </ul>
+      <i><input class="Inpt" name="" type="text" /></i><input class="mserver" name="" type="submit" value=" " />
+    </div>
+    <div class="menukf"><a href="#"><img src="/images/kf.png" width="31" height="28" /></a><a class="menukftxt" href="#">客服中心</a></div>
+    </div>
+    <div class=" menunav">
+    	<div class="menunav02">
+        	<ul>
+            <li><a id="menubg" href="/goods/index.htm">首 页</a></li>
+            <li><a href="/ywfw.html">物业信息</a></li>
+            <li><a href="/zxzx.html">最新资讯</a></li>
+            <li><a href="/goods/sale/mrcx.htm">每日促销</a></li>
+            <li><a href="/goods/provider/hydw.htm">会员单位</a></li>
+            <li><a href="/goods/house/kcxx.htm">房产信息</a></li>
+            <li style="border-right:1px solid #f4f4f4"><a href="/goods/normal/list.htm">商品信息</a></li>
+            </ul>
+        </div>
+    </div>  
+    <div class="xxban"></div> 
+<div class=" kchydwq">
+	<div class=" kchydwq01">
+    	<div class="kchydwq02"><img src="/images/hydwxq_03aa.png" width="487" height="431" /></div>
+        <div class="kchydwq03"><span>粉丝人数：<a href="#">10</a></span><input name="" type="submit" value="关注他" /></div>
+    </div>
+    <div class="kchydwq04">
+    	<div class="kchydwq05"><span> $!goods.name</span></div>
+        <div class="kchydwq06"> $!goods.detailintro</div>
+    </div>
+</div>
+<div class=" kchydwq07"><span>公司产品</span><h6><a href="#">上一页</a></h6><h5><a href="#">下一页</a></h5></div>
+<div class="kchydwq08">
+#if($query.items && $query.items.size()>0)
+		#foreach($item in $query.items)
+	<div class="kchydwq09">
+    	<div class="kchydwq10"><img src="$imageServer.get($item.miniature)" width="188" height="188" /></div>
+        <div class="kchydwq11">
+        	<div class="kchydwq12">$item.name</div>
+            <div class="kchydwq13">
+            	<ul>
+                <li>价格：<strong>￥$item.price</strong></li>
+                <li>数量：<input name="" type="text" /></li>
+                </ul>
+            </div>
+            <div class="kchydwq14"><input name="" type="submit" value=" " /></div>
+        </div>
+    </div>
+     #end
+	#end
+	#pager($query,"/goods/provider/hydwxq.htm")
+    
+</div>
+<div class="chear"></div>
+<div class=" kchydwq07"><span>公司日记</span><h6><a href="#">上一页</a></h6><h5><a href="#">下一页</a></h5></div>
+<div class=" kchydwq15">
+	<div class=" kchydwq16">
+	  <h6><a href="#">调查显示习近平国内国际认可度排名第一 </a></h6></div>
+    <div class=" kchydwq17">中国日报网12月17日电，根据哈佛大学肯尼迪政府管理学院艾什中心官方网站今天公布的对世界主要国家领导人形象的全球公众调查结果，在受访者对本国领导人
+认可度、30国受访者对十国领导人认可度、以及受访者对本国领导人正确处理国内及国际事务信心度方面，中国国家主席习近平都排名第一。</div>
+</div>
+<div class="chear"></div>
+<div class=" kchydwq18">
+	<div class=" kchydwq19"><span>发表公司日志</span></div>
+    <div class=" kchydwq20"><textarea name="" cols="" rows=""></textarea></div>
+    <div class="kchydwq21"><input name="" type="submit" value="提交" /></div>
+</div>
+
+    
+    
+<div class="chear"></div>
+<div class="footer">
+<div class="footer02"><span><a href="#">会员单位</a> |    <a href="#">服务条款</a> |    <a href="#">付款方式</a> |    <a href="#">厂商加盟</a> |    <a href="#">联系我们</a> |    <a href="#">友情链接</a> |    <a href="#">帮助</a><br />
+  
+                         Copyright © 2004-2014  快车jk.com 版权所有</span>
+	  </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,261 @@
+#set($menu = "society")
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>兴趣社团详情</title>
+<link href="$appServer/css/css.css" rel="stylesheet" type="text/css" />
+<link href="$appServer/css/style.css" rel="stylesheet" type="text/css" />
+
+ 
+ <script type="text/javascript">
+function show(){
+	 
+	var ms1=document.getElementsByName("createTime");
+	 
+	 
+	 for(var i=0;i<ms1.length;i++){
+	 
+	 var date = new Date(); //日期对象
+	   var ms2=ms1[i].value;
+	   
+	var myDate= new Date(Date.parse(ms2.replace(/-/g, "/")));  
+	  
+	   
+	var ms= date.getTime()-myDate.getTime();
+	date.setTime(ms);
+	var time = "";
+	time = date.getFullYear()-1969+"年";
+	time = time +(date.getMonth()-11)+"月";
+	time = time + (date.getDate()-31)+"日 ";
+	time = time + (date.getHours()-18)+"小时";
+	time = time + (date.getMinutes())+"分钟";
+	  
+	 
+	document.getElementById(i+1).innerHTML =time; 
+	
+	   
+	}
+	  
+	 
+ 
+	}
+	function joinNow(cid){
+		 
+		 
+		jQuery.ajax({
+     		type: 'POST',
+			url: appServer + '/goods/society/joinClub.htm',
+			data: {    
+             	cid : cid
+             	 
+    		},
+			dataType: 'json',
+			success: function(data) {    
+        		  
+        		 if(data.result=='nologin'){
+        		 
+        		 alert("加入失败！请先登录！");   
+        		 
+        		 }
+        		 if(data.result=='userrepeat'){
+        		 
+        		 alert("您已经加入过咯！");   
+        		 
+        		 }
+        		  if(data.result=='success'){
+        		 
+        		 alert("加入成功");   
+        		 location.reload(true)  
+        		 }
+        		   
+     		},    
+		 	error : function() {   
+            		alert("加入购物车失败！请先登录！");   
+			}
+		});
+	}
+	
+	
+	
+	 
+ 
+</script> 
+ 
+</head>
+
+<body  onload="show();" style="overflow:auto">
+  
+<div class="xqstxq">
+	<div class="xqstxq02" style="width:321px;height:321px"><img src="$appServer/$activity.logo" width="321" height="321" /></div>
+    <div class="xqstxq03" style="width:450px;height:321px;">
+    
+    	<span style="width:400px"><a href="#">$activity.name</a></span>
+    	 
+        <h6>活动介绍：</h6><br />
+        <h5 style="width:420px">$activity.subtitle </h5>
+    </div>
+    <div class="xqstxq04">
+    	<div class="xqstxq05"><i></i>活动报名成员：
+    	<a href="$appServer/goods/society/activityMember.htm?aid=$activity.aid">
+    	<li style="margin-right: 10px;margin-top:5px;width: 78px;height:32px;background:#E70834;border-radius:15px;color:white;float:right;text-align:center">更多</li></a>
+    	</div>
+    	
+    		#foreach($item in $query.items)
+    	
+        <div class="xqstxq06">
+        #if (!$item.administrator)
+        <img src="$appServer/images/defaultImage.jpg" width="81" height="82" />
+        #end
+         #if ($item.administrator)
+        <img src="$appServer/$item.administrator" width="81" height="82" />
+        #end
+        <strong><a href="#">$item.name</a></strong><span> 
+          
+                                     
+         
+            <br />
+好久没冒泡了
+</span>
+ 
+</div>
+#end
+ 
+    </div>
+</div>
+
+<div class="xqstxq07">报名人数：
+ #if($!query.items.size()>0)
+ 
+ $!query.items.size()
+ #else
+ 0
+ 
+ #end
+
+ 
+ </div>
+ 
+<div class="kchydwq07"><span>报名项目</span>
+  
+  
+ 
+ 
+ 
+</div>
+
+<div class="xqstxq08" style="min-height:170px;height:auto">
+      
+        #foreach($item in $activityProjectQuery.items)
+         <a  href="javascript:void(0)"  onclick="checkUserJoinClub('$item.apid','$activity.cid')">
+			<div class="xj11" style="height:67px;">
+			       
+			        <div class="xj13"><span style="width:150px;"><b style="float:left;margin-right:30px;">$item.name</b> <div  style="width:300px;float:left;">     <div style="float:left;"   id=""></div>           </span><h6>价格：$item.price</h6></div></div>
+			        <div class="xj14" style="float:right;width:200px"><span style="float:right;width:80px;">$velocityCount F</span> <h5 style="width:100px;float:right">$dateUtil.convertDateToString("yyyy-MM-dd", ${item.createTime})</h5></div>
+			      </div>
+			      </a>
+			   #end   
+			      
+  
+</div>
+
+<div class="kchydwq07"><span>活动详情</span>
+  
+  
+ 
+ 
+ 
+</div>
+
+<div class="xqstxq08" style="height:auto">
+      
+        $activity.actDetail
+			      
+  
+</div>
+
+<div class=" kchydwq07"><span id="commentviewspan" onclick="showComment()">帖子话题</span>
+   
+   <span style="margin-left:10px;" id="historyviewspan" onclick="showHistory()">历史回顾</span>
+
+</div> 
+
+ 
+
+<div class="xqstxq08" id="commentview" style="height:auto">
+ 
+ 
+  
+ 
+
+<iframe name="weather_inc" id="iframepage" src="http://218.80.244.227:8001/Genius_mvc/comment/pageList.htm?aid=$activity.aid&userId=$!{userAgent.id}" style="margin:0px 0px 0px 0px;" width="100%"    height="800" frameborder="0" marginwidth="0" marginheight="0" scrolling="yes" ></iframe>
+
+
+</div>
+
+<div class="xqstxq08" id="historyview" style="display:none;height:auto">
+ 
+  <iframe name="weather_inc" id="iframepage" src="$appServer/goods/society/historyView.htm" style="margin:0px 0px 0px 0px;" width="100%"   height=800    frameborder="0" marginwidth="0" marginheight="0" scrolling="yes" ></iframe>
+   
+</div>
+
+
+   
+   <script  type="text/javascript">
+  function checkUserJoinClub(apid,cid){
+		 
+		 
+		jQuery.ajax({
+     		type: 'POST',
+			url: appServer + '/goods/society/checkUserJoinClub.htm',
+			data: {    
+             	cid : cid
+             	 
+    		},
+			dataType: 'json',
+			success: function(data) {    
+        		  
+        		 if(data.result=='nologin'){
+        		 
+        		 alert("加入失败！请先登录！");   
+        		 
+        		 }
+        		 if(data.result=='fail'){
+        		 
+        		 alert("请先加入社团");   
+        		 
+        		 }
+        		  if(data.result=='success'){
+        		 
+        		  
+        		 location.href=appServer+'/goods/society/payConfirm.htm?apid='+apid+'';
+        		 }
+        		   
+     		},    
+		 	error : function() {   
+            		alert("加入购物车失败！请先登录！");   
+			}
+		});
+	}
+	
+   
+   function showComment(){
+   
+   $("#commentview").css("display","block");
+   $("#historyview").css("display","none");
+   
+   }
+   
+    function showHistory(){
+   
+    $("#commentview").css("display","none");
+   $("#historyview").css("display","block");
+   
+   }
+   
+   </script>
+   
+   
+   
+<div class="chear"></div>
+
+</body>
+</html>

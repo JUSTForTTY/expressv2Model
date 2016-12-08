@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="FAST">
+	<typeAlias alias="fastselect"
+		type="com.hundsun.jresplus.quickstart.biz.po.Fast" />
+	<resultMap id="baseResult" class="fastselect">
+		<result column="id" 				property="id" />
+		<result column="name" 				property="name" />
+		<result column="picture" 			property="picture" />
+		<result column="url" 			property="url" />
+        <result column="sort" 		property="sort" />
+	<result column="is_display" property="is_display" />
+	 <result column="building_id" 		property="building_id" />
+	 <result column="create_user" 		property="create_user" />
+	 <result column="create_time" 		property="create_time" />
+	 <result column="modify_user" 		property="modify_user" />
+	  <result column="modify_time" 		property="modify_time" />
+	</resultMap>
+	
+	
+	<sql id="allColumn">
+  		id, name, picture, url, sort,is_display,
+  		building_id, create_user, create_time, modify_user, modify_time 
+  	</sql>
+	
+	
+	 <select id="queryList" resultMap="baseResult">
+	select
+	<include refid="allColumn" />
+	from fastservice where 1=1
+			<isEqual prepend="and" compareValue="0">
+				building_id=0
+			</isEqual>
+			<isNotEqual prepend="and" compareValue="0">
+				building_id=#buildingId#
+			</isNotEqual>
+		order by sort
+	</select>
+	
+	</sqlMap>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd"><sqlMap namespace="Sequence">	
+<typeAlias alias="sequence" type="com.hundsun.jresplus.quickstart.biz.po.Sequence" />
+	<statement id="selectAllSequence" resultClass="com.hundsun.jresplus.quickstart.biz.po.Sequence">
+		<![CDATA[
+		select sequence.* from sequence
+		]]>
+	</statement>
+	<statement id="selectSequenceByTablename" parameterClass="java.lang.String" resultClass="com.hundsun.jresplus.quickstart.biz.po.Sequence">
+		<![CDATA[
+		select sequence.* from sequence
+		where sequence.tablename=#tablename:Integer#
+		]]>
+	</statement>
+	<statement id="insertSequence" parameterClass="sequence">
+		<![CDATA[
+		insert into sequence (tablename,seqno)
+		values (#tablename:String#,#seqno:Integer#)
+		]]>
+	</statement>
+	<statement id="increaseSeqno" parameterClass="java.lang.String">
+		<![CDATA[
+		update sequence set seqno=seqno+1
+		where tablename=#tablename:String#
+		]]>
+	</statement>
+	<statement id="getMaxSeqno" parameterClass="java.lang.String" resultClass="java.lang.Integer">
+		<![CDATA[
+		select seqno from sequence
+		where tablename=#tablename:Integer# order by seqno desc limit 1
+		]]>
+	</statement>
+	<statement id="updateSequence" parameterClass="sequence">
+		<![CDATA[
+		update sequence set seqno=#seqno:Integer# 
+		where tablename=#tablename:String#
+		]]>
+	</statement>
+	<statement id="deleteSequence" parameterClass="java.lang.Integer">
+		<![CDATA[
+		delete from sequence where tablename=#tablename:String#
+		]]>
+	</statement>
+</sqlMap>

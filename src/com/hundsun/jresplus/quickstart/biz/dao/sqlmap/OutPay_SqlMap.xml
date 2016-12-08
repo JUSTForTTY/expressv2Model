@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="OutPay">	
+	<typeAlias alias="outPay" type="com.hundsun.jresplus.quickstart.biz.po.OutPay" />
+	<typeAlias alias="newOrder" type="com.hundsun.jresplus.quickstart.biz.po.Order" />
+	<typeAlias alias="subOrder" type="com.hundsun.jresplus.quickstart.biz.po.SubOrder" />
+
+	<resultMap id="baseResult" class="outPay">
+		<result column="outPayId" 			property="outPayId" />
+		<result column="requestId" 			property="requestId" />
+		<result column="payType" 			property="payType" />
+		<result column="userId" 			property="userId" />
+		<result column="outId"              property="outId" /> 
+		<result column="amount" 			property="amount" />
+		<result column="status" 			property="status" />
+		<result column="outStatus" 			property="outStatus" />
+		<result column="created" 			property="created" />
+		<result column="updated" 			property="updated" />
+	</resultMap>
+
+	<sql id="allColumn">
+		outPayId,requestId,payType,userId,outId,amount,status,outStatus,created,updated
+	</sql>
+	
+	<select id="selectByOutPayId" resultMap="baseResult">
+		select
+			<include refid="allColumn" />
+		from outpay
+		where 
+			outPayId = #outPayId#
+	</select>
+	
+	
+	<update id="updateOrderInfo" parameterClass="newOrder">
+		update  
+			`order`  
+		set status = #status#
+		where id =#id#
+	</update>
+	
+		<update id="updateSubOrderInfo" parameterClass="SubOrder">
+		update  
+			sub_order  
+		set status = #status#
+		where order_id =#orderId#
+	</update>
+	
+	<insert id="insertOutPay" parameterClass="outPay">
+		<![CDATA[
+		insert into outpay (requestId,payType,amount,userId,status,created,updated)
+		values (#requestId:Long#,#payType:Integer#,#amount:Integer#,#userId:Integer#,#status:Integer#,#created:Integer#,#updated:Integer#)
+		]]>
+		<selectKey resultClass="java.lang.Integer" keyProperty="outPayId">
+			SELECT @@IDENTITY AS outPayId
+		</selectKey>
+	</insert>
+	
+	<statement id="updateOutPaySpecificField" parameterClass="java.util.Map">
+		<![CDATA[
+		update outpay set updated = #updated#
+		]]>
+		<dynamic>
+      	<isPropertyAvailable property="outId" prepend=",">
+        <isNotNull property="outId">
+            outId = #outId#
+        </isNotNull>
+      </isPropertyAvailable>
+      <isPropertyAvailable property="outStatus" prepend=",">
+        <isNotNull property="outStatus">
+            outStatus = #outStatus#
+        </isNotNull>
+      </isPropertyAvailable>
+      <isPropertyAvailable property="status" prepend=",">
+        <isNotNull property="status">
+            status = #status#
+        </isNotNull>
+      </isPropertyAvailable>
+    </dynamic>
+    <![CDATA[
+        where outPayId = #outPayId#
+    ]]>
+	</statement>
+</sqlMap>

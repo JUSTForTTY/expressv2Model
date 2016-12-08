@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Orderitem">	
+<typeAlias alias="orderitem" type="com.hundsun.jresplus.quickstart.biz.po.Orderitem" />
+<typeAlias alias="orderDetail" type="com.hundsun.jresplus.quickstart.biz.po.OrderDetail" />
+	<resultMap id="baseResult" class="orderitem">
+		<result column="id" 				property="id" />
+		<result column="orderinfo_id" 		property="orderinfo_id" />
+		<result column="itemno" 			property="itemno" />
+		<result column="goods_id" 			property="goods_id" />
+		<result column="goods_name" 		property="goods_name" />
+		<result column="privatecode" 		property="privatecode" />
+		<result column="unitprice" 			property="unitprice" />
+		<result column="itemnum" 			property="itemnum" />
+		<result column="unit" 				property="unit" />
+		<result column="itemsum" 			property="itemsum" />
+		<result column="user_id" 			property="user_id" />
+		<result column="provider_id" 		property="provider_id" />
+		<result column="comment_id" 		property="commentId" />
+		<result column="status" 			property="status" />
+	</resultMap>
+	
+	<sql id="allColumn">
+		id, orderinfo_id, itemno, goods_id, goods_name, privatecode, unitprice, itemnum,
+		unit, itemsum, user_id, provider_id,comment_id,status
+	</sql>
+
+	<select id="getByOrderInfoId" resultMap="baseResult">
+		select
+			<include refid="allColumn" />
+		from orderitem
+		where 
+			orderinfo_id = #orderinfo_id#
+	</select>
+	
+	<select id="getById" resultMap="baseResult">
+		select
+			<include refid="allColumn" />
+		from orderitem
+		where 
+			id = #id#
+	</select>
+	
+	<sql id="orderitem_QueryCondition">
+		<dynamic prepend="and">
+			<isNotEmpty prepend="and" property="orderno">
+				(
+					orderinfo.orderno like '%$orderno$%' 
+				)		
+			</isNotEmpty>			
+			<isNotEmpty prepend="and" property="username">
+					orderinfo.username like '%$username$%' 
+			</isNotEmpty>			
+			<isNotEmpty prepend="and" property="start_ordertime">
+					orderinfo.ordertime >= '$start_ordertime$'
+			</isNotEmpty>			
+			<isNotEmpty prepend="and" property="end_ordertime">
+					'$end_ordertime$' >= orderinfo.ordertime
+			</isNotEmpty>			
+			<isNotEmpty prepend="and" property="status">
+			    <isGreaterThan property="status" compareValue="-1">
+					orderinfo.status = $status$
+			    </isGreaterThan>
+			</isNotEmpty>			
+			<isNotEmpty prepend="and" property="goodsname">
+			    orderitem.goods_name like '%$goodsname$%'
+			</isNotEmpty>			
+			<isNotEmpty prepend="and" property="keywords">
+				(orderinfo.receivername like '%$keywords$%' or orderinfo.receiveraddr like '%$keywords$%' or orderinfo.userremark like '%$keywords$%'
+				 or orderinfo.deliverremark like '%$keywords$%' or orderitem.goods_name like '%$keywords$%') 
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="provider_id">
+				orderitem.provider_id = #provider_id#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="supplydate">
+				goods.supplydate = #supplydate#
+			</isNotEmpty>	
+			<isNotEmpty prepend="and" property="classification" open="(" close=")">
+				goods.classification like '$classification$' or goods.classification is null
+			</isNotEmpty>
+		</dynamic>
+	</sql>
+	<sql id="orderitem_restriction">
+		<dynamic prepend="order by">
+			<isNotEmpty property="order_col">
+				$order_col$
+				<isNotEmpty property="order_type">
+					$order_type$
+				</isNotEmpty>
+			</isNotEmpty>			
+		</dynamic>		
+		<dynamic prepend="limit">
+			<isGreaterThan property="maxResults" compareValue="0">
+				#skipResults#,#maxResults#
+			</isGreaterThan>
+		</dynamic>
+	</sql>
+	<statement id="searchOrderitem" parameterClass="java.util.Map" resultClass="com.hundsun.jresplus.quickstart.biz.po.Orderitem">
+		<![CDATA[
+		select 
+			orderitem.*,
+			orderinfo.orderno,orderinfo.username as user_username,orderinfo.ordertime,orderinfo.receivername,orderinfo.receivertel,orderinfo.receivermobile,orderinfo.receiveraddr,orderinfo.totalsum,orderinfo.userremark,
+			goods.supplydate as supplydate
+			from orderinfo,orderitem
+		left join goods on goods.id=orderitem.goods_id
+		where orderinfo.id=orderitem.orderinfo_id
+		]]>
+		<include refid="orderitem_QueryCondition"/>	
+		<include refid="orderitem_restriction"/>	
+	</statement>
+	<statement id="searchOrderitemCount" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		<![CDATA[
+		select count(*) 
+		from orderinfo,orderitem
+		left join goods on goods.id=orderitem.goods_id
+		where orderinfo.id=orderitem.orderinfo_id
+		]]>
+		<include refid="orderitem_QueryCondition"/>
+	</statement>
+
+	<statement id="selectAllOrderitem" resultClass="com.hundsun.jresplus.quickstart.biz.po.Orderitem">
+		<![CDATA[
+		select orderitem.*,orderinfo.orderno as orderinfo_orderno from orderitem
+		left join orderinfo on orderinfo.id=orderitem.orderinfo_id
+		]]>
+	</statement>
+	<statement id="selectOrderitemsByOrdid" parameterClass="java.lang.Integer" resultClass="com.hundsun.jresplus.quickstart.biz.po.Orderitem">
+		<![CDATA[
+		select orderitem.*,orderinfo.orderno as orderinfo_orderno from orderitem
+		left join orderinfo on orderinfo.id=orderitem.orderinfo_id
+		where orderitem.orderinfo_id=#orderinfo_id#
+		order by orderitem.goods_id
+		]]>
+	</statement>
+
+	<statement id="selectOrderitemById" resultClass="com.hundsun.jresplus.quickstart.biz.po.Orderitem">
+		<![CDATA[
+		select orderitem.*,orderinfo.orderno as orderinfo_orderno,user.username as user_username from orderitem
+		left join orderinfo on orderinfo.id=orderitem.orderinfo_id
+		left join user on user.id=orderitem.user_id
+		where orderitem.id=#id#
+		]]>
+	</statement>
+	<statement id="insertOrderitem" parameterClass="orderitem">
+		<![CDATA[
+		insert into orderitem (orderinfo_id,itemno,goods_id,goods_name,privatecode,unitprice,itemnum,unit,itemsum,user_id,provider_id,status)
+		values (#orderinfo_id#,#itemno#,#goods_id#,#goods_name:String#,#privatecode:String#,#unitprice:Double#,#itemnum#,#unit:String#,#itemsum:Double#,#user_id#,#provider_id#,#status#)
+		]]>
+	</statement>
+	
+		<statement id="insertNewOrderitem" parameterClass="orderDetail">
+		<![CDATA[
+		insert into order_detail (order_id,sub_order_id,goods_id,goods_name,miniature,member_id,member_name,unit_price,unit_score,goods_count,single_price,single_score,gmt_create,gmt_modify)
+		values (#orderId#,#subOrderId#,#goodsId#,#goodsName#,#miniature#,#memberId#,#memberName#,#unitPrice#,#unitScore#,#goodsCount#,#singlePrice#,#singleScore#,#gmtCreate#,#gmtModify#)
+		]]>
+	</statement>
+	<statement id="updateOrderitem" parameterClass="orderitem">
+		<![CDATA[
+		update orderitem set orderinfo_id=#orderinfo_id#,itemno=#itemno#,goods_id=#goods_id#,goods_name=#goods_name:String#,privatecode=#privatecode:String#,unitprice=#unitprice:Double#,itemnum=#itemnum#,unit=#unit:String#,itemsum=#itemsum:Double#,user_id=#user_id#,#provider_id# 
+		where id=#id#
+		]]>
+	</statement>
+	<update id="updateStatusByOrderInfoId" >
+		<![CDATA[
+		update orderitem set goods_state = #status:String#
+		where orderinfo_id=#orderinf_id:Long#
+		]]>
+	</update>
+	<update id="updateStatusByOrderItemId">
+		<![CDATA[
+		update orderitem set status = #status#
+		where id=#id#
+		]]>
+	</update>
+	<statement id="deleteOrderitem" parameterClass="java.lang.Integer">
+		<![CDATA[
+		delete from orderitem where id=#id#
+		]]>
+	</statement>
+</sqlMap>

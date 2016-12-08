@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd"><sqlMap namespace="Orderinfo">	
+	<typeAlias alias="orderinfo" type="com.hundsun.jresplus.quickstart.biz.po.Orderinfo" />
+<typeAlias alias="neworder" type="com.hundsun.jresplus.quickstart.biz.po.Order" />
+ 
+ <typeAlias alias="newsuborder" type="com.hundsun.jresplus.quickstart.biz.po.SubOrder" />
+	<resultMap id="baseResult" class="orderinfo">
+		<result column="id" 				property="id" />
+		<result column="orderno" 			property="orderno" />
+		<result column="ordertime" 			property="ordertime" />
+		<result column="itemcount" 			property="itemcount" />
+		<result column="goodssum" 			property="goodssum" />
+		<result column="servicesum" 		property="servicesum" />
+		<result column="othersum" 			property="othersum" />
+		<result column="totalsum" 			property="totalsum" />
+		<result column="score" 				property="score" />
+		<result column="receivername" 		property="receivername" />
+		<result column="receivertel" 		property="receivertel" />
+		<result column="receivermobile" 	property="receivermobile" />
+		<result column="receiveremail" 		property="receiveremail" />
+		<result column="receiveraddr" 		property="receiveraddr" />
+		<result column="receiverzip" 		property="receiverzip" />
+		<result column="user_id" 			property="user_id" />
+		<result column="username" 			property="username" />
+		<result column="userremark" 		property="userremark" />
+		<result column="delivertype_id" 	property="delivertype_id" />
+		<result column="deliverremark" 		property="deliverremark" />
+		<result column="paymenttype_id" 	property="paymenttype_id" />
+		<result column="paymenttime" 		property="paymenttime" />
+		<result column="paymentremark" 		property="paymentremark" />
+		<result column="requireinvoice" 	property="requireinvoice" />
+		<result column="invoicetitle" 		property="invoicetitle" />
+		<result column="status" 			property="status" />
+
+	</resultMap>
+
+	<sql id="allColumn">
+		id,orderno,ordertime,itemcount,goodssum,
+		servicesum,othersum,totalsum,score,receivername,
+		receivertel,receivermobile,receiveremail,receiveraddr,receiverzip,
+		user_id,username,userremark,delivertype_id,deliverremark,
+		paymenttype_id,paymenttime,paymentremark,requireinvoice,invoicetitle,
+		status
+	</sql>
+	
+	<select id="findOrderinfoByIdUserId" resultMap="baseResult">
+		select
+			<include refid="allColumn" />
+		from orderinfo
+		where 
+			id = #id#
+		and user_id = #userId#
+	</select>
+	
+	<select id="queryOrderInfoCount" resultClass="int">
+		select
+			count(1)
+		from orderinfo
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="orderno">
+				orderno like '%$orderno$%' 
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="username">
+				username = #username# 
+			</isNotEmpty>	
+			<isNotEmpty prepend="and" property="receivername">
+				receivername like '%$receivername$%' 
+			</isNotEmpty>	
+			<isNotEmpty prepend="and" property="startDate">
+				ordertime &gt;= str_to_date(#startDate#,'%Y-%m-%d')
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="endDate">
+				ordertime &lt; str_to_date(#endDate#,'%Y-%m-%d')
+			</isNotEmpty>	
+		</dynamic>
+	</select>
+	
+	<select id="queryOrderInfoList" resultMap="baseResult">
+		select
+		<include refid="allColumn" />
+		from orderinfo
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="orderno">
+				orderno like '%$orderno$%' 
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="username">
+				username = #username# 
+			</isNotEmpty>	
+			<isNotEmpty prepend="and" property="receivername">
+				receivername like '%$receivername$%' 
+			</isNotEmpty>	
+			<isNotEmpty prepend="and" property="startDate">
+				ordertime &gt;= str_to_date(#startDate#,'%Y-%m-%d')
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="endDate">
+				ordertime &lt; str_to_date(#endDate#,'%Y-%m-%d')
+			</isNotEmpty>	
+		</dynamic>
+		order by id desc
+		limit #pageFristItem# , #pageSize#
+	</select>
+
+	<sql id="orderinfo_QueryCondition">
+		<dynamic prepend="and">
+			<isNotEmpty prepend="and" property="orderno">
+				(
+					orderinfo.orderno like '%$orderno$%' 
+				)		
+			</isNotEmpty>		
+			<isNotEmpty prepend="and" property="user_id">
+					orderinfo.user_id = $user_id$
+			</isNotEmpty>	
+			<isNotEmpty prepend="and" property="username">
+					orderinfo.username like '%$username$%' 
+			</isNotEmpty>			
+			<isNotEmpty prepend="and" property="start_ordertime">
+					orderinfo.ordertime >= '$start_ordertime$'
+			</isNotEmpty>			
+			<isNotEmpty prepend="and" property="end_ordertime">
+					'$end_ordertime$' >= orderinfo.ordertime
+			</isNotEmpty>			
+			<isNotEmpty prepend="and" property="receiveraddr">
+				orderinfo.receiveraddr like '%$receiveraddr$%' 
+			</isNotEmpty>			
+			<isNotEmpty prepend="and" property="status">
+			    <isGreaterThan property="status" compareValue="-1">
+					orderinfo.status = $status$
+			    </isGreaterThan>
+			</isNotEmpty>			
+			<isNotEmpty prepend="and" property="myscore">
+			    <isGreaterThan property="myscore" compareValue="-1">
+					orderinfo.score > $myscore$
+			    </isGreaterThan>
+			</isNotEmpty>			
+			<isNotEmpty prepend="and" property="unsettlement">
+			  (orderinfo.status=33 and orderinfo.paymenttype_id=5 and (orderinfo.paymenttime is null or orderinfo.paymenttime=''))
+			</isNotEmpty>			
+		</dynamic>
+	</sql>
+	<sql id="orderinfo_restriction">
+		<dynamic prepend="order by">
+			<isNotEmpty property="order_col">
+				$order_col$
+				<isNotEmpty property="order_type">
+					$order_type$
+				</isNotEmpty>
+			</isNotEmpty>			
+		</dynamic>		
+		<dynamic prepend="limit">
+			<isGreaterThan property="maxResults" compareValue="0">
+				#skipResults#,#maxResults#
+			</isGreaterThan>
+		</dynamic>
+	</sql>
+	<statement id="searchOrderinfo" parameterClass="java.util.Map" resultClass="com.hundsun.jresplus.quickstart.biz.po.Orderinfo">
+		<![CDATA[
+		select orderinfo.* from orderinfo
+		where 1=1
+		]]>
+		<include refid="orderinfo_QueryCondition"/>	
+		<include refid="orderinfo_restriction"/>	
+	</statement>
+	<statement id="searchOrderinfoCount" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		<![CDATA[
+		select count(*) from orderinfo
+		where 1=1
+		]]>
+		<include refid="orderinfo_QueryCondition"/>
+	</statement>
+
+	<statement id="selectAllOrderinfo" resultClass="com.hundsun.jresplus.quickstart.biz.po.Orderinfo">
+		<![CDATA[
+		select orderinfo.*,user.username as user_username from orderinfo
+		left join user on user.id=orderinfo.user_id
+		]]>
+	</statement>
+	<statement id="selectOrderinfoById" parameterClass="java.lang.Long" resultClass="com.hundsun.jresplus.quickstart.biz.po.Orderinfo">
+		<![CDATA[
+		select orderinfo.*,user.username as user_username from orderinfo
+		left join user on user.id=orderinfo.user_id
+		where orderinfo.id=#id#
+		]]>
+	</statement>
+	
+	<statement id="selectOrderinfoByOrdno" parameterClass="java.lang.String" resultClass="com.hundsun.jresplus.quickstart.biz.po.Orderinfo">
+		<![CDATA[
+		select orderinfo.*,user.username as user_username from orderinfo
+		left join user on user.id=orderinfo.user_id
+		where orderinfo.orderno=#orderno#
+		]]>
+	</statement>
+	
+	<insert id="insertOrderinfo" parameterClass="orderinfo">
+		<![CDATA[
+		insert into orderinfo (orderno,ordertime,itemcount,goodssum,servicesum,othersum,totalsum,score,receivername,receivertel,receivermobile,receiveremail,receiveraddr,receiverzip,user_id,username,userremark,delivertype_id,deliverremark,paymenttype_id,paymenttime,paymentremark,requireinvoice,invoicetitle,status)
+		values (#orderno#,#ordertime#,#itemcount#,#goodssum#,#servicesum#,#othersum#,#totalsum#,#score#,#receivername#,#receivertel#,#receivermobile#,#receiveremail#,#receiveraddr#,#receiverzip#,#user_id#,#username#,#userremark#,#delivertype_id#,#deliverremark#,#paymenttype_id#,#paymenttime#,#paymentremark#,#requireinvoice#,#invoicetitle#,#status#)
+		]]>
+		<selectKey resultClass="java.lang.Long" keyProperty="id">
+			SELECT @@IDENTITY AS id
+		</selectKey>
+	</insert>
+	
+	<update id="updateOrderinfo" parameterClass="orderinfo">
+		<![CDATA[
+		update 
+			orderinfo 
+		set 
+			orderno=#orderno#,
+			ordertime=#ordertime#,
+			itemcount=#itemcount#,
+			goodssum=#goodssum#,
+			servicesum=#servicesum#,
+			othersum=#othersum#,
+			totalsum=#totalsum#,
+			score=#score#,
+			receivername=#receivername#,
+			receivertel=#receivertel#,
+			receivermobile=#receivermobile#,
+			receiveremail=#receiveremail#,
+			receiveraddr=#receiveraddr#,
+			receiverzip=#receiverzip#,
+			user_id=#user_id#,
+			username=#username#,
+			userremark=#userremark#,
+			delivertype_id=#delivertype_id#,
+			deliverremark=#deliverremark#,
+			paymenttype_id=#paymenttype_id#,
+			paymenttime=#paymenttime#,
+			paymentremark=#paymentremark#,
+			requireinvoice=#requireinvoice#,
+			invoicetitle=#invoicetitle#,
+			status=#status# 
+		where id=#id#
+		]]>
+	</update>
+	
+	<update id="updateOrderinfoStatus">
+		update  
+			orderinfo 
+		set status = #status#
+		where id =#id#
+	</update>
+	<insert id="insertNewOrderinfo" parameterClass="neworder">
+		<![CDATA[
+		insert into `order` (id,order_time,total_price,total_score,goods_type_count,goods_count,receiver_name,receiver_address,receiver_mobile,user_name,pay_type,is_split,status,gmt_create,gmt_modify)
+		values (#id#,#orderTime#,#totalPrice#,#totalScore#,#goodsTypeCount#,#goodsCount#,#receiverName#,#receiverAddress#,#receiverMobile#,#userName#,#payType#,#isSplit#,#status#,#gmtCreate#,#gmtModify#)
+		]]>
+		<selectKey resultClass="java.lang.Long" keyProperty="id">
+			SELECT @@IDENTITY AS id
+		</selectKey>
+	</insert>
+	
+	
+	<insert id="insertNewSubOrderinfo" parameterClass="newsuborder">
+		<![CDATA[
+		insert into sub_order (id,order_id,member_id,member_name,subtotal_price,subtotal_score,goods_type_count,goods_count,status,gmt_create,gmt_modify)
+		values (#id#,#orderId#,#memberId#,#memberName#,#subtotalPrice#,#subtotalScore#,#goodsTypeCount#,#goodsCount#,#status#,#gmtCreate#,#gmtModify#)
+		]]>
+		<selectKey resultClass="java.lang.Long" keyProperty="id">
+			SELECT @@IDENTITY AS id
+		</selectKey>
+	</insert>
+	
+	<statement id="updateOrderinfoSpecificField" parameterClass="java.util.Map">
+		<![CDATA[
+		update orderinfo 
+		set status = #status#
+		]]>
+		<dynamic>
+      <isPropertyAvailable property="paymenttime" prepend=",">
+        <isNotNull property="paymenttime">
+            paymenttime = #paymenttime#
+        </isNotNull>
+      </isPropertyAvailable>
+    </dynamic>
+    <![CDATA[
+    	where id=#id#
+    ]]>
+	</statement>
+	<statement id="batUpdateOrderinfoStatus" parameterClass="java.util.Map">
+		<![CDATA[
+		update orderinfo set status=#newstatus# where id in ($selids$)
+		]]>
+	</statement>
+	<statement id="deleteOrderinfo" parameterClass="java.lang.Integer">
+		<![CDATA[
+		delete from orderinfo where id=#id#
+		]]>
+	</statement>
+</sqlMap>

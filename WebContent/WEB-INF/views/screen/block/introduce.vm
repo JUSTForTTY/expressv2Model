@@ -1,0 +1,95 @@
+#set($layout="")
+<!DOCTYPE html>
+<!-- saved from url=(0076)http://www.17sucai.com/preview/80883/2016-04-19/www.gzjunbo_.net_/index.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<title></title>
+<link href="$appServer/introduce/bootstrap.min.css" rel="stylesheet">
+<link rel="icon" href="http://www.17sucai.com/preview/80883/2016-04-19/www.gzjunbo_.net_/favicon.png">
+<link href="$appServer/introduce/hallooou.css" rel="stylesheet">
+<link href="$appServer/introduce/color_main.css" rel="stylesheet">
+<link href="$appServer/introduce/owl.carousel.css" rel="stylesheet">
+<link href="$appServer/introduce/owl.theme.css" rel="stylesheet">
+<link href="$appServer/introduce/owl.transitions.css" rel="stylesheet">
+<link href="$appServer/introduce/animate.css" rel="stylesheet">
+<link href="$appServer/introduce/magnific-popup.css" rel="stylesheet">
+<link href="$appServer/introduce/jquery.mb.ytplayer.min.css" rel="stylesheet">
+<link href="$appServer/introduce/font-awesome.min.css" rel="stylesheet">
+<link href="$appServer/introduce/d6b7657003dc40e1b73288673cd68ed5.css" rel="stylesheet" type="text/css">
+<link href="$appServer/introduce/98a171f3ab074fbfa3bcf2307d528eee.css" rel="stylesheet" type="text/css">
+<!--[if lt IE 9]>
+<script src="$appServer/introduce/js/html5shiv.min.js"></script>
+<script src="$appServer/introduce/js/respond.js"></script>
+<script>
+        document.createElement('video');
+    </script>
+<![endif]-->
+</head>
+<body id="home" class=" pace-done"> 
+
+<section id="about" class="about content-section alt-bg-light wow fadeInUp" data-wow-offset="10" style="visibility: visible; animation-name: fadeInUp;">
+<div class="container" style="zoom:0.8">
+	<div class="row">
+		<div class="col-md-6">
+			<h2>云河信息简介</h2>
+			<p style="text-indent:2em;margin-bottom:0">
+				上海云河信息技术有限公司致力于打造写字楼宇内的业务生态环境，在写字楼内办公的任何企业都是在业务生态环境中的一个成员，相互协作、相互学习、相互依靠，这个业务生态环境我们称之为“物业快车网”。
+			</p>
+			<p style="text-indent:2em">
+				“物业快车网”可以为企业提供——办公无忧的服务，具体包含以下三个方面：
+
+             1.提高采购效率：向企业推荐性价比高的商品或服务。
+             2.降低营销成本：帮助企业对接上下游产业链资源。
+             3.增强团队凝聚力：组织员工参与丰富多彩的兴趣社团。
+			</p>
+			<blockquote>
+				<h2>公司文化</h2>
+				<p style="margin-bottom:5px">
+					公司定位：为写字楼内入驻企业提供服务的第一品牌
+				</p>
+				<p style="margin-bottom:5px">
+					公司愿景：助企业办公无忧
+				</p>
+				<p style="margin-bottom:5px">
+					公司文化：成就客户、发展自己
+				</p>
+				<p style="margin-bottom:5px">
+					公司态度：一次偶遇、相伴恒久
+				</p>
+			</blockquote>
+		</div>
+		<div class="col-md-6">
+			<img src="$appServer/introduce/hallooou_template-iphone_sm.png" class="img-responsive">
+		</div>
+	</div>
+</div>
+</section>
+
+ 
+		
+		
+		
+		
+		
+		
+	 
+<script src="$appServer/introduce/jquery.min.js"></script>
+<script src="$appServer/introduce/bootstrap.min.js"></script>
+<script src="$appServer/introduce/wow.min.js"></script>
+<script src="$appServer/introduce/owl.carousel.min.js"></script>
+<script src="$appServer/introduce/jquery.parallax-1.1.3.js"></script>
+<script src="$appServer/introduce/jquery.magnific-popup.min.js"></script>
+<script src="$appServer/introduce/jquery.mb.ytplayer.min.js"></script>
+<script src="$appServer/introduce/jquery.countto.js"></script>
+<script src="$appServer/introduce/jquery.inview.min.js"></script>
+<script src="$appServer/introduce/pace.min.js"></script>
+<script src="$appServer/introduce/jquery.easing.min.js"></script>
+<script src="$appServer/introduce/jquery.validate.min.js"></script>
+<script src="$appServer/introduce/additional-methods.min.js"></script>
+<script src="$appServer/introduce/hallooou.js"></script>
+
+</body></html>

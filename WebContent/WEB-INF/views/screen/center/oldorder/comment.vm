@@ -1,0 +1,50 @@
+#set($layout="layout/center.vm")
+<div class="xjr"> 
+    <div class="xjr01"><span>订单详情</span></div>    
+    <div class="xjr02">
+    	<ul>
+        <li><span>市场价：</span>
+    		<b style="text-decoration:line-through;">
+        		#if("$!NumberTool.format('#0.00',$!goods.refprice)" == "0.00") 免费  
+        		#elseif($!goods.refprice && $!goods.refprice > 0)$NumberTool.format("#0.00",$!goods.refprice) 
+        		#else 面议 
+        		#end
+    		</b>
+        </li>
+        <li><span>邻居价：</span>
+			<b id="total">
+            	#if("$!NumberTool.format('#0.00',$!goods.price)" == "0.00") 免费  
+                #elseif($!goods.price && $!goods.price > 0)$NumberTool.format("#0.00",$!goods.price) 
+                #else 面议
+                #end
+			</b>
+		</li>
+        <li><span>积分值：</span>
+			<b id="total">
+                #if($!goods.scoreAdd && $!goods.scoreAdd > 0)$NumberTool.format("#0",$!goods.scoreAdd) 
+                #else 0
+                #end
+			</b>
+        </li>
+        </ul>
+    </div>  
+    <div class="xjr03"><span>评论</span></div>
+<ul>
+<form id="inputForm" action="comment.htm" method="post">
+<div class="kcxxq07">
+  <div class="kcxxq08">
+  		<input type="hidden" name="itemId" value="$!{item.id}" />
+    	<span>评论：</span><textarea name="content" cols="3" rows="3"></textarea>
+		<input id="contentHead" name="contentHead" type="radio" style="width: 28px;margin-left: 20px;" class="required" value="满意：" checked="checked" />
+		<span style="width: 45px; line-height:  78px;">满意</span>
+		<input id="contentHead" name="contentHead" type="radio" style="width: 28px;margin-left: 20px;" class="required" value="一般：" />
+		<span style="width: 45px; line-height:  78px;">一般</span>
+		<input id="contentHead" name="contentHead" type="radio" style="width: 28px;margin-left: 20px;" class="required" value="不满意：" />
+		<span style="width: 45px; line-height:  78px;">不满意</span>
+      	<input name="" type="submit" value="提交" />
+    </div>
+</div>
+</form>
+</div>
+
+</ul>

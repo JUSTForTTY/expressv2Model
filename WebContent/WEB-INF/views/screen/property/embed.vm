@@ -1,0 +1,28 @@
+#set($layout = '')
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>物业快车网</title>
+	<link href="$appServer/css/css.css" rel="stylesheet" type="text/css" />
+	<link href="$appServer/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+#if($!{userAgent})
+<div class="wyfwwp" background-color:#f5f5f5;>
+	<div class="wyfw" style="width:1110px;">
+    	 
+		<div class=" wyfwcr" style="width:1090px;">
+			<div class="wyfwcrf" style="border-width: 0px;">
+				<iframe name="weather_inc" src="$!{url}" style="margin:0px 0px 0px 0px;" width="360" height="230" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" ></iframe>
+			</div>
+		    <div class="wyfwcrrt" style="background-image:url('http://trade.wuyeok.com/upload/$!{note.noteBg}');margin-left: 0px;width: 590px;">
+				#direct($!{note.noteContent})
+		    </div>
+		</div>
+    </div>
+</div>     
+#end
+
+</body>
+</html>

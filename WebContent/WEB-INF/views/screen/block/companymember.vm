@@ -1,0 +1,23 @@
+#set($layout="")
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>会员单位</title>
+<link href="/css/css.css" rel="stylesheet" type="text/css" />
+<link href="/css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="$appServer/css/style_category.css" />
+<link rel="stylesheet" type="text/css" href="$appServer/css/jquery.tmailsilder.v2.css" />
+<script type="text/javascript" src="$appServer/js/jquery.min.js"></script> 
+<script type="text/javascript" src="$appServer/js/jquery.tmailsilder.v2.js"></script>
+</head>
+<html>
+<body>
+  <div class=" wydw" style="height: 799px;">
+  	<div class="wydw02" >
+<iframe name="weather_inc" src="http://trade.wuyeok.com/goods/provider/iframeList.htm" style="margin:0px 0px 0px 0px;" width="100%" height="799" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" ></iframe>
+    </div>
+  </div>
+ 
+</body>
+</html>

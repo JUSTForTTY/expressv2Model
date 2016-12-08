@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta name="full-screen" content="yes">
+ 
+</head>
+<body>
+ 
+<div class="c"></div>	<div id="bd">
+<!--头部背景图-->
+<div id="ban-in" style="background-image:url($appServer/images/topIntroduce.jpg)">
+    <div class="ban-bg"></div>
+</div>
+
+<!--part1-->
+<div class="wp" id="whous">
+    <div class="tit-i">
+        <h3>我们是谁</h3>
+        <h5>about <span></span></h5>
+    </div>
+    <div class="c"></div>
+    <div class="about-info">
+       上海云河信息技术有限公司<br />
+        <p>
+        上海云河信息技术有限公司致力于打造写字楼宇内的业务生态环境，在写字楼内办公的任何企业都是在业务生态环境中的一个成员，相互协作、相互学习、相互依靠，这个业务生态环境我们称之为“物业快车网”。
+        </p>
+        	“物业快车网”可以为企业提供——办公无忧的服务，具体包含以下三个方面：</br>
+
+             1.提高采购效率：向企业推荐性价比高的商品或服务。</br>
+             2.降低营销成本：帮助企业对接上下游产业链资源。</br>
+             3.增强团队凝聚力：组织员工参与丰富多彩的兴趣社团。</br>
+       
+    </div>
+    <ul class="ul-about ul-show">
+        <li class="li1">
+            <div class="block">
+                
+            </div>
+            <div class="c"></div>
+            <h3>公司定位</h3>
+            <em></em>
+            <!--<p>根据用户的需求、市场状况、企业情况提供专业化的网<br />站策划、设计、技术和营销解决方案。</p>-->
+            <p>
+          为写字楼内入驻企业提供服务的第一品牌
+           <br />
+            </p>				</li>
+        <li class="li2">
+            <div class="block">
+                
+            </div>
+            <div class="c"></div>
+            <h3>公司愿景</h3>
+            <em></em>
+           
+            <p>
+                <span>助企业办公无忧</span>
+                 <br />
+            </p>
+            
+            
+            <p>
+	<span><br />
+</span>
+            </p>				</li>
+        <li class="li3">
+            <div class="block">
+             
+            </div>
+            <div class="c"></div>
+            <h3>公司态度</h3>
+            <em></em>
+
+            <p>
+                一次偶遇、相伴恒久
+            </p>
+             <br />
+            <p>
+                <br />
+            </p>
+            <p>
+            </p>				</li>
+    </ul>
+</div>
+
+
+
+<div class="c"></div>
+ 
+
+
+ 
+
+<!--尾部菜单-->
+ 
+</body>
+</html>

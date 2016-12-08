@@ -1,0 +1,7 @@
+#set($layout="layout/order.vm")
+<div class="menuaa2" style="height:55px;margin-left:10px">
+   <div class="menulg" style="height:50px;margin-top:0px;margin-right:15px;width:511px;float:right"><img src="$appServer/images/gwlc_03aaads.jpg" width="511" height="50"></div>
+  <div class="menulg" style="height:50px;margin-top:5px;width:50px;float:right"><img src="$appServer/images/logo.png" width="50" height="50"></div>
+
+</div>
+<div class="lcfk"><img src="$appServer/images/gdfhfgd.png" width="65" height="64" /><span>订单付款成功！<strong><a style="color:#17c677;" href="$appServer/index2.htm">回到首页</a></strong></span></div>

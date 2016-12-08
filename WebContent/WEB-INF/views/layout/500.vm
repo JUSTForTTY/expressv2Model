@@ -1,0 +1,7 @@
+$contain.get("/contain/head.htm")
+.put("title","错误")
+.put("headLinks","css/500.css")
+.put("headScripts","plugins/jquery/jquery.mini.js")
+.put("headScripts","plugins/bigpipe.mini.js")
+$screen_content
+#parse("/screen/contain/end.vm")

@@ -1,0 +1,99 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta name="full-screen" content="yes">
+ 
+
+ <link rel="stylesheet" href="$appServer/css/cui.css" />
+    <link rel="stylesheet" href="$appServer/css/style.css" />
+    <link rel="stylesheet" href="$appServer/css/less.css" />
+	<link rel="stylesheet" href="$appServer/css/animate.css" />
+<link rel="stylesheet" href="$appServer/css/flexslider.css" />
+
+ <script type="text/javascript" src="$appServer/js/jquery.js"></script>
+<script type="text/javascript" src="$appServer/js/lib.js"></script>
+<script type="text/javascript" src="$appServer/js/flexslider.js"></script>
+<script type="text/javascript" src="$appServer/js/banner.js"></script>
+<!--联系我们信息校验><-->
+<script type="text/javascript">
+    $("#sub").click(function(e) {
+        var name=$("#name").val();
+        var tel=$("#tel").val();
+        var txt=$("#txt").val();
+        var re = /^[1][3587]\d{9}$/;
+        if(name==""){
+            alert("姓名不能为空");
+            return false;
+        }
+        if(!re.test(tel)){
+            alert("请输入正确的联系方式");
+            return false;
+        }
+        if(txt==""){
+            alert("请输入您的需求");
+            return false;
+        }
+
+        $.ajax({
+            url:"ajax_guest.php",
+            type:'GET',
+            data:{'name':name,'tel':tel,'txt':txt},
+            //dataType:"text",
+            async:false,
+            error: function(){ alert("error");},
+            success: function(data){alert(data);}
+        })
+    });
+</script>
+<!--遮盖层jq触发/地图><-->
+<script>
+    $('.ul-news-i li').hover(function(){
+        $(this).toggleClass('on');
+    })
+    $('.ul-icon-i li').hover(function(){
+        $(this).find('img:first').fadeIn(100);
+        $(this).find('.pic-icon').animate({top:0});
+    },function(){
+        $(this).find('.pic-icon').animate({top:-134});
+        $(this).find('img:first').fadeOut(100);
+    })
+
+    $('.case-img').hover(function(){
+        $(this).toggleClass('on');
+    })
+
+    $('.map .btn').click(function(){
+        $('.map-pop').show();
+        $(this).parents('.map').addClass('map-big-i');
+        var winW = $(window).width();
+        var winH = $(window).height();
+        console.log(winH);
+        if(winW < 768){
+            $('.map-pop').height($(window).height()-50-80);
+            $('.map-big-i').height($(window).height()-50-80);
+            $("html, body").animate({ scrollTop: $(document).height() }, 1000);
+        }else{
+
+            $('.map-pop').height($(window).height()-344);
+            $('.map-big-i').height($(window).height()-344);
+            $("html, body").animate({ scrollTop: $(document).height() }, 1000);
+        }
+        initMap();
+    })
+    $('.map .btn-down').click(function(){
+        $('.map-pop').hide();
+        $(this).parents('.map').removeClass('map-big-i');
+        $('.map').height('107');
+    })
+
+</script>
+<!--地图><-->
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=5b31afcdea6af2d7d3677ca5c1a22c46"></script>
+<script type="text/javascript" src="$appServer/js/map.js"></script>
+
+ 

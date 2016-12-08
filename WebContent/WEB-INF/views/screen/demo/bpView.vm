@@ -1,0 +1,7 @@
+
+<div class="box-wrap">
+    <p>以下块会以Bigpipe方式有服务端异步输出</p>
+#foreach($n in [0..${nums}])
+	#pagelet("/demo/subView.htm?num=${n}")
+#end
+</div>

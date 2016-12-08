@@ -1,0 +1,29 @@
+#macro ( direct $direct-output )$!direct-output#end
+#macro ( c $paras )
+	#if($!paras)
+		#set($content = "")
+		#set($key = "")
+		#set($value = "")
+		#foreach($para in $paras)
+			#if($velocityCount == 1)
+				#set($content = $contain.get($!para))
+			#else
+				#if($velocityCount % 2 == 0)
+					#set($key = $para)
+				#else
+					#set($value = $para)
+				#end
+				#set($content = $content.setParameter($key, $value))
+			#end
+		#end
+		$!content
+	#end
+#end
+
+#macro ( pager $query $target)
+	$contain.get('/contain/front_page_slider.htm').put('slider_query',$!query).put('slider_target',$!target).put("slider_page","currentPage").put("slider_width",3)##.put('slider_path','/contain/formPageSlider')##.put('slider_method','get')
+#end
+
+#macro ( centerpager $query $target)
+	$contain.get('/contain/center_page_slider.htm').put('slider_query',$!query).put('slider_target',$!target).put("slider_page","currentPage").put("slider_width",3)##.put('slider_path','/contain/formPageSlider')##.put('slider_method','get')
+#end

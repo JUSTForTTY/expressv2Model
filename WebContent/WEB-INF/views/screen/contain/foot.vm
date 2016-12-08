@@ -1,0 +1,62 @@
+<div id="fd" class="index-fd pr">
+    <div class="map-bg3"></div>
+    <div class="wp">
+        <div class="fd-top">
+            <dl>
+                <dt>企业资讯</dt>
+                <dd>
+                     
+                </dd>
+            </dl>
+            <dl>
+                <dt>大事件</dt>
+                <dd>
+                     
+                </dd>
+            </dl>
+            <dl>
+                <dt>产品展示</dt>
+                <dd>
+                   
+                </dd>
+            </dl>
+            <dl>
+                <dt>公司简介</dt>
+                <dd>
+                     
+                </dd>
+            </dl>
+            <dl>
+                <dt>关于我们</dt>
+                <dd class="pr">
+                    <p><a href="" class="weixin"></a><a href="" class="sina"></a><span class="weixin-pic"><img src="$appServer/images/ewm.jpg" alt=""></span></p>
+                    <p><b class="tel">021-64822088</b></p>
+                    <h5>服务热线</h5>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="fd-copy">
+        <div class="wp">
+            <p>
+                <span>上海云河信息有限公司 Copyright&copy; 2012-2016 </span><a href=""><span>上海光大会展中心B座光大梦工厂</span></a> <a href=""></a>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="side">
+    <ul>
+        <li><a href=""><div class="sidebox"><img src="$appServer/images/side_icon02.png">在线咨询</div></a></li>
+        <li><a href=""><div class="sidebox"><img src="$appServer/images/side_icon01.png">在线咨询<!-- QQ: --></div></a></li>
+        <li><a href="javascript:void(0);" ><div class="sidebox"><img src="$appServer/images/side_icon03.png">021-64822088</div></a></li>
+    </ul>
+</div>
+
+
+<div class="side2">
+    <ul>
+        <li><a href=""><img src="$appServer/images/r_icon1.png" alt=""></a><div class="weixin"><em></em><img src="$appServer/images/ewm.jpg" alt=""></div></li>
+        <li><a href="javascript:goTop();" class="sidetop"><img src="$appServer/images/r_icon2.png"></a></li>
+    </ul>
+</div>
+

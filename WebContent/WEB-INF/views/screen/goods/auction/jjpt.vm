@@ -1,0 +1,98 @@
+#set($layout="")
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>竞价平台</title>
+<link href="/css/css.css" rel="stylesheet" type="text/css" />
+<link href="/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="wytop">
+    	<div class="wytopwr">
+        	<span>欢迎进入物业快车网！</span>
+            <ul>
+            <li><a href="#">收藏我们</a></li>
+            <li><a href="#">帮助中心</a></li>
+            <li id="wr"><a href="#">会员中心</a></li>
+            </ul>
+        </div>  
+    </div>
+    <div class="menu">
+    <div class="menulg"><img src="/images/logo.png" width="327" height="53" /></div>
+    <div class="menusr">
+    	<ul>
+        <li><a id="mr" href="#">商品</a></li>
+        <li><a href="#">商品</a></li>
+        <li><a href="#">商品</a></li>
+        </ul>
+      <i><input class="Inpt" name="" type="text" /></i><input class="mserver" name="" type="submit" value=" " />
+    </div>
+    <div class="menukf"><a href="#"><img src="/images/kf.png" width="31" height="28" /></a><a class="menukftxt" href="#">客服中心</a></div>
+    </div>
+    <div class=" menunav">
+    	<div class="menunav02">
+        	<ul>
+            <li><a id="menubg" href="#">首 页</a></li>
+            <li><a href="#">物业信息</a></li>
+            <li><a href="#">最新资讯</a></li>
+            <li><a href="#">每日促销</a></li>
+            <li><a href="#">会员单位</a></li>
+            <li><a href="#">房产信息</a></li>
+            <li style="border-right:1px solid #f4f4f4"><a href="#">商品信息</a></li>
+            </ul>
+        </div>
+    </div>  
+    <div class="xxban"></div> 
+
+<div class=" kcfl">
+    	<div class="kcfl01"><span>分类</span><img src="/images/kcxx_06.png" width="5" height="3" /></div>
+        <div class="kcfl02">
+        	<div class="kcfl03"><input name="" type="text" /></div>
+            <div class="kcfl04"><input name="" type="submit" value="搜索" /></div>
+        </div>
+        <div class="kcfl05">热词：<a href="#">水果</a> <a href="#">哈密瓜</a> <a href="#">猕猴桃</a> <a href="#">哈密瓜</a> <a href="#">猕猴桃</a></div>
+        <div class="kcfl06"><h6><a href="#">上一页</a></h6> <h5><a href="#">下一页</a></h5></div>
+</div>
+<div class="jjpt"><span>竞价信息</span></div>
+<div class="jjpt02">
+
+#if($query.items && $query.items.size()>0)
+		#foreach($item in $query.items)
+	<div class="jjpt03">
+    	<div class="jjpt04"><img src="$imageServer.get($item.image1)" width="115" height="85" /></div>
+        <div class="jjpt05">
+        	<strong><a href="#">$item.name</a></strong>
+            <span><a href="#">$item.briefintro</a></span>
+        </div>
+        <div class="jjpt06"><a href="#">￥ $item.price</a></div>
+    </div>
+    
+    	#end
+	#end
+    
+</div>
+<div class="chear"></div>
+<div class=" kchydwq18">
+	<div class=" jjpt07">
+    	<span>发布竞价信息</span>
+        <ul>
+        <li><input name="" type="radio" value="" />我要买</li>
+        <li><input name="" type="radio" value="" />我要卖</li>
+        </ul>
+    </div>
+    <div class=" kchydwq20"><textarea name="" cols="" rows=""></textarea></div>
+    <div class="kchydwq21"><input name="" type="submit" value="提交" /></div>
+</div>
+#pager($query,"/goods/auction/jjpt.htm")
+    
+    
+<div class="chear"></div>
+<div class="footer">
+<div class="footer02"><span><a href="#">会员单位</a> |    <a href="#">服务条款</a> |    <a href="#">付款方式</a> |    <a href="#">厂商加盟</a> |    <a href="#">联系我们</a> |    <a href="#">友情链接</a> |    <a href="#">帮助</a><br />
+  
+                         Copyright © 2004-2014  快车jk.com 版权所有</span>
+  </div>
+</div>
+</body>
+</html>

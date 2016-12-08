@@ -1,0 +1,8 @@
+
+<div class="box-wrap">
+    <p>以下块会以Bigpipe方式有服务端异步输出(倒序)</p>
+#foreach($n in [0..${nums}])
+	#set($od = 21-$n)
+	$asyncContain.get("/demo/subView.htm?num=${n}",$od)
+#end
+</div>

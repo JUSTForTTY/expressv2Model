@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="GOODS_COLLECT">
+	<typeAlias alias="goodsCollect"
+		type="com.hundsun.jresplus.quickstart.biz.po.GoodsCollect" />
+
+	<resultMap id="baseResult" class="goodsCollect">
+		<result column="id" 				property="id" />
+		<result column="type" 				property="type" />
+		<result column="goods_id" 			property="goodsId" />
+		<result column="user_name" 			property="userName" />
+        <result column="create_time" 		property="createTime" />
+	</resultMap>
+	
+	<resultMap id="resultWithGoodsName" class="goodsCollect" extends="baseResult">
+		<result column="goods_name" 			property="goodsName" />
+	</resultMap>
+
+	<sql id="allColumn">
+		c.id, c.type, c.goods_id, c.user_name, c.create_time
+	</sql>
+
+	<select id="getById" resultMap="baseResult">
+		select
+		<include refid="allColumn" />
+		from goods_collect c
+		where
+		id = #id#
+	</select>
+
+	<insert id="insert" >
+		insert into goods_collect
+			(id, type, goods_id, user_name, create_time)
+		values 
+			(#id#, #type#, #goodsId#, #userName#, sysdate())
+		 <selectKey resultClass="java.lang.Long" type="post" keyProperty="id" >select LAST_INSERT_ID() as value</selectKey>
+	</insert>
+	
+	<select id="getPaginationCount" resultClass="int">
+		select
+		count(1)
+		from goods_collect c
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="type">
+				c.type = #type#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="userName">
+				c.user_name = #userName#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id="getPaginationList" resultMap="resultWithGoodsName">
+		select
+			c.id, c.type, c.goods_id, c.user_name, c.create_time, g.name as goods_name
+		from goods_collect c
+		left join  goods g on c.goods_id = g.id
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="type">
+				c.type = #type#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="userName">
+				c.user_name = #userName#
+			</isNotEmpty>
+		</dynamic>
+		order by g.id desc
+		limit #pageFristItem# , #pageSize#
+	</select>
+	
+	<select id="queryList" resultMap="resultWithGoodsName">
+		select
+			c.id, c.type, c.goods_id, c.user_name, c.create_time, g.name as goods_name
+		from goods_collect c
+		left join  goods g on c.goods_id = g.id
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="id">
+				c.id = #id#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="type">
+				c.type = #type#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="userName">
+				c.user_name = #userName#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="goodsId">
+				c.goods_id = #goodsId#
+			</isNotEmpty>
+		</dynamic>
+		order by g.id desc
+	</select>
+	
+	<delete id="deleteById">
+		delete from 
+			goods_collect
+		where 
+			id = #id#
+	</delete>
+	
+	<!-- 获取粉丝个数 -->
+	<select id="collectPeople" resultClass="int">
+		select
+		count(1)
+		from goods_collect
+	 
+		 
+			 where 
+				goods_id =
+				#id#
+		 
+	</select>
+
+</sqlMap>

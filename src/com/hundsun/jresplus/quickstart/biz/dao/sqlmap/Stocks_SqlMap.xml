@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="STOCKS">
+	<typeAlias alias="stock"
+		type="com.hundsun.jresplus.quickstart.biz.po.Stock_Inventory" />
+	
+
+	<resultMap id="baseResult" class="stock">
+		<result column="id" property="id" />
+		<result column="goods_id" property="goods_id" />
+		<result column="goods_name" property="goods_name" />
+	 
+		<result column="miniature" property="miniature" />
+		<result column="member_id" property="member_id" />
+		<result column="member_name" property="member_name" />
+		<result column="building_id" property="building_id" />
+		<result column="quantity" property="quantity" />
+		<result column="create_time" property="create_time" />
+		<result column="create_user" property="create_user" />
+		<result column="update_user" property="update_user" />
+		<result column="update_time" property="update_time" />
+		 
+	</resultMap>
+
+	 
+	 
+
+	<sql id="allColumn">
+	 s.id,s.goods_id,s.goods_name,s.user_name,s.miniature,s.member_id,s.member_name,s.quantity,s.building_id,
+	 s.create_time,s.create_user,s.update_time,s.update_user
+	</sql>
+
+ 
+
+	<!-- 获取列表 -->
+	<select id="stockList" resultMap="baseResult">
+		select
+		<include refid="allColumn" />
+		from stock_inventory s
+		 <dynamic prepend="where">
+			<isNotEmpty prepend="and" property="goods_name">
+				s.goods_name = #goods_name#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="username">
+				s.user_name = #username#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="startDate">
+				 s.create_time>=#startDate#
+			</isNotEmpty>
+			 <isNotEmpty prepend="and" property="endDate">
+				   #endDate#>= s.create_time
+			</isNotEmpty>
+			 
+		</dynamic>
+		
+		order by s.create_time desc
+		limit #pageFristItem# , #pageSize#
+	</select>
+
+   <select id="getById" resultMap="baseResult">
+		select
+		<include refid="allColumn" />
+		from stock_inventory s
+		where
+		s.user_name = #user_name# and s.goods_id=#goods_id#
+	</select>
+
+	<!-- 获取列表个数 -->
+	<select id="stockCount" resultClass="int">
+		select
+		count(1)
+		from stock_inventory s
+		 <dynamic prepend="where">
+			<isNotEmpty prepend="and" property="goods_name">
+				s.goods_name = #goods_name#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="username">
+				s.user_name = #username#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="startDate">
+				 s.create_time>=#startDate#
+			</isNotEmpty>
+			 <isNotEmpty prepend="and" property="endDate">
+				   #endDate#>= s.create_time
+			</isNotEmpty>
+			 
+		</dynamic>
+	 
+	</select>
+	
+	<update id="updateOrderStock">
+		update  
+			stock_inventory 
+		set quantity = quantity-#goodsCount#
+		where goods_id =#goodsId#
+	</update>
+
+	 
+</sqlMap>

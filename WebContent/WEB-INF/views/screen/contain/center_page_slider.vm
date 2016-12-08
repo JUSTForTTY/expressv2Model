@@ -1,0 +1,90 @@
+#set($layout = '')
+<script>
+	function goto$!{sliderRandom}(pg){
+		document.page_slider_$!{sliderRandom}.$!{sliderPage}.value=pg;
+		document.page_slider_$!{sliderRandom}.submit();
+	}
+
+	function gosb$!{sliderRandom}(){
+		if(check$!{sliderRandom}()){
+			document.page_slider_$!{sliderRandom}.submit();
+		}
+	}
+	function check$!{sliderRandom}(){
+		var toPage = document.page_slider_$!{sliderRandom}.$!{sliderPage}.value;
+		var reg=/^\d+$/g;
+		if(reg.test(toPage)){
+			return true;
+		}
+		return false;
+	}
+</script>
+##<div class="pages">
+
+
+<div class=" kcfl pages" style="width:710px;">    	
+    <div class="kcfl05" style="width: 400px;">&nbsp;</div>
+	<div class="kcfl06" style="width: 500px;margin-left:-300px">
+	#if($slider_borker)
+		#set($s_broker = $slider_borker)
+	#else
+		#set($s_broker = $appServer)
+	#end
+	<form name="page_slider_$!{sliderRandom}" action="${s_broker.get("$sliderTarget")}" method="$!{sliderMethod}" onsubmit="return check$!{sliderRandom}();">
+	#if($sliderQuery.parameters)
+		#foreach($queryParam in $sliderQuery.parameters.entrySet())
+		<input type="hidden" name="$!{queryParam.key}" value="$!{queryParam.value}"/>
+		#end
+	#end
+	##<span class="mr20">共有$!{slider_query.totalItem}条记录，当前第$sliderCurrent页，共 $sliderTotal 页</span>
+	#if($sliderCurrent == '1')
+		##<span class="disabled"> 首页</span>
+		##<span class="disabled"> &lt;上一页</span>
+		<h6 style="width:30px;margin-left: 2px;"><a href="#">&lt;</a></h6> 
+	#else
+		##<a href="#" onclick="goto$!{sliderRandom}('1')">首页</a>
+		##<a href="#" onclick="goto$!{sliderRandom}('${sliderPrev}')">&lt; 上一页</a>
+		<h5 style="width:30px;margin-left: 2px;"><a href="#" onclick="goto$!{sliderRandom}('${sliderPrev}')">&lt;</a></h5> 
+	#end
+	#foreach($grid in $grids)
+		#if($grid == 0)
+		##<span style="font-weight:bold">...</span>
+		#elseif($grid == $sliderCurrent)
+		##	<b>${grid}</b>
+		#else
+		##<a href="#" onclick="goto$!{sliderRandom}('${grid}')">${grid}</a>
+		#end
+	#end
+	#if($sliderCurrent >= $sliderTotal )
+		##<span class="disabled"> 下一页 &gt; </span>
+		<h6 style="width:30px;margin-left: 2px;"><a href="#">&gt;</a></h6>
+		##<span class="disabled"> 尾页 </span>
+	#else
+		##<a href="#" onclick="goto$!{sliderRandom}('${sliderNext}')">下一页 &gt;</a>
+		<h5 style="width:30px;margin-left: 2px;"><a href="#" onclick="goto$!{sliderRandom}('${sliderNext}')">&gt;</a></h5>
+		##<a href="#" onclick="goto$!{sliderRandom}('${sliderTotal}')">尾页</a>
+	#end
+	<h4 style="width: 400px; font-weight: bold; margin-left: 10px; height: 28px; line-height: 28px; margin-top: 18px; float: left;">总记录数：$!{slider_query.totalItem}&nbsp;条 &nbsp;当前第:$sliderCurrent/$sliderTotal页 
+	&nbsp;&nbsp;
+	显示	
+		<select id="pageSize" name="pageSize" onchange="submit();">
+	<option value="10" selected>-请选择-</option>
+	<option value="10">10</option>
+	<option value="20">20</option>
+	<option value="30">30</option>
+	<option value="40">40</option>
+	<option value="50">50</option>
+	
+	</select>
+	条
+	</h4>
+
+     
+	 <input type="hidden" name="$!{sliderPage}" value="$!sliderQuery.currentPage" />
+
+	</form>
+##</div>
+
+	</div>
+</div>
+
